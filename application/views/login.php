@@ -97,7 +97,8 @@
 
                                         <hr>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login
+                                            <!-- <i class="fab fa-google fa-fw"></i>  -->
+                                            Login
                                         </a>
 
                                     </form>
