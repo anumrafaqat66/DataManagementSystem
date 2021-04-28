@@ -14,9 +14,11 @@ class User_Login extends CI_Controller
 			$status = $this->session->userdata('status');
 			
 			if ($status == "technician") {
-				$this->load->view("technician");
+				$this->technician_data_listing();
+				//$this->load->view("technician/technician");
 			} elseif ($status == "manager") {
-				$this->load->view("manager");
+				$this->manager_data_listing();
+				//$this->load->view("manager/manager");
 			}
 		} else {
 			$this->load->view('login');
@@ -54,4 +56,16 @@ class User_Login extends CI_Controller
 		$this->session->sess_destroy();
 		redirect('User_Login');
 	}
+
+	public function technician_data_listing()
+    {
+        $data['technician_controller_data'] = $this->db->get('controller_data')->result_array();
+        $this->load->view('technician/technician', $data);
+    }
+
+	public function manager_data_listing()
+    {
+        $data['manager_controller_data'] = $this->db->get('controller_data')->result_array();
+        $this->load->view('manager/manager', $data);
+    }
 }

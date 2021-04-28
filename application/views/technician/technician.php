@@ -14,7 +14,7 @@
                          </div>
 
                          <div class="card-body">
-                             <form class="user" role="form" method="post" action="">
+                             <form class="user" role="form" method="post" action="<?= base_url(); ?>Home/add_data_into_db">
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
                                          <select class="form-control rounded-pill" name="controller_type" id="controller_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
@@ -90,16 +90,18 @@
                                          </tr>
                                      </thead>
                                      <tbody>
+                                     <?php $count = 0;
+						             foreach ($technician_controller_data as $data) { ?>
                                              <tr>
-                                                 <td scope="row"></td>
-                                                 <td scope="row"></td>
-                                                 <td scope="row"></td>
-                                                 <td scope="row"></td>
-                                                 <td scope="row"></td>
-                                                 <td scope="row"></td>
-                                                 <td scope="row"></td>
+                                                 <td scope="row"><?php $count++; echo $count; ?></td>
+                                                 <td scope="row"><?= $data['Controller_type']; ?></td>
+                                                 <td scope="row"><?= $data['ESWB']; ?></td>
+                                                 <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                 <td scope="row"><?= $data['Includes']; ?></td>
+                                                 <td scope="row"><?= $data['Not_Includes']; ?></td>
+                                                 <td scope="row"><?= $data['Associated_Equipment']; ?></td>
                                              </tr>
-                                         
+                                             <?php } ?>
                                      </tbody>
                                  </table>
                              </div>

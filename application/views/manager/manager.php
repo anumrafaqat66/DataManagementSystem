@@ -1,23 +1,22 @@
  <?php $this->load->view('common/header'); ?>
 
-<style>
-::-webkit-input-placeholder {
-    color:Grey !important;
-}
+ <style>
+     ::-webkit-input-placeholder {
+         color: Grey !important;
+     }
 
-::-moz-placeholder {
-    color:Grey !important; 
-}
+     ::-moz-placeholder {
+         color: Grey !important;
+     }
 
-::-ms-placeholder {
-    color:Grey !important;
-}
+     ::-ms-placeholder {
+         color: Grey !important;
+     }
 
-::placeholder {
-    color:Grey !important;
-}
-
-</style>
+     ::placeholder {
+         color: Grey !important;
+     }
+ </style>
 
  <div class="container">
 
@@ -45,20 +44,28 @@
                                              <th scope="col">Included</th>
                                              <th scope="col">Not Included</th>
                                              <th scope="col">Associated Equipment</th>
+                                             <th scope="col">Action</th>
 
                                          </tr>
                                      </thead>
                                      <tbody>
-                                         <tr>
-                                             <td scope="row"></td>
-                                             <td scope="row"></td>
-                                             <td scope="row"></td>
-                                             <td scope="row"></td>
-                                             <td scope="row"></td>
-                                             <td scope="row"></td>
-                                             <td scope="row"></td>
-                                         </tr>
+                                         <?php $count = 0;
+                                            foreach ($manager_controller_data as $data) { ?>
+                                             <tr>
+                                                 <td scope="row"><?php $count++;
+                                                                    echo $count; ?></td>
+                                                 <td scope="row"><?= $data['Controller_type']; ?></td>
+                                                 <td scope="row"><?= $data['ESWB']; ?></td>
+                                                 <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                 <td scope="row"><?= $data['Includes']; ?></td>
+                                                 <td scope="row"><?= $data['Not_Includes']; ?></td>
+                                                 <td scope="row"><?= $data['Associated_Equipment']; ?></td>
+                                                 <td>
+                                                     <button type="submit" class="btn btn-primary rounded-pill">Update</button>
+                                                 </td>
 
+                                             </tr>
+                                         <?php } ?>
                                      </tbody>
                                  </table>
                              </div>
@@ -90,7 +97,7 @@
                                          <input type="text" class="form-control form-control-user bg-light" name="tbf" id="tbf" placeholder="ESWB" disabled>
                                      </div>
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user bg-light" name="tbf" id="tbf" placeholder="Name"disabled>
+                                         <input type="text" class="form-control form-control-user bg-light" name="tbf" id="tbf" placeholder="Name" disabled>
                                      </div>
                                  </div>
                                  <div class="form-group row">
