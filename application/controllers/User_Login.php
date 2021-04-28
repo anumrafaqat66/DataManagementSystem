@@ -21,7 +21,7 @@ class User_Login extends CI_Controller
 
 	public function login_process()
 	{
-						if ($this->input->post()) {
+			if ($this->input->post()) {
 			$postedData = $this->security->xss_clean($this->input->post());
 			//To create encrypted password use
 			$username = $postedData['username'];

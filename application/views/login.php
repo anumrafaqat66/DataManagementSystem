@@ -131,6 +131,26 @@
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
 
+<script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
+<?php if ($this->session->flashdata('success')) : ?>
+    <script>
+        Swal.fire(
+            '<?php echo $this->session->flashdata('success'); ?>',
+            '',
+            'success'
+        );
+    </script>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('failure')) : ?>
+    <script>
+        Swal.fire(
+            '<?php echo $this->session->flashdata('failure'); ?>',
+            '',
+            'error'
+        );
+    </script>
+<?php endif; ?>
 </body>
 
 </html>
