@@ -32,7 +32,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url(); ?>User_Login/logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -54,6 +54,31 @@
     <!-- Page level custom scripts -->
     <script src="assets/js/demo/chart-area-demo.js"></script>
     <script src="assets/js/demo/chart-pie-demo.js"></script>
+    <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
+
+<?php if ($this->session->flashdata('success')) : ?>
+    <script>
+        Swal.fire(
+            '<?php echo $this->session->flashdata('success'); ?>',
+            '',
+            'success'
+        );
+    </script>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('failure')) : ?>
+    <script>
+        Swal.fire(
+            '<?php echo $this->session->flashdata('failure'); ?>',
+            '',
+            'error'
+        );
+    </script>
+<?php endif; ?>
+
+
+
+
 
 </body>
 

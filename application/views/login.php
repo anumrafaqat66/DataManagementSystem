@@ -39,33 +39,33 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Data Management System</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" role="form" method="post" action="<?php echo base_url();?>User_Login/login_process">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control form-control-user" name="username" id="exampleInputUsername"  placeholder="Enter Username...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password"  name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group row">
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" name="optradio"> <div style="float:right; margin-left:5px;">H.O.D</div> 
+                                                <input type="radio" value="hod" name="optradio"> <div style="float:right; margin-left:5px;">H.O.D</div> 
                                             </label>
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" name="optradio"><div style="float:right; margin-left:5px;">Manager</div>
+                                                <input type="radio" value="manager" name="optradio"><div style="float:right; margin-left:5px;">Manager</div>
                                             </label>
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" name="optradio"><div style="float:right; margin-left:5px;">Technician</div>
+                                                <input type="radio" value="technician" name="optradio"><div style="float:right; margin-left:5px;">Technician</div>
                                             </label>
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" name="optradio"><div style="float:right; margin-left:5px;">Top Level</div>
+                                                <input type="radio" value="toplevel" name="optradio"><div style="float:right; margin-left:5px;">Top Level</div>
                                             </label>
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" name="optradio"><div style="float:right; margin-left:5px;">Other Account</div>
+                                                <input type="radio" value="other" name="optradio"><div style="float:right; margin-left:5px;">Other Account</div>
                                             </label>
                                             <!-- <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -96,19 +96,19 @@
                                         </div>
 
                                         <hr>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit"  class="btn btn-primary btn-user btn-block">
                                             <!-- <i class="fab fa-google fa-fw"></i>  -->
                                             Login
-                                        </a>
+                                        </button>
 
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
+                                   <hr>
+                                   <!--   <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="register.html">Create an Account!</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
