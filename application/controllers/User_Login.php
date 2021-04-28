@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 class User_Login extends CI_Controller
 {
 
@@ -11,9 +11,13 @@ class User_Login extends CI_Controller
 	{
 		if ($this->session->has_userdata('user_id')) {
 			$id = $this->session->userdata('user_id');
-			$status=$this->session->userdata('status');
-			//echo $status; exit;
-			$this->load->view("technician");
+			$status = $this->session->userdata('status');
+			
+			if ($status == "technician") {
+				$this->load->view("technician");
+			} elseif ($status == "manager") {
+				$this->load->view("manager");
+			}
 		} else {
 			$this->load->view('login');
 		}
@@ -21,15 +25,15 @@ class User_Login extends CI_Controller
 
 	public function login_process()
 	{
-			if ($this->input->post()) {
+		if ($this->input->post()) {
 			$postedData = $this->security->xss_clean($this->input->post());
 			//To create encrypted password use
 			$username = $postedData['username'];
 			$password = $postedData['password'];
-			$status= $postedData['optradio'];
+			$status = $postedData['optradio'];
 			//echo $status;exit;
 			// $p = password_hash($postedData['password'], PASSWORD_BCRYPT);
-			$query = $this->db->where('username', $username)->where('password', $password)->where('status',$status)->get('security_info')->row_array();
+			$query = $this->db->where('username', $username)->where('password', $password)->where('status', $status)->get('security_info')->row_array();
 			//print_r($query['user_id']);exit;
 			//echo $p; exit;
 			if (!empty($query)) {
@@ -45,9 +49,9 @@ class User_Login extends CI_Controller
 			}
 		}
 	}
-	public function logout(){
+	public function logout()
+	{
 		$this->session->sess_destroy();
 		redirect('User_Login');
 	}
-	
 }

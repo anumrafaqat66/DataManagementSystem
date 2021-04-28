@@ -59,7 +59,7 @@ $route['request_detail/(:any)']='Admin/request_detail/$1';
 $route['suspend_contract/(:any)']='Admin/suspend_contract/$1';
 $route['close_contract/(:any)']='Admin/close_contract/$1';
 $route['replace_contract/(:any)']='Admin/replace_contract/$1';
-$route['default_controller'] = 'Home';
+$route['default_controller'] = 'User_Login';
 
 
 $route['404_override'] = '';

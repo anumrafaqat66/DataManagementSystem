@@ -67,32 +67,7 @@
                                             <label class="custom-control radio-inline small">
                                                 <input type="radio" value="other" name="optradio"><div style="float:right; margin-left:5px;">Other Account</div>
                                             </label>
-                                            <!-- <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">
-                                                    HOD &nbsp;</label>
-                                            </div>
-                                            
-                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">
-                                                    Manager &nbsp;</label>
-                                            </div>
-                                              <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Technician&nbsp
-                                                    </label>
-                                            </div>
-                                              <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">
-                                                    Top level&nbsp</label>
-                                            </div>
-                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">
-                                                    Other Account</label>
-                                            </div> -->
+                                         
                                         </div>
 
                                         <hr>
@@ -103,6 +78,7 @@
 
                                     </form>
                                    <hr>
+                                   <br><br><br>
                                    <!--   <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>

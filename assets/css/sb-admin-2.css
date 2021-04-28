@@ -10824,7 +10824,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("<?php echo base_url(); ?>assets/img/Pakistan-Navy.jpg");
+  background: url(../img/Pakistan-Navy.jpg);
   background-position: center;
   background-size: cover;
 }
