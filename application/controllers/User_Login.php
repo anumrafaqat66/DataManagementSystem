@@ -12,11 +12,11 @@ class User_Login extends CI_Controller
 		if ($this->session->has_userdata('user_id')) {
 			$id = $this->session->userdata('user_id');
 			$status = $this->session->userdata('status');
-			
 			if ($status == "technician") {
 				$this->technician_data_listing();
 				//$this->load->view("technician/technician");
 			} elseif ($status == "manager") {
+				//$this->Get_Values();
 				$this->manager_data_listing();
 				//$this->load->view("manager/manager");
 			}
@@ -58,14 +58,23 @@ class User_Login extends CI_Controller
 	}
 
 	public function technician_data_listing()
-    {
-        $data['technician_controller_data'] = $this->db->get('controller_data')->result_array();
-        $this->load->view('technician/technician', $data);
-    }
+	{
+		$data['technician_controller_data'] = $this->db->get('controller_data')->result_array();
+		$this->load->view('technician/technician', $data);
+	}
 
 	public function manager_data_listing()
-    {
-        $data['manager_controller_data'] = $this->db->get('controller_data')->result_array();
-        $this->load->view('manager/manager', $data);
-    }
+	{
+		$data['manager_controller_data'] = $this->db->get('controller_data')->result_array();
+		$this->load->view('manager/manager', $data);
+	}
+
+	public function Get_Values($id = NULL)
+	{
+		
+		$data['manager_controller_data'] = $this->db->get('controller_data')->result_array();
+		$data['selected_controller_data'] = $this->db->where('id', $id)->get('controller_data')->row_array();
+		$this->load->view('manager/manager', $data);
+		//redirect('User_Login');
+	}
 }

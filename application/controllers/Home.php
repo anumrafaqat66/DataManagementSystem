@@ -8,7 +8,6 @@ class Home extends CI_Controller
 
     public function index()
     {
-        
     }
 
     public function add_data_into_db()
@@ -49,6 +48,36 @@ class Home extends CI_Controller
         }
     }
 
+    public function Update_data($id = NULL)
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            $TBF = $postData['TBF'];
+            $TCM = $postData['TCM'];
+            $TPM = $postData['TPM'];
+            $ADLT = $postData['ADLT'];
+            $TTR = $postData['TTR'];
+            $TCM_Desc = $postData['TCM_Desc'];
+            $TPM_Desc = $postData['TPM_Desc'];
+            $ADLT_Desc = $postData['ADLT_Desc'];
 
-    
+
+            $cond  = ['id' => $id];
+            $data_update = [
+                'TBF' => $TBF,
+                'TCM' => $TCM,
+                'TPM' => $TPM,
+                'ADLT' => $ADLT,
+                'TTR' => $TTR,
+                'TCM_Desc' => $TCM_Desc,
+                'TPM_Desc' => $TPM_Desc,
+                'ADLT_Desc' => $ADLT_Desc
+
+            ];
+            $this->db->where($cond);
+            $this->db->update('controller_data', $data_update);
+            $this->session->set_flashdata('success', 'Data Updated successfully');
+            redirect('User_Login');
+        }
+    }
 }

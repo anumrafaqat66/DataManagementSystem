@@ -34,40 +34,53 @@
 
                          <div class="card-body">
                              <div id="table_div">
-                                 <table id="datatable" class="table table-striped">
-                                     <thead>
-                                         <tr>
-                                             <th scope="col">ID</th>
-                                             <th scope="col">Controller Type</th>
-                                             <th scope="col">ESWB</th>
-                                             <th scope="col">Name</th>
-                                             <th scope="col">Included</th>
-                                             <th scope="col">Not Included</th>
-                                             <th scope="col">Associated Equipment</th>
-                                             <th scope="col">Action</th>
-
-                                         </tr>
-                                     </thead>
-                                     <tbody>
-                                         <?php $count = 0;
-                                            foreach ($manager_controller_data as $data) { ?>
+                                 <?php if (count($manager_controller_data) > 0) { ?>
+                                     <table id="datatable" class="table table-striped">
+                                         <thead>
                                              <tr>
-                                                 <td scope="row"><?php $count++;
-                                                                    echo $count; ?></td>
-                                                 <td scope="row"><?= $data['Controller_type']; ?></td>
-                                                 <td scope="row"><?= $data['ESWB']; ?></td>
-                                                 <td scope="row"><?= $data['Controller_Name']; ?></td>
-                                                 <td scope="row"><?= $data['Includes']; ?></td>
-                                                 <td scope="row"><?= $data['Not_Includes']; ?></td>
-                                                 <td scope="row"><?= $data['Associated_Equipment']; ?></td>
-                                                 <td>
-                                                     <button type="submit" class="btn btn-primary rounded-pill">Update</button>
-                                                 </td>
+                                                 <th scope="col">ID</th>
+                                                 <th scope="col">Controller Type</th>
+                                                 <th scope="col">ESWB</th>
+                                                 <th scope="col">Name</th>
+                                                 <!-- <th scope="col">Included</th>
+                                                 <th scope="col">Not Included</th>
+                                                 <th scope="col">Associated Equipment</th> -->
+                                                 <th scope="col">TBF</th>
+                                                 <th scope="col">TCM</th>
+                                                 <th scope="col">TPM</th>
+                                                 <th scope="col">ADLT</th>
+                                                 <th scope="col">TTR</th>
+                                                 <th scope="col">Action</th>
 
                                              </tr>
-                                         <?php } ?>
-                                     </tbody>
-                                 </table>
+                                         </thead>
+                                         <tbody>
+                                             <?php $count = 0;
+                                                foreach ($manager_controller_data as $data) { ?>
+                                                 <tr>
+                                                     <td scope="row"><?= $data['id']; ?></td>
+                                                     <td scope="row"><?= $data['Controller_type']; ?></td>
+                                                     <td scope="row"><?= $data['ESWB']; ?></td>
+                                                     <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                     <!-- <td scope="row"><?= $data['Includes']; ?></td>
+                                                     <td scope="row"><?= $data['Not_Includes']; ?></td>
+                                                     <td scope="row"><?= $data['Associated_Equipment']; ?></td> -->
+                                                     <td scope="row"><?= $data['TBF']; ?></td>
+                                                     <td scope="row"><?= $data['TCM']; ?></td>
+                                                     <td scope="row"><?= $data['TPM']; ?></td>
+                                                     <td scope="row"><?= $data['ADLT']; ?></td>
+                                                     <td scope="row"><?= $data['TTR']; ?></td>
+                                                     <td>
+                                                         <a class="btn btn-primary rounded-pill" href="<?= base_url(); ?>User_Login/Get_Values/<?= $data['id']; ?>">Update</a>
+                                                     </td>
+
+                                                 </tr>
+                                             <?php } ?>
+                                         </tbody>
+                                     </table>
+                                 <?php } else { ?>
+                                     <a> No Data Available yet </a>
+                                 <?php } ?>
                              </div>
                          </div>
                      </div>
@@ -88,42 +101,42 @@
                          </div>
 
                          <div class="card-body">
-                             <form class="user" role="form" method="post" action="">
+                             <form class="user" role="form" method="post" action="<?= base_url(); ?>Home/Update_data/<?php if (isset($selected_controller_data['Controller_type'])) { echo $selected_controller_data['id'];} else {echo "";}; ?>">
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user bg-light" name="tbf" id="tbf" placeholder="Controller Type" disabled>
+                                         <input type="text" class="form-control form-control-user bg-light" name="Controller_type" id="Controller_type" placeholder="Controller Type" value="<?php if (isset($selected_controller_data['Controller_type'])) { echo $selected_controller_data['Controller_type'];} else {echo "";}; ?>" disabled>
                                      </div>
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user bg-light" name="tbf" id="tbf" placeholder="ESWB" disabled>
+                                         <input type="text" class="form-control form-control-user bg-light" name="ESWB" id="ESWB" placeholder="ESWB" value="<?php if (isset($selected_controller_data['ESWB'])) { echo $selected_controller_data['ESWB'];} else {echo "";}; ?>" disabled>
                                      </div>
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user bg-light" name="tbf" id="tbf" placeholder="Name" disabled>
+                                         <input type="text" class="form-control form-control-user bg-light" name="Name" id="Name" placeholder="Name" value="<?php if (isset($selected_controller_data['Controller_Name'])) { echo $selected_controller_data['Controller_Name'];} else {echo "";}; ?>" disabled>
                                      </div>
                                  </div>
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="tbf" id="tbf" placeholder="TBF*">
+                                         <input type="text" class="form-control form-control-user" name="TBF" id="TBF" placeholder="TBF*">
                                      </div>
                                  </div>
 
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="tcm" id="tcm" placeholder="TCM*">
+                                         <input type="text" class="form-control form-control-user" name="TCM" id="TCM" placeholder="TCM*">
                                      </div>
 
                                      <div class="col-sm-8 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="tcm_desc" id="tcm_desc" placeholder="Description">
+                                         <input type="text" class="form-control form-control-user" name="TCM_Desc" id="TCM_Desc" placeholder="Description">
                                      </div>
 
                                  </div>
 
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="tpm" id="tpm" placeholder="TPM*">
+                                         <input type="text" class="form-control form-control-user" name="TPM" id="TPM" placeholder="TPM*">
                                      </div>
 
                                      <div class="col-sm-8 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="tpm_desc" id="tpm_desc" placeholder="Description">
+                                         <input type="text" class="form-control form-control-user" name="TPM_Desc" id="TPM_Desc" placeholder="Description">
                                      </div>
 
 
@@ -131,18 +144,18 @@
 
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="adlt" id="adlt" placeholder="ADLT*">
+                                         <input type="text" class="form-control form-control-user" name="ADLT" id="ADLT" placeholder="ADLT*">
                                      </div>
 
                                      <div class="col-sm-8 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="adlt_desc" id="adlt_desc" placeholder="Description">
+                                         <input type="text" class="form-control form-control-user" name="ADLT_Desc" id="ADLT_Desc" placeholder="Description">
                                      </div>
 
                                  </div>
 
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="ttr" id="ttr" placeholder="TTR">
+                                         <input type="text" class="form-control form-control-user" name="TTR" id="TTR" placeholder="TTR">
                                      </div>
 
                                  </div>
