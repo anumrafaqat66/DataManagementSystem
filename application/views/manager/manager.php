@@ -209,8 +209,23 @@
  <?php $this->load->view('common/footer'); ?>
 
  <script>
+
+     $('#TTR').on('click', function() {
+   
+    var TPM = $('#TPM').val();
+     //alert(TPM);
+    var TCM = $('#TCM').val();
+    //alert(TCM);
+    var ALDT = $('#ADLT').val();
+    //alert(ALDT);
+    var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
+    //alert(TTR);
+    document.getElementById("TTR").value = TTR;
+    //alert(d_o_b);
+    });
+
 $('#update_btn').on('click', function() {
-    alert('javascript working');
+    //alert('javascript working');
     $('#update_btn').attr('disabled', true);
     var validate = 0;
 
