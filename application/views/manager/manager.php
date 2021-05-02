@@ -39,7 +39,7 @@
                          <div class="card-body">
                              <div id="table_div">
                                  <?php if (count($manager_controller_data) > 0) { ?>
-                                     <table id="datatable" class="table table-striped">
+                                     <table id="datatable" class="table table-sm table-striped">
                                          <thead>
                                              <tr>
                                                  <th scope="col">ID</th>
@@ -49,11 +49,11 @@
                                                  <!-- <th scope="col">Included</th>
                                                  <th scope="col">Not Included</th>
                                                  <th scope="col">Associated Equipment</th> -->
-                                                 <th scope="col">TBF</th>
-                                                 <th scope="col">TCM</th>
+                                                 <th scope="col">MTBF</th>
+                                                 <!-- <th scope="col">TCM</th>
                                                  <th scope="col">TPM</th>
-                                                 <th scope="col">ADLT</th>
-                                                 <th scope="col">TTR</th>
+                                                 <th scope="col">ADLT</th> -->
+                                                 <th scope="col">MTTR</th>
                                                  <th scope="col">Action</th>
 
                                              </tr>
@@ -62,20 +62,20 @@
                                              <?php $count = 0;
                                                 foreach ($manager_controller_data as $data) { ?>
                                                  <tr>
-                                                     <td scope="row"><?= $data['id']; ?></td>
+                                                     <td scope="row"><?= $data['ID']; ?></td>
                                                      <td scope="row"><?= $data['Controller_type']; ?></td>
                                                      <td scope="row"><?= $data['ESWB']; ?></td>
                                                      <td scope="row"><?= $data['Controller_Name']; ?></td>
                                                      <!-- <td scope="row"><?= $data['Includes']; ?></td>
                                                      <td scope="row"><?= $data['Not_Includes']; ?></td>
                                                      <td scope="row"><?= $data['Associated_Equipment']; ?></td> -->
-                                                     <td scope="row"><?= $data['TBF']; ?></td>
-                                                     <td scope="row"><?= $data['TCM']; ?></td>
+                                                     <td scope="row"><?= $data['MTBF']; ?></td>
+                                                     <!-- <td scope="row"><?= $data['TCM']; ?></td>
                                                      <td scope="row"><?= $data['TPM']; ?></td>
-                                                     <td scope="row"><?= $data['ADLT']; ?></td>
-                                                     <td scope="row"><?= $data['TTR']; ?></td>
+                                                     <td scope="row"><?= $data['ADLT']; ?></td> -->
+                                                     <td scope="row"><?= $data['MTTR']; ?></td>
                                                      <td>
-                                                         <a class="btn btn-primary rounded-pill" href="<?= base_url(); ?>manager/Get_Values/<?= $data['id']; ?>">Update</a>
+                                                         <a class="btn btn-primary rounded-pill" href="<?= base_url(); ?>manager/Get_Values/<?= $data['ID']; ?>">Update</a>
                                                      </td>
 
                                                  </tr>
@@ -210,7 +210,7 @@
 
  <script>
 
-     $('#TTR').on('click', function() {
+     $('#ADLT').on('mouseleave', function() {
    
     var TPM = $('#TPM').val();
      //alert(TPM);
@@ -223,6 +223,22 @@
     document.getElementById("TTR").value = TTR;
     //alert(d_o_b);
     });
+
+
+    $('#ADLT').on('keydown', function() {
+   
+   var TPM = $('#TPM').val();
+    //alert(TPM);
+   var TCM = $('#TCM').val();
+   //alert(TCM);
+   var ALDT = $('#ADLT').val();
+   //alert(ALDT);
+   var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
+   //alert(TTR);
+   document.getElementById("TTR").value = TTR;
+   //alert(d_o_b);
+   });
+
 
 $('#update_btn').on('click', function() {
     //alert('javascript working');

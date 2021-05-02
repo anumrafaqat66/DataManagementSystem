@@ -13,15 +13,13 @@ class User_Login extends CI_Controller
 		if ($this->session->has_userdata('user_id')) {
 			$id = $this->session->userdata('user_id');
 			$status = $this->session->userdata('status');
+			
 			if ($status == "technician") {
 				redirect('Technician');
-				//$this->Technician->technician_data_listing();
-				//$this->load->view("technician/technician");
 			} elseif ($status == "manager") {
-				//$this->Get_Values();
-				//$this->Manager->manager_data_listing();
 				redirect('Manager');
-				//$this->load->view("manager/manager");
+			} elseif ($status == "hod") {
+				redirect('HOD');
 			}
 		} else {
 			$this->load->view('login');
