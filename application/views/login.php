@@ -20,6 +20,13 @@
 
 </head>
 
+<style>
+  .red-border {
+    border: 1px solid red !important;
+  }
+</style>
+
+
 <body class="bg-gradient-dark">
 
     <div class="container">
@@ -39,12 +46,12 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Data Management System</h1>
                                     </div>
-                                    <form class="user" role="form" method="post" action="<?php echo base_url();?>User_Login/login_process">
+                                    <form class="user" role="form" id="login_form" method="post" action="<?php echo base_url();?>User_Login/login_process">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" name="username" id="exampleInputUsername"  placeholder="Enter Username...">
+                                            <input type="text" class="form-control form-control-user" name="username" id="username"  placeholder="Enter Username...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password"  name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password"  name="password" class="form-control form-control-user" id="password" placeholder="Password">
                                         </div>
                                         <div class="form-group row">
 
@@ -69,9 +76,12 @@
                                             </label>
                                          
                                         </div>
+                                        <span style="color: red; display: none;font-size: 12px" id="Account_error">
+                                            *Please select Account type
+                                        </span> 
 
                                         <hr>
-                                        <button type="submit"  class="btn btn-primary btn-user btn-block">
+                                        <button type="button"  class="btn btn-primary btn-user btn-block" id="login_btn">
                                             <!-- <i class="fab fa-google fa-fw"></i>  -->
                                             Login
                                         </button>
@@ -107,6 +117,39 @@
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
 
+    <script>
+$('#login_btn').on('click', function() {
+   // alert('javascript working');
+    $('#login_btn').attr('disabled', true);
+    var validate = 0;
+
+    var user_type = document.getElementsByName("optradio");
+               
+    var username = $('#username').val();
+    var password = $('#password').val();
+
+    if (username == '') {
+      validate = 1;
+      $('#username').addClass('red-border');
+    }
+     if (password == '') {
+      validate = 1;
+      $('#password').addClass('red-border');
+    }
+     if (user_type[0].checked != true && user_type[1].checked != true && user_type[2].checked != true && user_type[3].checked != true && user_type[4].checked != true ) {
+                   validate=1;
+                   $('#Account_error').show();
+                } 
+
+   if (validate == 0) {
+      $('#login_form')[0].submit();
+    } else {
+      $('#login_btn').removeAttr('disabled');
+    }
+});
+
+</script>
+
 <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
 <?php if ($this->session->flashdata('success')) : ?>
     <script>
@@ -115,17 +158,19 @@
             '',
             'success'
         );
-    </script>
+    </script> 
+    <?php unset($_SESSION['success']); ?>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('failure')) : ?>
     <script>
         Swal.fire(
             '<?php echo $this->session->flashdata('failure'); ?>',
-            '',
+            'Invalid username or password',
             'error'
         );
     </script>
+     <?php unset($_SESSION['failure']); ?>
 <?php endif; ?>
 </body>
 

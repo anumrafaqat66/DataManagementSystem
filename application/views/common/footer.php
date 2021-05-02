@@ -54,8 +54,9 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url(); ?>assets/js/demo/chart-area-demo.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/demo/chart-pie-demo.js"></script>
-    <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
 
+
+<script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
 <?php if ($this->session->flashdata('success')) : ?>
     <script>
         Swal.fire(
@@ -63,6 +64,7 @@
             '',
             'success'
         );
+        <?php unset($_SESSION['success']); ?>
     </script>
 <?php endif; ?>
 
@@ -73,10 +75,9 @@
             '',
             'error'
         );
+         <?php unset($_SESSION['failure']); ?>
     </script>
 <?php endif; ?>
-
-
 
 
 

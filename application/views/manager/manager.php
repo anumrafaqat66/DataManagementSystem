@@ -16,7 +16,11 @@
      ::placeholder {
          color: Grey !important;
      }
+       .red-border {
+    border: 1px solid red !important;
+  }
  </style>
+
 
  <div class="container">
 
@@ -71,7 +75,7 @@
                                                      <td scope="row"><?= $data['ADLT']; ?></td>
                                                      <td scope="row"><?= $data['TTR']; ?></td>
                                                      <td>
-                                                         <a class="btn btn-primary rounded-pill" href="<?= base_url(); ?>User_Login/Get_Values/<?= $data['id']; ?>">Update</a>
+                                                         <a class="btn btn-primary rounded-pill" href="<?= base_url(); ?>manager/Get_Values/<?= $data['id']; ?>">Update</a>
                                                      </td>
 
                                                  </tr>
@@ -101,7 +105,7 @@
                          </div>
 
                          <div class="card-body">
-                             <form class="user" role="form" method="post" action="<?= base_url(); ?>Home/Update_data/<?php if (isset($selected_controller_data['Controller_type'])) { echo $selected_controller_data['id'];} else {echo "";}; ?>">
+                             <form class="user" role="form" id="update_form" method="post" action="<?= base_url(); ?>manager/Update_data/<?php if (isset($selected_controller_data['Controller_type'])) { echo $selected_controller_data['id'];} else {echo "";}; ?>">
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
                                          <input type="text" class="form-control form-control-user bg-light" name="Controller_type" id="Controller_type" placeholder="Controller Type" value="<?php if (isset($selected_controller_data['Controller_type'])) { echo $selected_controller_data['Controller_type'];} else {echo "";}; ?>" disabled>
@@ -115,28 +119,28 @@
                                  </div>
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="TBF" id="TBF" placeholder="TBF*">
+                                         <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TBF'])) { echo $selected_controller_data['TBF'];} else {echo "";}; ?>" name="TBF" id="TBF" placeholder="TBF*">
                                      </div>
                                  </div>
 
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="TCM" id="TCM" placeholder="TCM*">
+                                         <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TCM'])) { echo $selected_controller_data['TCM'];} else {echo "";}; ?>" name="TCM" id="TCM" placeholder="TCM*">
                                      </div>
 
                                      <div class="col-sm-8 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="TCM_Desc" id="TCM_Desc" placeholder="Description">
+                                         <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TCM_Desc'])) { echo $selected_controller_data['TCM_Desc'];} else {echo "";}; ?>" name="TCM_Desc" id="TCM_Desc" placeholder="Description">
                                      </div>
 
                                  </div>
 
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="TPM" id="TPM" placeholder="TPM*">
+                                         <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TPM'])) { echo $selected_controller_data['TPM'];} else {echo "";}; ?>" name="TPM" id="TPM" placeholder="TPM*">
                                      </div>
 
                                      <div class="col-sm-8 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="TPM_Desc" id="TPM_Desc" placeholder="Description">
+                                         <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TPM_Desc'])) { echo $selected_controller_data['TPM_Desc'];} else {echo "";}; ?>" name="TPM_Desc" id="TPM_Desc" placeholder="Description">
                                      </div>
 
 
@@ -144,25 +148,25 @@
 
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="ADLT" id="ADLT" placeholder="ADLT*">
+                                         <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['ADLT'])) { echo $selected_controller_data['ADLT'];} else {echo "";}; ?>" name="ADLT" id="ADLT" placeholder="ADLT*">
                                      </div>
 
                                      <div class="col-sm-8 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="ADLT_Desc" id="ADLT_Desc" placeholder="Description">
+                                         <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['ADLT_Desc'])) { echo $selected_controller_data['ADLT_Desc'];} else {echo "";}; ?>" name="ADLT_Desc" id="ADLT_Desc" placeholder="Description">
                                      </div>
 
                                  </div>
 
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
-                                         <input type="text" class="form-control form-control-user" name="TTR" id="TTR" placeholder="TTR">
+                                         <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TTR'])) { echo $selected_controller_data['TTR'];} else {echo "";}; ?>" name="TTR" id="TTR" placeholder="TTR*">
                                      </div>
 
                                  </div>
 
                                  <div class="form-group row justify-content-center">
                                      <div class="col-sm-4">
-                                         <button type="submit" class="btn btn-primary btn-user btn-block">
+                                         <button type="button" class="btn btn-primary btn-user btn-block" id="update_btn">
                                              <!-- <i class="fab fa-google fa-fw"></i>  -->
                                              Submit Data
                                          </button>
@@ -181,6 +185,68 @@
      </div>
  </div>
 
+    <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
+<?php if ($this->session->flashdata('success')) : ?>
+    <script>
+        Swal.fire(
+            '<?php echo $this->session->flashdata('success'); ?>',
+            '',
+            'success'
+        );
+    </script>
+<?php endif; ?>
 
+<?php if ($this->session->flashdata('failure')) : ?>
+    <script>
+        Swal.fire(
+            '<?php echo $this->session->flashdata('failure'); ?>',
+            '',
+            'error'
+        );
+    </script>
+<?php endif; ?>
 
  <?php $this->load->view('common/footer'); ?>
+
+ <script>
+$('#update_btn').on('click', function() {
+    alert('javascript working');
+    $('#update_btn').attr('disabled', true);
+    var validate = 0;
+
+    var TBF = $('#TBF').val();
+    var TCM = $('#TCM').val();
+    var TPM = $('#TPM').val();
+    var ADLT =$('#ADLT').val();
+     var TTR =$('#TTR').val();
+
+    if (TBF == '') {
+      validate = 1;
+      $('#TBF').addClass('red-border');
+    }
+     if (TCM == '') {
+      validate = 1;
+      $('#TCM').addClass('red-border');
+    }
+     if(TPM == '' ){
+        validate=1;
+        $('#TPM').addClass('red-border');
+    }
+        if (ADLT == '') {
+      validate = 1;
+      $('#ADLT').addClass('red-border');
+    }
+     if(TPM == '' ){
+        validate=1;
+        $('#TTR').addClass('red-border');
+    }
+       
+
+   if (validate == 0) {
+      $('#update_form')[0].submit();
+    } else {
+      $('#update_btn').removeAttr('disabled');
+    }
+});
+
+</script>
