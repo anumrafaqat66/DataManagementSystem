@@ -20,6 +20,8 @@ class User_Login extends CI_Controller
 				redirect('Manager');
 			} elseif ($status == "hod") {
 				redirect('HOD');
+			} elseif ($status == "toplevel") {
+				redirect('WEO');
 			}
 		} else {
 			$this->load->view('login');
