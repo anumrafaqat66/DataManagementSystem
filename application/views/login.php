@@ -68,7 +68,7 @@
                                             </label>
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" value="toplevel" name="optradio"><div style="float:right; margin-left:5px;">Top Level</div>
+                                                <input type="radio" value="weo" name="optradio"><div style="float:right; margin-left:5px;">Weo</div>
                                             </label>
 
                                             <label class="custom-control radio-inline small">

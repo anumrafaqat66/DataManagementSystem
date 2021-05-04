@@ -55,7 +55,8 @@
                                                  <th scope="col">ADLT</th> -->
                                                  <th scope="col">MTTR</th>
                                                  <th scope="col" width="15%">Action</th>
-                                                 <th scope="col" width="20%">Action</th>
+                                                 <th scope="col" width="15%">Action</th>
+                                                 <th scope="col" width="15%">Action</th>
 
                                              </tr>
                                          </thead>
@@ -76,10 +77,13 @@
                                                      <td scope="row"><?= $data['ADLT']; ?></td> -->
                                                      <td scope="row"><?= $data['MTTR']; ?></td>
                                                      <td>
-                                                         <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Get_Values/<?= $data['ID']; ?>">Add Fail Report</a>
+                                                         <a class="btn btn-danger btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>manager/Get_Values/<?= $data['ID']; ?>">Add Fail Report</a>
                                                      </td>
                                                      <td>
-                                                         <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Get_Values/<?= $data['ID']; ?>">Show Detail Records</a>
+                                                         <a class="btn btn-primary btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>get_values/<?= $data['ID']; ?>">Add Details </a>
+                                                     </td>
+                                                       <td>
+                                                         <a class="btn btn-success btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>show_records/<?= $data['ID']; ?>">Show Records</a>
                                                      </td>
 
                                                  </tr>
@@ -98,9 +102,9 @@
          </div>
 
 
-         <div id="record_detail_div" class="card-body">
+       <!--   <div id="record_detail_div" class="card-body"> -->
              <!-- Nested Row within Card Body -->
-             <div class="row">
+            <!--  <div class="row">
                  <div class="col-lg-12">
 
                      <div class="card">
@@ -116,63 +120,10 @@
 
                                  </div>
                              </div>
-                         </div>
-
-                         <div class="card-body">
-                             <div id="table_div">
-                                 <?php if (isset($controller_detail_records)) {
-                                        if (count($controller_detail_records) > 0) { ?>
-                                         <table id="datatable" class="table table-sm table-striped">
-                                             <thead>
-                                                 <tr>
-                                                     <th scope="col">#</th>
-                                                     <th scope="col">Name</th>
-                                                     <th scope="col">ESWB</th>
-                                                     <th scope="col">TBF</th>
-                                                     <th scope="col">TCM</th>
-                                                     <th scope="col">TPM</th>
-                                                     <th scope="col">ADLT</th>
-                                                     <th scope="col">TTR</th>
-                                                     <th scope="col">Reg Date</th>
-                                                     <!-- <th scope="col" width="15%">Action</th> -->
-                                                 </tr>
-                                             </thead>
-                                             <tbody>
-                                                 <?php $count = 0;
-                                                    foreach ($controller_detail_records as $data) { ?>
-                                                     <tr>
-                                                         <td scope="row"><?= ++$count; ?></td>
-                                                         <td scope="row"><?= $data['Controller_Name']; ?></td>
-                                                         <td scope="row"><?= $data['ESWB']; ?></td>
-                                                         <td scope="row"><?= $data['TBF']; ?></td>
-                                                         <td scope="row"><?= $data['TCM']; ?></td>
-                                                         <td scope="row"><?= $data['TPM']; ?></td>
-                                                         <td scope="row"><?= $data['ADLT']; ?></td>
-                                                         <td scope="row"><?= $data['TTR']; ?></td>
-                                                         <td scope="row"><?= $data['RegDate']; ?></td>
-                                                         <!-- <td>
-                                                             <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
-                                                         </td> -->
-
-                                                     </tr>
-                                                 <?php } ?>
-                                             </tbody>
-                                         </table>
-                                     <?php } else { ?>
-                                         <a> No Data Available yet. </a>
-                                     <?php }
-                                        unset($controller_detail_records);
-                                        unset($data['controller_detail_records']);
-                                    } else { ?>
-                                     <a> No Record Selected. </a>
-                                 <?php  } ?>
-                             </div>
-                         </div>
-                     </div>
-
-                 </div>
-             </div>
-         </div>
+                         </div> -->
+<!--
+Data records table place
+-->
 
          <div id="form_div" class="card-body">
              <!-- Nested Row within Card Body -->
@@ -183,7 +134,7 @@
                          <div class="card-header">
                              <div class="row">
                                  <div class="col-sm-11">
-                                     <h1 class="h4 text-gray-900">Data Insert/Update Module</h1>
+                                     <h1 class="h4 text-gray-900">Add Detais</h1>
                                  </div>
                                  <div class="col-sm-1">
                                      <a class="form-control form-control-user bg-light text-center" style="border:grey solid 1px" onclick="hide_form_div()">

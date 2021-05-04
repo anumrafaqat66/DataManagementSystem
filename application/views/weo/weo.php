@@ -77,9 +77,11 @@
                                 <div class="col-sm-4">
                                     <select class="form-control rounded-pill" name="controller_type" id="controller_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                         <option class="form-control form-control-user" value="">Select Weapon</option>
-                                        <option class="form-control form-control-user" value="Sensor">Sensor</option>
-                                        <option class="form-control form-control-user" value="Fire Controller">Fire Controller</option>
-                                        <option class="form-control form-control-user" value="Weapon">Weapon</option>
+                                         <?php if (isset($controller_data)) {
+                                            foreach ($controller_data as $data) { ?>
+                                        <option class="form-control form-control-user" value="<?= $data['ID'];?>"><?= $data['Controller_type'];?></option>
+                                        <?php } 
+                                    }  ?>
                                     </select>
                                 </div>
 
@@ -102,7 +104,7 @@
                                 <div class="col-sm-6">
                                     <div class="text-center">
                                         <span class="dot">
-                                            <div class="center-text">75%</div>
+                                            <div class="center-text" id="availability">0%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -173,3 +175,31 @@
 
 
 <?php $this->load->view('common/footer'); ?>
+<script>
+ $('#controller_type').on('change', function() {
+    alert('df');
+     var id = $(this).val();
+    alert(id);
+
+     $.ajax({
+      url: '<?= base_url(); ?>WEO/get_availability',
+      method: 'POST',
+      data: {
+        'controller_id': id
+      },
+      success: function(data) {
+       // var result = jQuery.parseJSON(data);
+        //alert(result);
+        $('#availability').html(data + "%");
+      },
+      error: function(data) {
+        //alert(data);
+        alert('failure');
+      }
+    });
+    e.preventDefault();
+    window.onunload = function() {
+      dubugger;
+  }
+    });
+</script>

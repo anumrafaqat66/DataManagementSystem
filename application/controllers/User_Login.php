@@ -20,7 +20,7 @@ class User_Login extends CI_Controller
 				redirect('Manager');
 			} elseif ($status == "hod") {
 				redirect('HOD');
-			} elseif ($status == "toplevel") {
+			} elseif ($status == "weo") {
 				redirect('WEO');
 			}
 		} else {

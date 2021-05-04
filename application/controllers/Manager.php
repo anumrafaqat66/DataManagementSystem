@@ -158,9 +158,20 @@ class Manager extends CI_Controller
         $this->db->from('controller_data cd');
         $this->db->join('controller_data_detail cdd', 'cd.id = cdd.Controller_Data_ID');
         $this->db->where('cdd.Controller_Data_ID', $id);
-        $data['controller_detail_records'] = $this->db->get()->result_array();
-        
+        $data['controller_detail_records'] = $this->db->get()->result_array();  
         $this->load->view('manager/manager', $data);
 
+    }
+
+    public function show_records($id = NULL)
+    {
+          // $data['controller_detail_records'] = $this->db->where('Controller_Data_ID',$id)->get('controller_data_detail')->result_array();
+          $this->db->select('cd.Controller_Name, cd.ESWB,cdd.*'); 
+        $this->db->from('controller_data cd');
+        $this->db->join('controller_data_detail cdd', 'cd.id = cdd.Controller_Data_ID');
+        $this->db->where('cdd.Controller_Data_ID', $id);
+        $data['controller_detail_records'] = $this->db->get()->result_array();  
+          $this->load->view('manager/data_records', $data);
+         
     }
 }
