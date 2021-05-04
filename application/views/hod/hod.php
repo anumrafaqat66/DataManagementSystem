@@ -43,20 +43,22 @@
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">
-                                    <select class="form-control rounded-pill" name="controller_type" id="controller_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
+                                    <select class="form-control rounded-pill" name="controller_type" id="sensor_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                         <option class="form-control form-control-user" value="">Select Sensor</option>
-                                        <option class="form-control form-control-user" value="Sensor">Sensor</option>
-                                        <option class="form-control form-control-user" value="Fire Controller">Fire Controller</option>
-                                        <option class="form-control form-control-user" value="Weapon">Weapon</option>
+                                        <?php if (isset($sensor_data)) {
+                                            foreach ($sensor_data as $data) { ?>
+                                                <option class="form-control form-control-user" value="<?= $data['ID']; ?>"><?= $data['Controller_Name']; ?></option>
+                                        <?php }
+                                        }  ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="time" id="time" placeholder="Enter Time">
+                                    <input type="text" class="form-control form-control-user" name="time" id="sensor_time" placeholder="Enter Time">
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot">
-                                            <div class="center-text">75%</div>
+                                            <div class="center-text" id="sensor_availability">0%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -64,7 +66,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot">
-                                            <div class="center-text">85%</div>
+                                            <div class="center-text" id="sensor_reliability">0%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -91,20 +93,22 @@
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">
-                                    <select class="form-control rounded-pill" name="controller_type" id="controller_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
+                                    <select class="form-control rounded-pill" name="controller_type" id="fire_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                         <option class="form-control form-control-user" value="">Select Fire Controller</option>
-                                        <option class="form-control form-control-user" value="Sensor">Sensor</option>
-                                        <option class="form-control form-control-user" value="Fire Controller">Fire Controller</option>
-                                        <option class="form-control form-control-user" value="Weapon">Weapon</option>
+                                        <?php if (isset($fire_controller_data)) {
+                                            foreach ($fire_controller_data as $data) { ?>
+                                                <option class="form-control form-control-user" value="<?= $data['ID']; ?>"><?= $data['Controller_Name']; ?></option>
+                                        <?php }
+                                        }  ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="time" id="time" placeholder="Enter Time">
+                                    <input type="text" class="form-control form-control-user" name="time" id="fire_time" placeholder="Enter Time">
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot">
-                                            <div class="center-text">75%</div>
+                                            <div class="center-text" id="fire_availability">0%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -112,7 +116,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot">
-                                            <div class="center-text">85%</div>
+                                            <div class="center-text" id="fire_reliability">0%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -139,21 +143,23 @@
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">
-                                    <select class="form-control rounded-pill" name="controller_type" id="controller_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
+                                    <select class="form-control rounded-pill" name="controller_type" id="weapon_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                         <option class="form-control form-control-user" value="">Select Weapon</option>
-                                        <option class="form-control form-control-user" value="Sensor">Sensor</option>
-                                        <option class="form-control form-control-user" value="Fire Controller">Fire Controller</option>
-                                        <option class="form-control form-control-user" value="Weapon">Weapon</option>
+                                        <?php if (isset($weapon_data)) {
+                                            foreach ($weapon_data as $data) { ?>
+                                                <option class="form-control form-control-user" value="<?= $data['ID']; ?>"><?= $data['Controller_Name']; ?></option>
+                                        <?php }
+                                        }  ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="time" id="time" placeholder="Enter Time">
+                                    <input type="text" class="form-control form-control-user" name="time" id="weapon_time" placeholder="Enter Time">
                                 </div>
 
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot">
-                                            <div class="center-text">75%</div>
+                                            <div class="center-text" id="weapon_availability">0%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -161,7 +167,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot">
-                                            <div class="center-text">85%</div>
+                                            <div class="center-text" id="weapon_reliability">0%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -179,3 +185,148 @@
 
 
 <?php $this->load->view('common/footer'); ?>
+<script>
+    $('#sensor_type').on('change', function() {
+        var id = $(this).val();
+
+        $.ajax({
+            url: '<?= base_url(); ?>HOD/get_availability',
+            method: 'POST',
+            data: {
+                'controller_id': id
+            },
+            success: function(data) {
+                $('#sensor_availability').html(data + "%");
+            },
+            error: function(data) {
+                alert('failure');
+            }
+        });
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
+    });
+
+    $('#fire_type').on('change', function() {
+        var id = $(this).val();
+
+        $.ajax({
+            url: '<?= base_url(); ?>HOD/get_availability',
+            method: 'POST',
+            data: {
+                'controller_id': id
+            },
+            success: function(data) {
+                $('#fire_availability').html(data + "%");
+            },
+            error: function(data) {
+                alert('failure');
+            }
+        });
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
+    });
+
+    $('#weapon_type').on('change', function() {
+        var id = $(this).val();
+
+        $.ajax({
+            url: '<?= base_url(); ?>HOD/get_availability',
+            method: 'POST',
+            data: {
+                'controller_id': id
+            },
+            success: function(data) {
+                $('#weapon_availability').html(data + "%");
+            },
+            error: function(data) {
+                alert('failure');
+            }
+        });
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
+    });
+
+    $('#sensor_time').on('mouseout mouseleave focusout', function() {
+        var id = $('#sensor_type').val();
+        var time = $(this).val();
+
+
+
+        $.ajax({
+            url: '<?= base_url(); ?>HOD/get_reliability',
+            method: 'POST',
+            data: {
+                'controller_id': id,
+                'time': time
+            },
+            success: function(data) {
+                $('#sensor_reliability').html(data + "%");
+            },
+            error: function(data) {
+                alert('failure');
+            }
+        });
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
+
+    });
+
+    $('#fire_time').on('mouseout mouseleave focusout', function() {
+        var id = $('#fire_type').val();
+        var time = $(this).val();
+
+        $.ajax({
+            url: '<?= base_url(); ?>HOD/get_reliability',
+            method: 'POST',
+            data: {
+                'controller_id': id,
+                'time': time
+            },
+            success: function(data) {
+                $('#fire_reliability').html(data + "%");
+            },
+            error: function(data) {
+                alert('failure');
+            }
+        });
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
+
+    });
+
+    $('#weapon_time').on('mouseout mouseleave focusout', function() {
+        var id = $('#weapon_type').val();
+        var time = $(this).val();
+
+        $.ajax({
+            url: '<?= base_url(); ?>HOD/get_reliability',
+            method: 'POST',
+            data: {
+                'controller_id': id,
+                'time': time
+            },
+            success: function(data) {
+                $('#weapon_reliability').html(data + "%");
+            },
+            error: function(data) {
+                alert('failure');
+            }
+        });
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
+
+    });
+
+</script>

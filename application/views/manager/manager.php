@@ -55,7 +55,7 @@
                                                  <th scope="col">ADLT</th> -->
                                                  <th scope="col">MTTR</th>
                                                  <th scope="col" width="15%">Action</th>
-                                                 <th scope="col" width="15%">Action</th>
+                                                 <!-- <th scope="col" width="15%">Action</th> -->
                                                  <th scope="col" width="15%">Action</th>
 
                                              </tr>
@@ -79,11 +79,11 @@
                                                      <td>
                                                          <a class="btn btn-danger btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>manager/Get_Values/<?= $data['ID']; ?>">Add Fail Report</a>
                                                      </td>
-                                                     <td>
-                                                         <a class="btn btn-primary btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>get_values/<?= $data['ID']; ?>">Add Details </a>
-                                                     </td>
+                                                     <!-- <td>
+                                                         <a class="btn btn-primary btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>manager/get_values/<?= $data['ID']; ?>">Add Details </a>
+                                                     </td> -->
                                                        <td>
-                                                         <a class="btn btn-success btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>show_records/<?= $data['ID']; ?>">Show Records</a>
+                                                         <a class="btn btn-success btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>manager/show_records/<?= $data['ID']; ?>">Show Records</a>
                                                      </td>
 
                                                  </tr>
@@ -306,7 +306,7 @@ Data records table place
  <?php $this->load->view('common/footer'); ?>
 
  <script>
-     $('#ADLT').on('mouseleave', function() {
+     $('#ADLT').on('mouseleave focusout', function() {
 
          var TPM = $('#TPM').val();
          //alert(TPM);
@@ -319,22 +319,6 @@ Data records table place
          document.getElementById("TTR").value = TTR;
          //alert(d_o_b);
      });
-
-
-     $('#ADLT').on('keydown', function() {
-
-         var TPM = $('#TPM').val();
-         //alert(TPM);
-         var TCM = $('#TCM').val();
-         //alert(TCM);
-         var ALDT = $('#ADLT').val();
-         //alert(ALDT);
-         var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
-         //alert(TTR);
-         document.getElementById("TTR").value = TTR;
-         //alert(d_o_b);
-     });
-
 
      $('#update_btn').on('click', function() {
          //alert('javascript working');
