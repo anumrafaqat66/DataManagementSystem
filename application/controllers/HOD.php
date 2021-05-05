@@ -26,13 +26,21 @@ class HOD extends CI_Controller
                 $view_array = array();
                 $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
                 if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '') {
-                    $availability = number_format($view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']), 4);
-                    //print_r($availability);
-                    echo ($availability * 100);
+                    $availability = number_format($view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']), 4);  
+                     //$aval =$availability * 100;
+                     //print_r($aval);
+                     echo ($availability*100);
                 } else {
                     $availability = 0;
                     echo ($availability * 100);
                 }
+            $cond  = ['ID' => $controller_id];
+            $data_update = [
+                'Availability' => $availability*100,
+            ];
+            $this->db->where($cond);
+            $this->db->update('controller_data', $data_update);
+
             } else {
                 $this->load->view('login');
             }
@@ -57,7 +65,9 @@ class HOD extends CI_Controller
                         $power = ($time / $view_array['data']['MTTR']);
                         $power = -1 * $power;
                         $reliability = number_format(pow(2.718, $power), 4);
-                        echo ($reliability * 100);
+                        $rel=$reliability * 100;
+                        echo $rel;
+                        //echo "dsfsd";
                     } else {
                         $reliability = 0;
                         echo ($reliability * 100);
@@ -66,6 +76,13 @@ class HOD extends CI_Controller
                     $reliability = 0;
                     echo ($reliability * 100);
                 }
+            $cond  = ['ID' => $controller_id];
+            $data_update = [
+                'Reliability' => $reliability * 100,
+            ];
+
+            $this->db->where($cond);
+            $this->db->update('controller_data', $data_update);
             } else {
                 $this->load->view('login');
             }

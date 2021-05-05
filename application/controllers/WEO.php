@@ -9,7 +9,7 @@ class WEO extends CI_Controller
 
     public function index()
     {
-        $data['controller_data'] = $this->db->get('controller_data')->result_array();
+        $data['controller_data'] = $this->db->where('Controller_type','Weapon')->get('controller_data')->result_array();
         $this->load->view('weo/weo', $data);
     }
 
@@ -19,10 +19,10 @@ class WEO extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             if ($status == "weo") {
-                $controller_id = $_POST['controller_id'];
+                $controller_name = $_POST['controller_name'];
                 //echo $years;exit;
                 $view_array = array();
-                $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
+                $view_array['data'] =  $this->db->where('Controller_Name', $controller_name)->get('controller_data')->row_array();
                 if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '') {
                     $availability = $view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']);
                     //print_r(round($availability*100));
@@ -38,6 +38,18 @@ class WEO extends CI_Controller
             $this->load->view('login');
         }
     }
+     public function get_reliability()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $id = $this->session->userdata('user_id');
+            $status = $this->session->userdata('status');
+
+            
+            } else {
+                $this->load->view('login');
+            }
+        }
+
 
     //  public function Update_data($id = NULL)
     //     {

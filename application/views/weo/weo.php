@@ -114,7 +114,7 @@
                                         <option class="form-control form-control-user" value="">Select Weapon</option>
                                         <?php if (isset($controller_data)) {
                                             foreach ($controller_data as $data) { ?>
-                                                <option class="form-control form-control-user" value="<?= $data['ID']; ?>"><?= $data['Controller_Name']; ?></option>
+                                                <option class="form-control form-control-user" value="<?= $data['Controller_Name']; ?>"><?= $data['Controller_Name']; ?></option>
                                         <?php }
                                         }  ?>
                                     </select>
@@ -136,15 +136,15 @@
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <div class="text-center">
-                                        <span class="dot">
+                                        <span class="dot" id="system_availability">
                                             <div class="center-text" id="availability">0%</div>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="text-center">
-                                        <span class="dot">
-                                            <div class="center-text">85%</div>
+                                        <span class="dot" id="system_reliability">
+                                            <div class="center-text" id="reliability">85%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -155,7 +155,7 @@
                                 <div class="col-sm-4">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block">
+                                    <button type="button" id="show_graphs" class="btn btn-primary btn-user btn-block">
                                         <!-- <i class="fab fa-google fa-fw"></i>  -->
                                         Show Detail
                                     </button>
@@ -172,11 +172,11 @@
         </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" id="sam_card" style="display: none">
         <div class="row">
             <div class="col-lg-12">
 
-                <div class="card">
+                <div class="card" >
                     <div class="card-header">
                         SAM (Surface to Air Missile)
                     </div>
@@ -207,7 +207,7 @@
         </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" id="main_gun" style="display: none">
         <div class="row">
             <div class="col-lg-12">
 
@@ -242,7 +242,7 @@
         </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" id="ciws" style="display: none">
         <div class="row">
             <div class="col-lg-12">
 
@@ -281,7 +281,7 @@
     </div>
 
 
-    <div class="card-body">
+    <div class="card-body" id=" ciws" style="display: none">
         <div class="row">
             <div class="col-lg-12">
 
@@ -324,13 +324,64 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
+     $('#show_graphs').on('click', function() {
+         $('#sam_card').hide();
+          $('#main_gun').hide();
+           $('#ciws').hide();
+            //$('#sam_card').hide();
+          var name = $('#controller_type').val();
+          alert(name);
+         if(name == 'sam card'){
+             $('#sam_card').show();
+         }else if(name == 'main gun'){
+            $('#main_gun').show();
+         }
+         else if(name == 'ciws'){
+            $('#ciws').show();
+         }
+     });
+
+
     $('#controller_type').on('change', function() {
+        //alert('df');
+
+        var name = $(this).val();
+        $.ajax({
+            url: '<?= base_url(); ?>WEO/get_availability',
+            method: 'POST',
+            data: {
+                'controller_name': name
+            },
+            success: function(data) {
+                // var result = jQuery.parseJSON(data);
+                //alert(result);
+                $('#availability').html(data + "%");
+                 if(data<50){
+                document.getElementById("system_availability").style.backgroundColor  = "red"; 
+            }else if(data > 50 && data < 75){
+                 document.getElementById("system_availability").style.backgroundColor  = "yellow";
+            }else if(data>75){
+                 document.getElementById("system_availability").style.backgroundColor  = "green";
+            }
+            },
+            error: function(data) {
+                //alert(data);
+                alert('failure');
+            }
+        });
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
+    });
+
+       $('#controller_type').on('change', function() {
         //alert('df');
         var id = $(this).val();
         //alert(id);
 
         $.ajax({
-            url: '<?= base_url(); ?>WEO/get_availability',
+            url: '<?= base_url(); ?>WEO/get_reliability',
             method: 'POST',
             data: {
                 'controller_id': id
@@ -338,7 +389,14 @@
             success: function(data) {
                 // var result = jQuery.parseJSON(data);
                 //alert(result);
-                $('#availability').html(data + "%");
+                $('#reliability').html(data + "%");
+                 if(data<50){
+                document.getElementById("system_reliability").style.backgroundColor  = "red"; 
+            }else if(data > 50 && data < 75){
+                 document.getElementById("system_reliability").style.backgroundColor  = "yellow";
+            }else if(data>75){
+                 document.getElementById("system_reliability").style.backgroundColor  = "green";
+            }
             },
             error: function(data) {
                 //alert(data);

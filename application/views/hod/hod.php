@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="text-center">
-                                        <span class="dot">
+                                        <span class="dot" id="s_availability">
                                             <div class="center-text" id="sensor_availability">0%</div>
                                         </span>
                                     </div>
@@ -65,7 +65,7 @@
 
                                 <div class="col-sm-3">
                                     <div class="text-center">
-                                        <span class="dot">
+                                        <span class="dot" id="s_reliability">
                                             <div class="center-text" id="sensor_reliability">0%</div>
                                         </span>
                                     </div>
@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="text-center">
-                                        <span class="dot">
+                                        <span class="dot" id="f_availability">
                                             <div class="center-text" id="fire_availability">0%</div>
                                         </span>
                                     </div>
@@ -115,7 +115,7 @@
 
                                 <div class="col-sm-3">
                                     <div class="text-center">
-                                        <span class="dot">
+                                        <span class="dot" id="f_reliability">
                                             <div class="center-text" id="fire_reliability">0%</div>
                                         </span>
                                     </div>
@@ -158,7 +158,7 @@
 
                                 <div class="col-sm-3">
                                     <div class="text-center">
-                                        <span class="dot">
+                                        <span class="dot" id="w_availability">
                                             <div class="center-text" id="weapon_availability">0%</div>
                                         </span>
                                     </div>
@@ -166,7 +166,7 @@
 
                                 <div class="col-sm-3">
                                     <div class="text-center">
-                                        <span class="dot">
+                                        <span class="dot" id="w_reliability">
                                             <div class="center-text" id="weapon_reliability">0%</div>
                                         </span>
                                     </div>
@@ -196,7 +196,14 @@
                 'controller_id': id
             },
             success: function(data) {
-                $('#sensor_availability').html(data + "%");
+                 $('#sensor_availability').html(data + "%");
+                if(data<50){
+                document.getElementById("s_availability").style.backgroundColor  = "red"; 
+            }else if(data > 50 && data < 75){
+                 document.getElementById("s_availability").style.backgroundColor  = "yellow";
+            }else if(data>75){
+                 document.getElementById("s_availability").style.backgroundColor  = "green";
+            }
             },
             error: function(data) {
                 alert('failure');
@@ -219,6 +226,13 @@
             },
             success: function(data) {
                 $('#fire_availability').html(data + "%");
+                  if(data<50){
+                document.getElementById("f_availability").style.backgroundColor  = "red"; 
+            }else if(data > 50 && data < 75){
+                 document.getElementById("f_availability").style.backgroundColor  = "yellow";
+            }else if(data>75){
+                 document.getElementById("f_availability").style.backgroundColor  = "green";
+            }
             },
             error: function(data) {
                 alert('failure');
@@ -241,18 +255,25 @@
             },
             success: function(data) {
                 $('#weapon_availability').html(data + "%");
+                           if(data<50){
+                document.getElementById("w_availability").style.backgroundColor  = "red"; 
+            }else if(data > 50 && data < 75){
+                 document.getElementById("w_availability").style.backgroundColor  = "yellow";
+            }else if(data>75){
+                 document.getElementById("w_availability").style.backgroundColor  = "green";
+            }
             },
             error: function(data) {
                 alert('failure');
             }
         });
-        e.preventDefault();
+      //  e.preventDefault();
         window.onunload = function() {
             dubugger;
         }
     });
 
-    $('#sensor_time').on('mouseout mouseleave focusout', function() {
+    $('#sensor_time').on('focusout', function() {
         var id = $('#sensor_type').val();
         var time = $(this).val();
 
@@ -267,19 +288,26 @@
             },
             success: function(data) {
                 $('#sensor_reliability').html(data + "%");
+                                  if(data<50){
+                document.getElementById("s_reliability").style.backgroundColor  = "red"; 
+            }else if(data > 50 && data < 75){
+                 document.getElementById("s_reliability").style.backgroundColor  = "yellow";
+            }else if(data>75){
+                 document.getElementById("s_reliability").style.backgroundColor  = "green";
+            }
             },
             error: function(data) {
                 alert('failure');
             }
         });
-        e.preventDefault();
+     //   e.preventDefault();
         window.onunload = function() {
             dubugger;
         }
 
     });
 
-    $('#fire_time').on('mouseout mouseleave focusout', function() {
+    $('#fire_time').on('focusout', function() {
         var id = $('#fire_type').val();
         var time = $(this).val();
 
@@ -292,19 +320,26 @@
             },
             success: function(data) {
                 $('#fire_reliability').html(data + "%");
+                if(data<50){
+                document.getElementById("f_reliability").style.backgroundColor  = "red"; 
+            }else if(data > 50 && data < 75){
+                 document.getElementById("f_reliability").style.backgroundColor  = "yellow";
+            }else if(data>75){
+                 document.getElementById("f_reliability").style.backgroundColor  = "green";
+            }
             },
             error: function(data) {
                 alert('failure');
             }
         });
-        e.preventDefault();
+     //   e.preventDefault();
         window.onunload = function() {
             dubugger;
         }
 
     });
 
-    $('#weapon_time').on('mouseout mouseleave focusout', function() {
+    $('#weapon_time').on('focusout', function() {
         var id = $('#weapon_type').val();
         var time = $(this).val();
 
@@ -317,12 +352,19 @@
             },
             success: function(data) {
                 $('#weapon_reliability').html(data + "%");
+                       if(data<50){
+                document.getElementById("w_reliability").style.backgroundColor  = "red"; 
+            }else if(data > 50 && data < 75){
+                 document.getElementById("w_reliability").style.backgroundColor  = "yellow";
+            }else if(data>75){
+                 document.getElementById("w_reliability").style.backgroundColor  = "green";
+            }
             },
             error: function(data) {
                 alert('failure');
             }
         });
-        e.preventDefault();
+        //e.preventDefault();
         window.onunload = function() {
             dubugger;
         }
