@@ -25,7 +25,7 @@ class HOD extends CI_Controller
                 $controller_id = $_POST['controller_id'];
                 $view_array = array();
                 $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
-                if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '') {
+                if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '' && $view_array['data']['MTBF'] != 0.00 && $view_array['data']['MTTR'] != 0.00) {
                     $availability = number_format($view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']), 4);  
                      //$aval =$availability * 100;
                      //print_r($aval);
@@ -61,7 +61,7 @@ class HOD extends CI_Controller
                 if ($time > 0) {
                     $view_array = array();
                     $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
-                    if ($view_array['data']['MTTR'] != '') {
+                    if ($view_array['data']['MTTR'] != '' && $view_array['data']['MTTR'] != 0.00) {
                         $power = ($time / $view_array['data']['MTTR']);
                         $power = -1 * $power;
                         $reliability = number_format(pow(2.718, $power), 4);

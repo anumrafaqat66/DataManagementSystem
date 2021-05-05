@@ -144,7 +144,7 @@
                                 <div class="col-sm-6">
                                     <div class="text-center">
                                         <span class="dot" id="system_reliability">
-                                            <div class="center-text" id="reliability">85%</div>
+                                            <div class="center-text" id="reliability">0%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -176,29 +176,29 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <div class="card" >
+                <div class="card">
                     <div class="card-header">
                         SAM (Surface to Air Missile)
                     </div>
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="" style="float:left">A</a> CCS <a href="" style="float:right">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="CCS_A">A</a> CCS <a href="" style="float:right; font-size:small;" id="CCS_R">R</a></div>
 
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center"><a href="" style="float:left">A</a>FC1<a href="" style="float:right">R</a></div>
+                            <div class="box_center"><a href="" style="float:left; font-size:small;" id="FC1_A">A</a>FC1<a href="" style="float:right; font-size:small;" id="FC1_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center"><a href="" style="float:left">A</a>SAM<a href="" style="float:right">R</a></div>
+                            <div class="box_center"><a href="" style="float:left; font-size:small;" id="SAM_A">A</a>SAM<a href="" style="float:right; font-size:small;" id="SAM_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left">A</a>S1<a href="" style="float:right">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;" id="S1_R">R</a></div>
 
                         </div>
                     </div>
@@ -218,22 +218,22 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="" style="float:left">A</a>CCS<a href="" style="float:right">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;" id="CCS_R">R</a></div>
 
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center"><a href="" style="float:left">A</a>FC2<a href="" style="float:right">R</a></div>
+                            <div class="box_center"><a href="" style="float:left; font-size:small;" id="FC2_A">A</a>FC2<a href="" style="float:right; font-size:small;" id="FC2_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center"><a href="" style="float:left">A</a>Main Gun<a href="" style="float:right">R</a></div>
+                            <div class="box_center"><a href="" style="float:left; font-size:small;" id="Main_Gun_A">A</a>Main Gun<a href="" style="float:right; font-size:small;" id="Main_Gun_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left">A</a>S1<a href="" style="float:right">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;" id="S1_R">R</a></div>
 
                         </div>
                     </div>
@@ -242,25 +242,25 @@
         </div>
     </div>
 
-    <div class="card-body" id="ciws" style="display: none">
+    <div class="card-body" id="CRG_Port" style="display: none">
         <div class="row">
             <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-header">
-                        CIWS (Port Gun)
+                        CRG (Port)
                     </div>
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="" style="float:left">A</a>CCS<a href="" style="float:right">R</a></div>
-                            <div class="box"><a href="" style="float:left">A</a>FC3<a href="" style="float:right">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;" id="CCS_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="FC3_A">A</a>FC3<a href="" style="float:right; font-size:small;" id="FC3_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
                             <div class="line_bottom"></div>
-                            <div class="box_center"><a href="" style="float:left">A</a>GP<a href="" style="float:right">R</a></div>
+                            <div class="box_center"><a href="" style="float:left; font-size:small;" id="CRG_(Port)_A">A</a>CRG (Port)<a href="" style="float:right; font-size:small;" id="CRG_(Port)_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -270,8 +270,8 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left">A</a>S1<a href="" style="float:right">R</a></div>
-                            <div class="box"><a href="" style="float:left">A</a>FC4<a href="" style="float:right">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;" id="S1_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="FC4_A">A</a>FC4<a href="" style="float:right; font-size:small;" id="FC4_R">R</a></div>
 
                         </div>
                     </div>
@@ -281,25 +281,25 @@
     </div>
 
 
-    <div class="card-body" id=" ciws" style="display: none">
+    <div class="card-body" id="CRG_STDB" style="display: none">
         <div class="row">
             <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-header">
-                        CIWS (Port Gun)
+                        CRG (STDB)
                     </div>
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="" style="float:left">A</a>CCS<a href="" style="float:right">R</a></div>
-                            <div class="box"><a href="" style="float:left">A</a>FC3<a href="" style="float:right">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small; " id="CCS_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small; " id="FC3_A">A</a>FC3<a href="" style="float:right; font-size:small; " id="FC3_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
                             <div class="line_bottom"></div>
-                            <div class="box_center"><a href="" style="float:left">A</a>GP<a href="" style="float:right">R</a></div>
+                            <div class="box_center"><a href="" style="float:left; font-size:small; " id="CRG_(STDB)_A">A</a>CRG (STDB)<a href="" style="float:right; font-size:small; " id="CRG_(STDB)_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -309,9 +309,8 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left">A</a>S1<a href="" style="float:right">R</a></div>
-                            <div class="box"><a href="" style="float:left">A</a>FC4<a href="" style="float:right">R</a></div>
-
+                            <div class="box"><a href="" style="float:left; font-size:small; " id="S1_A">A</a>S1<a href="" style="float:right; font-size:small; " id="S1_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small; " id="FC4_A">A</a>FC4<a href="" style="float:right; font-size:small; " id="FC4_R">R</a></div>
                         </div>
                     </div>
                 </div>
@@ -324,85 +323,112 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
-     $('#show_graphs').on('click', function() {
-         $('#sam_card').hide();
-          $('#main_gun').hide();
-           $('#ciws').hide();
-            //$('#sam_card').hide();
-          var name = $('#controller_type').val();
-          alert(name);
-         if(name == 'sam card'){
-             $('#sam_card').show();
-         }else if(name == 'main gun'){
+    $('#show_graphs').on('click', function() {
+        $('#sam_card').hide();
+        $('#main_gun').hide();
+        $('#CRG_Port').hide();
+        $('#CRG_STDB').hide();
+        //$('#sam_card').hide();
+        var name = $('#controller_type').val();
+        //alert(name);
+        if (name == 'SAM') {
+            $('#sam_card').show();
+        } else if (name == 'Main Gun') {
             $('#main_gun').show();
-         }
-         else if(name == 'ciws'){
-            $('#ciws').show();
-         }
-     });
+        } else if (name == 'CRG (Port)') {
+            $('#CRG_Port').show();
+        } else if (name == 'CRG (STDB)') {
+            $('#CRG_STDB').show();
+        }
 
+        if (name != '') {
+            $.ajax({
+                url: '<?= base_url(); ?>WEO/get_sensors_data',
+                method: 'POST',
+                data: {
+                    'weapon_name': name
+                },
+                success: function(data) {
+                    result = JSON.parse(data);
+                    for (var i in result) {
+                        $str = result[i].Controller_Name.replace(" ", "_");
+                        $("[id*='" + $str + "_A']").html(String(number_format((result[i].Availability) / 100, 2)));
+                        $("[id*='" + $str + "_R']").html(String(number_format((result[i].Reliability) / 100, 2)));
+                    }
+                },
+                error: function(data) {
+                    //alert(data);
+                    alert('failure');
+                }
+            });
 
-    $('#controller_type').on('change', function() {
-        //alert('df');
-
-        var name = $(this).val();
-        $.ajax({
-            url: '<?= base_url(); ?>WEO/get_availability',
-            method: 'POST',
-            data: {
-                'controller_name': name
-            },
-            success: function(data) {
-                // var result = jQuery.parseJSON(data);
-                //alert(result);
-                $('#availability').html(data + "%");
-                 if(data<50){
-                document.getElementById("system_availability").style.backgroundColor  = "red"; 
-            }else if(data > 50 && data < 75){
-                 document.getElementById("system_availability").style.backgroundColor  = "yellow";
-            }else if(data>75){
-                 document.getElementById("system_availability").style.backgroundColor  = "green";
-            }
-            },
-            error: function(data) {
-                //alert(data);
-                alert('failure');
-            }
-        });
+        }
         e.preventDefault();
         window.onunload = function() {
             dubugger;
         }
+
     });
 
-       $('#controller_type').on('change', function() {
-        //alert('df');
-        var id = $(this).val();
-        //alert(id);
 
-        $.ajax({
-            url: '<?= base_url(); ?>WEO/get_reliability',
-            method: 'POST',
-            data: {
-                'controller_id': id
-            },
-            success: function(data) {
-                // var result = jQuery.parseJSON(data);
-                //alert(result);
-                $('#reliability').html(data + "%");
-                 if(data<50){
-                document.getElementById("system_reliability").style.backgroundColor  = "red"; 
-            }else if(data > 50 && data < 75){
-                 document.getElementById("system_reliability").style.backgroundColor  = "yellow";
-            }else if(data>75){
-                 document.getElementById("system_reliability").style.backgroundColor  = "green";
-            }
-            },
-            error: function(data) {
-                //alert(data);
-                alert('failure');
-            }
-        });
+    $('#controller_type').on('change', function() {
+        //alert('df');
+        $('#sam_card').hide();
+        $('#main_gun').hide();
+        $('#CRG_Port').hide();
+        $('#CRG_STDB').hide();
+        var name = $(this).val();
+        if (name != '') {
+            $.ajax({
+                url: '<?= base_url(); ?>WEO/get_system_availability',
+                method: 'POST',
+                data: {
+                    'weapon_name': name
+                },
+                success: function(data) {
+                    // var result = jQuery.parseJSON(data);
+                    //alert(result);
+                    $('#availability').html(data + "%");
+                    if (data < 50) {
+                        document.getElementById("system_availability").style.backgroundColor = "red";
+                    } else if (data > 50 && data < 75) {
+                        document.getElementById("system_availability").style.backgroundColor = "yellow";
+                    } else if (data >= 75) {
+                        document.getElementById("system_availability").style.backgroundColor = "green";
+                    }
+                }
+                // ,
+                // error: function(data) {
+                //     //alert(data);
+                //     alert('failure');
+                // }
+            });
+
+            $.ajax({
+                url: '<?= base_url(); ?>WEO/get_system_reliability',
+                method: 'POST',
+                data: {
+                    'weapon_name': name
+                },
+                success: function(data) {
+                    // var result = jQuery.parseJSON(data);
+                    //alert(result);
+                    $('#reliability').html(data + "%");
+                    if (data < 50) {
+                        document.getElementById("system_reliability").style.backgroundColor = "red";
+                    } else if (data > 50 && data < 75) {
+                        document.getElementById("system_reliability").style.backgroundColor = "yellow";
+                    } else if (data >= 75) {
+                        document.getElementById("system_reliability").style.backgroundColor = "green";
+                    }
+                },
+                error: function(data) {
+                    //alert(data);
+                    alert('failure');
+                }
+            });
+
+        }
         e.preventDefault();
         window.onunload = function() {
             dubugger;

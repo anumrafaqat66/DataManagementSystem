@@ -201,7 +201,7 @@
                 document.getElementById("s_availability").style.backgroundColor  = "red"; 
             }else if(data > 50 && data < 75){
                  document.getElementById("s_availability").style.backgroundColor  = "yellow";
-            }else if(data>75){
+            }else if(data>=75){
                  document.getElementById("s_availability").style.backgroundColor  = "green";
             }
             },
@@ -259,7 +259,7 @@
                 document.getElementById("w_availability").style.backgroundColor  = "red"; 
             }else if(data > 50 && data < 75){
                  document.getElementById("w_availability").style.backgroundColor  = "yellow";
-            }else if(data>75){
+            }else if(data>=75){
                  document.getElementById("w_availability").style.backgroundColor  = "green";
             }
             },
@@ -292,7 +292,7 @@
                 document.getElementById("s_reliability").style.backgroundColor  = "red"; 
             }else if(data > 50 && data < 75){
                  document.getElementById("s_reliability").style.backgroundColor  = "yellow";
-            }else if(data>75){
+            }else if(data>=75){
                  document.getElementById("s_reliability").style.backgroundColor  = "green";
             }
             },
@@ -324,7 +324,7 @@
                 document.getElementById("f_reliability").style.backgroundColor  = "red"; 
             }else if(data > 50 && data < 75){
                  document.getElementById("f_reliability").style.backgroundColor  = "yellow";
-            }else if(data>75){
+            }else if(data>=75){
                  document.getElementById("f_reliability").style.backgroundColor  = "green";
             }
             },
@@ -356,7 +356,7 @@
                 document.getElementById("w_reliability").style.backgroundColor  = "red"; 
             }else if(data > 50 && data < 75){
                  document.getElementById("w_reliability").style.backgroundColor  = "yellow";
-            }else if(data>75){
+            }else if(data>=75){
                  document.getElementById("w_reliability").style.backgroundColor  = "green";
             }
             },

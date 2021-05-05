@@ -9,28 +9,81 @@ class WEO extends CI_Controller
 
     public function index()
     {
-        $data['controller_data'] = $this->db->where('Controller_type','Weapon')->get('controller_data')->result_array();
+        $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
         $this->load->view('weo/weo', $data);
     }
 
-    public function get_availability()
+    public function get_system_availability()
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             if ($status == "weo") {
-                $controller_name = $_POST['controller_name'];
-                //echo $years;exit;
+                $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
-                $view_array['data'] =  $this->db->where('Controller_Name', $controller_name)->get('controller_data')->row_array();
-                if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '') {
-                    $availability = $view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']);
-                    //print_r(round($availability*100));
-                    echo round($availability * 100);
-                } else {
-                    $availability = 0;
-                    echo round($availability * 100);
+                $view_rows = array();
+
+                $this->db->select('wsc.connection_group');
+                $this->db->distinct();
+                $this->db->from('weapon_systems ws');
+                $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                $this->db->where('ws.weapon_name', $weapon_name);
+                $this->db->where('wsc.connection_type', 'P'); //For parallel
+
+                $view_rows['data'] =  $this->db->get()->result_array();
+                $sub_final_result = 1;
+                if (count($view_rows['data']) != 0) {
+                    for ($i = 1; $i <= count($view_rows['data']); $i++) :
+                        $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Availability');
+                        $this->db->from('weapon_systems ws');
+                        $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                        $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                        $this->db->where('ws.weapon_name', $weapon_name);
+                        $this->db->where('wsc.connection_type', 'P'); //For parallel
+                        $this->db->where('wsc.connection_group', $i); //For group
+
+                        $view_array['data'] =  $this->db->get()->result_array();
+                        $resultant_parallel = 1;
+                        $data_index = 0;
+                        if (count($view_array['data']) != 0) {
+                            foreach ($view_array['data'] as $row) {
+                                $resultant_parallel = $resultant_parallel * (1 - ($view_array['data'][$data_index]['Availability']) / 100);
+                                $data_index++;
+                            }
+                            $resultant_parallel =   1 - $resultant_parallel;
+                        } else {
+                            $resultant_parallel = 0;
+                            return $resultant_parallel;
+                        }
+
+                        $sub_final_result = $sub_final_result * $resultant_parallel;
+
+                    endfor;
                 }
+
+                $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Availability');
+                $this->db->from('weapon_systems ws');
+                $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                $this->db->where('ws.weapon_name', $weapon_name);
+                $this->db->where('wsc.connection_type', 'S'); //For series
+
+                $view_array['data'] =  $this->db->get()->result_array();
+                $resultant_series = 1;
+                $data_index = 0;
+                if (count($view_array['data']) != 0) {
+                    foreach ($view_array['data'] as $row) {
+                        $resultant_series = $resultant_series * (($view_array['data'][$data_index]['Availability']) / 100);
+                        $data_index++;
+                    }
+                } else {
+                    $resultant_series = 0;
+                    return $resultant_series;
+                }
+
+                $final_result = $sub_final_result * $resultant_series;
+                echo number_format(($final_result * 100), 2);
             } else {
                 $this->load->view('login');
             }
@@ -38,17 +91,113 @@ class WEO extends CI_Controller
             $this->load->view('login');
         }
     }
-     public function get_reliability()
+
+    public function get_system_reliability()
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
+            if ($status == "weo") {
+                $weapon_name = $_POST['weapon_name'];
+                //echo $weapon_name;exit;
+                $view_array = array();
+                $view_rows = array();
 
-            
+                $this->db->select('wsc.connection_group');
+                $this->db->distinct();
+                $this->db->from('weapon_systems ws');
+                $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                $this->db->where('ws.weapon_name', $weapon_name);
+                $this->db->where('wsc.connection_type', 'P'); //For parallel
+
+                $view_rows['data'] =  $this->db->get()->result_array();
+                $sub_final_result = 1;
+                if (count($view_rows['data']) != 0) {
+                    for ($i = 1; $i <= count($view_rows['data']); $i++) :
+
+                        $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Reliability');
+                        $this->db->from('weapon_systems ws');
+                        $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                        $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                        $this->db->where('ws.weapon_name', $weapon_name);
+                        $this->db->where('wsc.connection_type', 'P'); //For parallel
+                        $this->db->where('wsc.connection_group', $i); //For group
+
+                        $view_array['data'] =  $this->db->get()->result_array();
+                        $resultant_parallel = 1;
+                        $data_index = 0;
+                        if (count($view_array['data']) != 0) {
+                            foreach ($view_array['data'] as $row) {
+                                $resultant_parallel = $resultant_parallel * (1 - ($view_array['data'][$data_index]['Reliability']) / 100);
+                                $data_index++;
+                            }
+                            $resultant_parallel =   1 - $resultant_parallel;
+                        } else {
+                            $resultant_parallel = 0;
+                            return $resultant_parallel;
+                        }
+                        $sub_final_result = $sub_final_result * $resultant_parallel;
+
+                    endfor;
+                }
+
+
+                $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Reliability');
+                $this->db->from('weapon_systems ws');
+                $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                $this->db->where('ws.weapon_name', $weapon_name);
+                $this->db->where('wsc.connection_type', 'S'); //For series
+
+                $view_array['data'] =  $this->db->get()->result_array();
+                $resultant_series = 1;
+                $data_index = 0;
+                if (count($view_array['data']) != 0) {
+                    foreach ($view_array['data'] as $row) {
+                        $resultant_series = $resultant_series * (($view_array['data'][$data_index]['Reliability']) / 100);
+                        $data_index++;
+                    }
+                } else {
+                    $resultant_series = 0;
+                    return $resultant_series;
+                }
+
+                $final_result = $sub_final_result * $resultant_series;
+                echo number_format(($final_result * 100), 2);
             } else {
                 $this->load->view('login');
             }
+        } else {
+            $this->load->view('login');
         }
+    }
+
+
+    public function get_sensors_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $id = $this->session->userdata('user_id');
+            $status = $this->session->userdata('status');
+            if ($status == "weo") {
+                $weapon_name = $_POST['weapon_name'];
+                $view_array = array();
+
+                $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Availability,cd.Reliability');
+                $this->db->from('weapon_systems ws');
+                $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                $this->db->where('ws.weapon_name', $weapon_name);
+
+                $view_array['data'] =  $this->db->get()->result_array();
+                echo json_encode($view_array['data']);
+            } else {
+                $this->load->view('login');
+            }
+        } else {
+            $this->load->view('login');
+        }
+    }
 
 
     //  public function Update_data($id = NULL)
