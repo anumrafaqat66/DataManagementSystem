@@ -3,7 +3,7 @@ CREATE TABLE `security_info` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reg_data` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('technician','manager','hod','weo','other') NOT NULL
+  `status` enum('technician','manager','hod','weo','co') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -13,7 +13,7 @@ INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `status`)
 (2, 'weo', '12345', '2021-04-28 07:26:37', 'weo'),
 (3, 'manager', '12345', '2021-04-28 07:26:59', 'manager'),
 (4, 'technician', '12345', '2021-04-28 07:27:19', 'technician'),
-(5, 'other', '12345', '2021-04-28 07:27:38', 'other');
+(5, 'co', '12345', '2021-04-28 07:27:38', 'co');
 
 ALTER TABLE `security_info`
   ADD PRIMARY KEY (`id`);

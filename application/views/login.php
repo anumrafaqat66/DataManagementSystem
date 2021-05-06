@@ -27,16 +27,16 @@
 </style>
 
 
-<body class="bg-gradient-dark">
+<body class="bg-custom1">
 
-    <div class="container">
+    <div class="container bg-custom1">
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card bg-custom3 o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
@@ -72,7 +72,7 @@
                                             </label>
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" value="other" name="optradio"><div style="float:right; margin-left:5px;">CEO</div>
+                                                <input type="radio" value="co" name="optradio"><div style="float:right; margin-left:5px;">CO</div>
                                             </label>
                                          
                                         </div>

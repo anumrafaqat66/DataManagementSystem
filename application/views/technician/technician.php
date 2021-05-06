@@ -9,17 +9,17 @@
  <div class="container">
 
      <div class="card o-hidden border-0 shadow-lg">
-         <div class="card-body">
+         <div class="card-body bg-custom3">
              <!-- Nested Row within Card Body -->
              <div class="row">
                  <div class="col-lg-12">
 
                      <div class="card">
-                         <div class="card-header">
-                             <h1 class="h4 text-gray-900">Technician Data Entry Module</h1>
+                         <div class="card-header bg-custom1">
+                             <h1 class="h4 text-white">Technician Data Entry Module</h1>
                          </div>
 
-                         <div class="card-body">
+                         <div class="card-body bg-custom3">
                              <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Technician/add_data_into_db">
                                  <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
@@ -71,14 +71,14 @@
              </div>
          </div>
 
-         <div class="card-body">
+         <div class="card-body bg-custom3">
              <!-- Nested Row within Card Body -->
              <div class="row">
                  <div class="col-lg-12">
 
-                     <div class="card">
-                         <div class="card-header">
-                             <h1 class="h4 text-gray-900">Entered Data</h1>
+                     <div class="card bg-custom3">
+                         <div class="card-header bg-custom1">
+                             <h1 class="h4 text-white">Entered Data</h1>
                          </div>
 
                          <div class="card-body">

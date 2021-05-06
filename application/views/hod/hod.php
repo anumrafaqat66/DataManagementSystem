@@ -15,7 +15,7 @@
     }
 </style>
 
-<div class="container">
+<div class="container bg-custom2">
     <h1 class="h4 text-gray-900">Welcome HOD</h1>
     <hr>
 
@@ -25,21 +25,21 @@
             <div class="col-lg-12">
 
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-custom1">
                         <div class="row">
                             <div class="col-sm-7">
-                                <h1 class="h4 text-gray-900">Sensor Detail</h1>
+                                <h1 class="h4 text-white">Sensor Detail</h1>
                             </div>
                             <div class="col-sm-3">
-                                <h1 class="h4 text-gray-900">Availability</h1>
+                                <h1 class="h4 text-white">Availability</h1>
                             </div>
                             <div class="col-sm-2">
-                                <h1 class="h4 text-gray-900">Reliability</h1>
+                                <h1 class="h4 text-white">Reliability</h1>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body bg-custom3">
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">
@@ -85,11 +85,11 @@
             <div class="col-lg-12">
 
                 <div class="card">
-                    <div class="card-header">
-                        <h1 class="h4 text-gray-900">Fire Controller Detail</h1>
+                    <div class="card-header bg-custom1">
+                        <h1 class="h4 text-white">Fire Controller Detail</h1>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body bg-custom3">
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">
@@ -135,11 +135,11 @@
             <div class="col-lg-12">
 
                 <div class="card">
-                    <div class="card-header">
-                        <h1 class="h4 text-gray-900">Weapon Detail</h1>
+                    <div class="card-header bg-custom1">
+                        <h1 class="h4 text-white">Weapon Detail</h1>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body bg-custom3">
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">

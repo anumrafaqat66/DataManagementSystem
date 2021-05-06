@@ -20,20 +20,26 @@
 
     .box {
         display: inline-block;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         padding: 10px 0px;
         margin: 0px 25px;
-        width: 140px;
+        width: 150px;
         text-align: center;
+        box-shadow: 5px 10px #888888;
+        border-radius: 10px;
+        background-color: #D3D3D3;
     }
 
     .box_center {
         display: inline-block;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         padding: 10px 0px;
         margin-left: -5px;
-        width: 140px;
+        width: 150px;
         text-align: center;
+        box-shadow: 5px 10px #888888;
+        border-radius: 10px;    
+        background-color:#FA8072;
     }
 
     .box.hidden {
@@ -100,11 +106,11 @@
             <div class="col-lg-12">
 
                 <div class="card">
-                    <div class="card-header">
-                        <h1 class="h4 text-gray-900">Weapon System</h1>
+                    <div class="card-header bg-custom1 ">
+                        <h1 class="h4 text-white">Weapon System</h1>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body bg-custom3">
                         <h6>To check the availability of the complete system, Please select the Weapon.</h6>
                         <hr>
                         <form class="user" role="form" id="update_form" method="post" action="">
@@ -119,11 +125,11 @@
                                         }  ?>
                                     </select>
                                 </div>
-                                 <div class="col-sm-3 mb-1">
+                                <div class="col-sm-3 mb-1">
                                     <input type="text" class="form-control form-control-user" name="time" id="system_time" placeholder="Enter Time">
                                 </div>
                             </div>
-                            
+
                             <hr>
                             <div class="form-group row">
 
@@ -187,22 +193,22 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box" style="background-color:#5BD3A7;color:black"><a href="" style="float:left; font-size:small;color:black" id="CCS_A">A</a> CCS <a href="" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
+                            <div class="box" ><a href="" style="float:left; font-size:small;color:black" id="CCS_A">A</a> CCS <a href="" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
 
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#32A110;color: black"><a href="" style="float:left; font-size:small;color:black" id="FC1_A">A</a>FC1<a href="" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color:black" id="FC1_A">A</a>FC1<a href="" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#9873D7;color:black" ><a href="" style="float:left; font-size:small;color:black" id="SAM_A">A</a>SAM<a href="" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white" ><a href="" style="float:left; font-size:small;color:black;" id="SAM_A">A</a>SAM<a href="" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
                         </div>
 
                         <div>
-                            <div class="box" style="background-color:#B71E71;color:black"><a href="" style="float:left; font-size:small;color:black" id="S1_A">A</a>S1<a href="" style="float:right;color:black; font-size:small;" id="S1_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color:black" id="S1_A">A</a>S1<a href="" style="float:right;color:black; font-size:small;" id="S1_R">R</a></div>
 
                         </div>
                     </div>
@@ -222,22 +228,22 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box" style="background-color:#5BD3A7;color:black"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
 
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#9873D7;color:black"><a href="" style="float:left; font-size:small;color: black" id="FC2_A">A</a>FC2<a href="" style="float:right; font-size:small;color: black" id="FC2_R">R</a></div>
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black" id="FC2_A">A</a>FC2<a href="" style="float:right; font-size:small;color: black" id="FC2_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#32A110;color:black"><a href="" style="float:left; font-size:small;color: black" id="Main_Gun_A">A</a>Main Gun<a href="" style="float:right; font-size:small;color: black" id="Main_Gun_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small;color: black" id="Main_Gun_A">A</a>Main Gun<a href="" style="float:right; font-size:small;color: black" id="Main_Gun_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
                         </div>
 
                         <div>
-                            <div class="box" style="background-color:#B71E71;color:black"><a href="" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
 
                         </div>
                     </div>
@@ -257,14 +263,14 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box" style="background-color:#5BD3A7;color:black"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
-                            <div class="box"  style="background-color:#E5A81E;color:black"><a href="" style="float:left; font-size:small;color: black" id="FC3_A">A</a>FC3<a href="" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black" id="FC3_A">A</a>FC3<a href="" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
                             <div class="line_bottom"></div>
-                            <div class="box_center"  style="background-color:#2072A5;color:black"><a href="" style="float:left; font-size:small;color: black" id="CRG_(Port)_A">A</a>CRG (Port)<a href="" style="float:right; font-size:small;color: black" id="CRG_(Port)_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small;color: black" id="CRG_(Port)_A">A</a>CRG (Port)<a href="" style="float:right; font-size:small;color: black" id="CRG_(Port)_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -274,8 +280,8 @@
                         </div>
 
                         <div>
-                            <div class="box"  style="background-color:#78B504;color:black"><a href="" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
-                            <div class="box" style="background-color:#B53F04;color:black"><a href="" style="float:left; font-size:small;color: black;" id="FC4_A">A</a>FC4<a href="" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black;" id="FC4_A">A</a>FC4<a href="" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
 
                         </div>
                     </div>
@@ -296,14 +302,14 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box" style="background-color:#13A866;color: black"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
-                            <div class="box" style="background-color:#EC5910;color: black"><a href="" style="float:left; font-size:small;color: black; " id="FC3_A">A</a>FC3<a href="" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black; " id="FC3_A">A</a>FC3<a href="" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#EDEC1C;color: black"><a href="" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a>CRG(STDB)<a href="" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a>CRG(STDB)<a href="" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -313,8 +319,8 @@
                         </div>
 
                         <div>
-                            <div class="box" style="background-color:#6F5E8D;color: black"><a href="" style="float:left; font-size:small;color: black; " id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black; " id="S1_R">R</a></div>
-                            <div class="box" style="background-color:#CF497D;color: black"><a href="" style="float:left; font-size:small;color: black; " id="FC4_A">A</a>FC4<a href="" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color: black; " id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black; " id="S1_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black; " id="FC4_A">A</a>FC4<a href="" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
                         </div>
                     </div>
                 </div>
@@ -324,6 +330,7 @@
 
 </div>
 
+</div>
 
 <?php $this->load->view('common/footer'); ?>
 <script>
@@ -410,33 +417,34 @@
         }
     });
 
- $('#system_time').on('focusout', function() {
-    var name = $('#controller_type').val();
+    $('#system_time').on('focusout', function() {
+        var name = $('#controller_type').val();
+        var time = $(this).val();
 
-            $.ajax({
-                url: '<?= base_url(); ?>WEO/get_system_reliability',
-                method: 'POST',
-                data: {
-                    'weapon_name': name
-                },
-                success: function(data) {
-                    // var result = jQuery.parseJSON(data);
-                    //alert(result);
-                    $('#reliability').html(data + "%");
-                    if (data < 50) {
-                        document.getElementById("system_reliability").style.backgroundColor = "red";
-                    } else if (data > 50 && data < 75) {
-                        document.getElementById("system_reliability").style.backgroundColor = "yellow";
-                    } else if (data >= 75) {
-                        document.getElementById("system_reliability").style.backgroundColor = "green";
-                    }
-                },
-                error: function(data) {
-                    //alert(data);
-                    alert('failure');
+        $.ajax({
+            url: '<?= base_url(); ?>WEO/get_system_reliability',
+            method: 'POST',
+            data: {
+                'weapon_name': name,
+                'time': time
+            },
+            success: function(data) {
+                // var result = jQuery.parseJSON(data);
+                //alert(result);
+                $('#reliability').html(data + "%");
+                if (data < 50) {
+                    document.getElementById("system_reliability").style.backgroundColor = "red";
+                } else if (data > 50 && data < 75) {
+                    document.getElementById("system_reliability").style.backgroundColor = "yellow";
+                } else if (data >= 75) {
+                    document.getElementById("system_reliability").style.backgroundColor = "green";
                 }
-            });
-
+            },
+            error: function(data) {
+                //alert(data);
+                alert('failure');
+            }
         });
-       
+
+    });
 </script>

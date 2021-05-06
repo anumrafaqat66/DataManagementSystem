@@ -27,16 +27,16 @@
 
      <div class="card o-hidden border-0 shadow-lg">
 
-         <div class="card-body">
+         <div class="card-body bg-custom3">
              <!-- Nested Row within Card Body -->
              <div class="row">
                  <div class="col-lg-12">
 
-                     <div class="card">
-                         <div class="card-header">
-                             <h1 class="h4 text-gray-900">Records</h1>
+                     <div class="card bg-custom3">
+                         <div class="card-header bg-custom1">
+                             <h1 class="h4 text-white">Records</h1>
                          </div>
-                         <div class="card-body">
+                         <div class="card-body bg-custom3">
                              <div id="table_div">
                                  <?php if (count($manager_controller_data) > 0) { ?>
                                      <table id="datatable" class="table table-sm table-striped">
@@ -125,16 +125,16 @@
 Data records table place
 -->
 
-         <div id="form_div" class="card-body">
+         <div id="form_div" class="card-body bg-custom3">
              <!-- Nested Row within Card Body -->
              <div class="row">
                  <div class="col-lg-12">
 
-                     <div class="card">
-                         <div class="card-header">
+                     <div class="card bg-custom3">
+                         <div class="card-header bg-custom1">
                              <div class="row">
                                  <div class="col-sm-11">
-                                     <h1 class="h4 text-gray-900">Add Detais</h1>
+                                     <h1 class="h4 text-white">Add Detais</h1>
                                  </div>
                                  <div class="col-sm-1">
                                      <a class="form-control form-control-user bg-light text-center" style="border:grey solid 1px" onclick="hide_form_div()">
