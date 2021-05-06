@@ -306,7 +306,7 @@ Data records table place
  <?php $this->load->view('common/footer'); ?>
 
  <script>
-     $('#ADLT').on('mouseleave focusout', function() {
+     $('#ADLT').on('focusout', function() {
 
          var TPM = $('#TPM').val();
          //alert(TPM);

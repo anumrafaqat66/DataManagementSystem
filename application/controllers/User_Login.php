@@ -22,10 +22,15 @@ class User_Login extends CI_Controller
 				redirect('HOD');
 			} elseif ($status == "weo") {
 				redirect('WEO');
+			}elseif ($status == "other") {
+				redirect('CEO');
 			}
 		} else {
 			$this->load->view('login');
 		}
+	}
+	public function dashboard(){
+     $this->load->view('dashboard');
 	}
 
 	public function login_process()

@@ -1,6 +1,6 @@
  
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-class WEO extends CI_Controller
+class CEO extends CI_Controller
 {
     public function __construct()
     {
@@ -10,7 +10,7 @@ class WEO extends CI_Controller
     public function index()
     {
         $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
-        $this->load->view('weo/weo', $data);
+        $this->load->view('ceo/ceo', $data);
     }
 
     public function get_system_availability()

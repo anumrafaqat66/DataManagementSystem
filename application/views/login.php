@@ -72,7 +72,7 @@
                                             </label>
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" value="other" name="optradio"><div style="float:right; margin-left:5px;">Other Account</div>
+                                                <input type="radio" value="other" name="optradio"><div style="float:right; margin-left:5px;">CEO</div>
                                             </label>
                                          
                                         </div>
