@@ -104,28 +104,35 @@
 
                     <div class="card-body bg-custom3">
                         <div class="form-group row">
-                            <div class="col mx-1 my-1 img-aaw" style="height:300px">
+                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>">
+                            <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-dark text-center "><strong>AAW</strong></h1>
                                 </div>
                             </div>
-
-                            <div class="col mx-1 my-1 img-asuw" style="height:300px">
+                             </a>
+                           <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>">
+                            <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-info text-center "><strong>ASuW</strong></h1>
                                 </div>
                             </div>
+                        </a>
                             <!-- <div class="w-100"></div> -->
-                            <div class="col mx-1 my-1 img-asw" style="height:300px">
+                        <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>">
+                            <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-white text-center "><strong>ASW</strong></h1>
                                 </div>
                             </div>
-                            <div class="col mx-1 my-1 img-ew" style="height:300px">
+                        </a>
+                        <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>">
+                            <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-white text-center "><strong>EW</strong></h1>
                                 </div>
                             </div>
+                        </a>
                         </div>
 
                         <div class="card">
@@ -164,116 +171,3 @@
 </div>
 
 <?php $this->load->view('common/footer'); ?>
-<script>
-    $('#show_graphs').on('click', function() {
-        $('#sam_card').hide();
-        $('#main_gun').hide();
-        $('#CRG_Port').hide();
-        $('#CRG_STDB').hide();
-        //$('#sam_card').hide();
-        var name = $('#controller_type').val();
-        //alert(name);
-        if (name == 'SAM') {
-            $('#sam_card').show();
-        } else if (name == 'Main Gun') {
-            $('#main_gun').show();
-        } else if (name == 'CRG (Port)') {
-            $('#CRG_Port').show();
-        } else if (name == 'CRG (STDB)') {
-            $('#CRG_STDB').show();
-        }
-
-        if (name != '') {
-            $.ajax({
-                url: '<?= base_url(); ?>WEO/get_sensors_data',
-                method: 'POST',
-                data: {
-                    'weapon_name': name
-                },
-                success: function(data) {
-                    result = JSON.parse(data);
-                    for (var i in result) {
-                        $str = result[i].Controller_Name.replace(" ", "_");
-                        $("[id*='" + $str + "_A']").html(String(number_format((result[i].Availability) / 100, 2)));
-                        $("[id*='" + $str + "_R']").html(String(number_format((result[i].Reliability) / 100, 2)));
-                    }
-                },
-                error: function(data) {
-                    //alert(data);
-                    alert('failure');
-                }
-            });
-
-        }
-        e.preventDefault();
-        window.onunload = function() {
-            dubugger;
-        }
-
-    });
-
-
-    $('#controller_type').on('change', function() {
-        //alert('df');
-        $('#sam_card').hide();
-        $('#main_gun').hide();
-        $('#CRG_Port').hide();
-        $('#CRG_STDB').hide();
-        var name = $(this).val();
-        if (name != '') {
-            $.ajax({
-                url: '<?= base_url(); ?>WEO/get_system_availability',
-                method: 'POST',
-                data: {
-                    'weapon_name': name
-                },
-                success: function(data) {
-                    // var result = jQuery.parseJSON(data);
-                    //alert(result);
-                    $('#availability').html(data + "%");
-                    if (data < 50) {
-                        document.getElementById("system_availability").style.backgroundColor = "red";
-                    } else if (data > 50 && data < 75) {
-                        document.getElementById("system_availability").style.backgroundColor = "yellow";
-                    } else if (data >= 75) {
-                        document.getElementById("system_availability").style.backgroundColor = "green";
-                    }
-                }
-                // ,
-                // error: function(data) {
-                //     //alert(data);
-                //     alert('failure');
-                // }
-            });
-        }
-    });
-
-    $('#system_time').on('focusout', function() {
-        var name = $('#controller_type').val();
-
-        $.ajax({
-            url: '<?= base_url(); ?>WEO/get_system_reliability',
-            method: 'POST',
-            data: {
-                'weapon_name': name
-            },
-            success: function(data) {
-                // var result = jQuery.parseJSON(data);
-                //alert(result);
-                $('#reliability').html(data + "%");
-                if (data < 50) {
-                    document.getElementById("system_reliability").style.backgroundColor = "red";
-                } else if (data > 50 && data < 75) {
-                    document.getElementById("system_reliability").style.backgroundColor = "yellow";
-                } else if (data >= 75) {
-                    document.getElementById("system_reliability").style.backgroundColor = "green";
-                }
-            },
-            error: function(data) {
-                //alert(data);
-                alert('failure');
-            }
-        });
-
-    });
-</script>
