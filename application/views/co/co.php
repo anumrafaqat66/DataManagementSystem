@@ -104,14 +104,14 @@
 
                     <div class="card-body bg-custom3">
                         <div class="form-group row">
-                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>">
+                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>Mission/mission/<?= 'AAW' ?>">
                             <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-dark text-center "><strong>AAW</strong></h1>
                                 </div>
                             </div>
                              </a>
-                           <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>">
+                           <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>Mission/mission/<?= 'ASuW' ?>">
                             <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-info text-center "><strong>ASuW</strong></h1>
@@ -119,14 +119,14 @@
                             </div>
                         </a>
                             <!-- <div class="w-100"></div> -->
-                        <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>">
+                        <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>Mission/mission/<?= 'ASW' ?>">
                             <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-white text-center "><strong>ASW</strong></h1>
                                 </div>
                             </div>
                         </a>
-                        <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>">
+                        <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>Mission/mission/<?= 'EW' ?>">
                             <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-white text-center "><strong>EW</strong></h1>
@@ -135,7 +135,7 @@
                         </a>
                         </div>
 
-                        <div class="card">
+                        <!-- <div class="card">
                             <div class="card-header bg-custom1">
                                 <h5 class="h5 text-white">Detail</h5>
                             </div>
@@ -157,7 +157,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
