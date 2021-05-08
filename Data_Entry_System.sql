@@ -234,6 +234,8 @@ insert into controller_data values (9,'Weapon','Main Gun','3002','','','',0.00,0
 insert into controller_data values (10,'Weapon','CRG (Port)','3003','','','',0.00,0.00,0.00,0.00);
 insert into controller_data values (11,'Weapon','CRG (STDB)','3004','','','',0.00,0.00,0.00,0.00);
 
+insert into controller_data values (12,'Weapon','SSM','3005','','','',0.00,0.00,0.00,0.00);
+
 
 insert into weapon_systems values (1,'SAM',0.00,0.00,'AAW','Anti Air war mission');
 

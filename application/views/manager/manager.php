@@ -282,7 +282,7 @@ Data records table place
      </div>
  </div>
 
- <div>
+ </div>
 
  <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
  <?php if ($this->session->flashdata('success')) : ?>
