@@ -112,7 +112,7 @@
 
                     <div class="card-body bg-custom3">
                         <div class="form-group row">
-                            <a class="col mx-1 my-1 img-ship" href="<?= base_url(); ?>missions">
+                            <a class="col mx-1 my-1 img-ship" href="<?= base_url(); ?>CO/mission">
                             <div  style="height:180px">
                                 <div style="margin-top:135px">
                                     <h1 class="h1 text-dark text-center "><strong></strong></h1>
@@ -121,29 +121,7 @@
                              </a>
                         </div>
 
-                        <!-- <div class="card">
-                            <div class="card-header bg-custom1">
-                                <h5 class="h5 text-white">Detail</h5>
-                            </div>
-
-                            <div class="card-body bg-custom3">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="h6 text-grey-900">Availability</h5>
-                                        <div class="progress" style="height:40px">
-                                            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 70%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <h5 class="h6 text-grey-900">Reliability</h5>
-                                        <div class="progress" style="height:40px">
-                                            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                        
                     </div>
 
                 </div>

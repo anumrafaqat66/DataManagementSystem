@@ -266,3 +266,31 @@ insert into weapon_system_config values (15,4,1,'P','1');
 insert into weapon_system_config values (16,4,6,'P','2');
 insert into weapon_system_config values (17,4,7,'P','2');
 insert into weapon_system_config values (18,4,11,'S','1');
+
+
+--ASuW Mission Entries
+insert into weapon_systems values (5,'SSM',0.00,0.00,'ASuW','Anti Surface war mission');
+insert into weapon_systems values (6,'Main Gun',0.00,0.00,'ASuW','Anti Surface war mission');
+insert into weapon_systems values (7,'CRG (Port)',0.00,0.00,'ASuW','Anti Surface war mission');
+insert into weapon_systems values (8,'CRG (STDB)',0.00,0.00,'ASuW','Anti Surface war mission');
+
+insert into weapon_system_config values (19,5,1,'P','1');
+insert into weapon_system_config values (20,5,2,'P','1');
+insert into weapon_system_config values (21,5,12,'S','1');
+
+insert into weapon_system_config values (23,6,3,'P','1');
+insert into weapon_system_config values (24,6,1,'P','1');
+insert into weapon_system_config values (25,6,5,'S','1');
+insert into weapon_system_config values (26,6,9,'S','1');
+
+insert into weapon_system_config values (27,7,3,'P','1');
+insert into weapon_system_config values (28,7,1,'P','1');
+insert into weapon_system_config values (29,7,6,'P','2');
+insert into weapon_system_config values (30,7,7,'P','2');
+insert into weapon_system_config values (31,7,10,'S','1');
+
+insert into weapon_system_config values (32,8,3,'P','1');
+insert into weapon_system_config values (33,8,1,'P','1');
+insert into weapon_system_config values (34,8,6,'P','2');
+insert into weapon_system_config values (35,8,7,'P','2');
+insert into weapon_system_config values (36,8,11,'S','1');

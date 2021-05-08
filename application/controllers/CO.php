@@ -12,7 +12,8 @@ class CO extends CI_Controller
         $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
         $this->load->view('ship/ship', $data);
     }
-     public function mission()
+
+    public function mission()
     {
         $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
         $this->load->view('co/co', $data);
@@ -92,15 +93,14 @@ class CO extends CI_Controller
                 echo number_format(($final_result * 100), 2);
 
                 //Updation 
-                
-                 $cond  = ['weapon_name' => $weapon_name];
-                 $data_update = [
-                'Availability' => number_format(($final_result * 100), 2),
-            ];
 
-            $this->db->where($cond);
-            $this->db->update('weapon_systems', $data_update);
+                $cond  = ['weapon_name' => $weapon_name];
+                $data_update = [
+                    'Availability' => number_format(($final_result * 100), 2),
+                ];
 
+                $this->db->where($cond);
+                $this->db->update('weapon_systems', $data_update);
             } else {
                 $this->load->view('login');
             }
@@ -185,14 +185,13 @@ class CO extends CI_Controller
 
                 //Updation 
 
-                  $cond  = ['weapon_name' => $weapon_name];
-                 $data_update = [
-                'Reliabbility' => number_format(($final_result * 100), 2),
-            ];
+                $cond  = ['weapon_name' => $weapon_name];
+                $data_update = [
+                    'Reliabbility' => number_format(($final_result * 100), 2),
+                ];
 
-            $this->db->where($cond);
-            $this->db->update('weapon_systems', $data_update);
-
+                $this->db->where($cond);
+                $this->db->update('weapon_systems', $data_update);
             } else {
                 $this->load->view('login');
             }

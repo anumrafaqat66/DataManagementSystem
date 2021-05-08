@@ -221,9 +221,9 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <div class="card">
-                    <div class="card-header">
-                        Main Gun
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">Main Gun</h1>
                     </div>
 
                     <div class="card-body mx-5">
@@ -256,9 +256,9 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <div class="card">
-                    <div class="card-header">
-                        CRG (Port)
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">CRG (Port)</h1>
                     </div>
 
                     <div class="card-body mx-5">
@@ -295,9 +295,9 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <div class="card">
-                    <div class="card-header">
-                        CRG (STDB)
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">CRG (STDB)</h1>
                     </div>
 
                     <div class="card-body mx-5">
@@ -328,6 +328,40 @@
         </div>
     </div>
 
+
+    <div class="card-body" id="SSM" style="display: none">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">SSM (Surface to Surface Missile)</h1>
+                    </div>
+
+                    <div class="card-body mx-5">
+                        <div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black ;" id="S1_R">R</a></div>   
+                        </div>
+
+                        <div class="lines">
+                            <div class="line_bottom"></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small; color: black;" id="SSM_A">A</a>SSM<a href="" style="float:right; font-size:small;color: black; " id="SSM_R">R</a></div>
+                        </div>
+
+                        <div class="lines">
+                            <div class="line_top"></div>
+                        </div>
+
+                        <div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color: black; " id="S2_A">A</a>S2<a href="" style="float:right; font-size:small;color: black; " id="S2_R">R</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 </div>
@@ -339,9 +373,10 @@
         $('#main_gun').hide();
         $('#CRG_Port').hide();
         $('#CRG_STDB').hide();
+        $('#SSM').hide();
         //$('#sam_card').hide();
         var name = $('#controller_type').val();
-        //alert(name);
+        
         if (name == 'SAM') {
             $('#sam_card').show();
         } else if (name == 'Main Gun') {
@@ -350,6 +385,8 @@
             $('#CRG_Port').show();
         } else if (name == 'CRG (STDB)') {
             $('#CRG_STDB').show();
+        } else if (name == 'SSM') {
+            $('#SSM').show();
         }
 
         if (name != '') {
@@ -388,6 +425,7 @@
         $('#main_gun').hide();
         $('#CRG_Port').hide();
         $('#CRG_STDB').hide();
+        $('#SSM').hide();
         $('#reliability').html("0.00%");
         document.getElementById("system_reliability").style.backgroundColor = "#bbb";
         $('#system_time').val(null);
