@@ -1,8 +1,10 @@
 <?php $this->load->view('common/header'); ?>
-<?php $weaponReliability1 = 1; ?>
-<?php $weaponReliability2 = 1; ?>
-<?php $weaponReliability3 = 1; ?>
-<?php $weaponReliability4 = 1; ?>
+<?php !isset($weaponReliability1) ? $weaponReliability1 = 0 : $weaponReliability1; ?>
+<?php !isset($weaponReliability2) ? $weaponReliability2 = 0 : $weaponReliability2; ?>
+<?php !isset($weaponReliability3) ? $weaponReliability3 = 0 : $weaponReliability3; ?>
+<?php !isset($weaponReliability4) ? $weaponReliability4 = 0 : $weaponReliability4; ?>
+<?php !isset($reliability) ? $reliability = 0 : $reliability; ?>
+
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <style>
     .img {
@@ -63,7 +65,7 @@
                                         <h4 class="h4 text-grey-900">Reliability</h4>
 
                                         <div class="progress" style="height:40px">
-                                            <div class="progress-bar" id="reliability_bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar" id="reliability_bar" role="progressbar" style="width: <?= $reliability ?>%;" aria-valuenow="<?= $reliability ?>" aria-valuemin="0" aria-valuemax="100"><?= $reliability . "%" ?></div>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +94,7 @@
                                         );
                                         ?>
                                     </div>
-                                    <div class="col-md-6"  id="reliability_chart">
+                                    <div class="col-md-6" id="reliability_chart">
                                         <!-- <h3 class="text-grey-900">Relaibility</h3> -->
                                         <div>
                                             <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
@@ -103,7 +105,6 @@
                                             array("y" => $weaponReliability2, "label" => "Main Gun"),
                                             array("y" => $weaponReliability3, "label" => "CRG(Port)"),
                                             array("y" => $weaponReliability4, "label" => "CRG(STDB)"),
-
                                         );
                                         ?>
                                     </div>
@@ -183,6 +184,8 @@
 
     }
 
+    var dps = []; //Global
+    var reliability;
 
     $('#system_time').on('focusout', function() {
         var time = $(this).val();
@@ -198,7 +201,7 @@
 
                 $('#reliability_bar').html(data + "%");
                 $('#reliability_bar').width(data * 5);
-
+                reliability = data;
                 $("#reliability_bar").removeClass('bg-danger');
                 $("#reliability_bar").removeClass('bg-warning');
                 $("#reliability_bar").removeClass('bg-success');
@@ -211,16 +214,9 @@
                 }
 
             },
-    
+            async: false
         });
 
-        var arrayFromPHP = [];
-        arrayFromPHP = <?php echo json_encode($dataPoints1); ?>;
-        // $.each(arrayFromPHP, function(index) {
-        //     console.log(index + ':' + this.y);
-        //     console.log(index + ':' + this.label);
-        // });
-var dps = [];
         $.ajax({
             url: '<?= base_url(); ?>Mission/get_each_weapon_reliability',
             method: 'POST',
@@ -230,62 +226,60 @@ var dps = [];
             success: function(data) {
                 //alert(data[0][weaponReliability$datarow]);
                 result = JSON.parse(data);
-                alert(result.weaponReliability1);
-                alert(result.weaponReliability2);
-                alert(result.weaponReliability3);
-                alert(result.weaponReliability4);
-                // for (var i in result) {
-                //     dps.push({
-                //     y:result[i]
-                //     });
-                // }
-                
-        var chart2 = new CanvasJS.Chart("chartContainer1", {
-            animationEnabled: true,
-            exportEnabled: true,
-            theme: "light1", // "light1", "light2", "dark1", "dark2"
-            title: {
-                text: ""
+
+                for (var i in result) {
+                    dps.push(result[i]);
+                }
+
             },
-            axisY: {
-                includeZero: true
-            },
-            data: [{
-                type: "bar", //change type to bar, line, area, pie, etc
-                //indexLabel: "{y}", //Shows y value on all Data Points
-                indexLabelFontColor: "#5A5757",
-                indexLabelPlacement: "outside",
-                //dataPoints:dps
-               dataPoints: [
-                { y: 20 },
-                { y:  59},
-                { y:80 },
-                { y:  40 }   
-           ]
-            }]
+            async: false
+
         });
 
-     // function parseDataPoints () {
-     //    for (var i in result)
-     //      dps.push({y: result[i]});     
-     // };
-     // alert(dps)
-        
-     // parseDataPoints();
-     // chart2.options.data[0].dataPoints = dps;
-    chart2.render();
 
-                // $.each(arrayFromPHP , function(i) {
-                //     // this.y = result[i];
-                //     // console.log(result[i]);
-                //     console.log(i + ':' + this.y);
-                //     console.log(i + ':' + this.label);
-                // });
+        $.ajax({
+            url: '<?= base_url(); ?>Mission/PageReload',
+            method: 'POST',
+            data: {
+                'wr1': dps[0],
+                'wr2': dps[1],
+                'wr3': dps[2],
+                'wr4': dps[3],
+                'wp1': <?php echo json_encode($weapon1, JSON_NUMERIC_CHECK); ?>,
+                'wp2': <?php echo json_encode($weapon2, JSON_NUMERIC_CHECK); ?>,
+                'wp3': <?php echo json_encode($weapon3, JSON_NUMERIC_CHECK); ?>,
+                'wp4': <?php echo json_encode($weapon4, JSON_NUMERIC_CHECK); ?>,
+                'avail': <?php echo json_encode($availability, JSON_NUMERIC_CHECK); ?>,
+                'rel': reliability
             },
+            success: function(data) {
+
+                // $(document).ready(function() {
+                //     $(this).replaceWith(data);
+                // });
+
+                var newDoc = document.open("text/html", "replace");
+                newDoc.write(data);
+                newDoc.close();
+
+                // alert(reliability);
+                $(newDoc).$("#reliability_bar").removeClass('bg-danger');
+                $(newDoc).$("#reliability_bar").removeClass('bg-warning');
+                $(newDoc).$("#reliability_bar").removeClass('bg-success');
+                if (reliability < 50) {
+                    $(newDoc).$("#reliability_bar").addClass('bg-danger');
+                } else if (reliability > 50 && data <= 75) {
+                    $(newDoc).$("#reliability_bar").addClass('bg-warning');
+                } else if (reliability > 75) {
+                    $(newDoc).$("#reliability_bar").addClass('bg-success');
+                }
+
+            },
+            async: false,
             error: function(data) {
-                //alert(data);
                 alert('failure');
             }
+
         });
 
         $('#reliability_chart').show();

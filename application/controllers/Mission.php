@@ -37,6 +37,25 @@ class Mission extends CI_Controller
 		}
 	}
 
+	public function PageReload()
+	{
+		
+		$data['weaponReliability1'] = $_POST['wr1'];	
+		$data['weaponReliability2'] = $_POST['wr2'];	
+		$data['weaponReliability3'] = $_POST['wr3'];	
+		$data['weaponReliability4'] = $_POST['wr4'];
+		$data['weapon1'] = $_POST['wp1'];	
+		$data['weapon2'] = $_POST['wp2'];	
+		$data['weapon3'] = $_POST['wp3'];	
+		$data['weapon4'] = $_POST['wp4'];	
+		$data['availability'] = $_POST['avail'];	
+		$data['reliability'] = $_POST['rel'];	
+		//$this->load->view('mission/AAW', $data);
+		echo $data = $this->load->view('mission/AAW',$data, TRUE);
+		
+	}
+
+
 	public function get_each_weapon_reliability()
 	{
 		if ($this->session->has_userdata('user_id')) {
@@ -44,7 +63,7 @@ class Mission extends CI_Controller
 			$status = $this->session->userdata('status');
 			if ($status == "co") {
 				$mission_name = $_POST['mission_name'];
-				
+
 				$weapons_reliablity = $this->db->where('Mission_name', $mission_name)->get('weapon_systems')->result_array();
 
 				$result = 1;
@@ -78,7 +97,7 @@ class Mission extends CI_Controller
 
 					endfor;
 				}
-
+				
 				$weapons_reliablity = $this->db->where('Mission_name', $mission_name)->get('weapon_systems')->result_array();
 
 				$result = 1;
@@ -178,13 +197,13 @@ class Mission extends CI_Controller
 		$final_result = $sub_final_result * $resultant_series;
 
 		//Updation 
-		// $cond  = ['weapon_name' => $weapon_name];
-		// $data_update = [
-		// 	'Reliabbility' => number_format(($final_result * 100), 2),
-		// ];
+		$cond  = ['weapon_name' => $weapon_name];
+		$data_update = [
+			'Reliabbility' => number_format(($final_result * 100), 2),
+		];
 
-		// $this->db->where($cond);
-		// $this->db->update('weapon_systems', $data_update);
+		$this->db->where($cond);
+		$this->db->update('weapon_systems', $data_update);
 	}
 
 	public function calculate_sensor_reliability($controller_id = NULL, $time = NULL)
