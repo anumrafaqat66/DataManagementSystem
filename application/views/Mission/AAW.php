@@ -92,7 +92,7 @@
                                         );
                                         ?>
                                     </div>
-                                    <div class="col-md-6" style="display:none" id="reliability_chart">
+                                    <div class="col-md-6"  id="reliability_chart">
                                         <!-- <h3 class="text-grey-900">Relaibility</h3> -->
                                         <div>
                                             <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
@@ -211,10 +211,7 @@
                 }
 
             },
-            // error: function(data) {
-            //     //alert(data);
-            //     alert('failure');
-            // }
+    
         });
 
         var arrayFromPHP = [];
@@ -223,7 +220,7 @@
         //     console.log(index + ':' + this.y);
         //     console.log(index + ':' + this.label);
         // });
-
+var dps = [];
         $.ajax({
             url: '<?= base_url(); ?>Mission/get_each_weapon_reliability',
             method: 'POST',
@@ -231,12 +228,53 @@
                 'mission_name': 'AAW'
             },
             success: function(data) {
+                //alert(data[0][weaponReliability$datarow]);
                 result = JSON.parse(data);
-
-                for (var i in result) {
-                    alert(result[i]);
-                }
+                alert(result.weaponReliability1);
+                alert(result.weaponReliability2);
+                alert(result.weaponReliability3);
+                alert(result.weaponReliability4);
+                // for (var i in result) {
+                //     dps.push({
+                //     y:result[i]
+                //     });
+                // }
                 
+        var chart2 = new CanvasJS.Chart("chartContainer1", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: ""
+            },
+            axisY: {
+                includeZero: true
+            },
+            data: [{
+                type: "bar", //change type to bar, line, area, pie, etc
+                //indexLabel: "{y}", //Shows y value on all Data Points
+                indexLabelFontColor: "#5A5757",
+                indexLabelPlacement: "outside",
+                //dataPoints:dps
+               dataPoints: [
+                { y: 20 },
+                { y:  59},
+                { y:80 },
+                { y:  40 }   
+           ]
+            }]
+        });
+
+     // function parseDataPoints () {
+     //    for (var i in result)
+     //      dps.push({y: result[i]});     
+     // };
+     // alert(dps)
+        
+     // parseDataPoints();
+     // chart2.options.data[0].dataPoints = dps;
+    chart2.render();
+
                 // $.each(arrayFromPHP , function(i) {
                 //     // this.y = result[i];
                 //     // console.log(result[i]);

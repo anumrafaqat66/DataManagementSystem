@@ -55,7 +55,7 @@ class Mission extends CI_Controller
 					$data["weaponReliability$datarow"] = $weapons_reliablity[$i]['Reliabbility'];
 				}
 				//$data['availability'] = number_format((1 - ($result)) * 100, 2);
-				//print_r($weapons_reliablity); 
+				//print_r($data); exit;
 				echo json_encode($data);
 				//$this->load->view('mission/AAW', $data);
 			}
@@ -89,6 +89,7 @@ class Mission extends CI_Controller
 					//$data["weapon$datarow"] = $weapons_reliablity[$i]['Reliability'];
 				}
 				echo number_format((1 - ($result)) * 100, 2);
+				//exit;
 			}
 		}
 	}
@@ -177,13 +178,13 @@ class Mission extends CI_Controller
 		$final_result = $sub_final_result * $resultant_series;
 
 		//Updation 
-		$cond  = ['weapon_name' => $weapon_name];
-		$data_update = [
-			'Reliabbility' => number_format(($final_result * 100), 2),
-		];
+		// $cond  = ['weapon_name' => $weapon_name];
+		// $data_update = [
+		// 	'Reliabbility' => number_format(($final_result * 100), 2),
+		// ];
 
-		$this->db->where($cond);
-		$this->db->update('weapon_systems', $data_update);
+		// $this->db->where($cond);
+		// $this->db->update('weapon_systems', $data_update);
 	}
 
 	public function calculate_sensor_reliability($controller_id = NULL, $time = NULL)
