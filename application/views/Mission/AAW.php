@@ -94,7 +94,7 @@
                                         );
                                         ?>
                                     </div>
-                                    <div class="col-md-6" id="reliability_chart">
+                                    <div class="col-md-6" id="reliability_chart" style="display:none;">
                                         <!-- <h3 class="text-grey-900">Relaibility</h3> -->
                                         <div>
                                             <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
@@ -138,6 +138,21 @@
             $("#availability_bar").addClass('bg-warning');
         } else if ($value > 75) {
             $("#availability_bar").addClass('bg-success');
+        }
+
+        $data = $("#reliability_bar").html();
+        $value_rel = $data.substr(0, $data.length - 1);
+        // alert($value);
+        if ($value_rel < 50) {
+            $("#reliability_bar").addClass('bg-danger');
+        } else if ($value_rel > 50 && $value_rel <= 75) {
+            $("#reliability_bar").addClass('bg-warning');
+        } else if ($value_rel > 75) {
+            $("#reliability_bar").addClass('bg-success');
+        }
+
+        if ($value_rel > 0) {
+            $('#reliability_chart').show();
         }
 
 
@@ -202,17 +217,6 @@
                 $('#reliability_bar').html(data + "%");
                 $('#reliability_bar').width(data * 5);
                 reliability = data;
-                $("#reliability_bar").removeClass('bg-danger');
-                $("#reliability_bar").removeClass('bg-warning');
-                $("#reliability_bar").removeClass('bg-success');
-                if (data < 50) {
-                    $("#reliability_bar").addClass('bg-danger');
-                } else if (data > 50 && data <= 75) {
-                    $("#reliability_bar").addClass('bg-warning');
-                } else if (data > 75) {
-                    $("#reliability_bar").addClass('bg-success');
-                }
-
             },
             async: false
         });
@@ -224,7 +228,6 @@
                 'mission_name': 'AAW'
             },
             success: function(data) {
-                //alert(data[0][weaponReliability$datarow]);
                 result = JSON.parse(data);
 
                 for (var i in result) {
@@ -253,37 +256,15 @@
                 'rel': reliability
             },
             success: function(data) {
-
-                // $(document).ready(function() {
-                //     $(this).replaceWith(data);
-                // });
-
                 var newDoc = document.open("text/html", "replace");
                 newDoc.write(data);
                 newDoc.close();
-
-                // alert(reliability);
-                $(newDoc).$("#reliability_bar").removeClass('bg-danger');
-                $(newDoc).$("#reliability_bar").removeClass('bg-warning');
-                $(newDoc).$("#reliability_bar").removeClass('bg-success');
-                if (reliability < 50) {
-                    $(newDoc).$("#reliability_bar").addClass('bg-danger');
-                } else if (reliability > 50 && data <= 75) {
-                    $(newDoc).$("#reliability_bar").addClass('bg-warning');
-                } else if (reliability > 75) {
-                    $(newDoc).$("#reliability_bar").addClass('bg-success');
-                }
-
             },
             async: false,
             error: function(data) {
                 alert('failure');
             }
-
         });
-
-        $('#reliability_chart').show();
-
 
     });
 </script>
