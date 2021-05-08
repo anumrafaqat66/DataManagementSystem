@@ -82,7 +82,7 @@
                                                      <!-- <td>
                                                          <a class="btn btn-primary btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>manager/get_values/<?= $data['ID']; ?>">Add Details </a>
                                                      </td> -->
-                                                       <td>
+                                                     <td>
                                                          <a class="btn btn-success btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>manager/show_records/<?= $data['ID']; ?>">Show Records</a>
                                                      </td>
 
@@ -102,9 +102,9 @@
          </div>
 
 
-       <!--   <div id="record_detail_div" class="card-body"> -->
-             <!-- Nested Row within Card Body -->
-            <!--  <div class="row">
+         <!--   <div id="record_detail_div" class="card-body"> -->
+         <!-- Nested Row within Card Body -->
+         <!--  <div class="row">
                  <div class="col-lg-12">
 
                      <div class="card">
@@ -121,7 +121,7 @@
                                  </div>
                              </div>
                          </div> -->
-<!--
+         <!--
 Data records table place
 -->
 
@@ -282,6 +282,8 @@ Data records table place
      </div>
  </div>
 
+ <div>
+
  <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
  <?php if ($this->session->flashdata('success')) : ?>
      <script>
@@ -306,14 +308,60 @@ Data records table place
  <?php $this->load->view('common/footer'); ?>
 
  <script>
+     $('#TCM').on('focusout', function() {
+
+         var TPM = $('#TPM').val();
+         if (TPM === undefined || TPM === null || TPM === '') {
+             TPM = 0.00;
+         }
+         var TCM = $('#TCM').val();
+         if (TCM === undefined || TCM === null || TCM === '') {
+             TCM = 0.00;
+         }
+         var ALDT = $('#ADLT').val();
+         if (ALDT === undefined || ALDT === null || ALDT === '') {
+             ALDT = 0.00;
+         }
+         var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
+         //alert(TTR);
+         document.getElementById("TTR").value = TTR;
+         //alert(d_o_b);
+     });
+
+     $('#TPM').on('focusout', function() {
+
+         var TPM = $('#TPM').val();
+         if (TPM === undefined || TPM === null || TPM === '') {
+             TPM = 0.00;
+         }
+         var TCM = $('#TCM').val();
+         if (TCM === undefined || TCM === null || TCM === '') {
+             TCM = 0.00;
+         }
+         var ALDT = $('#ADLT').val();
+         if (ALDT === undefined || ALDT === null || ALDT === '') {
+             ALDT = 0.00;
+         }
+         var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
+         //alert(TTR);
+         document.getElementById("TTR").value = TTR;
+         //alert(d_o_b);
+     });
+
      $('#ADLT').on('focusout', function() {
 
          var TPM = $('#TPM').val();
-         //alert(TPM);
+         if (TPM === undefined || TPM === null || TPM === '') {
+            TPM = 0.00;
+         }
          var TCM = $('#TCM').val();
-         //alert(TCM);
+         if (TCM === undefined || TCM === null || TCM === '') {
+            TCM = 0.00;
+         }
          var ALDT = $('#ADLT').val();
-         //alert(ALDT);
+         if (ALDT === undefined || ALDT === null || ALDT === '') {
+             ALDT = 0.00;
+         }
          var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
          //alert(TTR);
          document.getElementById("TTR").value = TTR;

@@ -91,7 +91,7 @@
     }
 </style>
 <div class="container">
-    <h1 class="h4 text-gray-900">Welcome CEO</h1>
+    <h1 class="h4 text-gray-900">Welcome Commanding Officer!</h1>
     <div class="card-body">
 
         <div class="form-group row">

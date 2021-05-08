@@ -4,6 +4,7 @@
 <?php !isset($weaponReliability3) ? $weaponReliability3 = 0 : $weaponReliability3; ?>
 <?php !isset($weaponReliability4) ? $weaponReliability4 = 0 : $weaponReliability4; ?>
 <?php !isset($reliability) ? $reliability = 0 : $reliability; ?>
+<?php !isset($time_entered) ? $time_entered = null : $time_entered; ?>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <style>
@@ -48,7 +49,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <form class="user" role="form" id="update_form" method="post" action="">
-                                            <input type="text" class="form-control form-control-user" name="time" id="system_time" placeholder="Enter Time">
+                                            <input type="text" class="form-control form-control-user" name="time" id="system_time" value = "<?php echo $time_entered ?>" placeholder="Enter Time">
                                         </form>
                                     </div>
                                 </div>
@@ -94,7 +95,7 @@
                                         );
                                         ?>
                                     </div>
-                                    <div class="col-md-6" id="reliability_chart" style="display:none;">
+                                    <div class="col-md-6" id="reliability_chart">
                                         <!-- <h3 class="text-grey-900">Relaibility</h3> -->
                                         <div>
                                             <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
@@ -111,6 +112,12 @@
 
 
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row justify-content-center my-3">
+                            <div class="col-md-6">
+                                <a class="btn btn-primary rounded-pill btn-user btn-block" href="<?= base_url(); ?>CO"><i class="fas fa-chevron-left"></i> Back</a>
                             </div>
                         </div>
                     </div>
@@ -201,6 +208,7 @@
 
     var dps = []; //Global
     var reliability;
+    var enteredTime;
 
     $('#system_time').on('focusout', function() {
         var time = $(this).val();
@@ -217,6 +225,7 @@
                 $('#reliability_bar').html(data + "%");
                 $('#reliability_bar').width(data * 5);
                 reliability = data;
+                enteredTime = time;
             },
             async: false
         });
@@ -233,12 +242,9 @@
                 for (var i in result) {
                     dps.push(result[i]);
                 }
-
             },
             async: false
-
         });
-
 
         $.ajax({
             url: '<?= base_url(); ?>Mission/PageReload',
@@ -253,7 +259,8 @@
                 'wp3': <?php echo json_encode($weapon3, JSON_NUMERIC_CHECK); ?>,
                 'wp4': <?php echo json_encode($weapon4, JSON_NUMERIC_CHECK); ?>,
                 'avail': <?php echo json_encode($availability, JSON_NUMERIC_CHECK); ?>,
-                'rel': reliability
+                'rel': reliability,
+                'time': enteredTime
             },
             success: function(data) {
                 var newDoc = document.open("text/html", "replace");

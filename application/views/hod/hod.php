@@ -58,7 +58,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="s_availability">
-                                            <div class="center-text" id="sensor_availability">0%</div>
+                                            <div class="center-text" id="sensor_availability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="s_reliability">
-                                            <div class="center-text" id="sensor_reliability">0%</div>
+                                            <div class="center-text" id="sensor_reliability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -188,6 +188,10 @@
 <script>
     $('#sensor_type').on('change', function() {
         var id = $(this).val();
+        $('#sensor_reliability').html("0.00%");
+        document.getElementById("s_reliability").style.backgroundColor = "#bbb";
+        $('#sensor_time').val(null);
+
 
         $.ajax({
             url: '<?= base_url(); ?>HOD/get_availability',
@@ -217,6 +221,9 @@
 
     $('#fire_type').on('change', function() {
         var id = $(this).val();
+        $('#fire_reliability').html("0.00%");
+        document.getElementById("f_reliability").style.backgroundColor = "#bbb";
+        $('#fire_time').val(null);
 
         $.ajax({
             url: '<?= base_url(); ?>HOD/get_availability',
@@ -246,6 +253,9 @@
 
     $('#weapon_type').on('change', function() {
         var id = $(this).val();
+        $('#weapon_reliability').html("0.00%");
+        document.getElementById("w_reliability").style.backgroundColor = "#bbb";
+        $('#weapon_time').val(null);
 
         $.ajax({
             url: '<?= base_url(); ?>HOD/get_availability',

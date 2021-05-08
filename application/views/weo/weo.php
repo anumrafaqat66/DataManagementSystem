@@ -38,8 +38,8 @@
         width: 150px;
         text-align: center;
         box-shadow: 5px 10px #888888;
-        border-radius: 10px;    
-        background-color:#FA8072;
+        border-radius: 10px;
+        background-color: #FA8072;
     }
 
     .box.hidden {
@@ -147,14 +147,14 @@
                                 <div class="col-sm-6">
                                     <div class="text-center">
                                         <span class="dot" id="system_availability">
-                                            <div class="center-text" id="availability">0%</div>
+                                            <div class="center-text h4" id="availability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="text-center">
                                         <span class="dot" id="system_reliability">
-                                            <div class="center-text" id="reliability">0%</div>
+                                            <div class="center-text h4" id="reliability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -186,14 +186,14 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <div class="card">
-                    <div class="card-header">
-                        SAM (Surface to Air Missile)
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">SAM (Surface to Air Missile)</h1>
                     </div>
 
-                    <div class="card-body mx-5">
+                    <div class="card-body mx-5 bg-custom3">
                         <div>
-                            <div class="box" ><a href="" style="float:left; font-size:small;color:black" id="CCS_A">A</a> CCS <a href="" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
+                            <div class="box"><a href="" style="float:left; font-size:small;color:black" id="CCS_A">A</a> CCS <a href="" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
 
                         </div>
 
@@ -201,7 +201,7 @@
                             <div class="line_bottom"></div>
                             <div class="box_center" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color:black" id="FC1_A">A</a>FC1<a href="" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white" ><a href="" style="float:left; font-size:small;color:black;" id="SAM_A">A</a>SAM<a href="" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small;color:black;" id="SAM_A">A</a>SAM<a href="" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
@@ -388,6 +388,10 @@
         $('#main_gun').hide();
         $('#CRG_Port').hide();
         $('#CRG_STDB').hide();
+        $('#reliability').html("0.00%");
+        document.getElementById("system_reliability").style.backgroundColor = "#bbb";
+        $('#system_time').val(null);
+
         var name = $(this).val();
         if (name != '') {
             $.ajax({

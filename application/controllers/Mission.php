@@ -50,6 +50,7 @@ class Mission extends CI_Controller
 		$data['weapon4'] = $_POST['wp4'];	
 		$data['availability'] = $_POST['avail'];	
 		$data['reliability'] = $_POST['rel'];	
+		$data['time_entered'] = $_POST['time'];	
 		//$this->load->view('mission/AAW', $data);
 		echo $data = $this->load->view('mission/AAW',$data, TRUE);
 		
