@@ -12,7 +12,7 @@ class Manager extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "manager") {
+            if ($status == "manager" || $status == "co" || $status == "hod" || $status == "weo") {
                 $data['manager_controller_data'] = $this->db->get('controller_data')->result_array();
                 $this->load->view('manager/manager', $data);
             } else {

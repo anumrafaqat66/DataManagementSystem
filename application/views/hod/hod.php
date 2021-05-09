@@ -1,4 +1,4 @@
-<?php $this->load->view('common/header'); ?>
+<?php $this->load->view('hod/common/header'); ?>
 <style>
     .dot {
         height: 75px;
@@ -108,7 +108,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="f_availability">
-                                            <div class="center-text" id="fire_availability">0%</div>
+                                            <div class="center-text" id="fire_availability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="f_reliability">
-                                            <div class="center-text" id="fire_reliability">0%</div>
+                                            <div class="center-text" id="fire_reliability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="w_availability">
-                                            <div class="center-text" id="weapon_availability">0%</div>
+                                            <div class="center-text" id="weapon_availability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
                                 <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="w_reliability">
-                                            <div class="center-text" id="weapon_reliability">0%</div>
+                                            <div class="center-text" id="weapon_reliability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>

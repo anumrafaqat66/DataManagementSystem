@@ -1,4 +1,4 @@
-<?php $this->load->view('common/header'); ?>
+<?php $this->load->view('co/common/header'); ?>
 <?php !isset($weaponReliability1) ? $weaponReliability1 = 0 : $weaponReliability1; ?>
 <?php !isset($weaponReliability2) ? $weaponReliability2 = 0 : $weaponReliability2; ?>
 <?php !isset($weaponReliability3) ? $weaponReliability3 = 0 : $weaponReliability3; ?>
@@ -15,7 +15,7 @@
     }
 </style>
 <div class="container">
-    <h1 class="h4 text-gray-900">Welcome CO</h1>
+    <!-- <h1 class="h4 text-gray-900">Welcome CO</h1> -->
     <div class="card-body">
 
         <div class="form-group row">
@@ -117,7 +117,7 @@
 
                         <div class="form-group row justify-content-center my-3">
                             <div class="col-md-6">
-                                <a class="btn btn-primary rounded-pill btn-user btn-block" href="<?= base_url(); ?>CO"><i class="fas fa-chevron-left"></i> Back</a>
+                                <a class="btn btn-primary rounded-pill btn-user btn-block" href="<?= base_url(); ?>mission"><i class="fas fa-chevron-left"></i> Back</a>
                             </div>
                         </div>
                     </div>
@@ -250,6 +250,7 @@
             url: '<?= base_url(); ?>Mission/PageReload',
             method: 'POST',
             data: {
+                'page_name': 'AAW',
                 'wr1': dps[0],
                 'wr2': dps[1],
                 'wr3': dps[2],

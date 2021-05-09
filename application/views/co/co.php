@@ -1,4 +1,4 @@
-<?php $this->load->view('common/header'); ?>
+<?php $this->load->view('co/common/header'); ?>
 <style>
     .dot {
         height: 180px;
@@ -104,35 +104,35 @@
 
                     <div class="card-body bg-custom3">
                         <div class="form-group row">
-                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>Mission/mission/<?= 'AAW' ?>">
-                            <div  style="height:180px">
-                                <div style="margin-top:135px">
-                                    <h1 class="h1 text-dark text-center "><strong>AAW</strong></h1>
+                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>">
+                                <div style="height:180px">
+                                    <div style="margin-top:135px">
+                                        <h1 class="h1 text-dark text-center "><strong>AAW</strong></h1>
+                                    </div>
                                 </div>
-                            </div>
-                             </a>
-                           <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>Mission/mission/<?= 'ASuW' ?>">
-                            <div  style="height:180px">
-                                <div style="margin-top:135px">
-                                    <h1 class="h1 text-info text-center "><strong>ASuW</strong></h1>
+                            </a>
+                            <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>">
+                                <div style="height:180px">
+                                    <div style="margin-top:135px">
+                                        <h1 class="h1 text-primary text-center "><strong>ASuW</strong></h1>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
                             <!-- <div class="w-100"></div> -->
-                        <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>Mission/mission/<?= 'ASW' ?>">
-                            <div  style="height:180px">
-                                <div style="margin-top:135px">
-                                    <h1 class="h1 text-white text-center "><strong>ASW</strong></h1>
+                            <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>">
+                                <div style="height:180px">
+                                    <div style="margin-top:135px">
+                                        <h1 class="h1 text-white text-center "><strong>ASW</strong></h1>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>Mission/mission/<?= 'EW' ?>">
-                            <div  style="height:180px">
-                                <div style="margin-top:135px">
-                                    <h1 class="h1 text-white text-center "><strong>EW</strong></h1>
+                            </a>
+                            <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>">
+                                <div style="height:180px">
+                                    <div style="margin-top:135px">
+                                        <h1 class="h1 text-white text-center "><strong>EW</strong></h1>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
                         </div>
 
                         <!-- <div class="card">
@@ -158,6 +158,11 @@
                                 </div>
                             </div>
                         </div> -->
+                        <div class="form-group row justify-content-center my-3">
+                            <div class="col-md-6">
+                                <a class="btn btn-primary rounded-pill btn-user btn-block" href="<?= base_url(); ?>CO"><i class="fas fa-chevron-left"></i> Back</a>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

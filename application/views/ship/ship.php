@@ -1,7 +1,7 @@
-<?php $this->load->view('common/header'); ?>
+<?php $this->load->view('co/common/header'); ?>
 <style>
        .img-ship {
-        background: url('<?= base_url() ?>assets/img/ship1.jpg');
+        background: url('<?= base_url() ?>assets/img/ship.jpg');
         background-position: center;
         background-size: cover;
     }

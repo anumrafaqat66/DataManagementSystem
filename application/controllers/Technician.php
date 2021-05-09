@@ -11,7 +11,7 @@ class Technician extends CI_Controller
       if ($this->session->has_userdata('user_id')) {
 			$id = $this->session->userdata('user_id');
 			$status = $this->session->userdata('status');
-			if ($status == "technician") {
+			if ($status == "technician" || $status == "co" || $status == "hod" || $status == "weo" || $status == "manager") {
           	 $data['technician_controller_data'] = $this->db->get('controller_data')->result_array();
 		   	 $this->load->view('technician/technician', $data);
 	       }else{

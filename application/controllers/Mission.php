@@ -13,46 +13,50 @@ class Mission extends CI_Controller
 
 	public function mission($name = NULL)
 	{
-		if ($name = "AAW") {
-			$weapons = $this->db->where('Mission_name', $name)->get('weapon_systems')->result_array();
-			//print_r($weapons);exit;
+		$weapons = $this->db->where('Mission_name', $name)->get('weapon_systems')->result_array();
+		//print_r($weapons);exit;
 
-			$result = 1;
+		$result = 1;
 
-			for ($i = 0; $i < count($weapons); $i++) {
-				$result = $result * (1 - $weapons[$i]['Availability'] / 100);
-				$datarow = $i  + 1;
-				$data["weapon$datarow"] = $weapons[$i]['Availability'];
-			}
+		for ($i = 0; $i < count($weapons); $i++) {
+			$result = $result * (1 - $weapons[$i]['Availability'] / 100);
+			$datarow = $i  + 1;
+			$data["weapon$datarow"] = $weapons[$i]['Availability'];
+		}
 
-			$data['availability'] = number_format((1 - ($result)) * 100, 2);
-			//echo $data['availability']; 
+		$data['availability'] = number_format((1 - ($result)) * 100, 2);
+
+		if ($name == "AAW") {
 			$this->load->view('mission/AAW', $data);
-		} else if ($name = "ASuW") {
-			$this->load->view('mission/ASuW');
-		} else if ($name = "ASW") {
-			$this->load->view('mission/ASW');
-		} else if ($name = "EW") {
-			$this->load->view('mission/EW');
+		} else if ($name == "ASuW") {
+			$this->load->view('mission/ASuW', $data);
+		} else if ($name == "ASW") {
+			$this->load->view('mission/ASW', $data);
+		} else if ($name == "EW") {
+			$this->load->view('mission/EW', $data);
 		}
 	}
 
 	public function PageReload()
 	{
-		
-		$data['weaponReliability1'] = $_POST['wr1'];	
-		$data['weaponReliability2'] = $_POST['wr2'];	
-		$data['weaponReliability3'] = $_POST['wr3'];	
+		$pageName = $_POST['page_name'];
+		$data['weaponReliability1'] = $_POST['wr1'];
+		$data['weaponReliability2'] = $_POST['wr2'];
+		$data['weaponReliability3'] = $_POST['wr3'];
 		$data['weaponReliability4'] = $_POST['wr4'];
-		$data['weapon1'] = $_POST['wp1'];	
-		$data['weapon2'] = $_POST['wp2'];	
-		$data['weapon3'] = $_POST['wp3'];	
-		$data['weapon4'] = $_POST['wp4'];	
-		$data['availability'] = $_POST['avail'];	
-		$data['reliability'] = $_POST['rel'];	
-		$data['time_entered'] = $_POST['time'];	
-		//$this->load->view('mission/AAW', $data);
-		echo $data = $this->load->view('mission/AAW',$data, TRUE);
+		$data['weapon1'] = $_POST['wp1'];
+		$data['weapon2'] = $_POST['wp2'];
+		$data['weapon3'] = $_POST['wp3'];
+		$data['weapon4'] = $_POST['wp4'];
+		$data['availability'] = $_POST['avail'];
+		$data['reliability'] = $_POST['rel'];
+		$data['time_entered'] = $_POST['time'];
+		
+		if($pageName == 'AAW') {
+			echo $data = $this->load->view('mission/AAW', $data, TRUE);
+		} else if($pageName == 'ASuW') {
+			echo $data = $this->load->view('mission/ASuW', $data, TRUE);
+		}
 		
 	}
 
@@ -98,7 +102,7 @@ class Mission extends CI_Controller
 
 					endfor;
 				}
-				
+
 				$weapons_reliablity = $this->db->where('Mission_name', $mission_name)->get('weapon_systems')->result_array();
 
 				$result = 1;

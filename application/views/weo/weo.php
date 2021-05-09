@@ -1,4 +1,4 @@
-<?php $this->load->view('common/header'); ?>
+<?php $this->load->view('weo/common/header'); ?>
 <style>
     .dot {
         height: 180px;
@@ -193,22 +193,22 @@
 
                     <div class="card-body mx-5 bg-custom3">
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color:black" id="CCS_A">A</a> CCS <a href="" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="CCS_A">A</a> CCS <a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
 
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color:black" id="FC1_A">A</a>FC1<a href="" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="FC1_A">A</a>FC1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small;color:black;" id="SAM_A">A</a>SAM<a href="" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="SAM_A">A</a>SAM<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color:black" id="S1_A">A</a>S1<a href="" style="float:right;color:black; font-size:small;" id="S1_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right;color:black; font-size:small;" id="S1_R">R</a></div>
 
                         </div>
                     </div>
@@ -228,22 +228,22 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
 
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black" id="FC2_A">A</a>FC2<a href="" style="float:right; font-size:small;color: black" id="FC2_R">R</a></div>
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC2_A">A</a>FC2<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="FC2_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small;color: black" id="Main_Gun_A">A</a>Main Gun<a href="" style="float:right; font-size:small;color: black" id="Main_Gun_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="Main_Gun_A">A</a>Main Gun<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="Main_Gun_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
 
                         </div>
                     </div>
@@ -263,14 +263,14 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
-                            <div class="box" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black" id="FC3_A">A</a>FC3<a href="" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC3_A">A</a>FC3<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small;color: black" id="CRG_(Port)_A">A</a>CRG (Port)<a href="" style="float:right; font-size:small;color: black" id="CRG_(Port)_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CRG_(Port)_A">A</a>CRG (Port)<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CRG_(Port)_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -280,8 +280,8 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
-                            <div class="box" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black;" id="FC4_A">A</a>FC4<a href="" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black;" id="FC4_A">A</a>FC4<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
 
                         </div>
                     </div>
@@ -302,14 +302,14 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
-                            <div class="box" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black; " id="FC3_A">A</a>FC3<a href="" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC3_A">A</a>FC3<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a>CRG(STDB)<a href="" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a>CRG(STDB)<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -319,8 +319,8 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color: black; " id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black; " id="S1_R">R</a></div>
-                            <div class="box" style="background-color:#FA8072;color:white;"><a href="" style="float:left; font-size:small;color: black; " id="FC4_A">A</a>FC4<a href="" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="S1_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC4_A">A</a>FC4<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
                         </div>
                     </div>
                 </div>
@@ -340,12 +340,12 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="" style="float:right; font-size:small;color: black ;" id="S1_R">R</a></div>   
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="S1_R">R</a></div>   
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="" style="float:left; font-size:small; color: black;" id="SSM_A">A</a>SSM<a href="" style="float:right; font-size:small;color: black; " id="SSM_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="SSM_A">A</a>SSM<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="SSM_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -353,7 +353,7 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="" style="float:left; font-size:small;color: black; " id="S2_A">A</a>S2<a href="" style="float:right; font-size:small;color: black; " id="S2_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="S2_A">A</a>S2<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="S2_R">R</a></div>
                         </div>
                     </div>
                 </div>

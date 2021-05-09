@@ -1,4 +1,4 @@
-<?php $this->load->view('common/header'); ?>
+<?php $this->load->view('manager/common/header'); ?>
 
 <div class="container">
     <div class="card">

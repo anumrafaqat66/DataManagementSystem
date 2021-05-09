@@ -41,7 +41,17 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>User_Login/Dashboard">
+                <a class="nav-link" href="<?php if ($this->session->userdata('status') == 'weo') {
+                                                echo "WEO";
+                                            } else if ($this->session->userdata('status') == 'co') {
+                                                echo "CO";
+                                            } else if ($this->session->userdata('status') == 'hod') {
+                                                echo "HOD";
+                                            } else if ($this->session->userdata('status') == 'manager') {
+                                                echo "Manager";
+                                            }else {
+                                                echo "Technician";
+                                            } ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>

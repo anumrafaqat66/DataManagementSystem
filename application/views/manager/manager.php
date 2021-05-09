@@ -1,4 +1,4 @@
- <?php $this->load->view('common/header'); ?>
+ <?php $this->load->view('manager/common/header'); ?>
 
  <style>
      ::-webkit-input-placeholder {
@@ -34,7 +34,7 @@
 
                      <div class="card bg-custom3">
                          <div class="card-header bg-custom1">
-                             <h1 class="h4 text-white">Records</h1>
+                             <h1 class="h4 text-white">Manager Records</h1>
                          </div>
                          <div class="card-body bg-custom3">
                              <div id="table_div">
@@ -277,8 +277,6 @@ Data records table place
                  </div>
              </div>
          </div>
-
-
      </div>
  </div>
 
