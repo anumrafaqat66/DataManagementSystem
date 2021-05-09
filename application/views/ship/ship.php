@@ -1,5 +1,10 @@
 <?php $this->load->view('common/header'); ?>
 <style>
+       .img-ship {
+        background: url('<?= base_url() ?>assets/img/ship1.jpg');
+        background-position: center;
+        background-size: cover;
+    }
     .dot {
         height: 180px;
         width: 180px;
@@ -89,6 +94,9 @@
         width: 295px;
         margin-top: -6px;
     }
+    #img-ship {
+
+    }
 </style>
 <div class="container">
     <h1 class="h4 text-gray-900">Welcome Commanding Officer!</h1>
@@ -99,40 +107,18 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4 text-white">Missions</h1>
+                        <h1 class="h4 text-white">Mission</h1>
                     </div>
 
                     <div class="card-body bg-custom3">
                         <div class="form-group row">
-                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>">
+                            <a class="col mx-1 my-1 img-ship" href="<?= base_url(); ?>missions">
                             <div  style="height:180px">
                                 <div style="margin-top:135px">
-                                    <h1 class="h1 text-dark text-center "><strong>AAW</strong></h1>
+                                    <h1 class="h1 text-dark text-center "><strong></strong></h1>
                                 </div>
                             </div>
                              </a>
-                           <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>">
-                            <div  style="height:180px">
-                                <div style="margin-top:135px">
-                                    <h1 class="h1 text-info text-center "><strong>ASuW</strong></h1>
-                                </div>
-                            </div>
-                        </a>
-                            <!-- <div class="w-100"></div> -->
-                        <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>">
-                            <div  style="height:180px">
-                                <div style="margin-top:135px">
-                                    <h1 class="h1 text-white text-center "><strong>ASW</strong></h1>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>">
-                            <div  style="height:180px">
-                                <div style="margin-top:135px">
-                                    <h1 class="h1 text-white text-center "><strong>EW</strong></h1>
-                                </div>
-                            </div>
-                        </a>
                         </div>
 
                         <!-- <div class="card">

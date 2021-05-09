@@ -415,4 +415,7 @@ Data records table place
      function hide_detail_div() {
          $('#record_detail_div').slideUp();;
      }
+
+     var element = document.getElementById('page-top');
+     element.style.paddingRight = null;
  </script>

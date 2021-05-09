@@ -10,8 +10,14 @@ class CO extends CI_Controller
     public function index()
     {
         $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
+        $this->load->view('ship/ship', $data);
+    }
+     public function mission()
+    {
+        $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
         $this->load->view('co/co', $data);
     }
+
 
     public function get_system_availability()
     {
