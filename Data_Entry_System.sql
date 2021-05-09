@@ -268,7 +268,7 @@ insert into weapon_system_config values (17,4,7,'P','2');
 insert into weapon_system_config values (18,4,11,'S','1');
 
 
---ASuW Mission Entries
+-- ASuW Mission Entries
 insert into weapon_systems values (5,'SSM',0.00,0.00,'ASuW','Anti Surface war mission');
 insert into weapon_systems values (6,'Main Gun',0.00,0.00,'ASuW','Anti Surface war mission');
 insert into weapon_systems values (7,'CRG (Port)',0.00,0.00,'ASuW','Anti Surface war mission');
