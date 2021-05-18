@@ -21,7 +21,7 @@ class HOD extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 
-            if ($status == "hod") {
+            if ($status == "hod" || $status == "weo" || $status == "co") {
                 $controller_id = $_POST['controller_id'];
                 $view_array = array();
                 $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
@@ -55,7 +55,7 @@ class HOD extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 
-            if ($status == "hod") {
+            if ($status == "hod" || $status == "weo" || $status == "co") {
                 $controller_id = $_POST['controller_id'];
                 $time = $_POST['time'];
                 if ($time > 0) {

@@ -361,6 +361,54 @@
         </div>
     </div>
 
+    <div class="card-body" id="Torpedo" style="display: none">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">Torpedo</h1>
+                    </div>
+
+                    <div class="card-body bg-custom3" style="height:100px;">
+                       
+                        <div class="lines">
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a>SONAR<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
+                            <div class="line_middle"></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="Torpedo_A">A</a>Torpedo<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="Torpedo_R">R</a></div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body" id="RDC" style="display: none">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">RDC</h1>
+                    </div>
+
+                    <div class="card-body bg-custom3" style="height:100px;">
+                       
+                        <div class="lines">
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a>SONAR<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
+                            <div class="line_middle"></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="RDC_A">A</a>RDC<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="RDC_R">R</a></div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 
@@ -374,6 +422,8 @@
         $('#CRG_Port').hide();
         $('#CRG_STDB').hide();
         $('#SSM').hide();
+        $('#Torpedo').hide();
+        $('#RDC').hide();
         //$('#sam_card').hide();
         var name = $('#controller_type').val();
         
@@ -387,6 +437,10 @@
             $('#CRG_STDB').show();
         } else if (name == 'SSM') {
             $('#SSM').show();
+        } else if (name == 'Torpedo') {
+            $('#Torpedo').show();
+        } else if (name == 'RDC') {
+            $('#RDC').show();
         }
 
         if (name != '') {
@@ -426,6 +480,8 @@
         $('#CRG_Port').hide();
         $('#CRG_STDB').hide();
         $('#SSM').hide();
+        $('#Torpedo').hide();
+        $('#RDC').hide();
         $('#reliability').html("0.00%");
         document.getElementById("system_reliability").style.backgroundColor = "#bbb";
         $('#system_time').val(null);

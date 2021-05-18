@@ -236,6 +236,10 @@ insert into controller_data values (11,'Weapon','CRG (STDB)','3004','','','',0.0
 
 insert into controller_data values (12,'Weapon','SSM','3005','','','',0.00,0.00,0.00,0.00);
 
+insert into controller_data values (13,'Weapon','Torpedo','3006','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (14,'Weapon','RDC','3007','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (15,'Sensor','SONAR','1004','','','',0.00,0.00,0.00,0.00);
+
 
 insert into weapon_systems values (1,'SAM',0.00,0.00,'AAW','Anti Air war mission');
 
@@ -294,3 +298,86 @@ insert into weapon_system_config values (33,8,1,'P','1');
 insert into weapon_system_config values (34,8,6,'P','2');
 insert into weapon_system_config values (35,8,7,'P','2');
 insert into weapon_system_config values (36,8,11,'S','1');
+
+-- ASW Mission Entries
+insert into weapon_systems values (9,'Torpedo',0.00,0.00,'ASW','Anti-submarine warfare mission');
+insert into weapon_systems values (10,'RDC',0.00,0.00,'ASW','Anti-submarine warfare mission');
+
+insert into weapon_system_config values (37,9,15,'S','1');
+insert into weapon_system_config values (38,9,13,'S','1');
+
+insert into weapon_system_config values (39,10,15,'S','1');
+insert into weapon_system_config values (40,10,14,'S','1');
+
+-- Sample Data Insertion 
+
+insert into controller_data_detail values (1,1,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (2,1,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (3,1,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (4,2,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (5,2,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (6,2,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (7,3,290,20,'',25,'',30,'',0.00, CURDATE());
+insert into controller_data_detail values (8,3,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (9,3,330,20,'',5,'',10,'',0.00, CURDATE());
+
+insert into controller_data_detail values (10,4,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (11,4,290,20,'',35,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (12,4,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (13,5,350,5,'',5,'',5,'',0.00, CURDATE());
+insert into controller_data_detail values (14,5,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (15,5,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (16,6,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (17,6,340,10,'',5,'',10,'',0.00, CURDATE());
+insert into controller_data_detail values (18,6,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (19,7,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (20,7,290,30,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (21,7,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (22,8,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (23,8,330,10,'',15,'',10,'',0.00, CURDATE());
+insert into controller_data_detail values (24,8,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (25,9,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (26,9,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (27,9,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (28,10,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (29,10,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (30,10,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (31,11,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (32,11,340,5,'',10,'',10,'',0.00, CURDATE());
+insert into controller_data_detail values (33,11,320,20,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (34,12,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (35,12,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (36,12,350,5,'',8,'',2,'',0.00, CURDATE());
+
+insert into controller_data_detail values (37,13,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (38,13,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (39,13,320,10,'',20,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (40,14,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (41,14,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (42,14,330,10,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (43,15,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (44,15,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (45,15,330,10,'',10,'',15,'',0.00, CURDATE());
+
+update controller_data_detail set TTR = (TCM + TPM + ADLT);
+
+update controller_data
+set MTBF = (select sum(cdd.TBF)/3
+            from controller_data_detail cdd
+			where controller_data.ID = cdd.Controller_Data_ID),
+    MTTR = (select sum(cdd.TTR)/3
+            from controller_data_detail cdd
+			where controller_data.ID = cdd.Controller_Data_ID);
+

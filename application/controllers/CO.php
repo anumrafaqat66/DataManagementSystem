@@ -25,7 +25,7 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "weo") {
+            if ($status == "co") {
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
                 $view_rows = array();
@@ -114,7 +114,7 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "weo") {
+            if ($status == "co") {
                 $weapon_name = $_POST['weapon_name'];
                 //echo $weapon_name;exit;
                 $view_array = array();

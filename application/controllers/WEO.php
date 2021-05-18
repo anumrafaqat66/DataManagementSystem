@@ -18,7 +18,7 @@ class WEO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "weo") {
+            if ($status == "weo" || $status = "co") {
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
                 $view_rows = array();
@@ -107,7 +107,7 @@ class WEO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "weo") {
+            if ($status == "weo" || $status = "co") {
                 $weapon_name = $_POST['weapon_name'];
                 $system_time = $_POST['time'];
                 //echo $weapon_name;exit;
@@ -216,7 +216,7 @@ class WEO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "weo") {
+            if ($status == "weo" || $status = "co") {
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
 

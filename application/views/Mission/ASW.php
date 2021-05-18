@@ -1,8 +1,6 @@
 <?php $this->load->view('co/common/header'); ?>
 <?php !isset($weaponReliability1) ? $weaponReliability1 = 0 : $weaponReliability1; ?>
 <?php !isset($weaponReliability2) ? $weaponReliability2 = 0 : $weaponReliability2; ?>
-<?php !isset($weaponReliability3) ? $weaponReliability3 = 0 : $weaponReliability3; ?>
-<?php !isset($weaponReliability4) ? $weaponReliability4 = 0 : $weaponReliability4; ?>
 <?php !isset($reliability) ? $reliability = 0 : $reliability; ?>
 <?php !isset($time_entered) ? $time_entered = null : $time_entered; ?>
 
@@ -23,7 +21,7 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4 text-white">ASW Mission</h1>
+                        <h1 class="h4 text-white">Anit-Submarine Warfare Mission</h1>
                     </div>
 
                     <div class="card-body bg-custom3">
@@ -36,8 +34,8 @@
                             </div>
 
                         </div>
-                        <h2>Page Under Construction!!</h2>
-                        <!-- <div class="card">
+                        <!-- <h2>Page Under Construction!!</h2> -->
+                        <div class="card">
                             <div class="card-header bg-custom1">
                                 <h5 class="h5 text-white">Mission Statistics</h5>
                             </div>
@@ -71,9 +69,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <!-- Graphs -->
-                        <!-- <div class="card">
+                        <div class="card">
                             <div class="card-body bg-custom3">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -81,13 +79,10 @@
                                             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                                         </div>
                                         <?php
-                                        // $dataPoints = array(
-                                        //     array("y" => $weapon1, "label" => "SSM"),
-                                        //     array("y" => $weapon2, "label" => "Main Gun"),
-                                        //     array("y" => $weapon3, "label" => "CRG(port)"),
-                                        //     array("y" => $weapon4, "label" => "CRG(STDB)"),
-
-                                        // );
+                                        $dataPoints = array(
+                                            array("y" => $weapon1, "label" => "Torpedo"),
+                                            array("y" => $weapon2, "label" => "RDC"),
+                                        );
                                         ?>
                                     </div>
                                     <div class="col-md-6" id="reliability_chart">
@@ -95,17 +90,15 @@
                                             <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
                                         </div>
                                         <?php
-                                        // $dataPoints1 = array(
-                                        //     array("y" => $weaponReliability1, "label" => "SSM"),
-                                        //     array("y" => $weaponReliability2, "label" => "Main Gun"),
-                                        //     array("y" => $weaponReliability3, "label" => "CRG(Port)"),
-                                        //     array("y" => $weaponReliability4, "label" => "CRG(STDB)"),
-                                        // );
+                                        $dataPoints1 = array(
+                                            array("y" => $weaponReliability1, "label" => "Torpedo"),
+                                            array("y" => $weaponReliability2, "label" => "RDC"),
+                                        );
                                         ?>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="form-group row justify-content-center my-3">
                             <div class="col-md-6">
@@ -245,12 +238,8 @@
                 'page_name': 'ASW',
                 'wr1': dps[0],
                 'wr2': dps[1],
-                'wr3': dps[2],
-                'wr4': dps[3],
                 'wp1': <?php echo json_encode($weapon1, JSON_NUMERIC_CHECK); ?>,
                 'wp2': <?php echo json_encode($weapon2, JSON_NUMERIC_CHECK); ?>,
-                'wp3': <?php echo json_encode($weapon3, JSON_NUMERIC_CHECK); ?>,
-                'wp4': <?php echo json_encode($weapon4, JSON_NUMERIC_CHECK); ?>,
                 'avail': <?php echo json_encode($availability, JSON_NUMERIC_CHECK); ?>,
                 'rel': reliability,
                 'time': enteredTime

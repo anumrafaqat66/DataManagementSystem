@@ -40,24 +40,36 @@ class Mission extends CI_Controller
 	public function PageReload()
 	{
 		$pageName = $_POST['page_name'];
-		$data['weaponReliability1'] = $_POST['wr1'];
-		$data['weaponReliability2'] = $_POST['wr2'];
-		$data['weaponReliability3'] = $_POST['wr3'];
-		$data['weaponReliability4'] = $_POST['wr4'];
-		$data['weapon1'] = $_POST['wp1'];
-		$data['weapon2'] = $_POST['wp2'];
-		$data['weapon3'] = $_POST['wp3'];
-		$data['weapon4'] = $_POST['wp4'];
+
+		if ($pageName == 'AAW' || $pageName == 'ASuW') {
+			$data['weaponReliability1'] = $_POST['wr1'];
+			$data['weaponReliability2'] = $_POST['wr2'];
+			$data['weaponReliability3'] = $_POST['wr3'];
+			$data['weaponReliability4'] = $_POST['wr4'];
+			$data['weapon1'] = $_POST['wp1'];
+			$data['weapon2'] = $_POST['wp2'];
+			$data['weapon3'] = $_POST['wp3'];
+			$data['weapon4'] = $_POST['wp4'];
+		} else if ($pageName == 'ASW') {
+			$data['weaponReliability1'] = $_POST['wr1'];
+			$data['weaponReliability2'] = $_POST['wr2'];
+			$data['weapon1'] = $_POST['wp1'];
+			$data['weapon2'] = $_POST['wp2'];
+		}
+
 		$data['availability'] = $_POST['avail'];
 		$data['reliability'] = $_POST['rel'];
 		$data['time_entered'] = $_POST['time'];
-		
-		if($pageName == 'AAW') {
+
+		if ($pageName == 'AAW') {
 			echo $data = $this->load->view('mission/AAW', $data, TRUE);
-		} else if($pageName == 'ASuW') {
+		} else if ($pageName == 'ASuW') {
 			echo $data = $this->load->view('mission/ASuW', $data, TRUE);
+		} else if ($pageName == 'ASW') {
+			echo $data = $this->load->view('mission/ASW', $data, TRUE);
+		} else if ($pageName == 'EW') {
+			echo $data = $this->load->view('mission/EW', $data, TRUE);
 		}
-		
 	}
 
 
