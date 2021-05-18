@@ -25,6 +25,41 @@ USE `data_entry_system`;
 
 -- --------------------------------------------------------
 
+DELIMITER $$
+--
+-- Functions
+--
+CREATE FUNCTION `Get_Availability` (`Sensor_id` INT) RETURNS DECIMAL(50,2) BEGIN
+ DECLARE sensor_value varchar(25);
+ DECLARE v_MTBF decimal;
+ DECLARE v_MTTR decimal;
+ 
+  Select MTBF into v_MTBF from controller_data where id = sensor_id;
+  
+  Select MTTR into v_MTTR from controller_data where id = sensor_id;
+ 
+ RETURN (v_MTBF / (v_MTBF + v_MTTR)) * 100;
+END$$
+
+--
+-- Procedures
+--
+CREATE PROCEDURE `Calculate_Availability_for_all` ()  BEGIN
+ DECLARE loop_count INT;
+ DECLARE i INT DEFAULT 1;
+ 
+ select count(*) into loop_count from controller_data;
+ 
+WHILE i <= loop_count DO
+    UPDATE controller_data set Availability = get_availability(i) where id = i;
+
+    SET i = i + 1;
+END WHILE;
+ 
+END$$
+
+DELIMITER ;
+
 --
 -- Table structure for table `controller_data`
 --
@@ -381,3 +416,8 @@ set MTBF = (select sum(cdd.TBF)/3
             from controller_data_detail cdd
 			where controller_data.ID = cdd.Controller_Data_ID);
 
+
+call calculate_availability_for_all;
+
+Drop procedure calculate_availability_for_all;
+Drop Function get_availability;
