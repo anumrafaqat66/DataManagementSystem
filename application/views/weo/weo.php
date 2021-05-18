@@ -395,14 +395,64 @@
                     </div>
 
                     <div class="card-body bg-custom3" style="height:100px;">
-                       
                         <div class="lines">
                             <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a>SONAR<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
                             <div class="line_middle"></div>
                             <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="RDC_A">A</a>RDC<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="RDC_R">R</a></div>
                         </div>
-                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="card-body" id="PJ-46" style="display: none">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">PJ-46</h1>
+                    </div>
+
+                    <div class="card-body mx-5">
+                        <div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>   
+                        </div>
+
+                        <div class="lines">
+                            <div class="line_bottom"></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="PJ-46_A">A</a>PJ-46<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="PJ-46_R">R</a></div>
+                        </div>
+
+                        <div class="lines">
+                            <div class="line_top"></div>
+                        </div>
+
+                        <div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="NRJ_A">A</a>NRJ<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="NRJ_R">R</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body" id="NRJ" style="display: none">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card bg-custom3">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h5 text-white">Jammer (NRJ)</h1>
+                    </div>
+
+                    <div class="card-body mx-5">
+                        <div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="NRJ_A">A</a>NRJ<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="NRJ_R">R</a></div>   
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>
@@ -424,6 +474,8 @@
         $('#SSM').hide();
         $('#Torpedo').hide();
         $('#RDC').hide();
+        $('#PJ-46').hide();
+        $('#NRJ').hide();
         //$('#sam_card').hide();
         var name = $('#controller_type').val();
         
@@ -441,7 +493,12 @@
             $('#Torpedo').show();
         } else if (name == 'RDC') {
             $('#RDC').show();
+        } else if (name == 'NRJ') {
+            $('#NRJ').show();
+        } else if (name == 'PJ-46') {
+            $('#PJ-46').show();
         }
+
 
         if (name != '') {
             $.ajax({
@@ -482,6 +539,8 @@
         $('#SSM').hide();
         $('#Torpedo').hide();
         $('#RDC').hide();
+        $('#PJ-46').hide();
+        $('#NRJ').hide();
         $('#reliability').html("0.00%");
         document.getElementById("system_reliability").style.backgroundColor = "#bbb";
         $('#system_time').val(null);

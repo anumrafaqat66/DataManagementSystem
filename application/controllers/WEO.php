@@ -244,8 +244,8 @@ class WEO extends CI_Controller
             
             $view_array = array();
             $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
-            if ($view_array['data']['MTTR'] != '' && $view_array['data']['MTTR'] != 0.00) {
-                $power = ($time / $view_array['data']['MTTR']);
+            if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTBF'] != 0.00) {
+                $power = ($time / $view_array['data']['MTBF']);
                 $power = -1 * $power;
                 $reliability = number_format(pow(2.718, $power), 4);
             } else {

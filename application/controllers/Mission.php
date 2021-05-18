@@ -50,7 +50,7 @@ class Mission extends CI_Controller
 			$data['weapon2'] = $_POST['wp2'];
 			$data['weapon3'] = $_POST['wp3'];
 			$data['weapon4'] = $_POST['wp4'];
-		} else if ($pageName == 'ASW') {
+		} else if ($pageName == 'ASW' || $pageName == 'EW') {
 			$data['weaponReliability1'] = $_POST['wr1'];
 			$data['weaponReliability2'] = $_POST['wr2'];
 			$data['weapon1'] = $_POST['wp1'];

@@ -264,16 +264,23 @@ insert into controller_data values (5,'Fire Controller','FC2','2002','','','',0.
 insert into controller_data values (6,'Fire Controller','FC3','2003','','','',0.00,0.00,0.00,0.00);
 insert into controller_data values (7,'Fire Controller','FC4','2004','','','',0.00,0.00,0.00,0.00);
 
+-- AAW Mission
 insert into controller_data values (8,'Weapon','SAM','3001','','','',0.00,0.00,0.00,0.00);
 insert into controller_data values (9,'Weapon','Main Gun','3002','','','',0.00,0.00,0.00,0.00);
 insert into controller_data values (10,'Weapon','CRG (Port)','3003','','','',0.00,0.00,0.00,0.00);
 insert into controller_data values (11,'Weapon','CRG (STDB)','3004','','','',0.00,0.00,0.00,0.00);
 
+-- ASuW Mission
 insert into controller_data values (12,'Weapon','SSM','3005','','','',0.00,0.00,0.00,0.00);
 
+-- ASW Mission
 insert into controller_data values (13,'Weapon','Torpedo','3006','','','',0.00,0.00,0.00,0.00);
 insert into controller_data values (14,'Weapon','RDC','3007','','','',0.00,0.00,0.00,0.00);
 insert into controller_data values (15,'Sensor','SONAR','1004','','','',0.00,0.00,0.00,0.00);
+
+-- EW Mission
+insert into controller_data values (16,'Weapon','NRJ','3008','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (17,'Weapon','PJ-46','3009','','','',0.00,0.00,0.00,0.00);
 
 
 insert into weapon_systems values (1,'SAM',0.00,0.00,'AAW','Anti Air war mission');
@@ -344,6 +351,16 @@ insert into weapon_system_config values (38,9,13,'S','1');
 insert into weapon_system_config values (39,10,15,'S','1');
 insert into weapon_system_config values (40,10,14,'S','1');
 
+-- EW Mission Entries 
+insert into weapon_systems values (11,'NRJ',0.00,0.00,'EW','Electronic warfare mission');
+insert into weapon_systems values (12,'PJ-46',0.00,0.00,'EW','Electronic warfare mission');
+
+insert into weapon_system_config values (41,11,16,'S','1');
+
+insert into weapon_system_config values (42,12,3,'P','1');
+insert into weapon_system_config values (43,12,16,'P','1');
+insert into weapon_system_config values (44,12,17,'S','1');
+
 -- Sample Data Insertion 
 
 insert into controller_data_detail values (1,1,300,20,'',25,'',20,'',0.00, CURDATE());
@@ -405,6 +422,14 @@ insert into controller_data_detail values (42,14,330,10,'',10,'',15,'',0.00, CUR
 insert into controller_data_detail values (43,15,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (44,15,310,10,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (45,15,330,10,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (46,16,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (47,16,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (48,16,330,10,'',10,'',15,'',0.00, CURDATE());
+
+insert into controller_data_detail values (49,17,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (50,17,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (51,17,330,10,'',10,'',15,'',0.00, CURDATE());
 
 update controller_data_detail set TTR = (TCM + TPM + ADLT);
 
