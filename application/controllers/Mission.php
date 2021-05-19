@@ -1,7 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 class Mission extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -25,6 +24,14 @@ class Mission extends CI_Controller
 		}
 
 		$data['availability'] = number_format((1 - ($result)) * 100, 2);
+
+		$cond  = ['mission_name' => $name];
+		$data_update = [
+			'Availability' => $data['availability'],
+		];
+
+		$this->db->where($cond);
+		$this->db->update('missions', $data_update);
 
 		if ($name == "AAW") {
 			$this->load->view('mission/AAW', $data);
@@ -230,8 +237,8 @@ class Mission extends CI_Controller
 
 			$view_array = array();
 			$view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
-			if ($view_array['data']['MTTR'] != '' && $view_array['data']['MTTR'] != 0.00) {
-				$power = ($time / $view_array['data']['MTTR']);
+			if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTBF'] != 0.00) {
+				$power = ($time / $view_array['data']['MTBF']);
 				$power = -1 * $power;
 				$reliability = number_format(pow(2.718, $power), 4);
 			} else {

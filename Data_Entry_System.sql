@@ -155,6 +155,26 @@ CREATE TABLE `weapon_system_config` (
   `connection_group` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Table structure for table `missions`
+--
+
+CREATE TABLE `missions` (
+  `id` bigint(20) NOT NULL,
+  `Mission_name` varchar(30) NOT NULL,
+  `Mission_desc` varchar(300) DEFAULT NULL,
+  `Availability` decimal(8,2) DEFAULT NULL,
+  `Reliability` decimal(8,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `missions`
+--
+insert into missions values (1,'AAW','Anti Air war mission',0.00,0.00);
+insert into missions values (2,'ASuW','Anti Surface war mission',0.00,0.00);
+insert into missions values (3,'ASW','Anti Submarine war mission',0.00,0.00);
+insert into missions values (4,'EW','Electronic war mission',0.00,0.00);
+
 
 --
 -- Indexes for dumped tables
