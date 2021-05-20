@@ -115,17 +115,6 @@ CREATE TABLE `security_info` (
   `status` enum('technician','manager','hod','weo','co') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `security_info`
---
-
-INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `status`) VALUES
-(1, 'hod', '12345', '2021-04-28 02:25:58', 'hod'),
-(2, 'weo', '12345', '2021-04-28 02:26:37', 'weo'),
-(3, 'manager', '12345', '2021-04-28 02:26:59', 'manager'),
-(4, 'technician', '12345', '2021-04-28 02:27:19', 'technician'),
-(5, 'co', '12345', '2021-04-28 02:27:38', 'co');
-
 -- --------------------------------------------------------
 
 --
@@ -383,45 +372,45 @@ insert into weapon_system_config values (44,12,17,'S','1');
 
 -- Sample Data Insertion 
 
-insert into controller_data_detail values (1,1,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (2,1,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (1,1,280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (2,1,250,30,'',50,'',35,'',0.00, CURDATE());
 insert into controller_data_detail values (3,1,320,20,'',10,'',15,'',0.00, CURDATE());
 
 insert into controller_data_detail values (4,2,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (5,2,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (6,2,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (6,2,250,30,'',50,'',35,'',0.00, CURDATE());
 
 insert into controller_data_detail values (7,3,290,20,'',25,'',30,'',0.00, CURDATE());
 insert into controller_data_detail values (8,3,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (9,3,330,20,'',5,'',10,'',0.00, CURDATE());
+insert into controller_data_detail values (9,3,280,20,'',40,'',25,'',0.00, CURDATE());
 
-insert into controller_data_detail values (10,4,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (10,4,280,20,'',40,'',25,'',0.00, CURDATE());
 insert into controller_data_detail values (11,4,290,20,'',35,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (12,4,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (12,4,250,30,'',50,'',35,'',0.00, CURDATE());
 
-insert into controller_data_detail values (13,5,350,5,'',5,'',5,'',0.00, CURDATE());
+insert into controller_data_detail values (13,5,280,20,'',40,'',25,'',0.00, CURDATE());
 insert into controller_data_detail values (14,5,310,10,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (15,5,320,20,'',10,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (16,6,300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (16,6,250,30,'',50,'',35,'',0.00, CURDATE());
 insert into controller_data_detail values (17,6,340,10,'',5,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (18,6,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (18,6,280,20,'',40,'',25,'',0.00, CURDATE());
 
 insert into controller_data_detail values (19,7,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (20,7,290,30,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (21,7,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (21,7,250,30,'',50,'',35,'',0.00, CURDATE());
 
 insert into controller_data_detail values (22,8,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (23,8,330,10,'',15,'',10,'',0.00, CURDATE());
 insert into controller_data_detail values (24,8,320,20,'',10,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (25,9,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (26,9,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (25,9,280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (26,9,250,30,'',50,'',35,'',0.00, CURDATE());
 insert into controller_data_detail values (27,9,320,20,'',10,'',15,'',0.00, CURDATE());
 
 insert into controller_data_detail values (28,10,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (29,10,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (30,10,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (30,10,250,30,'',50,'',35,'',0.00, CURDATE());
 
 insert into controller_data_detail values (31,11,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (32,11,340,5,'',10,'',10,'',0.00, CURDATE());
@@ -429,7 +418,7 @@ insert into controller_data_detail values (33,11,320,20,'',10,'',15,'',0.00, CUR
 
 insert into controller_data_detail values (34,12,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (35,12,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (36,12,350,5,'',8,'',2,'',0.00, CURDATE());
+insert into controller_data_detail values (36,12,250,30,'',50,'',35,'',0.00, CURDATE());
 
 insert into controller_data_detail values (37,13,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (38,13,310,10,'',25,'',20,'',0.00, CURDATE());
@@ -437,18 +426,18 @@ insert into controller_data_detail values (39,13,320,10,'',20,'',15,'',0.00, CUR
 
 insert into controller_data_detail values (40,14,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (41,14,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (42,14,330,10,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (42,14,250,30,'',50,'',35,'',0.00, CURDATE());
 
 insert into controller_data_detail values (43,15,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (44,15,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (45,15,330,10,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (45,15,280,20,'',40,'',25,'',0.00, CURDATE());
 
 insert into controller_data_detail values (46,16,300,20,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (47,16,310,10,'',25,'',20,'',0.00, CURDATE());
 insert into controller_data_detail values (48,16,330,10,'',10,'',15,'',0.00, CURDATE());
 
 insert into controller_data_detail values (49,17,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (50,17,310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (50,17,250,30,'',50,'',35,'',0.00, CURDATE());
 insert into controller_data_detail values (51,17,330,10,'',10,'',15,'',0.00, CURDATE());
 
 update controller_data_detail set TTR = (TCM + TPM + ADLT);

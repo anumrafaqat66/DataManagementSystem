@@ -16,14 +16,14 @@ class Admin extends CI_Controller
 
             $username = $postData['username'];
             $password = password_hash($postData['password'], PASSWORD_DEFAULT);
-            $reg_data = date('Y-M-D');
+            //$reg_data = date('Y-M-D');
             $status = $postData['status'];
         
 
             $insert_array = array(
                 'username' => $username,
                 'password' => $password,
-                'reg_data' => $reg_data,
+                //'reg_data' => $reg_data,
                 'status' => $status,
                 
                

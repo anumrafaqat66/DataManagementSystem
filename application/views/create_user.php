@@ -15,7 +15,7 @@
 
                      <div class="card">
                          <div class="card-header bg-custom1">
-                             <h1 class="h4 text-white">User Entry</h1>
+                             <h1 class="h4 text-white">Create New User</h1>
                          </div>
 
                          <div class="card-body bg-custom3">
@@ -63,24 +63,9 @@
                  </div>
              </div>
          </div>
-
-         <div class="card-body bg-custom3">
-             <!-- Nested Row within Card Body -->
-             <div class="row">
-                 <div class="col-lg-12">
-
-                     <div class="card bg-custom3">
-                         
-
-                         <div class="card-body">
-                         
-                         </div>
-                     </div>
-
-                 </div>
-             </div>
-         </div>
      </div>
+ </div>
+
  </div>
 <?php $this->load->view('common/footer'); ?>
  <script>

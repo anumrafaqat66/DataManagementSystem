@@ -1,15 +1,15 @@
 <?php $this->load->view('weo/common/header'); ?>
 <style>
     .dot {
-        height: 180px;
-        width: 180px;
+        height: 150px;
+        width: 150px;
         background-color: #bbb;
         border-radius: 50%;
         display: inline-block;
     }
 
     .center-text {
-        margin-top: 75px;
+        margin-top: 60px;
         font-weight: bold;
         color: black;
     }
@@ -97,11 +97,10 @@
     }
 </style>
 <div class="container">
-    <h1 class="h4 text-gray-900">Welcome WEO</h1>
-    <hr>
+    <!-- <h1 class="h4 text-gray-900">Welcome WEO</h1>
+    <hr> -->
 
     <div class="card-body">
-
         <div class="row">
             <div class="col-lg-12">
 
@@ -112,7 +111,7 @@
 
                     <div class="card-body bg-custom3">
                         <h6>To check the availability of the complete system, Please select the Weapon.</h6>
-                        <hr>
+                        <!-- <hr> -->
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row ">
                                 <div class="col-sm-3 mb-1">
@@ -130,15 +129,15 @@
                                 </div>
                             </div>
 
-                            <hr>
+                            <!-- <hr> -->
                             <div class="form-group row">
 
                                 <div class="col-sm-6">
-                                    <h4 class="text-center">Availability</h4>
+                                    <h5 class="text-center">Availability</h5>
                                 </div>
 
                                 <div class="col-sm-6 ">
-                                    <h4 class="text-center">Reliability</h4>
+                                    <h5 class="text-center">Reliability</h5>
                                 </div>
 
                             </div>
@@ -147,14 +146,14 @@
                                 <div class="col-sm-6">
                                     <div class="text-center">
                                         <span class="dot" id="system_availability">
-                                            <div class="center-text h4" id="availability">0.00%</div>
+                                            <div class="center-text h5" id="availability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="text-center">
                                         <span class="dot" id="system_reliability">
-                                            <div class="center-text h4" id="reliability">0.00%</div>
+                                            <div class="center-text h5" id="reliability">0.00%</div>
                                         </span>
                                     </div>
                                 </div>
@@ -509,10 +508,11 @@
                 },
                 success: function(data) {
                     result = JSON.parse(data);
+                    $str = ''; 
                     for (var i in result) {
                         $str = result[i].Controller_Name.replace(" ", "_");
                         $("[id*='" + $str + "_A']").html(String(number_format((result[i].Availability) / 100, 2)));
-                        $("[id*='" + $str + "_R']").html(String(number_format((result[i].Reliability) / 100, 2)));
+                        //$("[id*='" + $str + "_R']").html(String(number_format((result[i].Reliability) / 100, 2)));
                     }
                 },
                 error: function(data) {
@@ -572,6 +572,37 @@
                 // }
             });
         }
+
+        
+        if (name != '') {
+            $.ajax({
+                url: '<?= base_url(); ?>WEO/get_sensors_data',
+                method: 'POST',
+                data: {
+                    'weapon_name': name
+                },
+                success: function(data) {
+                    result = JSON.parse(data);
+                    $str = ''; 
+                    for (var i in result) {
+                        $str = result[i].Controller_Name.replace(" ", "_");
+                        //$("[id*='" + $str + "_A']").html(0.00);
+                        $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
+                    }
+                },
+                error: function(data) {
+                    //alert(data);
+                    alert('failure');
+                }
+            });
+
+        }
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
+
+
     });
 
     $('#system_time').on('focusout', function() {
@@ -597,11 +628,42 @@
                     document.getElementById("system_reliability").style.backgroundColor = "green";
                 }
             },
-            error: function(data) {
-                //alert(data);
-                alert('failure');
-            }
+            async: false
+            // error: function(data) {
+            //     //alert(data);
+            //     alert('failure');
+            // }
         });
+
+        result='';
+        var name = $('#controller_type').val();
+        if (name != '') {
+            $.ajax({
+                url: '<?= base_url(); ?>WEO/get_sensors_data',
+                method: 'POST',
+                data: {
+                    'weapon_name': name
+                },
+                success: function(data) {
+                    result = JSON.parse(data);
+                    $str = ''; 
+                    for (var i in result) {
+                        $str = result[i].Controller_Name.replace(" ", "_");
+                        $("[id*='" + $str + "_A']").html(String(number_format((result[i].Availability) / 100, 2)));
+                        $("[id*='" + $str + "_R']").html(String(number_format((result[i].Reliability) / 100, 2)));
+                    }
+                },
+                error: function(data) {
+                    //alert(data);
+                    alert('failure');
+                }
+            });
+
+        }
+        e.preventDefault();
+        window.onunload = function() {
+            dubugger;
+        }
 
     });
 </script>

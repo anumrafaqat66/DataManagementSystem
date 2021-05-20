@@ -13,6 +13,7 @@
         background: url('<?= base_url() ?>assets/img/ship.jpg');
         background-position: center;
         background-size: cover;
+        height: 250px;
     }
 
     .dot {
@@ -107,7 +108,7 @@
 </style>
 
 <div class="container">
-    <h1 class="h4 text-gray-900">Welcome Commanding Officer!</h1>
+    <!-- <h1 class="h4 text-gray-900">Welcome Commanding Officer!</h1> -->
     <div class="card-body">
 
         <div class="form-group row">
@@ -129,13 +130,13 @@
                             </a>
                         </div>
 
-                        <div class="form-group row justify-content-center my-3">
+                        <!-- <div class="form-group row justify-content-center my-3">
                             <div class="col-md-6">
                                 <a class="btn btn-primary rounded-pill btn-user btn-block" id="show_ship_detail"> Show Complete Ship Missions Detail</a>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="card card-body bg-custom3" id='ship_detail' style="display:none;">
+                        <div class="card card-body bg-custom3" id='ship_detail'>
 
                             <div class="card">
                                 <div class="card-header bg-custom1">
@@ -192,7 +193,7 @@
                                                 );
                                                 ?>
                                             </div>
-                                            <div class="col-md-6" id="reliability_chart" style="display:none;">
+                                            <div class="col-md-6" id="reliability_chart">
                                                 <!-- <h3 class="text-grey-900">Relaibility</h3> -->
                                                 <div>
                                                     <div id="chartContainer1" style="height: 370px;width:100%;"></div>

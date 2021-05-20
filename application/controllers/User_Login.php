@@ -26,14 +26,6 @@ class User_Login extends CI_Controller
 				redirect('CO');
 			}
 		} else {
-			   // $insert_array = array(
-      //           'username' => 'anum',
-      //           'password' => password_hash('12345', PASSWORD_DEFAULT),
-      //           'reg_data' => '2021-04-08',
-      //           'status' => 'technician',       
-      //       );
-
-      //       $insert = $this->db->insert('security_info', $insert_array);
 			$this->load->view('login');
 		}
 	}
@@ -53,7 +45,6 @@ class User_Login extends CI_Controller
 			$hash= $query['password'];
 
 				if (!empty($query)) {
-					echo"dfds";
 					if(password_verify($password, $hash)){
 					$this->session->set_userdata('user_id', $query['id']);
 					$this->session->set_userdata('status', $query['status']);
@@ -61,7 +52,8 @@ class User_Login extends CI_Controller
 					$this->session->set_flashdata('success', 'Login successfully');
 					redirect('User_Login');
 				 }else{
-				 	echo 'error';exit;
+					$this->session->set_flashdata('failure', 'No such user exist. Kindly create New User using Admin panel');
+					redirect('User_Login');
 				 }
 				//print_r($query); exit; 
 			} else {
