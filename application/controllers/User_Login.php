@@ -26,6 +26,14 @@ class User_Login extends CI_Controller
 				redirect('CO');
 			}
 		} else {
+			   // $insert_array = array(
+      //           'username' => 'anum',
+      //           'password' => password_hash('12345', PASSWORD_DEFAULT),
+      //           'reg_data' => '2021-04-08',
+      //           'status' => 'technician',       
+      //       );
+
+      //       $insert = $this->db->insert('security_info', $insert_array);
 			$this->load->view('login');
 		}
 	}
@@ -41,17 +49,20 @@ class User_Login extends CI_Controller
 			$username = $postedData['username'];
 			$password = $postedData['password'];
 			$status = $postedData['optradio'];
-			//echo $status;exit;
-			// $p = password_hash($postedData['password'], PASSWORD_BCRYPT);
-			$query = $this->db->where('username', $username)->where('password', $password)->where('status', $status)->get('security_info')->row_array();
-			//print_r($query['user_id']);exit;
-			//echo $p; exit;
-			if (!empty($query)) {
-				$this->session->set_userdata('user_id', $query['id']);
-				$this->session->set_userdata('status', $query['status']);
-				$this->session->set_userdata('username', $query['username']);
-				$this->session->set_flashdata('success', 'Login successfully');
-				redirect('User_Login');
+			$query = $this->db->where('username', $username)->where('status', $status)->get('security_info')->row_array();
+			$hash= $query['password'];
+
+				if (!empty($query)) {
+					echo"dfds";
+					if(password_verify($password, $hash)){
+					$this->session->set_userdata('user_id', $query['id']);
+					$this->session->set_userdata('status', $query['status']);
+					$this->session->set_userdata('username', $query['username']);
+					$this->session->set_flashdata('success', 'Login successfully');
+					redirect('User_Login');
+				 }else{
+				 	echo 'error';exit;
+				 }
 				//print_r($query); exit; 
 			} else {
 				$this->session->set_flashdata('failure', 'Login failed');
