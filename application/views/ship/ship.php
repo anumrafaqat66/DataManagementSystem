@@ -113,7 +113,7 @@
 
         <div class="form-group row">
             <div class="col-lg-12">
-
+                
                 <div class="card">
                     <div class="card-header bg-custom1">
                         <h1 class="h4 text-white">Mission</h1>
@@ -129,15 +129,7 @@
                                 </div>
                             </a>
                         </div>
-                                     <div class="col-sm-4 mb-1">
-                                         <select class="form-control rounded-pill" name="mission" id="mission" data-placeholder="Select mission" style="font-size: 0.8rem; height:50px;">\
-                                             <option class="form-control form-control-user" value="">Select Mission</option>
-                                             <option class="form-control form-control-user" value="AAW">AAW</option>
-                                             <option class="form-control form-control-user" value="ASuW">ASuW</option>
-                                             <option class="form-control form-control-user" value="ASW">ASW</option>
-                                             <option class="form-control form-control-user" value="EW">EW</option>
-                                         </select>
-                                     </div>
+
                         <!-- <div class="form-group row justify-content-center my-3">
                             <div class="col-md-6">
                                 <a class="btn btn-primary rounded-pill btn-user btn-block" id="show_ship_detail"> Show Complete Ship Missions Detail</a>
@@ -148,13 +140,13 @@
 
                             <div class="card">
                                 <div class="card-header bg-custom1">
-                                    <h5 class="h5 text-white">Complete Ship Missions Statistics</h5>
+                                    <h5 class="h5 text-white">Combat Missions Statistics</h5>
                                 </div>
 
                                 <div class="card-body bg-custom3">
                                     <div class="form-group row">
                                         <div class="col-sm-6 my-3">
-                                            <h6 class="h6 text-grey-900">To check complete ship reliabiltiy. Please enter time: </h6>
+                                            <h6 class="h6 text-grey-900">To check complete combat system reliabiltiy. Please enter time: </h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <form class="user" role="form" id="update_form" method="post" action="">
@@ -283,25 +275,19 @@
                 maximum: 100
             },
             data: [{
-               // color:red,
+                // color:red,
                 type: "column", //change type to bar, line, area, pie, etc
-                indexLabel: "{y}", //Shows y value on all Data Points
-                 indexLabelFontColor: "white",
+                indexLabel: "{y}%", //Shows y value on all Data Points
+                indexLabelFontColor: "white",
                 indexLabelFontWeight: "bolder",
                 indexLabelPlacement: "inside",
+                click: onClick,
                 dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
             }]
         });
+        changeColor(chart);
         chart.render();
-//       function setColor(chart){
-//     for(var i = 0; i < chart.options.data.length; i++) {
-//         dataSeries = chart.options.data[i];
-//     for(var j = 0; j < dataSeries.dataPoints.length; j++){
-//         if(dataSeries.dataPoints[j].x >= 0)
-//         dataSeries.dataPoints[j].color = '#ff0000';
-//     }
-//   }
-// }
+
 
         var chart = new CanvasJS.Chart("chartContainer1", {
             animationEnabled: true,
@@ -315,20 +301,48 @@
                 maximum: 100,
                 minimum: 0,
             },
-            
+
             data: [{
-               // color:setColor(chart),
+                // color:setColor(chart),
                 type: "bar", //change type to bar, line, area, pie, etc
-                indexLabel: "{y}", //Shows y value on all Data Points
+                indexLabel: "{y}%", //Shows y value on all Data Points
                 indexLabelFontColor: "white",
                 indexLabelFontWeight: "bolder",
                 indexLabelPlacement: "inside",
+                click: onClick,
                 dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
             }]
         });
+        changeColor(chart);
         chart.render();
 
-  
+        function changeColor(chart) {
+            for (var i = 0; i < chart.options.data.length; i++) {
+                for (var j = 0; j < chart.options.data[i].dataPoints.length; j++) {
+                    y = chart.options.data[i].dataPoints[j].y;
+                    if (y > 75) {
+                        chart.options.data[i].dataPoints[j].color = "green";
+                    } else if ((y >= 50) && (y <= 75)) {
+                        chart.options.data[i].dataPoints[j].color = "orange";
+                    } else if (y < 50) {
+                        chart.options.data[i].dataPoints[j].color = "red";
+                    }
+                }
+            }
+        }
+
+        function onClick(e) {
+            //alert(e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: " + e.dataPoint.y + " }");
+            if (e.dataPoint.x == 0) {
+                window.location.href = "<?= base_url(); ?>mission/mission/AAW";
+            } else if (e.dataPoint.x == 1) {
+                window.location.href = "<?= base_url(); ?>mission/mission/ASuW";
+            } else if (e.dataPoint.x == 2) {
+                window.location.href = "<?= base_url(); ?>mission/mission/ASW";
+            } else if (e.dataPoint.x == 3) {
+                window.location.href = "<?= base_url(); ?>mission/mission/EW";
+            }
+        }
 
     }
 
@@ -398,21 +412,16 @@
 
     });
 
-     $('#mission').on('change', function() {
-      //  alert('czxc');
-        var a =$(this).val();
-        alert(a);
-        if($(this).val()=='AAW'){
-            window.location.href = "<?= base_url();?>mission/mission/AAW";
+    $('#mission').on('change', function() {
+        var a = $(this).val();
+        if ($(this).val() == 'AAW') {
+            window.location.href = "<?= base_url(); ?>mission/mission/AAW";
+        } else if ($(this).val() == 'ASuW') {
+            window.location.href = "<?= base_url(); ?>mission/mission/ASuW";
+        } else if ($(this).val() == 'ASW') {
+            window.location.href = "<?= base_url(); ?>mission/mission/ASW";
+        } else if ($(this).val() == 'EW') {
+            window.location.href = "<?= base_url(); ?>mission/mission/EW";
         }
-        else if($(this).val()=='ASuW'){
-             window.location.href = "<?= base_url();?>mission/mission/ASuW";
-        }
-         else if($(this).val()=='ASW'){
-             window.location.href = "<?= base_url();?>mission/mission/ASW";
-        }
-         else if($(this).val()=='EW'){
-             window.location.href = "<?= base_url();?>mission/mission/EW";
-        }
-     });
+    });
 </script>

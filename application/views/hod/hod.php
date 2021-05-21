@@ -281,7 +281,7 @@
         }
     });
 
-    $('#sensor_time').on('focusout', function() {
+    $('#sensor_time').on('focusout keyup', function() {
         var id = $('#sensor_type').val();
         var time = $(this).val();
 
@@ -315,7 +315,7 @@
 
     });
 
-    $('#fire_time').on('focusout', function() {
+    $('#fire_time').on('focusout keyup', function() {
         var id = $('#fire_type').val();
         var time = $(this).val();
 
@@ -347,7 +347,7 @@
 
     });
 
-    $('#weapon_time').on('focusout', function() {
+    $('#weapon_time').on('focusout keyup', function() {
         var id = $('#weapon_type').val();
         var time = $(this).val();
 

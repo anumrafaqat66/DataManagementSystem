@@ -36,17 +36,7 @@
                             </div>
 
                         </div>
-                          <div class="col-sm-4 mb-1">
-                                         <select class="form-control rounded-pill" name="mission" id="mission" data-placeholder="Select mission" style="font-size: 0.8rem; height:50px;">\
-                                             <option class="form-control form-control-user" value="">Select Mission</option>
-                                             <option class="form-control form-control-user" value="AAW">AAW</option>
-                                             <option class="form-control form-control-user" value="ASuW">ASuW</option>
-                                             <option class="form-control form-control-user" value="ASW">ASW</option>
-                                             <option class="form-control form-control-user" value="EW">EW</option>
-                                         </select>
-                                     </div>
-                                     
-
+                       
                         <div class="card">
                             <div class="card-header bg-custom1">
                                 <h5 class="h5 text-white">Mission Statistics</h5>
@@ -59,7 +49,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <form class="user" role="form" id="update_form" method="post" action="">
-                                            <input type="text" class="form-control form-control-user" name="time" id="system_time" value = "<?php echo $time_entered ?>" placeholder="Enter Time">
+                                            <input type="text" class="form-control form-control-user" name="time" id="system_time" value="<?php echo $time_entered ?>" placeholder="Enter Time">
                                         </form>
                                     </div>
                                 </div>
@@ -187,12 +177,16 @@
             },
             data: [{
                 type: "column", //change type to bar, line, area, pie, etc
-                //indexLabel: "{y}", //Shows y value on all Data Points
-                indexLabelFontColor: "#5A5757",
-                indexLabelPlacement: "outside",
+                indexLabel: "{y}%", //Shows y value on all Data Points
+                indexLabelFontColor: "white",
+                indexLabelFontWeight: "bolder",
+                indexLabelPlacement: "inside",
+                //indexLabelFontColor: "#5A5757",
+                //indexLabelPlacement: "outside",
                 dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
             }]
         });
+        changeColor(chart);
         chart.render();
 
 
@@ -209,13 +203,31 @@
             },
             data: [{
                 type: "bar", //change type to bar, line, area, pie, etc
-                //indexLabel: "{y}", //Shows y value on all Data Points
-                indexLabelFontColor: "#5A5757",
-                indexLabelPlacement: "outside",
+                indexLabel: "{y}%", //Shows y value on all Data Points
+                indexLabelFontColor: "white",
+                indexLabelFontWeight: "bolder",
+                indexLabelPlacement: "inside",
                 dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
             }]
         });
+        changeColor(chart);
         chart.render();
+
+        function changeColor(chart) {
+            for (var i = 0; i < chart.options.data.length; i++) {
+                for (var j = 0; j < chart.options.data[i].dataPoints.length; j++) {
+                    y = chart.options.data[i].dataPoints[j].y;
+                    chart.options.data[i].indexLabelFontColor = "white";
+                    if (y > 75) {
+                        chart.options.data[i].dataPoints[j].color = "green";
+                    } else if ((y >= 50) && (y <= 75)) {
+                        chart.options.data[i].dataPoints[j].color = "orange";
+                    } else if (y < 50) {
+                        chart.options.data[i].dataPoints[j].color = "red";;
+                    }
+                }
+            }
+        }
 
     }
 
@@ -288,21 +300,16 @@
         });
 
     });
-      $('#mission').on('change', function() {
-      //  alert('czxc');
-        var a =$(this).val();
-        alert(a);
-        if($(this).val()=='AAW'){
-            window.location.href = "<?= base_url();?>mission/mission/AAW";
+    $('#mission').on('change', function() {
+        var a = $(this).val();
+        if ($(this).val() == 'AAW') {
+            window.location.href = "<?= base_url(); ?>mission/mission/AAW";
+        } else if ($(this).val() == 'ASuW') {
+            window.location.href = "<?= base_url(); ?>mission/mission/ASuW";
+        } else if ($(this).val() == 'ASW') {
+            window.location.href = "<?= base_url(); ?>mission/mission/ASW";
+        } else if ($(this).val() == 'EW') {
+            window.location.href = "<?= base_url(); ?>mission/mission/EW";
         }
-        else if($(this).val()=='ASuW'){
-             window.location.href = "<?= base_url();?>mission/mission/ASuW";
-        }
-         else if($(this).val()=='ASW'){
-             window.location.href = "<?= base_url();?>mission/mission/ASW";
-        }
-         else if($(this).val()=='EW'){
-             window.location.href = "<?= base_url();?>mission/mission/EW";
-        }
-     });
+    });
 </script>

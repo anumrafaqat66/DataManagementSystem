@@ -605,7 +605,7 @@
 
     });
 
-    $('#system_time').on('focusout', function() {
+    $('#system_time').on('focusout keyup', function() {
         var name = $('#controller_type').val();
         var time = $(this).val();
 

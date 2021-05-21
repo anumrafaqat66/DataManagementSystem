@@ -55,9 +55,8 @@
             </div>
  -->
             <!-- Nav Item - Pages Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Links</span>
                 </a>
@@ -160,7 +159,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                  <!--   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -170,6 +169,18 @@
                             </div>
                         </div>
                     </form> -->
+
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <select class="form-control rounded-pill small" name="mission" id="mission" data-placeholder="Select mission" style="font-size: 0.8rem; height:50px;">\
+                                <option class="form-control form-control-user small" value="">Search Mission</option>
+                                <option class="form-control form-control-user" value="AAW">AAW</option>
+                                <option class="form-control form-control-user" value="ASuW">ASuW</option>
+                                <option class="form-control form-control-user" value="ASW">ASW</option>
+                                <option class="form-control form-control-user" value="EW">EW</option>
+                            </select>
+                        </div>
+                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -211,4 +222,3 @@
 
                 </nav>
                 <!-- End of Topbar -->
-   
