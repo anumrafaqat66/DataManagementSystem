@@ -160,7 +160,8 @@
                 text: ""
             },
             axisY: {
-                includeZero: true
+                includeZero: true,
+                maximum: 100
             },
             data: [{
                 type: "column", //change type to bar, line, area, pie, etc
@@ -181,7 +182,8 @@
                 text: ""
             },
             axisY: {
-                includeZero: true
+                includeZero: true,
+                maximum: 100
             },
             data: [{
                 type: "bar", //change type to bar, line, area, pie, etc

@@ -271,7 +271,8 @@
                 text: ""
             },
             axisY: {
-                includeZero: true
+                includeZero: true,
+                maximum: 100
             },
             data: [{
                 type: "column", //change type to bar, line, area, pie, etc
@@ -292,8 +293,12 @@
                 text: ""
             },
             axisY: {
-                includeZero: true
+                includeZero: true,
+                maximum: 100,
+                minimum: 0,
+
             },
+            
             data: [{
                 type: "bar", //change type to bar, line, area, pie, etc
                 //indexLabel: "{y}", //Shows y value on all Data Points
