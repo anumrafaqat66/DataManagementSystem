@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <h6>To check the availability of the complete system, Please select the Weapon.</h6>
+                        <h6>To check the availability of the complete weapon system, please select the Weapon from the dropdown list. To check the reliability of the complete weapon system, please enter time:</h6>
                         <!-- <hr> -->
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row ">

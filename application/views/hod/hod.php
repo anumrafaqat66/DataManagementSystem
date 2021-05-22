@@ -38,6 +38,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
+                    <h6> To check the Sensor reliability, please enter the time: </h6>
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">
@@ -88,6 +89,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
+                    <h6> To check the Fire Controller reliability, please enter the time: </h6>
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">
@@ -138,6 +140,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
+                    <h6> To check the Weapon reliability, please enter the time: </h6>
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
                                 <div class="col-sm-3 mb-1">

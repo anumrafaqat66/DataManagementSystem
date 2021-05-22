@@ -8,9 +8,54 @@ class Admin extends CI_Controller
 
     public function index()
     {
-     $this->load->view('create_user');
+        if ($this->session->has_userdata('user_id')) {
+            $id = $this->session->userdata('user_id');
+            $this->load->view('Admin/create_user');
+        } else {
+            $this->load->view('Admin/login');
+        }
+        
     }
-    public function add_user(){
+
+    public function login_process()
+    {
+        
+        if ($this->input->post()) {
+            $postedData = $this->security->xss_clean($this->input->post());
+            //To create encrypted password use
+            $username = $postedData['username'];
+            $password = $postedData['password'];
+            //$status = $postedData['optradio'];
+            $query = $this->db->where('username', $username)->where('status', 'admin')->get('security_info')->row_array();
+            $hash = $query['password'];
+
+            if (!empty($query)) {
+                if (password_verify($password, $hash)) {
+                    $this->session->set_userdata('user_id', $query['id']);
+                    $this->session->set_userdata('status', $query['status']);
+                    $this->session->set_userdata('username', $query['username']);
+                    $this->session->set_flashdata('success', 'Login successfully');
+                    redirect('Admin');
+                } else {
+                    $this->session->set_flashdata('failure', 'No such user exist. Kindly create New User using Admin panel');
+                    redirect('Admin');
+                }
+                //print_r($query); exit; 
+            } else {
+                $this->session->set_flashdata('failure', 'Login failed');
+                redirect('Admin');
+            }
+        }
+    }
+
+    public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('Admin');
+	}
+
+    public function add_user()
+    {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
@@ -18,17 +63,14 @@ class Admin extends CI_Controller
             $password = password_hash($postData['password'], PASSWORD_DEFAULT);
             //$reg_data = date('Y-M-D');
             $status = $postData['status'];
-        
 
             $insert_array = array(
                 'username' => $username,
                 'password' => $password,
                 //'reg_data' => $reg_data,
                 'status' => $status,
-                
-               
             );
-             //print_r($insert_array);exit;
+            //print_r($insert_array);exit;
             $insert = $this->db->insert('security_info', $insert_array);
             //$data['last_id'] = $this->db->insert_id();
             //  echo $data['last_id'];exit;

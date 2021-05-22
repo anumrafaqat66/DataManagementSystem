@@ -112,8 +112,11 @@ CREATE TABLE `security_info` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reg_data` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('technician','manager','hod','weo','co') NOT NULL
+  `status` enum('technician','manager','hod','weo','co','admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `status`) VALUES
+(1, 'admin', '$2y$10$uVajLuVrXeV2S4TWWuH4a.CLTS4LW92nmGiitB94akkA6pAWMJyI2', '2021-05-21 19:00:00', 'admin');
 
 -- --------------------------------------------------------
 

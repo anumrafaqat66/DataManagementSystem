@@ -22,7 +22,15 @@ class CO extends CI_Controller
 
     public function mission()
     {
-        $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
+        //$data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
+        $missions = $this->db->get('missions')->result_array();
+        $result = 1;
+        for ($i = 0; $i < count($missions); $i++) {
+            $result = $result * (1 - $missions[$i]['Availability'] / 100);
+            $datarow = $i  + 1;
+            $data["mission$datarow"] = $missions[$i]['Availability'];
+        }
+        $data['availability'] = number_format((1 - ($result)) * 100, 2);
         $this->load->view('co/co', $data);
     }
 

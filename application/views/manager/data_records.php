@@ -19,8 +19,11 @@
                                     <th scope="col">ESWB</th>
                                     <th scope="col">TBF</th>
                                     <th scope="col">TCM</th>
+                                    <th scope="col">TCM Desc</th>
                                     <th scope="col">TPM</th>
+                                    <th scope="col">TPM Desc</th>
                                     <th scope="col">ADLT</th>
+                                    <th scope="col">ADLT Desc</th>
                                     <th scope="col">TTR</th>
                                     <th scope="col">Reg Date</th>
                                     <!-- <th scope="col" width="15%">Action</th> -->
@@ -35,8 +38,11 @@
                                         <td scope="row"><?= $data['ESWB']; ?></td>
                                         <td scope="row"><?= $data['TBF']; ?></td>
                                         <td scope="row"><?= $data['TCM']; ?></td>
+                                        <td scope="row" style="width:150px;"><?= $data['TCM_Desc']; ?></td>
                                         <td scope="row"><?= $data['TPM']; ?></td>
+                                        <td scope="row" style="width:150px;"><?= $data['TPM_Desc']; ?></td>
                                         <td scope="row"><?= $data['ADLT']; ?></td>
+                                        <td scope="row" style="width:150px;"><?= $data['ADLT_Desc']; ?></td>
                                         <td scope="row"><?= $data['TTR']; ?></td>
                                         <td scope="row"><?= $data['RegDate']; ?></td>
                                         <!-- <td>
