@@ -129,7 +129,15 @@
                                 </div>
                             </a>
                         </div>
-
+                                     <div class="col-sm-4 mb-1">
+                                         <select class="form-control rounded-pill" name="mission" id="mission" data-placeholder="Select mission" style="font-size: 0.8rem; height:50px;">\
+                                             <option class="form-control form-control-user" value="">Select Mission</option>
+                                             <option class="form-control form-control-user" value="AAW">AAW</option>
+                                             <option class="form-control form-control-user" value="ASuW">ASuW</option>
+                                             <option class="form-control form-control-user" value="ASW">ASW</option>
+                                             <option class="form-control form-control-user" value="EW">EW</option>
+                                         </select>
+                                     </div>
                         <!-- <div class="form-group row justify-content-center my-3">
                             <div class="col-md-6">
                                 <a class="btn btn-primary rounded-pill btn-user btn-block" id="show_ship_detail"> Show Complete Ship Missions Detail</a>
@@ -275,15 +283,25 @@
                 maximum: 100
             },
             data: [{
+               // color:red,
                 type: "column", //change type to bar, line, area, pie, etc
-                //indexLabel: "{y}", //Shows y value on all Data Points
-                indexLabelFontColor: "#5A5757",
-                indexLabelPlacement: "outside",
+                indexLabel: "{y}", //Shows y value on all Data Points
+                 indexLabelFontColor: "white",
+                indexLabelFontWeight: "bolder",
+                indexLabelPlacement: "inside",
                 dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
             }]
         });
         chart.render();
-
+//       function setColor(chart){
+//     for(var i = 0; i < chart.options.data.length; i++) {
+//         dataSeries = chart.options.data[i];
+//     for(var j = 0; j < dataSeries.dataPoints.length; j++){
+//         if(dataSeries.dataPoints[j].x >= 0)
+//         dataSeries.dataPoints[j].color = '#ff0000';
+//     }
+//   }
+// }
 
         var chart = new CanvasJS.Chart("chartContainer1", {
             animationEnabled: true,
@@ -296,18 +314,21 @@
                 includeZero: true,
                 maximum: 100,
                 minimum: 0,
-
             },
             
             data: [{
+               // color:setColor(chart),
                 type: "bar", //change type to bar, line, area, pie, etc
-                //indexLabel: "{y}", //Shows y value on all Data Points
-                indexLabelFontColor: "#5A5757",
-                indexLabelPlacement: "outside",
+                indexLabel: "{y}", //Shows y value on all Data Points
+                indexLabelFontColor: "white",
+                indexLabelFontWeight: "bolder",
+                indexLabelPlacement: "inside",
                 dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
             }]
         });
         chart.render();
+
+  
 
     }
 
@@ -376,4 +397,22 @@
         });
 
     });
+
+     $('#mission').on('change', function() {
+      //  alert('czxc');
+        var a =$(this).val();
+        alert(a);
+        if($(this).val()=='AAW'){
+            window.location.href = "<?= base_url();?>mission/mission/AAW";
+        }
+        else if($(this).val()=='ASuW'){
+             window.location.href = "<?= base_url();?>mission/mission/ASuW";
+        }
+         else if($(this).val()=='ASW'){
+             window.location.href = "<?= base_url();?>mission/mission/ASW";
+        }
+         else if($(this).val()=='EW'){
+             window.location.href = "<?= base_url();?>mission/mission/EW";
+        }
+     });
 </script>

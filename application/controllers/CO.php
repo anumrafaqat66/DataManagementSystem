@@ -267,7 +267,6 @@ class CO extends CI_Controller
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
                 $view_rows = array();
-
                 $this->db->select('wsc.connection_group');
                 $this->db->distinct();
                 $this->db->from('weapon_systems ws');
