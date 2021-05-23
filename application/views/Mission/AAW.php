@@ -12,6 +12,7 @@
         background: url('<?= base_url() ?>assets/img/AAW.jpg');
         background-position: center;
         background-size: cover;
+        height: 250px;
     }
 </style>
 <div class="container">
@@ -181,8 +182,7 @@
                 indexLabelFontColor: "white",
                 indexLabelFontWeight: "bolder",
                 indexLabelPlacement: "inside",
-                //indexLabelFontColor: "#5A5757",
-                //indexLabelPlacement: "outside",
+                click: onClick,
                 dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
             }]
         });
@@ -207,6 +207,7 @@
                 indexLabelFontColor: "white",
                 indexLabelFontWeight: "bolder",
                 indexLabelPlacement: "inside",
+                click: onClick,
                 dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
             }]
         });
@@ -226,6 +227,19 @@
                         chart.options.data[i].dataPoints[j].color = "red";;
                     }
                 }
+            }
+        }
+
+        function onClick(e) {
+            //alert(e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: " + e.dataPoint.y + " }");
+            if (e.dataPoint.x == 0) {
+                window.location.href = "<?= base_url(); ?>weo?we=SAM";
+            } else if (e.dataPoint.x == 1) {
+                window.location.href = "<?= base_url(); ?>weo?we=Main Gun";
+            } else if (e.dataPoint.x == 2) {
+                window.location.href = "<?= base_url(); ?>weo?we=CRG (Port)";
+            } else if (e.dataPoint.x == 3) {
+                window.location.href = "<?= base_url(); ?>weo?we=CRG (STDB)";
             }
         }
 

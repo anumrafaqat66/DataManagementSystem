@@ -41,15 +41,15 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?php if ($this->session->userdata('status') == 'weo') {
-                                                echo "WEO";
-                                            } else if ($this->session->userdata('status') == 'co') {
-                                                echo "CO";
-                                            } else if ($this->session->userdata('status') == 'hod') {
-                                                echo "HOD";
-                                            } else {
-                                                echo "Manager";
-                                            } ?>">
+                <a class="nav-link" href="<?php echo base_url() ?><?php if ($this->session->userdata('status') == 'weo') {
+                                                                    echo "WEO";
+                                                                } else if ($this->session->userdata('status') == 'co') {
+                                                                    echo "CO";
+                                                                } else if ($this->session->userdata('status') == 'hod') {
+                                                                    echo "HOD";
+                                                                } else {
+                                                                    echo "Manager";
+                                                                } ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -164,7 +164,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                   <!--  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <!--  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">

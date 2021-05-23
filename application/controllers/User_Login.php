@@ -21,7 +21,7 @@ class User_Login extends CI_Controller
 			} elseif ($status == "hod") {
 				redirect('HOD');
 			} elseif ($status == "weo") {
-				redirect('WEO');
+				redirect('WEO?we=Select Weapon');
 			}elseif ($status == "co") {
 				redirect('CO');
 			}

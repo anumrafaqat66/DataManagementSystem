@@ -7,8 +7,14 @@ class WEO extends CI_Controller
         parent::__construct();
     }
 
-    public function index()
+    public function index($weapon = NULL)
     {
+
+        $input_params = $this->input->get(); // this will give you all parameters
+        //print_r($input_params['we']); exit;
+        $data['selected_weapon'] = $input_params['we'];
+
+
         $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
         $this->load->view('weo/weo', $data);
     }
@@ -122,7 +128,7 @@ class WEO extends CI_Controller
                 $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
                 $this->db->where('ws.weapon_name', $weapon_name);
                 $view_sensors['data'] =  $this->db->get()->result_array();
-                
+
                 if (count($view_sensors['data']) != 0) {
                     for ($i = 0; $i < count($view_sensors['data']); $i++) :
                         $this->calculate_sensor_reliability($view_sensors['data'][$i]['sensor_id'], $system_time);
@@ -241,7 +247,7 @@ class WEO extends CI_Controller
     {
 
         if ($time > 0) {
-            
+
             $view_array = array();
             $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
             if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTBF'] != 0.00) {

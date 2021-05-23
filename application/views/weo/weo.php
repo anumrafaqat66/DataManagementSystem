@@ -1,4 +1,5 @@
 <?php $this->load->view('weo/common/header'); ?>
+<?php !isset($selected_weapon) ? $selected_weapon = "Select Weapon" : $selected_weapon; ?>
 <style>
     .dot {
         height: 150px;
@@ -116,7 +117,7 @@
                             <div class="form-group row ">
                                 <div class="col-sm-3 mb-1">
                                     <select class="form-control rounded-pill" name="controller_type" id="controller_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
-                                        <option class="form-control form-control-user" value="">Select Weapon</option>
+                                        <option class="form-control form-control-user" value="<?= $selected_weapon; ?>"><?= $selected_weapon; ?></option>
                                         <?php if (isset($controller_data)) {
                                             foreach ($controller_data as $data) { ?>
                                                 <option class="form-control form-control-user" value="<?= $data['Controller_Name']; ?>"><?= $data['Controller_Name']; ?></option>
@@ -192,22 +193,22 @@
 
                     <div class="card-body mx-5 bg-custom3">
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="CCS_A">A</a> CCS <a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3"> CCS </a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
 
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="FC1_A">A</a>FC1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="FC1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/4">FC1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="SAM_A">A</a>SAM<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="SAM_A">A</a><a href="<?= base_url(); ?>Manager/show_records/8" style="color:whitesmoke;">SAM</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
                         </div>
 
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right;color:black; font-size:small;" id="S1_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right;color:black; font-size:small;" id="S1_R">R</a></div>
 
                         </div>
                     </div>
@@ -227,22 +228,22 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
 
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC2_A">A</a>FC2<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="FC2_R">R</a></div>
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC2_A">A</a><a href="<?= base_url(); ?>Manager/show_records/5">FC2</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="FC2_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="Main_Gun_A">A</a>Main Gun<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="Main_Gun_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="Main_Gun_A">A</a><a href="<?= base_url(); ?>Manager/show_records/9" style="color:whitesmoke;">Main Gun</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="Main_Gun_R">R</a></div>
                         </div>
                         <div class="lines">
                             <div class="line_top"></div>
                         </div>
 
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
 
                         </div>
                     </div>
@@ -262,14 +263,14 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
-                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC3_A">A</a>FC3<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC3_A">A</a><a href="<?= base_url(); ?>Manager/show_records/6">FC3</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CRG_(Port)_A">A</a>CRG (Port)<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CRG_(Port)_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CRG_(Port)_A">A</a><a href="<?= base_url(); ?>Manager/show_records/10" style="color:whitesmoke;">CRG (Port)</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CRG_(Port)_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -279,8 +280,8 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
-                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black;" id="FC4_A">A</a>FC4<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black;" id="FC4_A">A</a><a href="<?= base_url(); ?>Manager/show_records/7">FC4</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
 
                         </div>
                     </div>
@@ -301,14 +302,14 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
-                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC3_A">A</a>FC3<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC3_A">A</a><a href="<?= base_url(); ?>Manager/show_records/6">FC3</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a>CRG(STDB)<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a><a href="<?= base_url(); ?>Manager/show_records/11" style="color:whitesmoke;">CRG(STDB)</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -318,8 +319,8 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="S1_R">R</a></div>
-                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC4_A">A</a>FC4<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="S1_R">R</a></div>
+                            <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC4_A">A</a><a href="<?= base_url(); ?>Manager/show_records/7">FC4</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
                         </div>
                     </div>
                 </div>
@@ -339,12 +340,12 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a>S1<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="S1_R">R</a></div>   
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="S1_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="SSM_A">A</a>SSM<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="SSM_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="SSM_A">A</a><a href="<?= base_url(); ?>Manager/show_records/12" style="color:whitesmoke;">SSM</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="SSM_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -352,7 +353,7 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="S2_A">A</a>S2<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="S2_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="S2_A">A</a><a href="<?= base_url(); ?>Manager/show_records/2">S2</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="S2_R">R</a></div>
                         </div>
                     </div>
                 </div>
@@ -370,13 +371,13 @@
                     </div>
 
                     <div class="card-body bg-custom3" style="height:100px;">
-                       
+
                         <div class="lines">
-                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a>SONAR<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a><a href="<?= base_url(); ?>Manager/show_records/15">SONAR</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="Torpedo_A">A</a>Torpedo<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="Torpedo_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="Torpedo_A">A</a><a href="<?= base_url(); ?>Manager/show_records/13" style="color:whitesmoke;">Torpedo</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="Torpedo_R">R</a></div>
                         </div>
-                        
+
 
                     </div>
                 </div>
@@ -395,9 +396,9 @@
 
                     <div class="card-body bg-custom3" style="height:100px;">
                         <div class="lines">
-                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a>SONAR<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
+                            <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a><a href="<?= base_url(); ?>Manager/show_records/15">SONAR</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
                             <div class="line_middle"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="RDC_A">A</a>RDC<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="RDC_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="RDC_A">A</a><a href="<?= base_url(); ?>Manager/show_records/14" style="color:whitesmoke;">RDC</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="RDC_R">R</a></div>
                         </div>
                     </div>
                 </div>
@@ -416,12 +417,12 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a>CCS<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>   
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
                         </div>
 
                         <div class="lines">
                             <div class="line_bottom"></div>
-                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="PJ-46_A">A</a>PJ-46<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="PJ-46_R">R</a></div>
+                            <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="PJ-46_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3" style="color:whitesmoke;">PJ-46</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="PJ-46_R">R</a></div>
                         </div>
 
                         <div class="lines">
@@ -429,7 +430,7 @@
                         </div>
 
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="NRJ_A">A</a>NRJ<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="NRJ_R">R</a></div>
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="NRJ_A">A</a><a href="<?= base_url(); ?>Manager/show_records/16">NRJ</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="NRJ_R">R</a></div>
                         </div>
                     </div>
                 </div>
@@ -448,10 +449,10 @@
 
                     <div class="card-body mx-5">
                         <div>
-                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="NRJ_A">A</a>NRJ<a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="NRJ_R">R</a></div>   
+                            <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="NRJ_A">A</a><a href="<?= base_url(); ?>Manager/show_records/16">NRJ</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="NRJ_R">R</a></div>
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>
@@ -465,6 +466,104 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
+    window.onload = function() {
+        var weapon = $('#controller_type').val();
+        //alert(weapon);
+        if (weapon != "Select Weapon") {
+            //alert('iam in IF condition');
+            $('#sam_card').hide();
+            $('#main_gun').hide();
+            $('#CRG_Port').hide();
+            $('#CRG_STDB').hide();
+            $('#SSM').hide();
+            $('#Torpedo').hide();
+            $('#RDC').hide();
+            $('#PJ-46').hide();
+            $('#NRJ').hide();
+            $('#reliability').html("0.00%");
+            document.getElementById("system_reliability").style.backgroundColor = "#bbb";
+            $('#system_time').val(null);
+
+            if (weapon == 'SAM') {
+                $('#sam_card').show();
+            } else if (weapon == 'Main Gun') {
+                $('#main_gun').show();
+            } else if (weapon == 'CRG (Port)') {
+                $('#CRG_Port').show();
+            } else if (weapon == 'CRG (STDB)') {
+                $('#CRG_STDB').show();
+            } else if (weapon == 'SSM') {
+                $('#SSM').show();
+            } else if (weapon == 'Torpedo') {
+                $('#Torpedo').show();
+            } else if (weapon == 'RDC') {
+                $('#RDC').show();
+            } else if (weapon == 'NRJ') {
+                $('#NRJ').show();
+            } else if (weapon == 'PJ-46') {
+                $('#PJ-46').show();
+            }
+
+            //var name = $(this).val();
+            if (weapon != '') {
+                $.ajax({
+                    url: '<?= base_url(); ?>WEO/get_system_availability',
+                    method: 'POST',
+                    data: {
+                        'weapon_name': weapon
+                    },
+                    success: function(data) {
+                        // var result = jQuery.parseJSON(data);
+                        //alert(result);
+                        $('#availability').html(data + "%");
+                        if (data < 50) {
+                            document.getElementById("system_availability").style.backgroundColor = "red";
+                        } else if (data > 50 && data < 75) {
+                            document.getElementById("system_availability").style.backgroundColor = "yellow";
+                        } else if (data >= 75) {
+                            document.getElementById("system_availability").style.backgroundColor = "green";
+                        }
+                    },
+                    async: false
+                    // ,
+                    // error: function(data) {
+                    //     //alert(data);
+                    //     alert('failure');
+                    // }
+                });
+            }
+
+            if (weapon != '') {
+                $.ajax({
+                    url: '<?= base_url(); ?>WEO/get_sensors_data',
+                    method: 'POST',
+                    data: {
+                        'weapon_name': weapon
+                    },
+                    success: function(data) {
+                        result = JSON.parse(data);
+                        $str = '';
+                        for (var i in result) {
+                            $str = result[i].Controller_Name.replace(" ", "_");
+                            $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+                            $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
+                        }
+                    },
+                    error: function(data) {
+                        //alert(data);
+                        alert('failure');
+                    }
+                });
+
+            }
+            e.preventDefault();
+            window.onunload = function() {
+                dubugger;
+            }
+
+        }
+    }
+
     $('#show_graphs').on('click', function() {
         $('#sam_card').hide();
         $('#main_gun').hide();
@@ -477,7 +576,7 @@
         $('#NRJ').hide();
         //$('#sam_card').hide();
         var name = $('#controller_type').val();
-        
+
         if (name == 'SAM') {
             $('#sam_card').show();
         } else if (name == 'Main Gun') {
@@ -508,7 +607,7 @@
                 },
                 success: function(data) {
                     result = JSON.parse(data);
-                    $str = ''; 
+                    $str = '';
                     for (var i in result) {
                         $str = result[i].Controller_Name.replace(" ", "_");
                         $("[id*='" + $str + "_A']").html(String(number_format((result[i].Availability) / 100, 2)));
@@ -531,7 +630,7 @@
 
 
     $('#controller_type').on('change', function() {
-        //alert('df');
+
         $('#sam_card').hide();
         $('#main_gun').hide();
         $('#CRG_Port').hide();
@@ -573,7 +672,7 @@
             });
         }
 
-        
+
         if (name != '') {
             $.ajax({
                 url: '<?= base_url(); ?>WEO/get_sensors_data',
@@ -583,7 +682,7 @@
                 },
                 success: function(data) {
                     result = JSON.parse(data);
-                    $str = ''; 
+                    $str = '';
                     for (var i in result) {
                         $str = result[i].Controller_Name.replace(" ", "_");
                         //$("[id*='" + $str + "_A']").html(0.00);
@@ -601,7 +700,6 @@
         window.onunload = function() {
             dubugger;
         }
-
 
     });
 
@@ -635,7 +733,7 @@
             // }
         });
 
-        result='';
+        result = '';
         var name = $('#controller_type').val();
         if (name != '') {
             $.ajax({
@@ -646,7 +744,7 @@
                 },
                 success: function(data) {
                     result = JSON.parse(data);
-                    $str = ''; 
+                    $str = '';
                     for (var i in result) {
                         $str = result[i].Controller_Name.replace(" ", "_");
                         $("[id*='" + $str + "_A']").html(String(number_format((result[i].Availability) / 100, 2)));

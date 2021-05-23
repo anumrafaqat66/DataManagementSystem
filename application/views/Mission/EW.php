@@ -12,6 +12,7 @@
         background: url('<?= base_url() ?>assets/img/EW.jpg');
         background-position: center;
         background-size: cover;
+        height: 250px;
     }
 </style>
 <div class="container">
@@ -171,6 +172,7 @@
                 indexLabelFontColor: "white",
                 indexLabelFontWeight: "bolder",
                 indexLabelPlacement: "inside",
+                click: onClick,
                 dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
             }]
         });
@@ -195,6 +197,7 @@
                 indexLabelFontColor: "white",
                 indexLabelFontWeight: "bolder",
                 indexLabelPlacement: "inside",
+                click: onClick,
                 dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
             }]
         });
@@ -214,6 +217,15 @@
                     }
                 }
             }
+        }
+
+        function onClick(e) {
+            //alert(e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: " + e.dataPoint.y + " }");
+            if (e.dataPoint.x == 0) {
+                window.location.href = "<?= base_url(); ?>weo?we=NRJ";
+            } else if (e.dataPoint.x == 1) {
+                window.location.href = "<?= base_url(); ?>weo?we=PJ-46";
+            } 
         }
 
     }
