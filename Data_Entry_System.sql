@@ -90,11 +90,11 @@ CREATE TABLE `controller_data_detail` (
   `Controller_Data_ID` bigint(20) NOT NULL,
   `TBF` decimal(8,2) DEFAULT NULL,
   `TCM` decimal(8,2) DEFAULT NULL,
-  `TCM_Desc` varchar(50) DEFAULT NULL,
+  `TCM_Desc` varchar(1000) DEFAULT NULL,
   `TPM` decimal(8,2) DEFAULT NULL,
-  `TPM_Desc` varchar(50) DEFAULT NULL,
+  `TPM_Desc` varchar(1000) DEFAULT NULL,
   `ADLT` decimal(8,2) DEFAULT NULL,
-  `ADLT_Desc` varchar(50) DEFAULT NULL,
+  `ADLT_Desc` varchar(1000) DEFAULT NULL,
   `TTR` decimal(8,2) DEFAULT NULL,
   `RegDate` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
