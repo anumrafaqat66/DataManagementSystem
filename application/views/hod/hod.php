@@ -28,33 +28,38 @@
                             <div class="col-sm-7">
                                 <h1 class="h4 text-white">Sensor Detail</h1>
                             </div>
-                            <div class="col-sm-3">
+                            <!-- <div class="col-sm-3">
                                 <h1 class="h4 text-white">Availability</h1>
                             </div>
                             <div class="col-sm-2">
                                 <h1 class="h4 text-white">Reliability</h1>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
                     <div class="card-body bg-custom3">
-                    <h6> To check the Sensor reliability, please enter the time: </h6>
+
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
-                                <div class="col-sm-3 mb-1">
+                                <!--<div class="col-sm-3 mb-1">
                                     <select class="form-control rounded-pill" name="controller_type" id="sensor_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                         <option class="form-control form-control-user" value="">Select Sensor</option>
-                                        <?php if (isset($sensor_data)) {
-                                            foreach ($sensor_data as $data) { ?>
+                                        <?php //if (isset($sensor_data)) {
+                                        //foreach ($sensor_data as $data) { 
+                                        ?>
                                                 <option class="form-control form-control-user" value="<?= $data['ID']; ?>"><?= $data['Controller_Name']; ?></option>
-                                        <?php }
-                                        }  ?>
+                                        <?php //}
+                                        //}  
+                                        ?>
                                     </select>
+                                </div> -->
+                                <div class="col-sm-6 my-3">
+                                    <h6> To check the Sensor reliability, please enter the time: </h6>
                                 </div>
-                                <div class="col-sm-3 mb-1">
+                                <div class="col-sm-4">
                                     <input type="text" class="form-control form-control-user" name="time" id="sensor_time" placeholder="Enter Time">
                                 </div>
-                                <div class="col-sm-3">
+                                <!-- <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="s_availability">
                                             <div class="center-text" id="sensor_availability">0.00%</div>
@@ -68,7 +73,49 @@
                                             <div class="center-text" id="sensor_reliability">0.00%</div>
                                         </span>
                                     </div>
-                                </div>
+                                </div> -->
+
+
+                            </div>
+                            <div id="table_div">
+                                <?php if (isset($sensor_data)) {
+                                    if (count($sensor_data) > 0) { ?>
+
+                                        <table id="datatable" class="table table-sm table-striped bg-custom3">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col-3">No.</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Availability</th>
+                                                    <th scope="col">Reliability</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $count = 0;
+                                                foreach ($sensor_data as $data) { ?>
+                                                    <tr>
+                                                        <td scope="row"><?= ++$count; ?></td>
+                                                        <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                        <td scope="row"><?= $data['Availability']; ?></td>
+                                                        <td scope="row"><?= $data['Reliability']; ?></td>
+                                                        <!-- <td>
+                                                        <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
+                                                        </td> -->
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    <?php } else { ?>
+                                        <div class="card-header">
+                                            <h1 class="h4 text-gray-900">No records Available</h1>
+                                        </div>
+                                    <?php }
+                                    unset($sensor_data);
+                                    // unset($data['controller_detail_records']);
+                                } else { ?>
+                                    <a> No Record Available. </a>
+                                <?php  } ?>
                             </div>
 
                         </form>
@@ -89,23 +136,28 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                    <h6> To check the Fire Controller reliability, please enter the time: </h6>
+
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
-                                <div class="col-sm-3 mb-1">
+                                <!-- <div class="col-sm-3 mb-1">
                                     <select class="form-control rounded-pill" name="controller_type" id="fire_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                         <option class="form-control form-control-user" value="">Select Fire Controller</option>
-                                        <?php if (isset($fire_controller_data)) {
-                                            foreach ($fire_controller_data as $data) { ?>
+                                        <?php //if (isset($fire_controller_data)) {
+                                        //foreach ($fire_controller_data as $data) { 
+                                        ?>
                                                 <option class="form-control form-control-user" value="<?= $data['ID']; ?>"><?= $data['Controller_Name']; ?></option>
-                                        <?php }
-                                        }  ?>
+                                        <?php //}
+                                        //}  
+                                        ?>
                                     </select>
+                                </div> -->
+                                <div class="col-sm-6 my-3">
+                                    <h6> To check the Fire Controller reliability, please enter the time: </h6>
                                 </div>
-                                <div class="col-sm-3 mb-1">
+                                <div class="col-sm-4">
                                     <input type="text" class="form-control form-control-user" name="time" id="fire_time" placeholder="Enter Time">
                                 </div>
-                                <div class="col-sm-3">
+                                <!-- <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="f_availability">
                                             <div class="center-text" id="fire_availability">0.00%</div>
@@ -119,7 +171,48 @@
                                             <div class="center-text" id="fire_reliability">0.00%</div>
                                         </span>
                                     </div>
-                                </div>
+                                </div> -->
+                            </div>
+
+                            <div id="table_div">
+                                <?php if (isset($fire_controller_data)) {
+                                    if (count($fire_controller_data) > 0) { ?>
+
+                                        <table id="datatable" class="table table-sm table-striped bg-custom3">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">No.</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Availability</th>
+                                                    <th scope="col">Reliability</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $count = 0;
+                                                foreach ($fire_controller_data as $data) { ?>
+                                                    <tr>
+                                                        <td scope="row"><?= ++$count; ?></td>
+                                                        <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                        <td scope="row"><?= $data['Availability']; ?></td>
+                                                        <td scope="row"><?= $data['Reliability']; ?></td>
+                                                        <!-- <td>
+                                                        <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
+                                                        </td> -->
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    <?php } else { ?>
+                                        <div class="card-header">
+                                            <h1 class="h4 text-gray-900">No record available</h1>
+                                        </div>
+                                    <?php }
+                                    unset($fire_controller_data);
+                                    // unset($data['controller_detail_records']);
+                                } else { ?>
+                                    <a> No Record Available. </a>
+                                <?php  } ?>
                             </div>
 
                         </form>
@@ -140,24 +233,29 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                    <h6> To check the Weapon reliability, please enter the time: </h6>
+
                         <form class="user" role="form" id="update_form" method="post" action="">
                             <div class="form-group row">
-                                <div class="col-sm-3 mb-1">
+                                <!-- <div class="col-sm-3 mb-1">
                                     <select class="form-control rounded-pill" name="controller_type" id="weapon_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                         <option class="form-control form-control-user" value="">Select Weapon</option>
-                                        <?php if (isset($weapon_data)) {
-                                            foreach ($weapon_data as $data) { ?>
+                                        <? //php if (isset($weapon_data)) {
+                                        //foreach ($weapon_data as $data) { 
+                                        ?>
                                                 <option class="form-control form-control-user" value="<?= $data['ID']; ?>"><?= $data['Controller_Name']; ?></option>
-                                        <?php }
-                                        }  ?>
+                                        <?php //}
+                                        //}  
+                                        ?>
                                     </select>
+                                </div> -->
+                                <div class="col-sm-6 my-3">
+                                    <h6> To check the Weapon reliability, please enter the time: </h6>
                                 </div>
-                                <div class="col-sm-3 mb-1">
+                                <div class="col-sm-4">
                                     <input type="text" class="form-control form-control-user" name="time" id="weapon_time" placeholder="Enter Time">
                                 </div>
 
-                                <div class="col-sm-3">
+                                <!-- <div class="col-sm-3">
                                     <div class="text-center">
                                         <span class="dot" id="w_availability">
                                             <div class="center-text" id="weapon_availability">0.00%</div>
@@ -171,8 +269,49 @@
                                             <div class="center-text" id="weapon_reliability">0.00%</div>
                                         </span>
                                     </div>
-                                </div>
+                                </div> -->
 
+                            </div>
+
+                            <div id="table_div">
+                                <?php if (isset($weapon_data)) {
+                                    if (count($weapon_data) > 0) { ?>
+
+                                        <table id="datatable" class="table table-sm table-striped bg-custom3">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">No.</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Availability</th>
+                                                    <th scope="col">Reliability</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $count = 0;
+                                                foreach ($weapon_data as $data) { ?>
+                                                    <tr>
+                                                        <td scope="row"><?= ++$count; ?></td>
+                                                        <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                        <td scope="row"><?= $data['Availability']; ?></td>
+                                                        <td scope="row"><?= $data['Reliability']; ?></td>
+                                                        <!-- <td>
+                                                        <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
+                                                        </td> -->
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    <?php } else { ?>
+                                        <div class="card-header">
+                                            <h1 class="h4 text-gray-900">No record available</h1>
+                                        </div>
+                                    <?php }
+                                    unset($weapon_data);
+                                    // unset($data['controller_detail_records']);
+                                } else { ?>
+                                    <a> No Record Available. </a>
+                                <?php  } ?>
                             </div>
 
                         </form>
@@ -201,14 +340,14 @@
                 'controller_id': id
             },
             success: function(data) {
-                 $('#sensor_availability').html(data + "%");
-                if(data<50){
-                document.getElementById("s_availability").style.backgroundColor  = "red"; 
-            }else if(data > 50 && data < 75){
-                 document.getElementById("s_availability").style.backgroundColor  = "yellow";
-            }else if(data>=75){
-                 document.getElementById("s_availability").style.backgroundColor  = "green";
-            }
+                $('#sensor_availability').html(data + "%");
+                if (data < 50) {
+                    document.getElementById("s_availability").style.backgroundColor = "red";
+                } else if (data > 50 && data < 75) {
+                    document.getElementById("s_availability").style.backgroundColor = "yellow";
+                } else if (data >= 75) {
+                    document.getElementById("s_availability").style.backgroundColor = "green";
+                }
             },
             error: function(data) {
                 alert('failure');
@@ -234,13 +373,13 @@
             },
             success: function(data) {
                 $('#fire_availability').html(data + "%");
-                  if(data<50){
-                document.getElementById("f_availability").style.backgroundColor  = "red"; 
-            }else if(data > 50 && data < 75){
-                 document.getElementById("f_availability").style.backgroundColor  = "yellow";
-            }else if(data>75){
-                 document.getElementById("f_availability").style.backgroundColor  = "green";
-            }
+                if (data < 50) {
+                    document.getElementById("f_availability").style.backgroundColor = "red";
+                } else if (data > 50 && data < 75) {
+                    document.getElementById("f_availability").style.backgroundColor = "yellow";
+                } else if (data > 75) {
+                    document.getElementById("f_availability").style.backgroundColor = "green";
+                }
             },
             error: function(data) {
                 alert('failure');
@@ -266,19 +405,19 @@
             },
             success: function(data) {
                 $('#weapon_availability').html(data + "%");
-                           if(data<50){
-                document.getElementById("w_availability").style.backgroundColor  = "red"; 
-            }else if(data > 50 && data < 75){
-                 document.getElementById("w_availability").style.backgroundColor  = "yellow";
-            }else if(data>=75){
-                 document.getElementById("w_availability").style.backgroundColor  = "green";
-            }
+                if (data < 50) {
+                    document.getElementById("w_availability").style.backgroundColor = "red";
+                } else if (data > 50 && data < 75) {
+                    document.getElementById("w_availability").style.backgroundColor = "yellow";
+                } else if (data >= 75) {
+                    document.getElementById("w_availability").style.backgroundColor = "green";
+                }
             },
             error: function(data) {
                 alert('failure');
             }
         });
-      //  e.preventDefault();
+        //  e.preventDefault();
         window.onunload = function() {
             dubugger;
         }
@@ -299,19 +438,19 @@
             },
             success: function(data) {
                 $('#sensor_reliability').html(data + "%");
-                                  if(data<50){
-                document.getElementById("s_reliability").style.backgroundColor  = "red"; 
-            }else if(data > 50 && data < 75){
-                 document.getElementById("s_reliability").style.backgroundColor  = "yellow";
-            }else if(data>=75){
-                 document.getElementById("s_reliability").style.backgroundColor  = "green";
-            }
+                if (data < 50) {
+                    document.getElementById("s_reliability").style.backgroundColor = "red";
+                } else if (data > 50 && data < 75) {
+                    document.getElementById("s_reliability").style.backgroundColor = "yellow";
+                } else if (data >= 75) {
+                    document.getElementById("s_reliability").style.backgroundColor = "green";
+                }
             },
             error: function(data) {
                 alert('failure');
             }
         });
-     //   e.preventDefault();
+        //   e.preventDefault();
         window.onunload = function() {
             dubugger;
         }
@@ -331,19 +470,19 @@
             },
             success: function(data) {
                 $('#fire_reliability').html(data + "%");
-                if(data<50){
-                document.getElementById("f_reliability").style.backgroundColor  = "red"; 
-            }else if(data > 50 && data < 75){
-                 document.getElementById("f_reliability").style.backgroundColor  = "yellow";
-            }else if(data>=75){
-                 document.getElementById("f_reliability").style.backgroundColor  = "green";
-            }
+                if (data < 50) {
+                    document.getElementById("f_reliability").style.backgroundColor = "red";
+                } else if (data > 50 && data < 75) {
+                    document.getElementById("f_reliability").style.backgroundColor = "yellow";
+                } else if (data >= 75) {
+                    document.getElementById("f_reliability").style.backgroundColor = "green";
+                }
             },
             error: function(data) {
                 alert('failure');
             }
         });
-     //   e.preventDefault();
+        //   e.preventDefault();
         window.onunload = function() {
             dubugger;
         }
@@ -363,13 +502,13 @@
             },
             success: function(data) {
                 $('#weapon_reliability').html(data + "%");
-                       if(data<50){
-                document.getElementById("w_reliability").style.backgroundColor  = "red"; 
-            }else if(data > 50 && data < 75){
-                 document.getElementById("w_reliability").style.backgroundColor  = "yellow";
-            }else if(data>=75){
-                 document.getElementById("w_reliability").style.backgroundColor  = "green";
-            }
+                if (data < 50) {
+                    document.getElementById("w_reliability").style.backgroundColor = "red";
+                } else if (data > 50 && data < 75) {
+                    document.getElementById("w_reliability").style.backgroundColor = "yellow";
+                } else if (data >= 75) {
+                    document.getElementById("w_reliability").style.backgroundColor = "green";
+                }
             },
             error: function(data) {
                 alert('failure');
@@ -381,5 +520,4 @@
         }
 
     });
-
 </script>

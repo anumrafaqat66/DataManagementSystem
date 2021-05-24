@@ -14,7 +14,6 @@ class WEO extends CI_Controller
         //print_r($input_params['we']); exit;
         $data['selected_weapon'] = $input_params['we'];
 
-
         $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
         $this->load->view('weo/weo', $data);
     }
@@ -108,14 +107,27 @@ class WEO extends CI_Controller
         }
     }
 
-    public function get_system_reliability()
+    public function get_all_weapons_reliability()
+    {
+        $system_time = $_POST['time'];
+        $weapons_array = array();
+        $weapons_array['data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
+
+        if (count($weapons_array['data']) != 0) {
+            for ($i = 0; $i < count($weapons_array['data']); $i++) :
+                $this->get_system_reliability($weapons_array['data'][$i]['Controller_Name'], $system_time);
+            endfor;
+        }
+    }
+
+    public function get_system_reliability($weapon_name = NULL, $time = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             if ($status == "weo" || $status = "co") {
-                $weapon_name = $_POST['weapon_name'];
-                $system_time = $_POST['time'];
+                //$weapon_name = $_POST['weapon_name'];
+                $system_time = $time;
                 //echo $weapon_name;exit;
                 $view_array = array();
                 $view_rows = array();
@@ -200,7 +212,6 @@ class WEO extends CI_Controller
                 echo number_format(($final_result * 100), 2);
 
                 //Updation 
-
                 $cond  = ['weapon_name' => $weapon_name];
                 $data_update = [
                     'Reliabbility' => number_format(($final_result * 100), 2),

@@ -68,6 +68,7 @@ CREATE TABLE `controller_data` (
   `ID` bigint(20) NOT NULL,
   `Controller_type` varchar(30) NOT NULL,
   `Controller_Name` varchar(30) NOT NULL,
+  `Controller_Code` varchar(30),
   `ESWB` varchar(30) NOT NULL,
   `Includes` varchar(50) DEFAULT NULL,
   `Not_Includes` varchar(50) DEFAULT NULL,
@@ -75,7 +76,9 @@ CREATE TABLE `controller_data` (
   `MTBF` decimal(8,2) DEFAULT NULL,
   `MTTR` decimal(8,2) DEFAULT NULL,
   `Availability` decimal(8,2) DEFAULT NULL,
-  `Reliability` decimal(8,2) DEFAULT NULL
+  `Reliability` decimal(8,2) DEFAULT NULL,
+  `Default_Reliability` decimal(8,2) DEFAULT 0.00,
+  `Comission_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -88,6 +91,8 @@ CREATE TABLE `controller_data` (
 CREATE TABLE `controller_data_detail` (
   `id` bigint(20) NOT NULL,
   `Controller_Data_ID` bigint(20) NOT NULL,
+  `Failure_start_date` date,
+  `Failure_end_date` date,  
   `TBF` decimal(8,2) DEFAULT NULL,
   `TCM` decimal(8,2) DEFAULT NULL,
   `TCM_Desc` varchar(1000) DEFAULT NULL,
@@ -267,32 +272,32 @@ delete from controller_data_detail;
 delete from controller_data;
 delete from weapon_systems;
 
-insert into controller_data values (1,'Sensor','S1','1001','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (2,'Sensor','S2','1002','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (3,'Sensor','CCS','1003','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (1,'Sensor','S1','S1','1001','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (2,'Sensor','S2','S2','1002','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (3,'Sensor','CCS','CCS','1003','','','',0.00,0.00,0.00,0.00,0.00,null);
 
-insert into controller_data values (4,'Fire Controller','FC1','2001','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (5,'Fire Controller','FC2','2002','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (6,'Fire Controller','FC3','2003','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (7,'Fire Controller','FC4','2004','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (4,'Fire Controller','FC1','FC1','2001','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (5,'Fire Controller','FC2','FC2','2002','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (6,'Fire Controller','FC3','FC3','2003','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (7,'Fire Controller','FC4','FC4','2004','','','',0.00,0.00,0.00,0.00,0.00,null);
 
 -- AAW Mission
-insert into controller_data values (8,'Weapon','SAM','3001','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (9,'Weapon','Main Gun','3002','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (10,'Weapon','CRG (Port)','3003','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (11,'Weapon','CRG (STDB)','3004','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (8,'Weapon','SAM','SAM','3001','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (9,'Weapon','Main Gun','MG','3002','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (10,'Weapon','CRG (Port)','CP','3003','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (11,'Weapon','CRG (STDB)','CS','3004','','','',0.00,0.00,0.00,0.00,0.00,null);
 
 -- ASuW Mission
-insert into controller_data values (12,'Weapon','SSM','3005','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (12,'Weapon','SSM','SSM','3005','','','',0.00,0.00,0.00,0.00,0.00,null);
 
 -- ASW Mission
-insert into controller_data values (13,'Weapon','Torpedo','3006','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (14,'Weapon','RDC','3007','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (15,'Sensor','SONAR','1004','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (13,'Weapon','Torpedo','TOR','3006','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (14,'Weapon','RDC','RDC','3007','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (15,'Sensor','SONAR','SONAR','1004','','','',0.00,0.00,0.00,0.00,0.00,null);
 
 -- EW Mission
-insert into controller_data values (16,'Weapon','NRJ','3008','','','',0.00,0.00,0.00,0.00);
-insert into controller_data values (17,'Weapon','PJ-46','3009','','','',0.00,0.00,0.00,0.00);
+insert into controller_data values (16,'Weapon','NRJ','NRJ','3008','','','',0.00,0.00,0.00,0.00,0.00,null);
+insert into controller_data values (17,'Weapon','PJ-46','PJ-46','3009','','','',0.00,0.00,0.00,0.00,0.00,null);
 
 
 insert into weapon_systems values (1,'SAM',0.00,0.00,'AAW','Anti Air war mission');
@@ -375,73 +380,73 @@ insert into weapon_system_config values (44,12,17,'S','1');
 
 -- Sample Data Insertion 
 
-insert into controller_data_detail values (1,1,280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (2,1,250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (3,1,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (1,1,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (2,1,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (3,1,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (4,2,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (5,2,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (6,2,250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (4,2,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (5,2,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (6,2,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
 
-insert into controller_data_detail values (7,3,290,20,'',25,'',30,'',0.00, CURDATE());
-insert into controller_data_detail values (8,3,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (9,3,280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (7,3,'2021-01-01','2021-03-01',290,20,'',25,'',30,'',0.00, CURDATE());
+insert into controller_data_detail values (8,3,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (9,3,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
 
-insert into controller_data_detail values (10,4,280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (11,4,290,20,'',35,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (12,4,250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (10,4,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (11,4,'2021-01-01','2021-03-01',290,20,'',35,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (12,4,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
 
-insert into controller_data_detail values (13,5,280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (14,5,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (15,5,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (13,5,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (14,5,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (15,5,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (16,6,250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (17,6,340,10,'',5,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (18,6,280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (16,6,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (17,6,'2021-01-01','2021-03-01',340,10,'',5,'',10,'',0.00, CURDATE());
+insert into controller_data_detail values (18,6,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
 
-insert into controller_data_detail values (19,7,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (20,7,290,30,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (21,7,250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (19,7,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (20,7,'2021-01-01','2021-03-01',290,30,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (21,7,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
 
-insert into controller_data_detail values (22,8,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (23,8,330,10,'',15,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (24,8,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (22,8,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (23,8,'2021-01-01','2021-03-01',330,10,'',15,'',10,'',0.00, CURDATE());
+insert into controller_data_detail values (24,8,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (25,9,280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (26,9,250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (27,9,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (25,9,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (26,9,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (27,9,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (28,10,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (29,10,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (30,10,250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (28,10,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (29,10,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (30,10,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
 
-insert into controller_data_detail values (31,11,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (32,11,340,5,'',10,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (33,11,320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (31,11,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (32,11,'2021-01-01','2021-03-01',340,5,'',10,'',10,'',0.00, CURDATE());
+insert into controller_data_detail values (33,11,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (34,12,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (35,12,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (36,12,250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (34,12,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (35,12,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (36,12,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
 
-insert into controller_data_detail values (37,13,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (38,13,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (39,13,320,10,'',20,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (37,13,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (38,13,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (39,13,'2021-01-01','2021-03-01',320,10,'',20,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (40,14,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (41,14,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (42,14,250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (40,14,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (41,14,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (42,14,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
 
-insert into controller_data_detail values (43,15,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (44,15,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (45,15,280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (43,15,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (44,15,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (45,15,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
 
-insert into controller_data_detail values (46,16,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (47,16,310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (48,16,330,10,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (46,16,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (47,16,'2021-01-01','2021-03-01',310,10,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (48,16,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE());
 
-insert into controller_data_detail values (49,17,300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (50,17,250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (51,17,330,10,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (49,17,'2021-01-01','2021-03-01',300,20,'',25,'',20,'',0.00, CURDATE());
+insert into controller_data_detail values (50,17,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (51,17,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE());
 
 update controller_data_detail set TTR = (TCM + TPM + ADLT);
 
