@@ -31,7 +31,7 @@ class CO extends CI_Controller
             $data["mission$datarow"] = $missions[$i]['Availability'];
         }
         $data['availability'] = number_format((1 - ($result)) * 100, 2);
-        $this->load->view('co/co', $data);
+        $this->load->view('ship/ship', $data);
     }
 
     public function PageReload()

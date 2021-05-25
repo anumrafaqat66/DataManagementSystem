@@ -6,7 +6,8 @@
 <?php !isset($reliability) ? $reliability = 0 : $reliability; ?>
 <?php !isset($time_entered) ? $time_entered = null : $time_entered; ?>
 
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="<?= base_url();?>assets/js/canvasjs.min.js"></script>
+
 <style>
     .img {
         background: url('<?= base_url() ?>assets/img/ASuW.jpg');
@@ -14,6 +15,12 @@
         background-size: cover;
         height: 250px;
     }
+    .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.75rem;
+    padding-bottom: 0px;
+}
 </style>
 <div class="container">
     <!-- <h1 class="h4 text-gray-900">Welcome CO</h1> -->
@@ -28,35 +35,28 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <div class="form-group row">
+                            <div class="form-group row col-md-12">
 
-                            <div class="col mx-1 my-1 img" style="height:300px">
+                            <div class="col-md-4 img" style="width: 200px">
                                 <div style="margin-top:135px">
 
                                 </div>
                             </div>
+                            <div class="col-md-8" style="width:80%;float: right;">
 
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header bg-custom1">
-                                <h5 class="h5 text-white">Mission Statistics</h5>
-                            </div>
-
-                            <div class="card-body bg-custom3">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 my-3">
+                           <!--  <div style="margin-top:15px"> -->
+                            <div class="row" style="padding-left:4%">
+                                 <div class="col-sm-7 my-3" style="float: left;">
                                         <h6 class="h6 text-grey-900">To check mission reliabiltiy. Please enter time: </h6>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-5" style="float: right;">
                                         <form class="user" role="form" id="update_form" method="post" action="">
                                             <input type="text" class="form-control form-control-user" name="time" id="system_time" value="<?php echo $time_entered ?>" placeholder="Enter Time">
                                         </form>
                                     </div>
                                 </div>
-
-                                <hr>
-                                <div class="form-group row">
+                                        <!-- Availability Realibility bars -->
+                                      <div class="row" style="padding-left :16%;padding-top: 5%">
                                     <div class="col-sm-6">
                                         <h4 class="h4 text-grey-900">Availability</h4>
                                         <div class="progress" style="height:40px">
@@ -71,7 +71,49 @@
                                             <div class="progress-bar" id="reliability_bar" role="progressbar" style="width: <?= $reliability ?>%;" aria-valuenow="<?= $reliability ?>" aria-valuemin="0" aria-valuemax="100"><?= $reliability . "%" ?></div>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
+                                
+                          <!--   </div> -->
+
+                        </div>
+                        
+
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header bg-custom1">
+                                <h5 class="h5 text-white">Mission Statistics Graphs</h5>
+                            </div>
+
+                            <div class="card-body bg-custom3">
+                               <!--  <div class="form-group row">
+                                    <div class="col-sm-6 my-3">
+                                        <h6 class="h6 text-grey-900">To check mission reliabiltiy. Please enter time: </h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <form class="user" role="form" id="update_form" method="post" action="">
+                                            <input type="text" class="form-control form-control-user" name="time" id="system_time" value="<?php echo $time_entered ?>" placeholder="Enter Time">
+                                        </form>
+                                    </div>
+                                </div> -->
+
+                                <hr>
+                               <!--  <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <h4 class="h4 text-grey-900">Availability</h4>
+                                        <div class="progress" style="height:40px">
+                                            <div class="progress-bar" id="availability_bar" role="progressbar" style="width: <?= $availability ?>%;" aria-valuenow="<?= $availability ?>" aria-valuemin="0" aria-valuemax="100"><?= $availability . "%" ?></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <h4 class="h4 text-grey-900">Reliability</h4>
+
+                                        <div class="progress" style="height:40px">
+                                            <div class="progress-bar" id="reliability_bar" role="progressbar" style="width: <?= $reliability ?>%;" aria-valuenow="<?= $reliability ?>" aria-valuemin="0" aria-valuemax="100"><?= $reliability . "%" ?></div>
+                                        </div>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                         <!-- Graphs -->
@@ -85,7 +127,7 @@
                                     <div class="col-md-6">
                                         <!-- <h3 class="text-grey-900">Availability</h3> -->
                                         <div>
-                                            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                                            <div id="chartContainer" style="height: 250px; width: 100%;"></div>
                                         </div>
                                         <?php
                                         $dataPoints = array(
@@ -100,7 +142,7 @@
                                     <div class="col-md-6" id="reliability_chart">
                                         <!-- <h3 class="text-grey-900">Relaibility</h3> -->
                                         <div>
-                                            <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
+                                            <div id="chartContainer1" style="height: 250px; width: 100%;"></div>
                                         </div>
                                         <?php
                                         $dataPoints1 = array(

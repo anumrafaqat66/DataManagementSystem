@@ -7,9 +7,15 @@
 <?php !isset($time_entered) ? $time_entered = null : $time_entered; ?>
 <?php !isset($button_clicked) ? $button_clicked = null : $button_clicked; ?>
 
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="<?= base_url();?>assets/js/canvasjs.min.js"></script>
  <style>
-.container {display:flex;}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.75rem;
+    padding-bottom: 0px;
+}
     .img-ship {
         background: url('<?= base_url() ?>assets/img/ship.jpg');
         background-position: center;
@@ -132,7 +138,7 @@
                         </div>
  -->
                         <div class="form-group row">
-                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>">
+                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>" style="height: 250px">
                                 <div style="height:200px">
                                     <div style="margin-top:100px">
                                         <h1 class="h1 text-dark text-center "><strong>AAW</strong></h1>
@@ -140,16 +146,16 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>">
+                            <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>" style="height: 250px">
                                 <div style="height:200px">
                                     <div style="margin-top:100px">
-                                        <h1 class="h1 text-primary text-center "><strong>ASuW</strong></h1>
-                                        <h2 class="h2 text-primary text-center "><strong><?php echo $mission2 ?></strong></h2>
+                                        <h1 class="h1 text-dark text-center "><strong>ASuW</strong></h1>
+                                        <h2 class="h2 text-dark text-center "><strong><?php echo $mission2 ?></strong></h2>
                                     </div>
                                 </div>
                             </a>
                             <!-- <div class="w-100"></div> -->
-                            <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>">
+                            <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>" style="height: 250px">
                                 <div style="height:200px">
                                     <div style="margin-top:100px">
                                         <h1 class="h1 text-white text-center "><strong>ASW</strong></h1>
@@ -157,7 +163,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>">
+                            <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>" style="height: 250px">
                                 <div style="height:200px">
                                     <div style="margin-top:100px">
                                         <h1 class="h1 text-white text-center "><strong>EW</strong></h1>
@@ -208,17 +214,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Graphs -->
-                                <div class="card">
+                                              <div class="card">
 
                                     <div class="card-body bg-custom3">
                                         <div class="form-group row">
                                             <div class="col-md-6">
                                                 <!-- <h3 class="text-grey-900">Availability</h3> -->
                                                 <div>
-                                                    <div id="chartContainer" style="height: 370px; width:100%;"></div>
+                                                    <div id="chartContainer" style="height: 250px; width:100%;"></div>
                                                 </div>
                                                 <?php
                                                 $dataPoints = array(
@@ -233,7 +236,7 @@
                                             <div class="col-md-6" id="reliability_chart">
                                                 <!-- <h3 class="text-grey-900">Relaibility</h3> -->
                                                 <div>
-                                                    <div id="chartContainer1" style="height: 370px;width:100%;"></div>
+                                                    <div id="chartContainer1" style="height: 250px;width:100%;"></div>
                                                 </div>
                                                 <?php
                                                 $dataPoints1 = array(
@@ -246,6 +249,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <!-- Graphs -->
+                      
                                 </div>
                             </div>
                         </div>
