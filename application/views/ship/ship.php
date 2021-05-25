@@ -8,7 +8,8 @@
 <?php !isset($button_clicked) ? $button_clicked = null : $button_clicked; ?>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<style>
+ <style>
+.container {display:flex;}
     .img-ship {
         background: url('<?= base_url() ?>assets/img/ship.jpg');
         background-position: center;
@@ -120,11 +121,47 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <div class="form-group row">
+                       <!--  <div class="form-group row">
                             <a class="col mx-1 my-1 img-ship" href="<?= base_url(); ?>CO/mission">
                                 <div style="height:180px">
                                     <div style="margin-top:135px">
                                         <h1 class="h1 text-dark text-center "><strong></strong></h1>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+ -->
+                        <div class="form-group row">
+                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>">
+                                <div style="height:200px">
+                                    <div style="margin-top:100px">
+                                        <h1 class="h1 text-dark text-center "><strong>AAW</strong></h1>
+                                        <h2 class="h2 text-dark text-center "><strong><?php echo $mission1 ?></strong></h2>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>">
+                                <div style="height:200px">
+                                    <div style="margin-top:100px">
+                                        <h1 class="h1 text-primary text-center "><strong>ASuW</strong></h1>
+                                        <h2 class="h2 text-primary text-center "><strong><?php echo $mission2 ?></strong></h2>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- <div class="w-100"></div> -->
+                            <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>">
+                                <div style="height:200px">
+                                    <div style="margin-top:100px">
+                                        <h1 class="h1 text-white text-center "><strong>ASW</strong></h1>
+                                        <h2 class="h2 text-white text-center "><strong><?php echo $mission3 ?></strong></h2>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>">
+                                <div style="height:200px">
+                                    <div style="margin-top:100px">
+                                        <h1 class="h1 text-white text-center "><strong>EW</strong></h1>
+                                        <h2 class="h2 text-white text-center "><strong><?php echo $mission4 ?></strong></h2>
                                     </div>
                                 </div>
                             </a>

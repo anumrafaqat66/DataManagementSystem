@@ -38,6 +38,11 @@
         </div>
     </div>
 
+ <!-- canvasjs links-->
+  <!--    <script src="<?php echo base_url(); ?>assets/js/canvasjs.min"></script>
+    <script src="<?php echo base_url(); ?>assets/js/canvasjs.react"></script>
+     <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min"></script> -->
+
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
