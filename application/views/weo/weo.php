@@ -1,5 +1,6 @@
 <?php $this->load->view('weo/common/header'); ?>
-<?php !isset($selected_weapon) ? $selected_weapon = "Select Weapon" : $selected_weapon; ?>
+<?php //!isset($selected_weapon) ? $selected_weapon = "Select Weapon" : $selected_weapon; 
+?>
 <style>
     .dot {
         height: 150px;
@@ -145,6 +146,7 @@
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Availability</th>
+                                                    <th scope="col">Default Reliability (30 Days)</th>
                                                     <th scope="col">Reliability</th>
 
                                                 </tr>
@@ -156,6 +158,7 @@
                                                         <td scope="row"><?= ++$count; ?></td>
                                                         <td type="button" scope="row" id="weapon_name<?= $count ?>" value="<?= $data['Controller_Name']; ?>" data-toggle="modal" data-target="#<?= $data['Controller_Code']; ?>"><?= $data['Controller_Name']; ?></td>
                                                         <td scope="row"><?= $data['Availability']; ?></td>
+                                                        <td scope="row"><?= $data['Default_Reliability']; ?></td>
                                                         <td scope="row"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
                                                         <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
@@ -701,103 +704,127 @@
 
     });
 
-    // window.onload = function() {
-    //     var weapon = $('#controller_type').val();
-    //     //alert(weapon);
-    //     if (weapon != "Select Weapon") {
-    //         //alert('iam in IF condition');
-    //         $('#sam_card').hide();
-    //         $('#main_gun').hide();
-    //         $('#CRG_Port').hide();
-    //         $('#CRG_STDB').hide();
-    //         $('#SSM').hide();
-    //         $('#Torpedo').hide();
-    //         $('#RDC').hide();
-    //         $('#PJ-46').hide();
-    //         $('#NRJ').hide();
-    //         $('#reliability').html("0.00%");
-    //         // document.getElementById("system_reliability").style.backgroundColor = "#bbb";
-    //         $('#system_time').val(null);
+    window.onload = function() {
+        //var weapon = $('#controller_type').val();
+        //alert(weapon);
+        // if (weapon != "Select Weapon") {
+        //     //alert('iam in IF condition');
+        //     $('#sam_card').hide();
+        //     $('#main_gun').hide();
+        //     $('#CRG_Port').hide();
+        //     $('#CRG_STDB').hide();
+        //     $('#SSM').hide();
+        //     $('#Torpedo').hide();
+        //     $('#RDC').hide();
+        //     $('#PJ-46').hide();
+        //     $('#NRJ').hide();
+        //     $('#reliability').html("0.00%");
+        //     // document.getElementById("system_reliability").style.backgroundColor = "#bbb";
+        //     $('#system_time').val(null);
 
-    //         if (weapon == 'SAM') {
-    //             $('#sam_card').show();
-    //         } else if (weapon == 'Main Gun') {
-    //             $('#main_gun').show();
-    //         } else if (weapon == 'CRG (Port)') {
-    //             $('#CRG_Port').show();
-    //         } else if (weapon == 'CRG (STDB)') {
-    //             $('#CRG_STDB').show();
-    //         } else if (weapon == 'SSM') {
-    //             $('#SSM').show();
-    //         } else if (weapon == 'Torpedo') {
-    //             $('#Torpedo').show();
-    //         } else if (weapon == 'RDC') {
-    //             $('#RDC').show();
-    //         } else if (weapon == 'NRJ') {
-    //             $('#NRJ').show();
-    //         } else if (weapon == 'PJ-46') {
-    //             $('#PJ-46').show();
-    //         }
+        //     if (weapon == 'SAM') {
+        //         $('#sam_card').show();
+        //     } else if (weapon == 'Main Gun') {
+        //         $('#main_gun').show();
+        //     } else if (weapon == 'CRG (Port)') {
+        //         $('#CRG_Port').show();
+        //     } else if (weapon == 'CRG (STDB)') {
+        //         $('#CRG_STDB').show();
+        //     } else if (weapon == 'SSM') {
+        //         $('#SSM').show();
+        //     } else if (weapon == 'Torpedo') {
+        //         $('#Torpedo').show();
+        //     } else if (weapon == 'RDC') {
+        //         $('#RDC').show();
+        //     } else if (weapon == 'NRJ') {
+        //         $('#NRJ').show();
+        //     } else if (weapon == 'PJ-46') {
+        //         $('#PJ-46').show();
+        //     }
 
-    //         //var name = $(this).val();
-    //         if (weapon != '') {
-    //             $.ajax({
-    //                 url: '<?= base_url(); ?>WEO/get_system_availability',
-    //                 method: 'POST',
-    //                 data: {
-    //                     'weapon_name': weapon
-    //                 },
-    //                 success: function(data) {
-    //                     // var result = jQuery.parseJSON(data);
-    //                     //alert(result);
-    //                     $('#availability').html(data + "%");
-    //                     if (data < 50) {
-    //                         document.getElementById("system_availability").style.backgroundColor = "red";
-    //                     } else if (data > 50 && data < 75) {
-    //                         document.getElementById("system_availability").style.backgroundColor = "yellow";
-    //                     } else if (data >= 75) {
-    //                         document.getElementById("system_availability").style.backgroundColor = "green";
-    //                     }
-    //                 },
-    //                 async: false
-    //                 // ,
-    //                 // error: function(data) {
-    //                 //     //alert(data);
-    //                 //     alert('failure');
-    //                 // }
-    //             });
-    //         }
+        //var name = $(this).val();
+        //if (weapon != '') {
+        $.ajax({
+            url: '<?= base_url(); ?>WEO/get_all_weapons_availability',
+            method: 'POST',
+            success: function(data) {
+                // var result = jQuery.parseJSON(data);
+                //alert(result);
+                // $('#availability').html(data + "%");
+                // if (data < 50) {
+                //     document.getElementById("system_availability").style.backgroundColor = "red";
+                // } else if (data > 50 && data < 75) {
+                //     document.getElementById("system_availability").style.backgroundColor = "yellow";
+                // } else if (data >= 75) {
+                //     document.getElementById("system_availability").style.backgroundColor = "green";
+                // }
+            },
+            async: false
+            // ,
+            // error: function(data) {
+            //     //alert(data);
+            //     alert('failure');
+            // }
+        });
 
-    //         if (weapon != '') {
-    //             $.ajax({
-    //                 url: '<?= base_url(); ?>WEO/get_sensors_data',
-    //                 method: 'POST',
-    //                 data: {
-    //                     'weapon_name': weapon
-    //                 },
-    //                 success: function(data) {
-    //                     result = JSON.parse(data);
-    //                     $str = '';
-    //                     for (var i in result) {
-    //                         $str = result[i].Controller_Name.replace(" ", "_");
-    //                         $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
-    //                         $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
-    //                     }
-    //                 },
-    //                 error: function(data) {
-    //                     //alert(data);
-    //                     alert('failure');
-    //                 }
-    //             });
+        $.ajax({
+            url: '<?= base_url(); ?>WEO/get_all_weapons_reliability',
+            method: 'POST',
+            data: {
+                //'weapon_name': name,
+                'isDefault' : true
+            },
+            success: function(data) {
+                // var result = jQuery.parseJSON(data);
+                //alert(result);
+                // $('#reliability').html(data + "%");
+                // if (data < 50) {
+                //     document.getElementById("system_reliability").style.backgroundColor = "red";
+                // } else if (data > 50 && data < 75) {
+                //     document.getElementById("system_reliability").style.backgroundColor = "yellow";
+                // } else if (data >= 75) {
+                //     document.getElementById("system_reliability").style.backgroundColor = "green";
+                // }
+                //setInterval('location.reload()', 300); // Using .reload() method.
+            },
+            async: false,
+            error: function(data) {
+                //alert(data);
+                alert('failure');
+            }
+        });
+        //}
 
-    //         }
-    //         e.preventDefault();
-    //         window.onunload = function() {
-    //             dubugger;
-    //         }
+        // if (weapon != '') {
+        //     $.ajax({
+        //         url: '<?= base_url(); ?>WEO/get_sensors_data',
+        //         method: 'POST',
+        //         data: {
+        //             'weapon_name': weapon
+        //         },
+        //         success: function(data) {
+        //             result = JSON.parse(data);
+        //             $str = '';
+        //             for (var i in result) {
+        //                 $str = result[i].Controller_Name.replace(" ", "_");
+        //                 $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+        //                 $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
+        //             }
+        //         },
+        //         error: function(data) {
+        //             //alert(data);
+        //             alert('failure');
+        //         }
+        //     });
 
-    //     }
-    // }
+        // }
+        // e.preventDefault();
+        // window.onunload = function() {
+        //     dubugger;
+        // }
+
+        // }
+    }
 
     // $('#show_graphs').on('click', function() {
     //     $('#sam_card').hide();
@@ -946,10 +973,12 @@
             url: '<?= base_url(); ?>WEO/get_all_weapons_reliability',
             method: 'POST',
             data: {
-                'weapon_name': name,
-                'time': time
+                //'weapon_name': name,
+                'time': time,
+                'isDefault' : false
             },
             success: function(data) {
+                alert(data);
                 // var result = jQuery.parseJSON(data);
                 //alert(result);
                 // $('#reliability').html(data + "%");
@@ -960,7 +989,7 @@
                 // } else if (data >= 75) {
                 //     document.getElementById("system_reliability").style.backgroundColor = "green";
                 // }
-                setInterval('location.reload()', 100);        // Using .reload() method.
+                setInterval('location.reload()', 200); // Using .reload() method.
             },
             async: false
             // error: function(data) {

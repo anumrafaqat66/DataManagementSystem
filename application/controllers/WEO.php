@@ -10,21 +10,35 @@ class WEO extends CI_Controller
     public function index($weapon = NULL)
     {
 
-        $input_params = $this->input->get(); // this will give you all parameters
+        //$input_params = $this->input->get(); // this will give you all parameters
         //print_r($input_params['we']); exit;
-        $data['selected_weapon'] = $input_params['we'];
+        //$data['selected_weapon'] = $input_params['we'];
 
         $data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
         $this->load->view('weo/weo', $data);
     }
 
-    public function get_system_availability()
+    public function get_all_weapons_availability()
+    {
+        //$system_time = $_POST['time'];
+        $weapons_array = array();
+        $weapons_array['data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
+
+        if (count($weapons_array['data']) != 0) {
+            for ($i = 0; $i < count($weapons_array['data']); $i++) :
+                $this->get_system_availability($weapons_array['data'][$i]['Controller_Name']);
+            endfor;
+        }
+    }
+
+
+    public function get_system_availability($weapon = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             if ($status == "weo" || $status = "co") {
-                $weapon_name = $_POST['weapon_name'];
+                $weapon_name = $weapon;
                 $view_array = array();
                 $view_rows = array();
 
@@ -109,18 +123,24 @@ class WEO extends CI_Controller
 
     public function get_all_weapons_reliability()
     {
-        $system_time = $_POST['time'];
+        $isDefault = $_POST['isDefault'];
+        if ($isDefault == true) {
+            $system_time = 30;
+        } else if ($isDefault == false) {
+            $system_time = $_POST['time'];
+        }
+        echo $isDefault; echo $system_time; exit;
         $weapons_array = array();
         $weapons_array['data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
 
         if (count($weapons_array['data']) != 0) {
             for ($i = 0; $i < count($weapons_array['data']); $i++) :
-                $this->get_system_reliability($weapons_array['data'][$i]['Controller_Name'], $system_time);
+                $this->get_system_reliability($weapons_array['data'][$i]['Controller_Name'], $system_time, $isDefault);
             endfor;
         }
     }
 
-    public function get_system_reliability($weapon_name = NULL, $time = NULL)
+    public function get_system_reliability($weapon_name = NULL, $time = NULL, $isDefault = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
@@ -143,7 +163,7 @@ class WEO extends CI_Controller
 
                 if (count($view_sensors['data']) != 0) {
                     for ($i = 0; $i < count($view_sensors['data']); $i++) :
-                        $this->calculate_sensor_reliability($view_sensors['data'][$i]['sensor_id'], $system_time);
+                        $this->calculate_sensor_reliability($view_sensors['data'][$i]['sensor_id'], $system_time, $isDefault);
 
                     endfor;
                 }
@@ -161,7 +181,7 @@ class WEO extends CI_Controller
                 if (count($view_rows['data']) != 0) {
                     for ($i = 1; $i <= count($view_rows['data']); $i++) :
 
-                        $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Reliability');
+                        $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Reliability, cd.Default_Reliability');
                         $this->db->from('weapon_systems ws');
                         $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
                         $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
@@ -174,7 +194,12 @@ class WEO extends CI_Controller
                         $data_index = 0;
                         if (count($view_array['data']) != 0) {
                             foreach ($view_array['data'] as $row) {
-                                $resultant_parallel = $resultant_parallel * (1 - ($view_array['data'][$data_index]['Reliability']) / 100);
+                                if($isDefault){
+                                    $resultant_parallel = $resultant_parallel * (1 - ($view_array['data'][$data_index]['Default_Reliability']) / 100);
+                                } else {
+                                    $resultant_parallel = $resultant_parallel * (1 - ($view_array['data'][$data_index]['Reliability']) / 100);    
+                                }
+                                
                                 $data_index++;
                             }
                             $resultant_parallel =   1 - $resultant_parallel;
@@ -188,7 +213,7 @@ class WEO extends CI_Controller
                 }
 
 
-                $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Reliability');
+                $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Reliability, cd.Default_Reliability');
                 $this->db->from('weapon_systems ws');
                 $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
                 $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
@@ -200,7 +225,11 @@ class WEO extends CI_Controller
                 $data_index = 0;
                 if (count($view_array['data']) != 0) {
                     foreach ($view_array['data'] as $row) {
-                        $resultant_series = $resultant_series * (($view_array['data'][$data_index]['Reliability']) / 100);
+                        if ($isDefault) {
+                            $resultant_series = $resultant_series * (($view_array['data'][$data_index]['Default_Reliability']) / 100);
+                        } else {
+                            $resultant_series = $resultant_series * (($view_array['data'][$data_index]['Reliability']) / 100);
+                        }
                         $data_index++;
                     }
                 } else {
@@ -213,9 +242,15 @@ class WEO extends CI_Controller
 
                 //Updation 
                 $cond  = ['weapon_name' => $weapon_name];
-                $data_update = [
-                    'Reliabbility' => number_format(($final_result * 100), 2),
-                ];
+                if ($isDefault) {
+                    $data_update = [
+                        'Default_Reliability' => number_format(($final_result * 100), 2),
+                    ];
+                } else {
+                    $data_update = [
+                        'Reliabbility' => number_format(($final_result * 100), 2),
+                    ];
+                }
 
                 $this->db->where($cond);
                 $this->db->update('weapon_systems', $data_update);
@@ -254,7 +289,7 @@ class WEO extends CI_Controller
     }
 
 
-    public function calculate_sensor_reliability($controller_id = NULL, $time = NULL)
+    public function calculate_sensor_reliability($controller_id = NULL, $time = NULL, $isDefault = NULL)
     {
 
         if ($time > 0) {
@@ -267,16 +302,21 @@ class WEO extends CI_Controller
                 $reliability = number_format(pow(2.718, $power), 4);
             } else {
                 $reliability = 0;
-                
             }
         } else {
             $reliability = 0;
         }
         $cond  = ['ID' => $controller_id];
-        $data_update = [
-            'Reliability' => $reliability * 100,
-        ];
 
+        if ($isDefault = true) {
+            $data_update = [
+                'Default_Reliability' => $reliability * 100,
+            ];
+        } else if($isDefault = false) {
+            $data_update = [
+                'Reliability' => $reliability * 100,
+            ];
+        }
         $this->db->where($cond);
         $this->db->update('controller_data', $data_update);
     }
