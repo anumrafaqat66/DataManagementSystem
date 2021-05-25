@@ -158,8 +158,8 @@
                                                         <td scope="row"><?= ++$count; ?></td>
                                                         <td type="button" scope="row" id="weapon_name<?= $count ?>" value="<?= $data['Controller_Name']; ?>" data-toggle="modal" data-target="#<?= $data['Controller_Code']; ?>"><?= $data['Controller_Name']; ?></td>
                                                         <td scope="row"><?= $data['Availability']; ?></td>
-                                                        <td scope="row"><?= $data['Default_Reliability']; ?></td>
-                                                        <td scope="row"><?= $data['Reliability']; ?></td>
+                                                        <td scope="row" id="reldefault<?= $count ?>"><?= $data['Default_Reliability']; ?></td>
+                                                        <td scope="row" id="rel<?= $count ?>"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
                                                         <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
                                                         </td> -->
@@ -705,6 +705,14 @@
     });
 
     window.onload = function() {
+
+        $count = 1;
+        $('#table_rows > tr').each(function(index, td) {
+            var rel = document.getElementById("rel" + $count);
+            rel.innerHTML = "0.00";
+            $count++;
+        });
+
         //var weapon = $('#controller_type').val();
         //alert(weapon);
         // if (weapon != "Select Weapon") {
@@ -772,22 +780,21 @@
             method: 'POST',
             data: {
                 //'weapon_name': name,
-                'isDefault' : true
+                'isDefault': 'Yes'
             },
             success: function(data) {
-                // var result = jQuery.parseJSON(data);
-                //alert(result);
-                // $('#reliability').html(data + "%");
-                // if (data < 50) {
-                //     document.getElementById("system_reliability").style.backgroundColor = "red";
-                // } else if (data > 50 && data < 75) {
-                //     document.getElementById("system_reliability").style.backgroundColor = "yellow";
-                // } else if (data >= 75) {
-                //     document.getElementById("system_reliability").style.backgroundColor = "green";
-                // }
-                //setInterval('location.reload()', 300); // Using .reload() method.
+                var result = jQuery.parseJSON(data);
+                var loop = 1;
+                for (var i in result) {
+                    var wn = document.getElementById("weapon_name" + loop);
+                    if (wn.innerHTML == result[i].weapon_name) {
+                        var rel = document.getElementById("reldefault" + loop);
+                        rel.innerHTML = result[i].default_reliability;
+                    }
+                    loop++;
+                }
             },
-            async: false,
+            async: true,
             error: function(data) {
                 //alert(data);
                 alert('failure');
@@ -975,27 +982,25 @@
             data: {
                 //'weapon_name': name,
                 'time': time,
-                'isDefault' : false
+                'isDefault': 'No'
             },
             success: function(data) {
-                alert(data);
-                // var result = jQuery.parseJSON(data);
-                //alert(result);
-                // $('#reliability').html(data + "%");
-                // if (data < 50) {
-                //     document.getElementById("system_reliability").style.backgroundColor = "red";
-                // } else if (data > 50 && data < 75) {
-                //     document.getElementById("system_reliability").style.backgroundColor = "yellow";
-                // } else if (data >= 75) {
-                //     document.getElementById("system_reliability").style.backgroundColor = "green";
-                // }
-                setInterval('location.reload()', 200); // Using .reload() method.
+                var result = jQuery.parseJSON(data);
+                var loop = 1;
+                for (var i in result) {
+                    var wn = document.getElementById("weapon_name" + loop);
+                    if (wn.innerHTML == result[i].weapon_name) {
+                        var rel = document.getElementById("rel" + loop);
+                        rel.innerHTML = result[i].reliabbility;
+                    }
+                    loop++;
+                }
             },
-            async: false
-            // error: function(data) {
-            //     //alert(data);
-            //     alert('failure');
-            // }
+            async: true,
+            error: function(data) {
+                //alert(data);
+                alert('failure');
+            }
         });
 
         // result = '';

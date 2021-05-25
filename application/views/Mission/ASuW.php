@@ -35,14 +35,14 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                            <div class="form-group row col-md-12">
+                            <div class="form-group row col-md-12" style="height:180px;">
 
-                            <div class="col-md-4 img" style="width: 200px">
+                            <div class="col-md-4 img" style="width: 200px;height:180px;">
                                 <div style="margin-top:135px">
 
                                 </div>
                             </div>
-                            <div class="col-md-8" style="width:80%;float: right;">
+                            <div class="col-md-8" style="width:80%;float: right;height:180px;">
 
                            <!--  <div style="margin-top:15px"> -->
                             <div class="row" style="padding-left:4%">
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                                         <!-- Availability Realibility bars -->
-                                      <div class="row" style="padding-left :16%;padding-top: 5%">
+                                      <div class="row" style="padding-left :5%;padding-top: 5%;height:75px;">
                                     <div class="col-sm-6">
                                         <h4 class="h4 text-grey-900">Availability</h4>
                                         <div class="progress" style="height:40px">
@@ -85,7 +85,7 @@
                                 <h5 class="h5 text-white">Mission Statistics Graphs</h5>
                             </div>
 
-                            <div class="card-body bg-custom3">
+                            <!-- <div class="card-body bg-custom3"> -->
                                <!--  <div class="form-group row">
                                     <div class="col-sm-6 my-3">
                                         <h6 class="h6 text-grey-900">To check mission reliabiltiy. Please enter time: </h6>
@@ -97,7 +97,7 @@
                                     </div>
                                 </div> -->
 
-                                <hr>
+                                <!-- <hr> -->
                                <!--  <div class="form-group row">
                                     <div class="col-sm-6">
                                         <h4 class="h4 text-grey-900">Availability</h4>
@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
                                 </div> -->
-                            </div>
+                            <!-- </div> -->
                         </div>
                         <!-- Graphs -->
                         <div class="card">

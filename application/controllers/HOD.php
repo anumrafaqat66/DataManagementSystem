@@ -15,32 +15,44 @@ class HOD extends CI_Controller
         $this->load->view('hod/hod', $data);
     }
 
-    public function get_availability()
+
+    public function get_availability_for_all()
+    {
+        $view_array = array();
+        $view_array['data'] =  $this->db->get('controller_data')->result_array();
+        if (count($view_array['data']) != 0) {
+            for ($i = 0; $i < count($view_array['data']); $i++) :
+                $this->get_availability($view_array['data'][$i]['ID']);
+            endfor;
+        }
+
+    }
+
+    public function get_availability($sensor_id = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 
             if ($status == "hod" || $status == "weo" || $status == "co") {
-                $controller_id = $_POST['controller_id'];
+                $controller_id = $sensor_id; //$_POST['controller_id'];
                 $view_array = array();
                 $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
                 if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '' && $view_array['data']['MTBF'] != 0.00 && $view_array['data']['MTTR'] != 0.00) {
-                    $availability = number_format($view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']), 4);  
-                     //$aval =$availability * 100;
-                     //print_r($aval);
-                     echo ($availability*100);
+                    $availability = number_format($view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']), 4);
+                    //$aval =$availability * 100;
+                    //print_r($aval);
+                    echo ($availability * 100);
                 } else {
                     $availability = 0;
                     echo ($availability * 100);
                 }
-            $cond  = ['ID' => $controller_id];
-            $data_update = [
-                'Availability' => $availability*100,
-            ];
-            $this->db->where($cond);
-            $this->db->update('controller_data', $data_update);
-
+                $cond  = ['ID' => $controller_id];
+                $data_update = [
+                    'Availability' => $availability * 100,
+                ];
+                $this->db->where($cond);
+                $this->db->update('controller_data', $data_update);
             } else {
                 $this->load->view('login');
             }
@@ -49,15 +61,38 @@ class HOD extends CI_Controller
         }
     }
 
-    public function get_reliability()
+    public function get_reliability_for_all(){
+        $isDefault = $_POST['isDefault'];
+        $system_time = 0;
+        if ($isDefault == "Yes") {
+            $system_time = 30;
+        } else if ($isDefault == "No") {
+            $system_time = $_POST['time'];
+        }
+
+        $view_array['data'] =  $this->db->get('controller_data')->result_array();
+        if (count($view_array['data']) != 0) {
+            for ($i = 0; $i < count($view_array['data']); $i++) :
+                $this->get_reliability($view_array['data'][$i]['ID'], $system_time, $isDefault);
+            endfor;
+        }
+
+        $sensor_rel = array();
+        $sensor_rel['data'] = $this->db->select('Controller_Name, Controller_type, Default_Reliability, Reliability')->distinct()->get('controller_data')->result_array();
+
+        echo json_encode($sensor_rel['data']);
+
+    }
+
+    public function get_reliability($sensor_id = NULL, $entered_time = NULL, $isDefault = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 
             if ($status == "hod" || $status == "weo" || $status == "co") {
-                $controller_id = $_POST['controller_id'];
-                $time = $_POST['time'];
+                $controller_id = $sensor_id; //$_POST['controller_id'];
+                $time = $entered_time; //$_POST['time'];
                 if ($time > 0) {
                     $view_array = array();
                     $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
@@ -65,8 +100,8 @@ class HOD extends CI_Controller
                         $power = ($time / $view_array['data']['MTBF']);
                         $power = -1 * $power;
                         $reliability = number_format(pow(2.718, $power), 4);
-                        $rel=$reliability * 100;
-                        echo $rel;
+                        $rel = $reliability * 100;
+                        //echo $rel;
                         //echo "dsfsd";
                     } else {
                         $reliability = 0;
@@ -76,13 +111,23 @@ class HOD extends CI_Controller
                     $reliability = 0;
                     echo ($reliability * 100);
                 }
-            $cond  = ['ID' => $controller_id];
-            $data_update = [
-                'Reliability' => $reliability * 100,
-            ];
+                $cond  = ['ID' => $controller_id];
+                $data_update = [
+                    'Reliability' => $reliability * 100,
+                ];
 
-            $this->db->where($cond);
-            $this->db->update('controller_data', $data_update);
+                if($isDefault == "Yes"){
+                    $data_update = [
+                        'Default_Reliability' => $reliability * 100,
+                    ];
+                } else if($isDefault == "No"){
+                    $data_update = [
+                        'Reliability' => $reliability * 100,
+                    ];
+                }
+
+                $this->db->where($cond);
+                $this->db->update('controller_data', $data_update);
             } else {
                 $this->load->view('login');
             }

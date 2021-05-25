@@ -87,18 +87,20 @@
                                                     <th scope="col-3">No.</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Availability</th>
+                                                    <th scope="col">Default Reliability (30 Days)</th>
                                                     <th scope="col">Reliability</th>
 
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="table_rows_sensor">
                                                 <?php $count = 0;
                                                 foreach ($sensor_data as $data) { ?>
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
-                                                        <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                        <td scope="row" id="sensor_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
                                                         <td scope="row"><?= $data['Availability']; ?></td>
-                                                        <td scope="row"><?= $data['Reliability']; ?></td>
+                                                        <td scope="row" id="rel_sensor_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
+                                                        <td scope="row" id="rel_sensor<?= $count; ?>"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
                                                         <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
                                                         </td> -->
@@ -184,18 +186,20 @@
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Availability</th>
+                                                    <th scope="col">Default Reliability (30 Days)</th>
                                                     <th scope="col">Reliability</th>
 
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="table_rows_fire">
                                                 <?php $count = 0;
                                                 foreach ($fire_controller_data as $data) { ?>
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
-                                                        <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                        <td scope="row" id="fire_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
                                                         <td scope="row"><?= $data['Availability']; ?></td>
-                                                        <td scope="row"><?= $data['Reliability']; ?></td>
+                                                        <td scope="row" id="rel_fire_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
+                                                        <td scope="row" id="rel_fire<?= $count; ?>"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
                                                         <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
                                                         </td> -->
@@ -283,18 +287,20 @@
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Availability</th>
+                                                    <th scope="col">Default Reliability (30 Days)</th>
                                                     <th scope="col">Reliability</th>
 
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="table_rows_weapon">
                                                 <?php $count = 0;
                                                 foreach ($weapon_data as $data) { ?>
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
-                                                        <td scope="row"><?= $data['Controller_Name']; ?></td>
+                                                        <td scope="row" id="weapon_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
                                                         <td scope="row"><?= $data['Availability']; ?></td>
-                                                        <td scope="row"><?= $data['Reliability']; ?></td>
+                                                        <td scope="row" id="rel_weapon_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
+                                                        <td scope="row" id="rel_weapon<?= $count; ?>"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
                                                         <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
                                                         </td> -->
@@ -326,198 +332,360 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
-    $('#sensor_type').on('change', function() {
-        var id = $(this).val();
-        $('#sensor_reliability').html("0.00%");
-        document.getElementById("s_reliability").style.backgroundColor = "#bbb";
-        $('#sensor_time').val(null);
+    window.onload = function() {
+
+        $count_sensor = 1;
+        $('#table_rows_sensor > tr').each(function(index, td) {
+            var rel = document.getElementById("rel_sensor" + $count_sensor);
+            rel.innerHTML = "0.00";
+            $count_sensor++;
+        });
+
+        $count_fire = 1;
+        $('#table_rows_fire > tr').each(function(index, td) {
+            var rel = document.getElementById("rel_fire" + $count_fire);
+            rel.innerHTML = "0.00";
+            $count_fire++;
+        });
+
+        $count_weapon = 1;
+        $('#table_rows_weapon > tr').each(function(index, td) {
+            var rel = document.getElementById("rel_weapon" + $count_weapon);
+            rel.innerHTML = "0.00";
+            $count_weapon++;
+        });
 
 
         $.ajax({
-            url: '<?= base_url(); ?>HOD/get_availability',
+            url: '<?= base_url(); ?>HOD/get_availability_for_all',
             method: 'POST',
-            data: {
-                'controller_id': id
-            },
-            success: function(data) {
-                $('#sensor_availability').html(data + "%");
-                if (data < 50) {
-                    document.getElementById("s_availability").style.backgroundColor = "red";
-                } else if (data > 50 && data < 75) {
-                    document.getElementById("s_availability").style.backgroundColor = "yellow";
-                } else if (data >= 75) {
-                    document.getElementById("s_availability").style.backgroundColor = "green";
-                }
-            },
-            error: function(data) {
-                alert('failure');
-            }
+            success: function(data) {},
+            async: false
+            // ,
+            // error: function(data) {
+            //     //alert(data);
+            //     alert('failure');
+            // }
         });
-        e.preventDefault();
-        window.onunload = function() {
-            dubugger;
-        }
-    });
 
-    $('#fire_type').on('change', function() {
-        var id = $(this).val();
-        $('#fire_reliability').html("0.00%");
-        document.getElementById("f_reliability").style.backgroundColor = "#bbb";
-        $('#fire_time').val(null);
 
         $.ajax({
-            url: '<?= base_url(); ?>HOD/get_availability',
+            url: '<?= base_url(); ?>HOD/get_reliability_for_all',
             method: 'POST',
             data: {
-                'controller_id': id
+                //'weapon_name': name,
+                'isDefault': 'Yes'
             },
             success: function(data) {
-                $('#fire_availability').html(data + "%");
-                if (data < 50) {
-                    document.getElementById("f_availability").style.backgroundColor = "red";
-                } else if (data > 50 && data < 75) {
-                    document.getElementById("f_availability").style.backgroundColor = "yellow";
-                } else if (data > 75) {
-                    document.getElementById("f_availability").style.backgroundColor = "green";
+                var result = jQuery.parseJSON(data);
+                var loop_sensor = 1;
+                var loop_fire = 1;
+                var loop_weapon = 1;
+
+                for (var i in result) {
+
+                    if (result[i].Controller_type == "Sensor") {
+                        var sn = document.getElementById("sensor_name" + loop_sensor);
+                        if (sn.innerHTML == result[i].Controller_Name) {
+                            var rel = document.getElementById("rel_sensor_def" + loop_sensor);
+                            rel.innerHTML = result[i].Default_Reliability;
+                            console.log(rel);
+                        }
+                        loop_sensor++;
+                    }
+                    if (result[i].Controller_type == "Fire Controller") {
+                        var fn = document.getElementById("fire_name" + loop_fire);
+                        if (fn.innerHTML == result[i].Controller_Name) {
+                            var rel = document.getElementById("rel_fire_def" + loop_fire);
+                            rel.innerHTML = result[i].Default_Reliability;
+                            console.log(rel);
+                        }
+                        loop_fire++;
+                    }
+                    if (result[i].Controller_type == "Weapon") {
+                        var wn = document.getElementById("weapon_name" + loop_weapon);
+                        if (wn.innerHTML == result[i].Controller_Name) {
+                            var rel = document.getElementById("rel_weapon_def" + loop_weapon);
+                            rel.innerHTML = result[i].Default_Reliability;
+                        }
+                        loop_weapon++;
+                    }
+
                 }
             },
+            async: false,
             error: function(data) {
+                //alert(data);
                 alert('failure');
             }
         });
-        e.preventDefault();
-        window.onunload = function() {
-            dubugger;
-        }
-    });
 
-    $('#weapon_type').on('change', function() {
-        var id = $(this).val();
-        $('#weapon_reliability').html("0.00%");
-        document.getElementById("w_reliability").style.backgroundColor = "#bbb";
-        $('#weapon_time').val(null);
 
-        $.ajax({
-            url: '<?= base_url(); ?>HOD/get_availability',
-            method: 'POST',
-            data: {
-                'controller_id': id
-            },
-            success: function(data) {
-                $('#weapon_availability').html(data + "%");
-                if (data < 50) {
-                    document.getElementById("w_availability").style.backgroundColor = "red";
-                } else if (data > 50 && data < 75) {
-                    document.getElementById("w_availability").style.backgroundColor = "yellow";
-                } else if (data >= 75) {
-                    document.getElementById("w_availability").style.backgroundColor = "green";
-                }
-            },
-            error: function(data) {
-                alert('failure');
-            }
-        });
-        //  e.preventDefault();
-        window.onunload = function() {
-            dubugger;
-        }
-    });
 
-    $('#sensor_time').on('focusout keyup', function() {
+    }
+
+    // $('#sensor_type').on('change', function() {
+    //     var id = $(this).val();
+    //     $('#sensor_reliability').html("0.00%");
+    //     document.getElementById("s_reliability").style.backgroundColor = "#bbb";
+    //     $('#sensor_time').val(null);
+
+
+    //     $.ajax({
+    //         url: '<?= base_url(); ?>HOD/get_availability',
+    //         method: 'POST',
+    //         data: {
+    //             'controller_id': id
+    //         },
+    //         success: function(data) {
+    //             $('#sensor_availability').html(data + "%");
+    //             if (data < 50) {
+    //                 document.getElementById("s_availability").style.backgroundColor = "red";
+    //             } else if (data > 50 && data < 75) {
+    //                 document.getElementById("s_availability").style.backgroundColor = "yellow";
+    //             } else if (data >= 75) {
+    //                 document.getElementById("s_availability").style.backgroundColor = "green";
+    //             }
+    //         },
+    //         error: function(data) {
+    //             alert('failure');
+    //         }
+    //     });
+    //     e.preventDefault();
+    //     window.onunload = function() {
+    //         dubugger;
+    //     }
+    // });
+
+    // $('#fire_type').on('change', function() {
+    //     var id = $(this).val();
+    //     $('#fire_reliability').html("0.00%");
+    //     document.getElementById("f_reliability").style.backgroundColor = "#bbb";
+    //     $('#fire_time').val(null);
+
+    //     $.ajax({
+    //         url: '<?= base_url(); ?>HOD/get_availability',
+    //         method: 'POST',
+    //         data: {
+    //             'controller_id': id
+    //         },
+    //         success: function(data) {
+    //             $('#fire_availability').html(data + "%");
+    //             if (data < 50) {
+    //                 document.getElementById("f_availability").style.backgroundColor = "red";
+    //             } else if (data > 50 && data < 75) {
+    //                 document.getElementById("f_availability").style.backgroundColor = "yellow";
+    //             } else if (data > 75) {
+    //                 document.getElementById("f_availability").style.backgroundColor = "green";
+    //             }
+    //         },
+    //         error: function(data) {
+    //             alert('failure');
+    //         }
+    //     });
+    //     e.preventDefault();
+    //     window.onunload = function() {
+    //         dubugger;
+    //     }
+    // });
+
+    // $('#weapon_type').on('change', function() {
+    //     var id = $(this).val();
+    //     $('#weapon_reliability').html("0.00%");
+    //     document.getElementById("w_reliability").style.backgroundColor = "#bbb";
+    //     $('#weapon_time').val(null);
+
+    //     $.ajax({
+    //         url: '<?= base_url(); ?>HOD/get_availability',
+    //         method: 'POST',
+    //         data: {
+    //             'controller_id': id
+    //         },
+    //         success: function(data) {
+    //             $('#weapon_availability').html(data + "%");
+    //             if (data < 50) {
+    //                 document.getElementById("w_availability").style.backgroundColor = "red";
+    //             } else if (data > 50 && data < 75) {
+    //                 document.getElementById("w_availability").style.backgroundColor = "yellow";
+    //             } else if (data >= 75) {
+    //                 document.getElementById("w_availability").style.backgroundColor = "green";
+    //             }
+    //         },
+    //         error: function(data) {
+    //             alert('failure');
+    //         }
+    //     });
+    //     //  e.preventDefault();
+    //     window.onunload = function() {
+    //         dubugger;
+    //     }
+    // });
+
+    $('#sensor_time').on('focusout', function() {
         var id = $('#sensor_type').val();
         var time = $(this).val();
 
-
-
         $.ajax({
-            url: '<?= base_url(); ?>HOD/get_reliability',
+            url: '<?= base_url(); ?>HOD/get_reliability_for_all',
             method: 'POST',
             data: {
-                'controller_id': id,
-                'time': time
+                'time': time,
+                'isDefault': 'No'
             },
             success: function(data) {
-                $('#sensor_reliability').html(data + "%");
-                if (data < 50) {
-                    document.getElementById("s_reliability").style.backgroundColor = "red";
-                } else if (data > 50 && data < 75) {
-                    document.getElementById("s_reliability").style.backgroundColor = "yellow";
-                } else if (data >= 75) {
-                    document.getElementById("s_reliability").style.backgroundColor = "green";
+                var result = jQuery.parseJSON(data);
+                var loop_sensor = 1;
+                // var loop_fire = 1;
+                // var loop_weapon = 1;
+
+                for (var i in result) {
+
+                    if (result[i].Controller_type == "Sensor") {
+                        var sn = document.getElementById("sensor_name" + loop_sensor);
+                        if (sn.innerHTML == result[i].Controller_Name) {
+                            var rel = document.getElementById("rel_sensor" + loop_sensor);
+                            rel.innerHTML = result[i].Reliability;
+                            console.log(rel);
+                        }
+                        loop_sensor++;
+                    }
+                    // if (result[i].Controller_type == "Fire Controller") {
+                    //     var fn = document.getElementById("fire_name" + loop_fire);
+                    //     if (fn.innerHTML == result[i].Controller_Name) {
+                    //         var rel = document.getElementById("rel_fire" + loop_fire);
+                    //         rel.innerHTML = result[i].Reliability;
+                    //         console.log(rel);
+                    //     }
+                    //     loop_fire++;
+                    // }
+                    // if (result[i].Controller_type == "Weapon") {
+                    //     var wn = document.getElementById("weapon_name" + loop_weapon);
+                    //     if (wn.innerHTML == result[i].Controller_Name) {
+                    //         var rel = document.getElementById("rel_weapon" + loop_weapon);
+                    //         rel.innerHTML = result[i].Reliability;
+                    //     }
+                    //     loop_weapon++;
+                    // }
+
                 }
             },
             error: function(data) {
+                //alert(data);
                 alert('failure');
             }
         });
-        //   e.preventDefault();
-        window.onunload = function() {
-            dubugger;
-        }
 
     });
 
-    $('#fire_time').on('focusout keyup', function() {
+    $('#fire_time').on('focusout', function() {
         var id = $('#fire_type').val();
         var time = $(this).val();
 
         $.ajax({
-            url: '<?= base_url(); ?>HOD/get_reliability',
+            url: '<?= base_url(); ?>HOD/get_reliability_for_all',
             method: 'POST',
             data: {
-                'controller_id': id,
-                'time': time
+                'time': time,
+                'isDefault': 'No'
             },
             success: function(data) {
-                $('#fire_reliability').html(data + "%");
-                if (data < 50) {
-                    document.getElementById("f_reliability").style.backgroundColor = "red";
-                } else if (data > 50 && data < 75) {
-                    document.getElementById("f_reliability").style.backgroundColor = "yellow";
-                } else if (data >= 75) {
-                    document.getElementById("f_reliability").style.backgroundColor = "green";
+                var result = jQuery.parseJSON(data);
+               // var loop_sensor = 1;
+                var loop_fire = 1;
+                //var loop_weapon = 1;
+
+                for (var i in result) {
+
+                    // if (result[i].Controller_type == "Sensor") {
+                    //     var sn = document.getElementById("sensor_name" + loop_sensor);
+                    //     if (sn.innerHTML == result[i].Controller_Name) {
+                    //         var rel = document.getElementById("rel_sensor" + loop_sensor);
+                    //         rel.innerHTML = result[i].Reliability;
+                    //         console.log(rel);
+                    //     }
+                    //     loop_sensor++;
+                    // }
+                    if (result[i].Controller_type == "Fire Controller") {
+                        var fn = document.getElementById("fire_name" + loop_fire);
+                        if (fn.innerHTML == result[i].Controller_Name) {
+                            var rel = document.getElementById("rel_fire" + loop_fire);
+                            rel.innerHTML = result[i].Reliability;
+                            console.log(rel);
+                        }
+                        loop_fire++;
+                    }
+                    // if (result[i].Controller_type == "Weapon") {
+                    //     var wn = document.getElementById("weapon_name" + loop_weapon);
+                    //     if (wn.innerHTML == result[i].Controller_Name) {
+                    //         var rel = document.getElementById("rel_weapon" + loop_weapon);
+                    //         rel.innerHTML = result[i].Reliability;
+                    //     }
+                    //     loop_weapon++;
+                    // }
+
                 }
             },
             error: function(data) {
+                //alert(data);
                 alert('failure');
             }
         });
-        //   e.preventDefault();
-        window.onunload = function() {
-            dubugger;
-        }
 
     });
 
-    $('#weapon_time').on('focusout keyup', function() {
+    $('#weapon_time').on('focusout', function() {
         var id = $('#weapon_type').val();
         var time = $(this).val();
 
         $.ajax({
-            url: '<?= base_url(); ?>HOD/get_reliability',
+            url: '<?= base_url(); ?>HOD/get_reliability_for_all',
             method: 'POST',
             data: {
-                'controller_id': id,
-                'time': time
+                'time': time,
+                'isDefault': 'No'
             },
             success: function(data) {
-                $('#weapon_reliability').html(data + "%");
-                if (data < 50) {
-                    document.getElementById("w_reliability").style.backgroundColor = "red";
-                } else if (data > 50 && data < 75) {
-                    document.getElementById("w_reliability").style.backgroundColor = "yellow";
-                } else if (data >= 75) {
-                    document.getElementById("w_reliability").style.backgroundColor = "green";
+                var result = jQuery.parseJSON(data);
+                // var loop_sensor = 1;
+                // var loop_fire = 1;
+                var loop_weapon = 1;
+
+                for (var i in result) {
+
+                    // if (result[i].Controller_type == "Sensor") {
+                    //     var sn = document.getElementById("sensor_name" + loop_sensor);
+                    //     if (sn.innerHTML == result[i].Controller_Name) {
+                    //         var rel = document.getElementById("rel_sensor" + loop_sensor);
+                    //         rel.innerHTML = result[i].Reliability;
+                    //         console.log(rel);
+                    //     }
+                    //     loop_sensor++;
+                    // }
+                    // if (result[i].Controller_type == "Fire Controller") {
+                    //     var fn = document.getElementById("fire_name" + loop_fire);
+                    //     if (fn.innerHTML == result[i].Controller_Name) {
+                    //         var rel = document.getElementById("rel_fire" + loop_fire);
+                    //         rel.innerHTML = result[i].Reliability;
+                    //         console.log(rel);
+                    //     }
+                    //     loop_fire++;
+                    // }
+                    if (result[i].Controller_type == "Weapon") {
+                        var wn = document.getElementById("weapon_name" + loop_weapon);
+                        if (wn.innerHTML == result[i].Controller_Name) {
+                            var rel = document.getElementById("rel_weapon" + loop_weapon);
+                            rel.innerHTML = result[i].Reliability;
+                        }
+                        loop_weapon++;
+                    }
+
                 }
             },
             error: function(data) {
+                //alert(data);
                 alert('failure');
             }
         });
-        //e.preventDefault();
-        window.onunload = function() {
-            dubugger;
-        }
 
     });
 </script>

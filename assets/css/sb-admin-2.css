@@ -53,7 +53,7 @@ body {
   height: 100%;
   min-height: 100%;
  /* background: #66B34E;
-  color: #efefef;*/
+  color: #efefef;
 }*/
 
 .container {
@@ -10187,7 +10187,7 @@ a:focus {
 }
 
 .topbar {
-  height: 4.375rem;
+  height: 3.375rem;
 }
 
 .topbar #sidebarToggleTop {

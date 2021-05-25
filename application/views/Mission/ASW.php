@@ -4,7 +4,7 @@
 <?php !isset($reliability) ? $reliability = 0 : $reliability; ?>
 <?php !isset($time_entered) ? $time_entered = null : $time_entered; ?>
 
-<script src="<?= base_url();?>assets/js/canvasjs.min.js"></script>
+<script src="<?= base_url(); ?>assets/js/canvasjs.min.js"></script>
 <style>
     .img {
         background: url('<?= base_url() ?>assets/img/ASW.jpg');
@@ -12,12 +12,13 @@
         background-size: cover;
         height: 250px;
     }
-        .card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 0.75rem;
-    padding-bottom: 0px;
-}
+
+    .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 0.75rem;
+        padding-bottom: 0px;
+    }
 </style>
 <div class="container">
     <!-- <h1 class="h4 text-gray-900">Welcome CO</h1> -->
@@ -32,18 +33,18 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                              <div class="form-group row col-md-12">
+                        <div class="form-group row col-md-12" style="height:180px;">
 
-                            <div class="col-md-4 img" style="width: 200px">
+                            <div class="col-md-4 img" style="width: 200px;height:180px;">
                                 <div style="margin-top:135px">
 
                                 </div>
                             </div>
-                            <div class="col-md-8" style="width:80%;float: right;">
+                            <div class="col-md-8" style="width:80%;float: right;height:180px;">
 
-                           <!--  <div style="margin-top:15px"> -->
-                            <div class="row" style="padding-left:4%">
-                                 <div class="col-sm-7 my-3" style="float: left;">
+                                <!--  <div style="margin-top:15px"> -->
+                                <div class="row" style="padding-left:4%">
+                                    <div class="col-sm-7 my-3" style="float: left;">
                                         <h6 class="h6 text-grey-900">To check mission reliabiltiy. Please enter time: </h6>
                                     </div>
                                     <div class="col-sm-5" style="float: right;">
@@ -52,8 +53,8 @@
                                         </form>
                                     </div>
                                 </div>
-                                        <!-- Availability Realibility bars -->
-                                      <div class="row" style="padding-left :16%;padding-top: 5%">
+                                <!-- Availability Realibility bars -->
+                                <div class="row" style="padding-left :5%;padding-top: 5%;height:75px;">
                                     <div class="col-sm-6">
                                         <h4 class="h4 text-grey-900">Availability</h4>
                                         <div class="progress" style="height:40px">
@@ -68,23 +69,23 @@
                                             <div class="progress-bar" id="reliability_bar" role="progressbar" style="width: <?= $reliability ?>%;" aria-valuenow="<?= $reliability ?>" aria-valuemin="0" aria-valuemax="100"><?= $reliability . "%" ?></div>
                                         </div>
                                     </div>
-                                    </div>
-                                
-                          <!--   </div> -->
+                                </div>
+
+                                <!--   </div> -->
+
+                            </div>
+
 
                         </div>
-                        
 
-                        </div>
-                      
                         <!-- <h2>Page Under Construction!!</h2> -->
                         <div class="card">
                             <div class="card-header bg-custom1">
                                 <h5 class="h5 text-white">Mission Statistics Graphs</h5>
                             </div>
 
-                            <div class="card-body bg-custom3">
-                             <!--    <div class="form-group row">
+                            <!-- <div class="card-body bg-custom3"> -->
+                                <!--    <div class="form-group row">
                                     <div class="col-sm-6 my-3">
                                         <h6 class="h6 text-grey-900">To check mission reliabiltiy. Please enter time: </h6>
                                     </div>
@@ -95,8 +96,8 @@
                                     </div>
                                 </div> -->
 
-                                <hr>
-                              <!--   <div class="form-group row">
+                                <!-- <hr> -->
+                                <!--   <div class="form-group row">
                                     <div class="col-sm-6">
                                         <h4 class="h4 text-grey-900">Availability</h4>
                                         <div class="progress" style="height:40px">
@@ -112,7 +113,7 @@
                                         </div>
                                     </div>
                                 </div> -->
-                            </div>
+                            <!-- </div> -->
                         </div>
                         <!-- Graphs -->
                         <div class="card">
@@ -262,7 +263,7 @@
                 window.location.href = "<?= base_url(); ?>weo?we=Torpedo";
             } else if (e.dataPoint.x == 1) {
                 window.location.href = "<?= base_url(); ?>weo?we=RDC";
-            } 
+            }
         }
 
     }

@@ -102,7 +102,7 @@ class WEO extends CI_Controller
                 }
 
                 $final_result = $sub_final_result * $resultant_series;
-                echo number_format(($final_result * 100), 2);
+                //echo number_format(($final_result * 100), 2);
 
                 //Updation 
 
@@ -124,12 +124,13 @@ class WEO extends CI_Controller
     public function get_all_weapons_reliability()
     {
         $isDefault = $_POST['isDefault'];
-        if ($isDefault == true) {
+        $system_time = 0;
+        if ($isDefault == "Yes") {
             $system_time = 30;
-        } else if ($isDefault == false) {
+        } else if ($isDefault == "No") {
             $system_time = $_POST['time'];
         }
-        echo $isDefault; echo $system_time; exit;
+
         $weapons_array = array();
         $weapons_array['data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
 
@@ -138,6 +139,11 @@ class WEO extends CI_Controller
                 $this->get_system_reliability($weapons_array['data'][$i]['Controller_Name'], $system_time, $isDefault);
             endfor;
         }
+
+        $weapons_rel = array();
+        $weapons_rel['data'] = $this->db->select('weapon_name, default_reliability,reliabbility')->distinct()->get('weapon_systems')->result_array();
+
+        echo json_encode($weapons_rel['data']);
     }
 
     public function get_system_reliability($weapon_name = NULL, $time = NULL, $isDefault = NULL)
@@ -194,12 +200,12 @@ class WEO extends CI_Controller
                         $data_index = 0;
                         if (count($view_array['data']) != 0) {
                             foreach ($view_array['data'] as $row) {
-                                if($isDefault){
+                                if ($isDefault == "Yes") {
                                     $resultant_parallel = $resultant_parallel * (1 - ($view_array['data'][$data_index]['Default_Reliability']) / 100);
                                 } else {
-                                    $resultant_parallel = $resultant_parallel * (1 - ($view_array['data'][$data_index]['Reliability']) / 100);    
+                                    $resultant_parallel = $resultant_parallel * (1 - ($view_array['data'][$data_index]['Reliability']) / 100);
                                 }
-                                
+
                                 $data_index++;
                             }
                             $resultant_parallel =   1 - $resultant_parallel;
@@ -225,7 +231,7 @@ class WEO extends CI_Controller
                 $data_index = 0;
                 if (count($view_array['data']) != 0) {
                     foreach ($view_array['data'] as $row) {
-                        if ($isDefault) {
+                        if ($isDefault == "Yes") {
                             $resultant_series = $resultant_series * (($view_array['data'][$data_index]['Default_Reliability']) / 100);
                         } else {
                             $resultant_series = $resultant_series * (($view_array['data'][$data_index]['Reliability']) / 100);
@@ -238,11 +244,11 @@ class WEO extends CI_Controller
                 }
 
                 $final_result = $sub_final_result * $resultant_series;
-                echo number_format(($final_result * 100), 2);
+                //echo number_format(($final_result * 100), 2);
 
                 //Updation 
                 $cond  = ['weapon_name' => $weapon_name];
-                if ($isDefault) {
+                if ($isDefault == "Yes") {
                     $data_update = [
                         'Default_Reliability' => number_format(($final_result * 100), 2),
                     ];
@@ -308,11 +314,15 @@ class WEO extends CI_Controller
         }
         $cond  = ['ID' => $controller_id];
 
-        if ($isDefault = true) {
+        $data_update = [
+            'Default_Reliability' => $reliability * 100,
+        ];
+
+        if ($isDefault == "Yes") {
             $data_update = [
                 'Default_Reliability' => $reliability * 100,
             ];
-        } else if($isDefault = false) {
+        } else if ($isDefault == "No") {
             $data_update = [
                 'Reliability' => $reliability * 100,
             ];

@@ -151,7 +151,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-custom1 topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-custom1 topbar static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -172,7 +172,7 @@
 
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <select class="form-control rounded-pill small" name="mission" id="mission" data-placeholder="Select mission" style="font-size: 0.8rem; height:50px;">\
+                            <select class="form-control rounded-pill small" name="mission" id="mission" data-placeholder="Select mission" style="font-size: 0.8rem; height:35px;">\
                                 <option class="form-control form-control-user small" value="">Search Mission</option>
                                 <option class="form-control form-control-user" value="AAW">AAW</option>
                                 <option class="form-control form-control-user" value="ASuW">ASuW</option>
