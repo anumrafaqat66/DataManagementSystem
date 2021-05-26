@@ -39,6 +39,37 @@ class Technician extends CI_Controller
     }
 }
 
+function dateDiffInDays($date1, $date2) 
+{
+    // Calculating the difference in timestamps
+    $diff = strtotime($date2) - strtotime($date1);
+    return abs(round($diff / 86400));
+}
+
+    public function get_TBF(){
+       
+                $start_data = $_POST['start_data'];
+                $sensor=$_POST['sensor'];
+                //echo $start_data;
+                //echo $sensor;exit;
+               $sensor_id = $this->db->where('Controller_Name',$sensor)->get('controller_data')->row_array();
+               //echo $sensor_id['Comission_date'];exit;
+               $end_data= $this->db->select('*')->where('Controller_Data_ID',$sensor_id['ID'])->order_by('id','desc')->limit(1)->get('controller_data_detail')->row_array();
+                //print_r($end_data);
+                if($end_data != null){
+                $TBF=$end_data['Failure_end_date'];
+                }else{
+                $TBF=$sensor_id['Comission_date'];
+                }
+
+                $dateDiff = $this->dateDiffInDays($TBF, $start_data);
+                echo json_encode($dateDiff);
+        
+           
+}
+
+
+
      public function add_data_into_db()
     {
         if ($this->input->post()) {

@@ -289,6 +289,30 @@
      //     document.getElementById("TTR").value = TTR;
      //     //alert(d_o_b);
      // });
+     $('#Failure_start_date').on('focusout keyup', function() {
+
+         var start_date = $('#Failure_start_date').val();
+         //var s_d = new Date(start_date);
+         var sensor = $('#Name').val();
+         alert(sensor);
+
+         if (start_date != null) {
+           $.ajax({
+            url: '<?= base_url(); ?>Technician/get_TBF',
+            method: 'POST',
+            data: {
+                'start_data': start_date,
+                'sensor':sensor
+            },
+            success: function(data) {
+                //alert(data);
+                $('#TBF').val(data);
+            },
+            async: false
+        }); 
+         }
+         //alert(d_o_b);
+     });
 
      $('#Failure_end_date').on('focusout keyup', function() {
 
