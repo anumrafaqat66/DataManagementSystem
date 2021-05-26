@@ -54,6 +54,23 @@
                                      </div>
                                  </div>
 
+                                    <div class="form-group row">
+                                    <div class="col-sm-4 mb-1">
+                                         <input type="date" class="form-control form-control-user" id="comission_date" name="Comission_date" placeholder="comission date*">
+                                     </div>
+                                     <div class="col-sm-4 mb-1">
+                                         <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                            <option class="form-control form-control-user" value="">Select Controller</option>
+                                        <?php foreach($ships_data as $ship) {?>
+                                             <option class="form-control form-control-user" value="<?= $ship['ID'] ?>"><?= $ship['Ship_name'] ?></option>
+                                         <?php } ?>
+                                         </select>
+                                     </div>
+                                     <div class="col-sm-4 mb-1">
+                                         <input type="number" class="form-control form-control-user" id="Total_Equipped" name="Total_Equipped" placeholder="total equipped*">
+                                     </div>
+                                 </div>
+
                                  <div class="form-group row justify-content-center">
                                      <div class="col-sm-4">
                                          <button type="button" class="btn btn-primary btn-user btn-block" id="add_btn">
@@ -94,6 +111,9 @@
                                                  <th scope="col">Included</th>
                                                  <th scope="col">Not Included</th>
                                                  <th scope="col">Associated Equipment</th>
+                                                 <th scope="col">Comission Date</th>
+                                                 <th scope="col">Ship</th>
+                                                 <th scope="col">Total Equipped</th>
 
                                              </tr>
                                          </thead>
@@ -109,6 +129,10 @@
                                                      <td scope="row"><?= $data['Includes']; ?></td>
                                                      <td scope="row"><?= $data['Not_Includes']; ?></td>
                                                      <td scope="row"><?= $data['Associated_Equipment']; ?></td>
+                                                      <td scope="row"><?= $data['Comission_date']; ?></td>
+                                                      <?php $ship_name = $this->db->where('ID',$data['Ship_ID'])->get('Ship_data')->row_array(); ?>
+                                                       <td scope="row"><?= $ship_name['Ship_name'];?></td>
+                                                        <td scope="row"><?= $data['Total_Equipped']; ?></td>
                                                  </tr>
                                              <?php } ?>
                                          </tbody>
@@ -137,6 +161,9 @@
          var controller_type = $('#controller_type').val();
          var eswb = $('#eswb').val();
          var name = $('#controller_name').val();
+         var comission_date=$('#comission_date').val();
+         var ship_id=$('#Ship_ID').val();
+         var total_equipped=$('#Total_Equipped').val();
 
          if (eswb == '') {
              validate = 1;
@@ -150,7 +177,18 @@
              validate = 1;
              $('#controller_type').addClass('red-border');
          }
-
+       if (comission_date == '') {
+             validate = 1;
+             $('#comission_date').addClass('red-border');
+         }
+         if (ship_id == '') {
+             validate = 1;
+             $('#Ship_ID').addClass('red-border');
+         }
+         if ( total_equipped == '') {
+             validate = 1;
+             $('#Total_Equipped').addClass('red-border');
+         }
 
          if (validate == 0) {
              $('#add_form')[0].submit();

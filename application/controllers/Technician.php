@@ -13,6 +13,7 @@ class Technician extends CI_Controller
 			$status = $this->session->userdata('status');
 			if ($status == "technician" || $status == "co" || $status == "hod" || $status == "weo" || $status == "manager") {
           	 $data['technician_controller_data'] = $this->db->get('controller_data')->result_array();
+             $data['ships_data']=$this->db->get('ship_data')->result_array();
 		   	 $this->load->view('technician/technician', $data);
 	       }else{
 		      $this->load->view('login');
@@ -28,6 +29,7 @@ class Technician extends CI_Controller
 			$status = $this->session->userdata('status');
 			if ($status == "technician") {
 				 $data['technician_controller_data'] = $this->db->get('controller_data')->result_array();
+                   $data['ships_data']=$this->db->get('ship_data')->result_array();
 		        $this->load->view('technician/technician', $data);
         	}else{
         		$this->load->view('login');
@@ -48,6 +50,9 @@ class Technician extends CI_Controller
             $included = $postData['included'];
             $notIncluded = $postData['notIncluded'];
             $AssociatedEquipment = $postData['AssociatedEquipment'];
+            $ship_id=$postData['Ship_ID'];
+            $comission_date=$postData['Comission_date'];
+            $Total_Equipped=$postData['Total_Equipped'];
 
             $insert_array = array(
                 'controller_type' => $controller_type,
@@ -56,6 +61,9 @@ class Technician extends CI_Controller
                 'includes' => $included,
                 'Not_Includes' => $notIncluded,
                 'Associated_Equipment' => $AssociatedEquipment,
+                'Ship_ID'=> $ship_id,
+                'Comission_date'=> $comission_date,
+                'Total_Equipped' => $Total_Equipped
             );
             // 	// print_r($insert_array);exit;
             $insert = $this->db->insert('controller_data', $insert_array);

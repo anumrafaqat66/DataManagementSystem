@@ -232,61 +232,83 @@
  <script>
      $('#TCM').on('focusout', function() {
 
-         var TPM = $('#TPM').val();
-         if (TPM === undefined || TPM === null || TPM === '') {
-             TPM = 0.00;
-         }
-         var TCM = $('#TCM').val();
-         if (TCM === undefined || TCM === null || TCM === '') {
-             TCM = 0.00;
-         }
-         var ALDT = $('#ADLT').val();
-         if (ALDT === undefined || ALDT === null || ALDT === '') {
-             ALDT = 0.00;
-         }
-         var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
-         //alert(TTR);
-         document.getElementById("TTR").value = TTR;
+         // var TPM = $('#TPM').val();
+         // if (TPM === undefined || TPM === null || TPM === '') {
+         //     TPM = 0.00;
+         // }
+         // var TCM = $('#TCM').val();
+         // if (TCM === undefined || TCM === null || TCM === '') {
+         //     TCM = 0.00;
+         // }
+         // var ALDT = $('#ADLT').val();
+         // if (ALDT === undefined || ALDT === null || ALDT === '') {
+         //     ALDT = 0.00;
+         // }
+         // var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
+         // //alert(TTR);
+         // document.getElementById("TTR").value = TTR;
          //alert(d_o_b);
      });
 
-     $('#TPM').on('focusout', function() {
+     // $('#TPM').on('focusout', function() {
 
-         var TPM = $('#TPM').val();
-         if (TPM === undefined || TPM === null || TPM === '') {
-             TPM = 0.00;
-         }
-         var TCM = $('#TCM').val();
-         if (TCM === undefined || TCM === null || TCM === '') {
-             TCM = 0.00;
-         }
-         var ALDT = $('#ADLT').val();
-         if (ALDT === undefined || ALDT === null || ALDT === '') {
-             ALDT = 0.00;
-         }
-         var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
-         //alert(TTR);
+     //     var TPM = $('#TPM').val();
+     //     if (TPM === undefined || TPM === null || TPM === '') {
+     //         TPM = 0.00;
+     //     }
+     //     var TCM = $('#TCM').val();
+     //     if (TCM === undefined || TCM === null || TCM === '') {
+     //         TCM = 0.00;
+     //     }
+     //     var ALDT = $('#ADLT').val();
+     //     if (ALDT === undefined || ALDT === null || ALDT === '') {
+     //         ALDT = 0.00;
+     //     }
+     //     var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
+     //     //alert(TTR);
+     //     document.getElementById("TTR").value = TTR;
+     //     //alert(d_o_b);
+     // });
+
+     // $('#ADLT').on('focusout', function() {
+
+     //     var TPM = $('#TPM').val();
+     //     if (TPM === undefined || TPM === null || TPM === '') {
+     //         TPM = 0.00;
+     //     }
+     //     var TCM = $('#TCM').val();
+     //     if (TCM === undefined || TCM === null || TCM === '') {
+     //         TCM = 0.00;
+     //     }
+     //     var ALDT = $('#ADLT').val();
+     //     if (ALDT === undefined || ALDT === null || ALDT === '') {
+     //         ALDT = 0.00;
+     //     }
+     //     var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
+     //     //alert(TTR);
+     //     document.getElementById("TTR").value = TTR;
+     //     //alert(d_o_b);
+     // });
+
+        $('#Failure_end_date').on('focusout', function() {
+
+         var end_date = $('#Failure_end_date').val();
+         var e_d = new Date(end_date);
+         var start_date = $('#Failure_start_date').val();
+         var s_d = new Date(start_date);
+        // alert(start_date);
+         //alert(end_date);
+
+         if(start_date !=  null  && end_date != null){
+            var diffTime = Math.abs(e_d - s_d);
+            var TTR = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+             //var TTR = parseFloat((end_date - start_date)/60/60/24);
+        // alert(TTR);
          document.getElementById("TTR").value = TTR;
-         //alert(d_o_b);
-     });
-
-     $('#ADLT').on('focusout', function() {
-
-         var TPM = $('#TPM').val();
-         if (TPM === undefined || TPM === null || TPM === '') {
-             TPM = 0.00;
+         }else{
+             document.getElementById("TTR").value = 0.0;
          }
-         var TCM = $('#TCM').val();
-         if (TCM === undefined || TCM === null || TCM === '') {
-             TCM = 0.00;
-         }
-         var ALDT = $('#ADLT').val();
-         if (ALDT === undefined || ALDT === null || ALDT === '') {
-             ALDT = 0.00;
-         }
-         var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
-         //alert(TTR);
-         document.getElementById("TTR").value = TTR;
+        
          //alert(d_o_b);
      });
 
@@ -302,6 +324,7 @@
          var TTR = $('#TTR').val();
          var FSD = $('#Failure_start_date').val();
          var FED = $('#Failure_end_date').val();
+         alert(TPM);
 
          if (TBF == '') {
              validate = 1;
@@ -330,6 +353,13 @@
          if (FED == '') {
              validate = 1;
              $('#Failure_end_date').addClass('red-border');
+         }
+         if(TCM+TPM+ADLT != 30){
+            validate =1;
+             $('#TCM').addClass('red-border');
+              $('#TPM').addClass('red-border');
+               $('#ADLT').addClass('red-border');
+
          }
 
 
