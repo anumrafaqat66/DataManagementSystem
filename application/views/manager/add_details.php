@@ -84,10 +84,6 @@
                              </div>
                              <hr>
                              <div class="form-group row">
-                                 <div class="col-sm-4 mb-1">
-                                     <h6>&nbsp;Enter required values:</h6>
-                                 </div>
-
                                  <div class="col-sm-4">
                                      <h6>&nbsp;Enter Failure Start Date</h6>
                                  </div>
@@ -98,13 +94,6 @@
 
                              </div>
                              <div class="form-group row">
-                                 <div class="col-sm-4">
-                                     <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TBF'])) {
-                                                                                                            echo $selected_controller_data['TBF'];
-                                                                                                        } else {
-                                                                                                            echo "";
-                                                                                                        }; ?>" name="TBF" id="TBF" placeholder="TBF*">
-                                 </div>
 
                                  <div class="col-sm-4">
                                      <input type="date" class="form-control form-control-user" value="" name="failure_start_date" id="Failure_start_date" placeholder="Failure Start Date*">
@@ -114,8 +103,20 @@
                                      <input type="date" class="form-control form-control-user" value="" name="failure_end_date" id="Failure_end_date" placeholder="Failure End Date*">
                                  </div>
 
+
+
                              </div>
 
+                             <div class="form-group row">
+
+                                 <div class="col-sm-4">
+                                     <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TBF'])) {
+                                                                                                            echo $selected_controller_data['TBF'];
+                                                                                                        } else {
+                                                                                                            echo "";
+                                                                                                        }; ?>" name="TBF" id="TBF" placeholder="TBF*">
+                                 </div>
+                             </div>
                              <div class="form-group row">
                                  <div class="col-sm-4 mb-1">
                                      <input type="text" class="form-control form-control-user" value="<?php if (isset($selected_controller_data['TCM'])) {
@@ -289,51 +290,43 @@
      //     document.getElementById("TTR").value = TTR;
      //     //alert(d_o_b);
      // });
-     $('#Failure_start_date').on('focusout keyup', function() {
+     $('#Failure_start_date').on('focusout', function() {
 
          var start_date = $('#Failure_start_date').val();
-         //var s_d = new Date(start_date);
-         var sensor = $('#Name').val();
-         alert(sensor);
+         var sensor_id = $('#id').val();
 
          if (start_date != null) {
-           $.ajax({
-            url: '<?= base_url(); ?>Technician/get_TBF',
-            method: 'POST',
-            data: {
-                'start_data': start_date,
-                'sensor':sensor
-            },
-            success: function(data) {
-                //alert(data);
-                $('#TBF').val(data);
-            },
-            async: false
-        }); 
+             $.ajax({
+                 url: '<?= base_url(); ?>Technician/get_TBF',
+                 method: 'POST',
+                 data: {
+                     'start_data': start_date,
+                     'sensor_id': sensor_id
+                 },
+                 success: function(data) {
+                     $('#TBF').val(data);
+                 },
+                 async: false
+             });
          }
-         //alert(d_o_b);
      });
 
-     $('#Failure_end_date').on('focusout keyup', function() {
+     $('#Failure_end_date').on('focusout', function() {
 
          var end_date = $('#Failure_end_date').val();
          var e_d = new Date(end_date);
          var start_date = $('#Failure_start_date').val();
          var s_d = new Date(start_date);
-         // alert(start_date);
-         //alert(end_date);
 
          if (start_date != null && end_date != null) {
              var diffTime = Math.abs(e_d - s_d);
-             var TTR = Math.ceil(diffTime / 1000 / 60 / 60 / 24); // / (1000 * 60 * 60 * 24));
-             //var TTR = parseFloat((end_date - start_date)/60/60/24);
-             // alert(TTR);
+             var TTR = Math.ceil(diffTime / 1000 / 60 / 60 / 24);
              document.getElementById("TTR").value = TTR;
          } else {
-             document.getElementById("TTR").value = 0.0;
+             document.getElementById("TTR").value = 0.00;
          }
 
-         //alert(d_o_b);
+
      });
 
      $('#update_btn').on('click', function() {

@@ -13,7 +13,12 @@ class Manager extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             if ($status == "manager" || $status == "co" || $status == "hod" || $status == "weo") {
-                $data['manager_controller_data'] = $this->db->get('controller_data')->result_array();
+
+                $this->db->select('cd.*,sd.Ship_name');
+                $this->db->from('controller_data cd');
+                $this->db->join('ship_data sd', 'sd.ID = cd.ship_ID');
+                $data['manager_controller_data'] = $this->db->get()->result_array();
+                 
                 $this->load->view('manager/manager', $data);
             } else {
                 $this->load->view('login');
@@ -51,7 +56,8 @@ class Manager extends CI_Controller
             $TCM_Desc = $postData['TCM_Desc'];
             $TPM_Desc = $postData['TPM_Desc'];
             $ADLT_Desc = $postData['ADLT_Desc'];
-
+            $FSD = strtotime($postData['Failure_start_date']);
+            $FED = strtotime($postData['Failure_end_date']);
 
             $cond  = ['id' => $id];
             $data_update = [
@@ -62,7 +68,9 @@ class Manager extends CI_Controller
                 'TTR' => $TTR,
                 'TCM_Desc' => $TCM_Desc,
                 'TPM_Desc' => $TPM_Desc,
-                'ADLT_Desc' => $ADLT_Desc
+                'ADLT_Desc' => $ADLT_Desc,
+                'Failure_start_date' => date($FSD, 'yyyy-mm-dd'),
+                'Failure_end_date' => date($FED, 'yyyy-mm-dd')
 
             ];
             $this->db->where($cond);
@@ -118,6 +126,8 @@ class Manager extends CI_Controller
             $TCM_Desc = $postData['TCM_Desc'];
             $TPM_Desc = $postData['TPM_Desc'];
             $ADLT_Desc = $postData['ADLT_Desc'];
+            $FSD = $postData['failure_start_date'];
+            $FED = $postData['failure_end_date'];
 
             $insert_array = array(
                 'Controller_Data_ID' => $id,
@@ -128,7 +138,9 @@ class Manager extends CI_Controller
                 'TTR' => $TTR,
                 'TCM_Desc' => $TCM_Desc,
                 'TPM_Desc' => $TPM_Desc,
-                'ADLT_Desc' => $ADLT_Desc
+                'ADLT_Desc' => $ADLT_Desc,
+                'Failure_start_date' => $FSD,
+                'Failure_end_date' => $FED 
             );
 
             $insert = $this->db->insert('controller_data_detail', $insert_array);

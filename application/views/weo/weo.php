@@ -157,7 +157,7 @@
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
                                                         <td type="button" scope="row" id="weapon_name<?= $count ?>" value="<?= $data['Controller_Name']; ?>" data-toggle="modal" data-target="#<?= $data['Controller_Code']; ?>"><?= $data['Controller_Name']; ?></td>
-                                                        <td scope="row"><?= $data['Availability']; ?></td>
+                                                        <td scope="row" id="avail<?= $count ?>"><?= $data['Availability']; ?></td>
                                                         <td scope="row" id="reldefault<?= $count ?>"><?= $data['Default_Reliability']; ?></td>
                                                         <td scope="row" id="rel<?= $count ?>"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
@@ -178,6 +178,21 @@
                                     <a> No Record Available. </a>
                                 <?php  } ?>
                             </div>
+
+                            <div class="row" style="border:1px solid black;padding:10px; border-radius:10px;">
+                                <div class="col-lg-2">Data Threshold:</div>
+                                <div class="col-lg-1">0 - 50 </div>
+                                <div class="col-lg-1" style="background:#ff0000;"></div>
+                                <div class="col-lg-1"> </div>
+                                <div class="col-lg-1">50 - 75</div>
+                                <div class="col-lg-1" style="background:#ffa500;"></div>
+                                <div class="col-lg-1"> </div>
+                                <div class="col-lg-1">75 - 100</div>
+                                <div class="col-lg-1" style="background:#008000;"></div>
+                                <div class="col-lg-1"> </div>
+                            </div>
+
+
 
                             <!-- <hr> -->
                             <!-- <div class="form-group row">
@@ -388,7 +403,6 @@
         </div>
     </div>
 
-
     <div class="modal fade" id="CS">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -437,7 +451,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="modal fade" id="SSM">
         <!-- <div class="row"> -->
@@ -641,7 +654,10 @@
     $('#table_rows').find('td').click(function() {
         // alert($(this).html());
         var weapon = $(this).html();
-
+        $entered_time = $('#system_time').val();
+        if ($entered_time == null) {
+            $entered_time = 30;
+        }
         // $('#sam_card').hide();
         // $('#main_gun').hide();
         // $('#CRG_Port').hide();
@@ -685,9 +701,13 @@
                     $str = '';
                     for (var i in result) {
                         $str = result[i].Controller_Name.replace(" ", "_");
-                        alert($str);
+
                         $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
-                        $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
+                        if ($entered_time == null || $entered_time == '') {
+                            $("[id*='" + $str + "_R']").html(String(number_format(result[i].Default_Reliability / 100, 2)));
+                        } else {
+                            $("[id*='" + $str + "_R']").html(String(number_format(result[i].Reliability / 100, 2)));
+                        }
                     }
                 },
                 error: function(data) {
@@ -756,9 +776,24 @@
             url: '<?= base_url(); ?>WEO/get_all_weapons_availability',
             method: 'POST',
             success: function(data) {
-                // var result = jQuery.parseJSON(data);
-                //alert(result);
-                // $('#availability').html(data + "%");
+                var result = jQuery.parseJSON(data);
+                var loop = 1;
+                for (var i in result) {
+                    var wn = document.getElementById("weapon_name" + loop);
+                    if (wn.innerHTML == result[i].weapon_name) {
+                        var ava = document.getElementById("avail" + loop);
+                        ava.innerHTML = "<b>" + result[i].Availability + "</b>";
+
+                        if (result[i].Availability >= 75) {
+                            ava.style.color = "#008000";
+                        } else if (result[i].Availability >= 50 && result[i].Availability < 75) {
+                            ava.style.color = "#ffa500";
+                        } else if (result[i].Availability < 50) {
+                            ava.style.color = "#ff0000";
+                        }
+                    }
+                    loop++;
+                }
                 // if (data < 50) {
                 //     document.getElementById("system_availability").style.backgroundColor = "red";
                 // } else if (data > 50 && data < 75) {
@@ -789,7 +824,15 @@
                     var wn = document.getElementById("weapon_name" + loop);
                     if (wn.innerHTML == result[i].weapon_name) {
                         var rel = document.getElementById("reldefault" + loop);
-                        rel.innerHTML = result[i].default_reliability;
+                        rel.innerHTML = "<b>" + result[i].default_reliability + "</b>";
+
+                        if (result[i].default_reliability >= 75) {
+                            rel.style.color = "#008000";
+                        } else if (result[i].default_reliability >= 50 && result[i].default_reliability < 75) {
+                            rel.style.color = "#ffa500";
+                        } else if (result[i].default_reliability < 50) {
+                            rel.style.color = "#ff0000";
+                        }
                     }
                     loop++;
                 }
@@ -991,7 +1034,15 @@
                     var wn = document.getElementById("weapon_name" + loop);
                     if (wn.innerHTML == result[i].weapon_name) {
                         var rel = document.getElementById("rel" + loop);
-                        rel.innerHTML = result[i].reliabbility;
+                        rel.innerHTML = "<b>" + result[i].reliabbility + "</b>";
+
+                        if (result[i].reliabbility >= 75) {
+                            rel.style.color = "#008000";
+                        } else if (result[i].reliabbility >= 50 && result[i].reliabbility < 75) {
+                            rel.style.color = "#ffa500";
+                        } else if (result[i].reliabbility < 50) {
+                            rel.style.color = "#ff0000";
+                        }
                     }
                     loop++;
                 }

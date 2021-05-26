@@ -79,7 +79,7 @@ class HOD extends CI_Controller
         }
 
         $sensor_rel = array();
-        $sensor_rel['data'] = $this->db->select('Controller_Name, Controller_type, Default_Reliability, Reliability')->distinct()->get('controller_data')->result_array();
+        $sensor_rel['data'] = $this->db->select('Controller_Name, Controller_type, Default_Reliability, Reliability, Availability')->distinct()->get('controller_data')->result_array();
 
         echo json_encode($sensor_rel['data']);
 

@@ -29,6 +29,11 @@ class WEO extends CI_Controller
                 $this->get_system_availability($weapons_array['data'][$i]['Controller_Name']);
             endfor;
         }
+
+        $weapons_avail = array();
+        $weapons_avail['data'] = $this->db->select('weapon_name, Availability')->distinct()->get('weapon_systems')->result_array();
+
+        echo json_encode($weapons_avail['data']);
     }
 
 
@@ -278,7 +283,7 @@ class WEO extends CI_Controller
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
 
-                $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Availability,cd.Reliability');
+                $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Availability,cd.Reliability, cd.Default_Reliability');
                 $this->db->from('weapon_systems ws');
                 $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
                 $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');

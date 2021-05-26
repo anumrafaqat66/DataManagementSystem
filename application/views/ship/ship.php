@@ -7,15 +7,15 @@
 <?php !isset($time_entered) ? $time_entered = null : $time_entered; ?>
 <?php !isset($button_clicked) ? $button_clicked = null : $button_clicked; ?>
 
-<script src="<?= base_url();?>assets/js/canvasjs.min.js"></script>
- <style>
+<script src="<?= base_url(); ?>assets/js/canvasjs.min.js"></script>
+<style>
+    .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 0.75rem;
+        padding-bottom: 0px;
+    }
 
-.card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 0.75rem;
-    padding-bottom: 0px;
-}
     .img-ship {
         background: url('<?= base_url() ?>assets/img/ship.jpg');
         background-position: center;
@@ -120,14 +120,14 @@
 
         <div class="form-group row">
             <div class="col-lg-12">
-                
-                <div class="card">
-                    <div class="card-header bg-custom1">
+
+                <!-- <div class="card"> -->
+                    <!-- <div class="card-header bg-custom1">
                         <h1 class="h4 text-white">Mission</h1>
-                    </div>
+                    </div> -->
 
                     <div class="card-body bg-custom3">
-                       <!--  <div class="form-group row">
+                        <!--  <div class="form-group row">
                             <a class="col mx-1 my-1 img-ship" href="<?= base_url(); ?>CO/mission">
                                 <div style="height:180px">
                                     <div style="margin-top:135px">
@@ -138,34 +138,34 @@
                         </div>
  -->
                         <div class="form-group row">
-                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>" style="height: 250px">
-                                <div style="height:200px">
-                                    <div style="margin-top:100px">
+                            <a class="col mx-1 my-1 img-aaw" href="<?= base_url(); ?>mission/<?= 'AAW' ?>" style="height: 180px">
+                                <div style="height:100px">
+                                    <div style="margin-top:50px">
                                         <h1 class="h1 text-dark text-center "><strong>AAW</strong></h1>
                                         <h2 class="h2 text-dark text-center "><strong><?php echo $mission1 ?></strong></h2>
                                     </div>
                                 </div>
                             </a>
-                            <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>" style="height: 250px">
-                                <div style="height:200px">
-                                    <div style="margin-top:100px">
+                            <a class="col mx-1 my-1 img-asuw" href="<?= base_url(); ?>mission/<?= 'ASuW' ?>" style="height: 180px">
+                                <div style="height:100px">
+                                    <div style="margin-top:50px">
                                         <h1 class="h1 text-dark text-center "><strong>ASuW</strong></h1>
                                         <h2 class="h2 text-dark text-center "><strong><?php echo $mission2 ?></strong></h2>
                                     </div>
                                 </div>
                             </a>
                             <!-- <div class="w-100"></div> -->
-                            <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>" style="height: 250px">
-                                <div style="height:200px">
-                                    <div style="margin-top:100px">
+                            <a class="col mx-1 my-1 img-asw" href="<?= base_url(); ?>mission/<?= 'ASW' ?>" style="height: 180px">
+                                <div style="height:100px">
+                                    <div style="margin-top:50px">
                                         <h1 class="h1 text-white text-center "><strong>ASW</strong></h1>
                                         <h2 class="h2 text-white text-center "><strong><?php echo $mission3 ?></strong></h2>
                                     </div>
                                 </div>
                             </a>
-                            <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>" style="height: 250px">
-                                <div style="height:200px">
-                                    <div style="margin-top:100px">
+                            <a class="col mx-1 my-1 img-ew" href="<?= base_url(); ?>mission/<?= 'EW' ?>" style="height: 180px">
+                                <div style="height:100px">
+                                    <div style="margin-top:50px">
                                         <h1 class="h1 text-white text-center "><strong>EW</strong></h1>
                                         <h2 class="h2 text-white text-center "><strong><?php echo $mission4 ?></strong></h2>
                                     </div>
@@ -181,40 +181,40 @@
 
                         <div class="card card-body bg-custom3" id='ship_detail'>
 
-                            <div class="card">
-                                <div class="card-header bg-custom1">
+                            <!-- <div class="card"> -->
+                            <!-- <div class="card-header bg-custom1">
                                     <h5 class="h5 text-white">Combat Missions Statistics</h5>
+                                </div> -->
+
+                            <div class="card-body bg-custom3">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 my-3">
+                                        <h6 class="h6 text-grey-900">To check complete combat system reliabiltiy. Please enter time: </h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <form class="user" role="form" id="update_form" method="post" action="">
+                                            <input type="text" class="form-control form-control-user" name="time" id="system_time" value="<?php echo $time_entered ?>" placeholder="Enter Time">
+                                        </form>
+                                    </div>
                                 </div>
-
-                                <div class="card-body bg-custom3">
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 my-3">
-                                            <h6 class="h6 text-grey-900">To check complete combat system reliabiltiy. Please enter time: </h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <form class="user" role="form" id="update_form" method="post" action="">
-                                                <input type="text" class="form-control form-control-user" name="time" id="system_time" value="<?php echo $time_entered ?>" placeholder="Enter Time">
-                                            </form>
+                                <!-- <hr> -->
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <h4 class="h4 text-grey-900">Availability</h4>
+                                        <div class="progress" style="height:20px">
+                                            <div class="progress-bar" id="availability_bar" role="progressbar" style="width: <?= $availability ?>%;" aria-valuenow="<?= $availability ?>" aria-valuemin="0" aria-valuemax="100"><?= $availability . "%" ?></div>
                                         </div>
                                     </div>
-                                    <hr>
-                                    <div class="form-group row">
-                                        <div class="col-sm-6">
-                                            <h4 class="h4 text-grey-900">Availability</h4>
-                                            <div class="progress" style="height:40px">
-                                                <div class="progress-bar" id="availability_bar" role="progressbar" style="width: <?= $availability ?>%;" aria-valuenow="<?= $availability ?>" aria-valuemin="0" aria-valuemax="100"><?= $availability . "%" ?></div>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-sm-6">
-                                            <h4 class="h4 text-grey-900">Reliability</h4>
+                                    <div class="col-sm-6">
+                                        <h4 class="h4 text-grey-900">Reliability</h4>
 
-                                            <div class="progress" style="height:40px">
-                                                <div class="progress-bar" id="reliability_bar" role="progressbar" style="width: <?= $reliability ?>%;" aria-valuenow="<?= $reliability ?>" aria-valuemin="0" aria-valuemax="100"><?= $reliability . "%" ?></div>
-                                            </div>
+                                        <div class="progress" style="height:20px">
+                                            <div class="progress-bar" id="reliability_bar" role="progressbar" style="width: <?= $reliability ?>%;" aria-valuenow="<?= $reliability ?>" aria-valuemin="0" aria-valuemax="100"><?= $reliability . "%" ?></div>
                                         </div>
                                     </div>
-                                              <div class="card">
+                                </div>
+                                <div class="card">
 
                                     <div class="card-body bg-custom3">
                                         <div class="form-group row">
@@ -252,12 +252,12 @@
                                 </div>
 
                                 <!-- Graphs -->
-                      
-                                </div>
+
                             </div>
+                            <!-- </div> -->
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>

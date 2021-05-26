@@ -19,7 +19,103 @@
         flex: 1 1 auto;
         min-height: 1px;
         padding: 0.75rem;
-        padding-bottom: 0px;
+        padding-bottom: 15px;
+    }
+
+    .dot {
+        height: 150px;
+        width: 150px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .center-text {
+        margin-top: 60px;
+        font-weight: bold;
+        color: black;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .box {
+        display: inline-block;
+        /* border: 1px solid black; */
+        padding: 10px 0px;
+        margin: 0px 25px;
+        width: 150px;
+        text-align: center;
+        box-shadow: 5px 10px #888888;
+        border-radius: 10px;
+        background-color: #D3D3D3;
+    }
+
+    .box_center {
+        display: inline-block;
+        /* border: 1px solid black; */
+        padding: 10px 0px;
+        margin-left: -5px;
+        width: 150px;
+        text-align: center;
+        box-shadow: 5px 10px #888888;
+        border-radius: 10px;
+        background-color: #FA8072;
+    }
+
+    .box.hidden {
+        visibility: hidden;
+    }
+
+    .lines {
+        margin-left: 100px;
+        height: 29px;
+    }
+
+    .line_bottom {
+        display: inline-block;
+        border: 1px solid black;
+        border-top: none;
+        border-right: none;
+        height: 30px;
+        width: 200px;
+        margin-left: -5px;
+        margin-right: 0;
+    }
+
+    .line_top {
+        display: inline-block;
+        border: 1px solid black;
+        border-bottom: none;
+        border-right: none;
+        height: 30px;
+        width: 200px;
+        margin-left: -5px;
+        margin-right: 0;
+    }
+
+    .line_middle {
+        display: inline-block;
+        border: 1px solid black;
+        border-bottom: none;
+        border-right: none;
+        border-left: none;
+        height: 4px;
+        width: 200px;
+        margin-left: -5px;
+        margin-right: 0;
+
+    }
+
+    .connect {
+        height: 30px;
+        border-right: 1px solid black;
+    }
+
+    .connect.three {
+        width: 295px;
+        margin-top: -6px;
     }
 </style>
 <div class="container">
@@ -131,11 +227,10 @@
                                         </div>
                                         <?php
                                         $dataPoints = array(
-                                            array("y" => $weapon1, "label" => "SAM"),
+                                            array("y" => $weapon1, "label" => "SAM", "data-target:'#SAM'"),
                                             array("y" => $weapon2, "label" => "Main Gun"),
                                             array("y" => $weapon3, "label" => "CRG(port)"),
                                             array("y" => $weapon4, "label" => "CRG(STDB)"),
-
                                         );
                                         ?>
                                     </div>
@@ -172,6 +267,206 @@
     </div>
 
 
+    <div class="modal fade" id="SAM">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="col-lg-12">
+
+                    <div class="card bg-custom3">
+                        <div class="card-header bg-custom1">
+                            <h1 class="h5 text-white">SAM (Surface to Air Missile)</h1>
+                        </div>
+
+                        <div class="card-body mx-5 bg-custom3">
+                            <div>
+                                <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3"> CCS </a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
+
+                            </div>
+
+                            <div class="lines">
+                                <div class="line_bottom"></div>
+                                <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="FC1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/4">FC1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
+                                <div class="line_middle"></div>
+                                <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="SAM_A">A</a><a href="<?= base_url(); ?>Manager/show_records/8" style="color:whitesmoke;">SAM</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
+                            </div>
+                            <div class="lines">
+                                <div class="line_top"></div>
+                            </div>
+
+                            <div>
+                                <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right;color:black; font-size:small;" id="S1_R">R</a></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="MG">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="col-lg-12">
+
+                    <div class="card bg-custom3">
+                        <div class="card-header bg-custom1">
+                            <h1 class="h5 text-white">Main Gun</h1>
+                        </div>
+
+                        <div class="card-body mx-5">
+                            <div>
+                                <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
+
+                            </div>
+
+                            <div class="lines">
+                                <div class="line_bottom"></div>
+                                <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC2_A">A</a><a href="<?= base_url(); ?>Manager/show_records/5">FC2</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="FC2_R">R</a></div>
+                                <div class="line_middle"></div>
+                                <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="Main_Gun_A">A</a><a href="<?= base_url(); ?>Manager/show_records/9" style="color:whitesmoke;">Main Gun</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="Main_Gun_R">R</a></div>
+                            </div>
+                            <div class="lines">
+                                <div class="line_top"></div>
+                            </div>
+
+                            <div>
+                                <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="CP">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="col-lg-12">
+
+                    <div class="card bg-custom3">
+                        <div class="card-header bg-custom1">
+                            <h1 class="h5 text-white">CRG (Port)</h1>
+                        </div>
+
+                        <div class="card-body mx-5">
+                            <div>
+                                <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
+                                <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC3_A">A</a><a href="<?= base_url(); ?>Manager/show_records/6">FC3</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
+                            </div>
+
+                            <div class="lines">
+                                <div class="line_bottom"></div>
+                                <div class="line_bottom"></div>
+                                <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CRG_(Port)_A">A</a><a href="<?= base_url(); ?>Manager/show_records/10" style="color:whitesmoke;">CRG (Port)</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CRG_(Port)_R">R</a></div>
+                            </div>
+
+                            <div class="lines">
+                                <div class="line_top"></div>
+                                <div class="line_top"></div>
+                            </div>
+
+                            <div>
+                                <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
+                                <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black;" id="FC4_A">A</a><a href="<?= base_url(); ?>Manager/show_records/7">FC4</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="CS">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="col-lg-12">
+
+                    <div class="card bg-custom3">
+                        <div class="card-header bg-custom1">
+                            <h1 class="h5 text-white">CRG (STDB)</h1>
+                        </div>
+
+                        <div class="card-body mx-5">
+                            <div>
+                                <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
+                                <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC3_A">A</a><a href="<?= base_url(); ?>Manager/show_records/6">FC3</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
+                            </div>
+
+                            <div class="lines">
+                                <div class="line_bottom"></div>
+                                <div class="line_bottom"></div>
+                                <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a><a href="<?= base_url(); ?>Manager/show_records/11" style="color:whitesmoke;">CRG(STDB)</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
+                            </div>
+
+                            <div class="lines">
+                                <div class="line_top"></div>
+                                <div class="line_top"></div>
+
+                            </div>
+
+                            <div>
+                                <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="S1_R">R</a></div>
+                                <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC4_A">A</a><a href="<?= base_url(); ?>Manager/show_records/7">FC4</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 </div>
@@ -205,7 +500,6 @@
         if ($value_rel > 0) {
             $('#reliability_chart').show();
         }
-
 
         var chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
@@ -273,15 +567,128 @@
         }
 
         function onClick(e) {
-            //alert(e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: " + e.dataPoint.y + " }");
             if (e.dataPoint.x == 0) {
-                window.location.href = "<?= base_url(); ?>weo?we=SAM";
+                link = e.dataPoint.link;
+                $('#SAM').modal('show');
+                $entered_time =  $('#system_time').val();
+                $.ajax({
+                    url: '<?= base_url(); ?>Mission/get_sensors_data',
+                    method: 'POST',
+                    data: {
+                        'weapon_name': 'SAM'
+                    },
+                    success: function(data) {
+                        result = JSON.parse(data);
+                        $str = '';
+                        for (var i in result) {
+                            $str = result[i].Controller_Name.replace(" ", "_");
+
+                            $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+                            if ($entered_time == null || $entered_time == '') {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Default_Reliability / 100, 2)));
+                            } else {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Reliability / 100, 2)));
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        //alert(data);
+                        alert('failure');
+                    }
+                });
+
             } else if (e.dataPoint.x == 1) {
-                window.location.href = "<?= base_url(); ?>weo?we=Main Gun";
+                link = e.dataPoint.link;
+                $('#MG').modal('show');
+
+                $entered_time =  $('#system_time').val();
+                $.ajax({
+                    url: '<?= base_url(); ?>Mission/get_sensors_data',
+                    method: 'POST',
+                    data: {
+                        'weapon_name': 'Main Gun'
+                    },
+                    success: function(data) {
+                        result = JSON.parse(data);
+                        $str = '';
+                        for (var i in result) {
+                            $str = result[i].Controller_Name.replace(" ", "_");
+
+                            $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+                            if ($entered_time == null || $entered_time == '') {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Default_Reliability / 100, 2)));
+                            } else {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Reliability / 100, 2)));
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        //alert(data);
+                        alert('failure');
+                    }
+                });
+
             } else if (e.dataPoint.x == 2) {
-                window.location.href = "<?= base_url(); ?>weo?we=CRG (Port)";
+                link = e.dataPoint.link;
+                $('#CP').modal('show');
+
+                $entered_time =  $('#system_time').val();
+                $.ajax({
+                    url: '<?= base_url(); ?>Mission/get_sensors_data',
+                    method: 'POST',
+                    data: {
+                        'weapon_name': 'CRG (Port)'
+                    },
+                    success: function(data) {
+                        result = JSON.parse(data);
+                        $str = '';
+                        for (var i in result) {
+                            $str = result[i].Controller_Name.replace(" ", "_");
+
+                            $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+                            if ($entered_time == null || $entered_time == '') {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Default_Reliability / 100, 2)));
+                            } else {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Reliability / 100, 2)));
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        //alert(data);
+                        alert('failure');
+                    }
+                });
+
             } else if (e.dataPoint.x == 3) {
-                window.location.href = "<?= base_url(); ?>weo?we=CRG (STDB)";
+                link = e.dataPoint.link;
+                $('#CS').modal('show');
+
+                $entered_time =  $('#system_time').val();
+                $.ajax({
+                    url: '<?= base_url(); ?>Mission/get_sensors_data',
+                    method: 'POST',
+                    data: {
+                        'weapon_name': 'CRG (STDB)'
+                    },
+                    success: function(data) {
+                        result = JSON.parse(data);
+                        $str = '';
+                        for (var i in result) {
+                            $str = result[i].Controller_Name.replace(" ", "_");
+
+                            $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+                            if ($entered_time == null || $entered_time == '') {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Default_Reliability / 100, 2)));
+                            } else {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Reliability / 100, 2)));
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        //alert(data);
+                        alert('failure');
+                    }
+                });
             }
         }
 

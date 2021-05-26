@@ -98,7 +98,7 @@
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
                                                         <td scope="row" id="sensor_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
-                                                        <td scope="row"><?= $data['Availability']; ?></td>
+                                                        <td scope="row" id="avail_sensor<?= $count; ?>"><?= $data['Availability']; ?></td>
                                                         <td scope="row" id="rel_sensor_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
                                                         <td scope="row" id="rel_sensor<?= $count; ?>"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
@@ -197,7 +197,7 @@
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
                                                         <td scope="row" id="fire_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
-                                                        <td scope="row"><?= $data['Availability']; ?></td>
+                                                        <td scope="row" id="avail_fire<?= $count; ?>"><?= $data['Availability']; ?></td>
                                                         <td scope="row" id="rel_fire_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
                                                         <td scope="row" id="rel_fire<?= $count; ?>"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
@@ -298,7 +298,7 @@
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
                                                         <td scope="row" id="weapon_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
-                                                        <td scope="row"><?= $data['Availability']; ?></td>
+                                                        <td scope="row" id="avail_weapon<?= $count; ?>"><?= $data['Availability']; ?></td>
                                                         <td scope="row" id="rel_weapon_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
                                                         <td scope="row" id="rel_weapon<?= $count; ?>"><?= $data['Reliability']; ?></td>
                                                         <!-- <td>
@@ -388,8 +388,28 @@
                         var sn = document.getElementById("sensor_name" + loop_sensor);
                         if (sn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_sensor_def" + loop_sensor);
-                            rel.innerHTML = result[i].Default_Reliability;
-                            console.log(rel);
+                            var ava = document.getElementById("avail_sensor" + loop_sensor);
+                            rel.innerHTML = "<b>"+result[i].Default_Reliability+"</b>";
+                            ava.innerHTML = "<b>"+result[i].Availability+"</b>";
+
+                            if (result[i].Default_Reliability >= 75) {
+                                rel.style.color = "#008000";
+                            } else if (result[i].Default_Reliability >= 50 && result[i].Default_Reliability < 75) {
+                                rel.style.color = "#ffa500";
+                            } else if (result[i].Default_Reliability < 50) {
+                                rel.style.color = "#ff0000";
+                            }
+
+                            if (result[i].Availability >= 75) {
+                                ava.style.color = "#008000";
+                            } else if (result[i].Availability >= 50 && result[i].Availability < 75) {
+                                ava.style.color = "#ffa500";
+                            } else if (result[i].Availability < 50) {
+                                ava.style.color = "#ff0000";
+                            }
+
+
+
                         }
                         loop_sensor++;
                     }
@@ -397,8 +417,26 @@
                         var fn = document.getElementById("fire_name" + loop_fire);
                         if (fn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_fire_def" + loop_fire);
-                            rel.innerHTML = result[i].Default_Reliability;
-                            console.log(rel);
+                            var ava = document.getElementById("avail_fire" + loop_fire);
+                            rel.innerHTML = "<b>"+result[i].Default_Reliability+"</b>";
+                            ava.innerHTML = "<b>"+result[i].Availability+"</b>";
+
+                            if (result[i].Default_Reliability >= 75) {
+                                rel.style.color = "#008000";
+                            } else if (result[i].Default_Reliability >= 50 && result[i].Default_Reliability < 75) {
+                                rel.style.color = "#ffa500";
+                            } else if (result[i].Default_Reliability < 50) {
+                                rel.style.color = "#ff0000";
+                            }
+
+                            if (result[i].Availability >= 75) {
+                                ava.style.color = "#008000";
+                            } else if (result[i].Availability >= 50 && result[i].Availability < 75) {
+                                ava.style.color = "#ffa500";
+                            } else if (result[i].Availability < 50) {
+                                ava.style.color = "#ff0000";
+                            }
+
                         }
                         loop_fire++;
                     }
@@ -406,7 +444,25 @@
                         var wn = document.getElementById("weapon_name" + loop_weapon);
                         if (wn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_weapon_def" + loop_weapon);
-                            rel.innerHTML = result[i].Default_Reliability;
+                            var ava = document.getElementById("avail_weapon" + loop_weapon);
+                            rel.innerHTML = "<b>"+result[i].Default_Reliability+"</b>";
+                            ava.innerHTML = "<b>"+result[i].Availability+"</b>";
+
+                            if (result[i].Default_Reliability >= 75) {
+                                rel.style.color = "#008000";
+                            } else if (result[i].Default_Reliability >= 50 && result[i].Default_Reliability < 75) {
+                                rel.style.color = "#ffa500";
+                            } else if (result[i].Default_Reliability < 50) {
+                                rel.style.color = "#ff0000";
+                            }
+
+                            if (result[i].Availability >= 75) {
+                                ava.style.color = "#008000";
+                            } else if (result[i].Availability >= 50 && result[i].Availability < 75) {
+                                ava.style.color = "#ffa500";
+                            } else if (result[i].Availability < 50) {
+                                ava.style.color = "#ff0000";
+                            }
                         }
                         loop_weapon++;
                     }
@@ -544,29 +600,19 @@
                         var sn = document.getElementById("sensor_name" + loop_sensor);
                         if (sn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_sensor" + loop_sensor);
-                            rel.innerHTML = result[i].Reliability;
-                            console.log(rel);
+                            rel.innerHTML = "<b>"+result[i].Reliability+"</b>";
+
+                            if (result[i].Reliability >= 75) {
+                                rel.style.color = "#008000";
+                            } else if (result[i].Reliability >= 50 && result[i].Reliability < 75) {
+                                rel.style.color = "#ffa500";
+                            } else if (result[i].Reliability < 50) {
+                                rel.style.color = "#ff0000";
+                            }
+                            
                         }
                         loop_sensor++;
                     }
-                    // if (result[i].Controller_type == "Fire Controller") {
-                    //     var fn = document.getElementById("fire_name" + loop_fire);
-                    //     if (fn.innerHTML == result[i].Controller_Name) {
-                    //         var rel = document.getElementById("rel_fire" + loop_fire);
-                    //         rel.innerHTML = result[i].Reliability;
-                    //         console.log(rel);
-                    //     }
-                    //     loop_fire++;
-                    // }
-                    // if (result[i].Controller_type == "Weapon") {
-                    //     var wn = document.getElementById("weapon_name" + loop_weapon);
-                    //     if (wn.innerHTML == result[i].Controller_Name) {
-                    //         var rel = document.getElementById("rel_weapon" + loop_weapon);
-                    //         rel.innerHTML = result[i].Reliability;
-                    //     }
-                    //     loop_weapon++;
-                    // }
-
                 }
             },
             error: function(data) {
@@ -590,39 +636,28 @@
             },
             success: function(data) {
                 var result = jQuery.parseJSON(data);
-               // var loop_sensor = 1;
+                // var loop_sensor = 1;
                 var loop_fire = 1;
                 //var loop_weapon = 1;
 
                 for (var i in result) {
 
-                    // if (result[i].Controller_type == "Sensor") {
-                    //     var sn = document.getElementById("sensor_name" + loop_sensor);
-                    //     if (sn.innerHTML == result[i].Controller_Name) {
-                    //         var rel = document.getElementById("rel_sensor" + loop_sensor);
-                    //         rel.innerHTML = result[i].Reliability;
-                    //         console.log(rel);
-                    //     }
-                    //     loop_sensor++;
-                    // }
                     if (result[i].Controller_type == "Fire Controller") {
                         var fn = document.getElementById("fire_name" + loop_fire);
                         if (fn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_fire" + loop_fire);
-                            rel.innerHTML = result[i].Reliability;
-                            console.log(rel);
+                            rel.innerHTML = "<b>"+result[i].Reliability+"</b>";
+                            
+                            if (result[i].Reliability >= 75) {
+                                rel.style.color = "#008000";
+                            } else if (result[i].Reliability >= 50 && result[i].Reliability < 75) {
+                                rel.style.color = "#ffa500";
+                            } else if (result[i].Reliability < 50) {
+                                rel.style.color = "#ff0000";
+                            }
                         }
                         loop_fire++;
                     }
-                    // if (result[i].Controller_type == "Weapon") {
-                    //     var wn = document.getElementById("weapon_name" + loop_weapon);
-                    //     if (wn.innerHTML == result[i].Controller_Name) {
-                    //         var rel = document.getElementById("rel_weapon" + loop_weapon);
-                    //         rel.innerHTML = result[i].Reliability;
-                    //     }
-                    //     loop_weapon++;
-                    // }
-
                 }
             },
             error: function(data) {
@@ -652,29 +687,19 @@
 
                 for (var i in result) {
 
-                    // if (result[i].Controller_type == "Sensor") {
-                    //     var sn = document.getElementById("sensor_name" + loop_sensor);
-                    //     if (sn.innerHTML == result[i].Controller_Name) {
-                    //         var rel = document.getElementById("rel_sensor" + loop_sensor);
-                    //         rel.innerHTML = result[i].Reliability;
-                    //         console.log(rel);
-                    //     }
-                    //     loop_sensor++;
-                    // }
-                    // if (result[i].Controller_type == "Fire Controller") {
-                    //     var fn = document.getElementById("fire_name" + loop_fire);
-                    //     if (fn.innerHTML == result[i].Controller_Name) {
-                    //         var rel = document.getElementById("rel_fire" + loop_fire);
-                    //         rel.innerHTML = result[i].Reliability;
-                    //         console.log(rel);
-                    //     }
-                    //     loop_fire++;
-                    // }
                     if (result[i].Controller_type == "Weapon") {
                         var wn = document.getElementById("weapon_name" + loop_weapon);
                         if (wn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_weapon" + loop_weapon);
-                            rel.innerHTML = result[i].Reliability;
+                            rel.innerHTML = "<b>"+result[i].Reliability+"</b>";
+
+                            if (result[i].Reliability >= 75) {
+                                rel.style.color = "#008000";
+                            } else if (result[i].Reliability >= 50 && result[i].Reliability < 75) {
+                                rel.style.color = "#ffa500";
+                            } else if (result[i].Reliability < 50) {
+                                rel.style.color = "#ff0000";
+                            }
                         }
                         loop_weapon++;
                     }

@@ -255,4 +255,30 @@ class Mission extends CI_Controller
 		$this->db->where($cond);
 		$this->db->update('controller_data', $data_update);
 	}
+
+
+	public function get_sensors_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $id = $this->session->userdata('user_id');
+            $status = $this->session->userdata('status');
+            if ($status == "weo" || $status = "co") {
+                $weapon_name = $_POST['weapon_name'];
+                $view_array = array();
+
+                $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Availability,cd.Reliability, cd.Default_Reliability');
+                $this->db->from('weapon_systems ws');
+                $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                $this->db->where('ws.weapon_name', $weapon_name);
+
+                $view_array['data'] =  $this->db->get()->result_array();
+                echo json_encode($view_array['data']);
+            } else {
+                $this->load->view('login');
+            }
+        } else {
+            $this->load->view('login');
+        }
+    }
 }

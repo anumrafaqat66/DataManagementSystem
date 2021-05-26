@@ -17,7 +17,104 @@
         flex: 1 1 auto;
         min-height: 1px;
         padding: 0.75rem;
-        padding-bottom: 0px;
+        padding-bottom: 15px;
+    }
+
+
+    .dot {
+        height: 150px;
+        width: 150px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .center-text {
+        margin-top: 60px;
+        font-weight: bold;
+        color: black;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .box {
+        display: inline-block;
+        /* border: 1px solid black; */
+        padding: 10px 0px;
+        margin: 0px 25px;
+        width: 150px;
+        text-align: center;
+        box-shadow: 5px 10px #888888;
+        border-radius: 10px;
+        background-color: #D3D3D3;
+    }
+
+    .box_center {
+        display: inline-block;
+        /* border: 1px solid black; */
+        padding: 10px 0px;
+        margin-left: -5px;
+        width: 150px;
+        text-align: center;
+        box-shadow: 5px 10px #888888;
+        border-radius: 10px;
+        background-color: #FA8072;
+    }
+
+    .box.hidden {
+        visibility: hidden;
+    }
+
+    .lines {
+        margin-left: 100px;
+        height: 29px;
+    }
+
+    .line_bottom {
+        display: inline-block;
+        border: 1px solid black;
+        border-top: none;
+        border-right: none;
+        height: 30px;
+        width: 200px;
+        margin-left: -5px;
+        margin-right: 0;
+    }
+
+    .line_top {
+        display: inline-block;
+        border: 1px solid black;
+        border-bottom: none;
+        border-right: none;
+        height: 30px;
+        width: 200px;
+        margin-left: -5px;
+        margin-right: 0;
+    }
+
+    .line_middle {
+        display: inline-block;
+        border: 1px solid black;
+        border-bottom: none;
+        border-right: none;
+        border-left: none;
+        height: 4px;
+        width: 200px;
+        margin-left: -5px;
+        margin-right: 0;
+
+    }
+
+    .connect {
+        height: 30px;
+        border-right: 1px solid black;
+    }
+
+    .connect.three {
+        width: 295px;
+        margin-top: -6px;
     }
 </style>
 <div class="container">
@@ -85,7 +182,7 @@
                             </div>
 
                             <!-- <div class="card-body bg-custom3"> -->
-                                <!--    <div class="form-group row">
+                            <!--    <div class="form-group row">
                                     <div class="col-sm-6 my-3">
                                         <h6 class="h6 text-grey-900">To check mission reliabiltiy. Please enter time: </h6>
                                     </div>
@@ -96,8 +193,8 @@
                                     </div>
                                 </div> -->
 
-                                <!-- <hr> -->
-                                <!--   <div class="form-group row">
+                            <!-- <hr> -->
+                            <!--   <div class="form-group row">
                                     <div class="col-sm-6">
                                         <h4 class="h4 text-grey-900">Availability</h4>
                                         <div class="progress" style="height:40px">
@@ -157,6 +254,74 @@
         </div>
     </div>
 
+    <div class="modal fade" id="TOR">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="col-lg-12">
+
+                    <div class="card bg-custom3">
+                        <div class="card-header bg-custom1">
+                            <h1 class="h5 text-white">Torpedo</h1>
+                        </div>
+
+                        <div class="card-body bg-custom3" style="height:100px;">
+
+                            <div class="lines">
+                                <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a><a href="<?= base_url(); ?>Manager/show_records/15">SONAR</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
+                                <div class="line_middle"></div>
+                                <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="Torpedo_A">A</a><a href="<?= base_url(); ?>Manager/show_records/13" style="color:whitesmoke;">Torpedo</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="Torpedo_R">R</a></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="RDC">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="col-lg-12">
+
+                    <div class="card bg-custom3">
+                        <div class="card-header bg-custom1">
+                            <h1 class="h5 text-white">RDC</h1>
+                        </div>
+
+                        <div class="card-body bg-custom3" style="height:100px;">
+                            <div class="lines">
+                                <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="SONAR_A">A</a><a href="<?= base_url(); ?>Manager/show_records/15">SONAR</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SONAR_R">R</a></div>
+                                <div class="line_middle"></div>
+                                <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="RDC_A">A</a><a href="<?= base_url(); ?>Manager/show_records/14" style="color:whitesmoke;">RDC</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="RDC_R">R</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
@@ -257,12 +422,76 @@
             }
         }
 
+        // function onClick(e) {
+        //     //alert(e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: " + e.dataPoint.y + " }");
+        //     if (e.dataPoint.x == 0) {
+        //         window.location.href = "<?= base_url(); ?>weo?we=Torpedo";
+        //     } else if (e.dataPoint.x == 1) {
+        //         window.location.href = "<?= base_url(); ?>weo?we=RDC";
+        //     }
+        // }
+
         function onClick(e) {
-            //alert(e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: " + e.dataPoint.y + " }");
             if (e.dataPoint.x == 0) {
-                window.location.href = "<?= base_url(); ?>weo?we=Torpedo";
+                link = e.dataPoint.link;
+                $('#TOR').modal('show');
+                $entered_time =  $('#system_time').val();
+                $.ajax({
+                    url: '<?= base_url(); ?>Mission/get_sensors_data',
+                    method: 'POST',
+                    data: {
+                        'weapon_name': 'Torpedo'
+                    },
+                    success: function(data) {
+                        result = JSON.parse(data);
+                        $str = '';
+                        for (var i in result) {
+                            $str = result[i].Controller_Name.replace(" ", "_");
+
+                            $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+                            if ($entered_time == null || $entered_time == '') {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Default_Reliability / 100, 2)));
+                            } else {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Reliability / 100, 2)));
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        //alert(data);
+                        alert('failure');
+                    }
+                });
+
             } else if (e.dataPoint.x == 1) {
-                window.location.href = "<?= base_url(); ?>weo?we=RDC";
+                link = e.dataPoint.link;
+                $('#RDC').modal('show');
+
+                $entered_time =  $('#system_time').val();
+                $.ajax({
+                    url: '<?= base_url(); ?>Mission/get_sensors_data',
+                    method: 'POST',
+                    data: {
+                        'weapon_name': 'RDC'
+                    },
+                    success: function(data) {
+                        result = JSON.parse(data);
+                        $str = '';
+                        for (var i in result) {
+                            $str = result[i].Controller_Name.replace(" ", "_");
+
+                            $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+                            if ($entered_time == null || $entered_time == '') {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Default_Reliability / 100, 2)));
+                            } else {
+                                $("[id*='" + $str + "_R']").html(String(number_format(result[i].Reliability / 100, 2)));
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        //alert(data);
+                        alert('failure');
+                    }
+                });
             }
         }
 

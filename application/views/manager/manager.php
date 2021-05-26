@@ -79,7 +79,7 @@
                                                      <td scope="row"><?= $data['ADLT']; ?></td> -->
                                                      <td scope="row"><?= $data['MTTR']; ?></td>
                                                      <td scope="row"><?= $data['Comission_date']; ?></td>
-                                                     <td scope="row"><?= $data['Ship_ID']; ?></td>
+                                                     <td scope="row"><?= $data['Ship_name']; ?></td>
                                                      <td>
                                                          <a class="btn btn-danger btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>manager/add_details/<?= $data['ID']; ?>">Add Fail Report</a>
                                                      </td>
