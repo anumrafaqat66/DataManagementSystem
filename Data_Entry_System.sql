@@ -102,7 +102,7 @@ CREATE TABLE `controller_data` (
   `Controller_type` varchar(30) NOT NULL,
   `Controller_Name` varchar(30) NOT NULL,
   `Controller_Code` varchar(30),
-  `Ship_ID` varchar(30),
+  `Ship_ID` bigint(20),
   `ESWB` varchar(30) NOT NULL,
   `Includes` varchar(50) DEFAULT NULL,
   `Not_Includes` varchar(50) DEFAULT NULL,
@@ -171,6 +171,7 @@ CREATE TABLE `weapon_systems` (
   `Default_Reliability` decimal(8,2) DEFAULT NULL,
   `Reliabbility` decimal(8,2) DEFAULT NULL,
   `Mission_name` varchar(30) DEFAULT NULL,
+  `Ship_ID` bigint(20),
   `Description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -197,17 +198,23 @@ CREATE TABLE `missions` (
   `Mission_name` varchar(30) NOT NULL,
   `Mission_desc` varchar(300) DEFAULT NULL,
   `Availability` decimal(8,2) DEFAULT NULL,
-  `Reliability` decimal(8,2) DEFAULT NULL
+  `Reliability` decimal(8,2) DEFAULT NULL,
+  `Ship_ID` bigint(20)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `missions`
 --
-insert into missions values (1,'AAW','Anti Air war mission',0.00,0.00);
-insert into missions values (2,'ASuW','Anti Surface war mission',0.00,0.00);
-insert into missions values (3,'ASW','Anti Submarine war mission',0.00,0.00);
-insert into missions values (4,'EW','Electronic war mission',0.00,0.00);
+insert into missions values (1,'AAW','Anti Air war mission',0.00,0.00,1);
+insert into missions values (2,'ASuW','Anti Surface war mission',0.00,0.00,1);
+insert into missions values (3,'ASW','Anti Submarine war mission',0.00,0.00,1);
+insert into missions values (4,'EW','Electronic war mission',0.00,0.00,1);
 
+-- Ship B Data
+insert into missions values (5,'AAW','Anti Air war mission',0.00,0.00,2);
+insert into missions values (6,'ASuW','Anti Surface war mission',0.00,0.00,2);
+insert into missions values (7,'ASW','Anti Submarine war mission',0.00,0.00,2);
+insert into missions values (8,'EW','Electronic war mission',0.00,0.00,2);
 
 --
 -- Indexes for dumped tables
@@ -357,22 +364,52 @@ insert into controller_data values (15,'Sensor','SONAR','SONAR',1,'1004','','','
 insert into controller_data values (16,'Weapon','NRJ','NRJ',1,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
 insert into controller_data values (17,'Weapon','PJ-46','PJ-46',1,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
 
+-- -- Data for Ship B
+insert into controller_data values (18,'Sensor','S1','S1',2,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',4);
+insert into controller_data values (19,'Sensor','S2','S2',2,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (20,'Sensor','CCS','CCS',2,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
 
-insert into weapon_systems values (1,'SAM',0.00,0.00,0.00,'AAW','Anti Air war mission');
+insert into controller_data values (21,'Fire Controller','FC1','FC1',2,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
+insert into controller_data values (22,'Fire Controller','FC2','FC2',2,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
+insert into controller_data values (23,'Fire Controller','FC3','FC3',2,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+insert into controller_data values (24,'Fire Controller','FC4','FC4',2,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-15',4);
+
+-- AAW Mission
+insert into controller_data values (25,'Weapon','SAM','SAM',2,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+insert into controller_data values (26,'Weapon','Main Gun','MG',2,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+insert into controller_data values (27,'Weapon','CRG (Port)','CP',2,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (28,'Weapon','CRG (STDB)','CS',2,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
+
+-- ASuW Mission
+insert into controller_data values (29,'Weapon','SSM','SSM',2,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+
+-- ASW Mission
+insert into controller_data values (30,'Weapon','Torpedo','TOR',2,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
+insert into controller_data values (31,'Weapon','RDC','RDC',2,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (32,'Sensor','SONAR','SONAR',2,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+
+-- EW Mission
+insert into controller_data values (33,'Weapon','NRJ','NRJ',2,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (34,'Weapon','PJ-46','PJ-46',2,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+
+-- -------------------------
+
+insert into weapon_systems values (1,'SAM',0.00,0.00,0.00,'AAW',1,'Anti Air war mission');
+insert into weapon_systems values (2,'Main Gun',0.00,0.00,0.00,'AAW',1,'Anti Air war mission');
+insert into weapon_systems values (3,'CRG (Port)',0.00,0.00,0.00,'AAW',1,'Anti Air war mission');
+insert into weapon_systems values (4,'CRG (STDB)',0.00,0.00,0.00,'AAW',1,'Anti Air war mission');
+
+
 
 insert into weapon_system_config values (1,1,3,'P','1');
 insert into weapon_system_config values (2,1,1,'P','1');
 insert into weapon_system_config values (3,1,4,'S','1');
 insert into weapon_system_config values (4,1,8,'S','1');
 
-insert into weapon_systems values (2,'Main Gun',0.00,0.00,0.00,'AAW','Anti Air war mission');
-
 insert into weapon_system_config values (5,2,3,'P','1');
 insert into weapon_system_config values (6,2,1,'P','1');
 insert into weapon_system_config values (7,2,5,'S','1');
 insert into weapon_system_config values (8,2,9,'S','1');
-
-insert into weapon_systems values (3,'CRG (Port)',0.00,0.00,0.00,'AAW','Anti Air war mission');
 
 insert into weapon_system_config values (9,3,3,'P','1');
 insert into weapon_system_config values (10,3,1,'P','1');
@@ -380,20 +417,17 @@ insert into weapon_system_config values (11,3,6,'P','2');
 insert into weapon_system_config values (12,3,7,'P','2');
 insert into weapon_system_config values (13,3,10,'S','1');
 
-insert into weapon_systems values (4,'CRG (STDB)',0.00,0.00,0.00,'AAW','Anti Air war mission');
-
 insert into weapon_system_config values (14,4,3,'P','1');
 insert into weapon_system_config values (15,4,1,'P','1');
 insert into weapon_system_config values (16,4,6,'P','2');
 insert into weapon_system_config values (17,4,7,'P','2');
 insert into weapon_system_config values (18,4,11,'S','1');
 
-
 -- ASuW Mission Entries
-insert into weapon_systems values (5,'SSM',0.00,0.00,0.00,'ASuW','Anti Surface war mission');
-insert into weapon_systems values (6,'Main Gun',0.00,0.00,0.00,'ASuW','Anti Surface war mission');
-insert into weapon_systems values (7,'CRG (Port)',0.00,0.00,0.00,'ASuW','Anti Surface war mission');
-insert into weapon_systems values (8,'CRG (STDB)',0.00,0.00,0.00,'ASuW','Anti Surface war mission');
+insert into weapon_systems values (5,'SSM',0.00,0.00,0.00,'ASuW',1,'Anti Surface war mission');
+insert into weapon_systems values (6,'Main Gun',0.00,0.00,0.00,'ASuW',1,'Anti Surface war mission');
+insert into weapon_systems values (7,'CRG (Port)',0.00,0.00,0.00,'ASuW',1,'Anti Surface war mission');
+insert into weapon_systems values (8,'CRG (STDB)',0.00,0.00,0.00,'ASuW',1,'Anti Surface war mission');
 
 insert into weapon_system_config values (19,5,1,'P','1');
 insert into weapon_system_config values (20,5,2,'P','1');
@@ -417,8 +451,8 @@ insert into weapon_system_config values (35,8,7,'P','2');
 insert into weapon_system_config values (36,8,11,'S','1');
 
 -- ASW Mission Entries
-insert into weapon_systems values (9,'Torpedo',0.00,0.00,0.00,'ASW','Anti-submarine warfare mission');
-insert into weapon_systems values (10,'RDC',0.00,0.00,0.00,'ASW','Anti-submarine warfare mission');
+insert into weapon_systems values (9,'Torpedo',0.00,0.00,0.00,'ASW',1,'Anti-submarine warfare mission');
+insert into weapon_systems values (10,'RDC',0.00,0.00,0.00,'ASW',1,'Anti-submarine warfare mission');
 
 insert into weapon_system_config values (37,9,15,'S','1');
 insert into weapon_system_config values (38,9,13,'S','1');
@@ -427,14 +461,33 @@ insert into weapon_system_config values (39,10,15,'S','1');
 insert into weapon_system_config values (40,10,14,'S','1');
 
 -- EW Mission Entries 
-insert into weapon_systems values (11,'NRJ',0.00,0.00,0.00,'EW','Electronic warfare mission');
-insert into weapon_systems values (12,'PJ-46',0.00,0.00,0.00,'EW','Electronic warfare mission');
+insert into weapon_systems values (11,'NRJ',0.00,0.00,0.00,'EW',1,'Electronic warfare mission');
+insert into weapon_systems values (12,'PJ-46',0.00,0.00,0.00,'EW',1,'Electronic warfare mission');
 
 insert into weapon_system_config values (41,11,16,'S','1');
 
 insert into weapon_system_config values (42,12,3,'P','1');
 insert into weapon_system_config values (43,12,16,'P','1');
 insert into weapon_system_config values (44,12,17,'S','1');
+
+-- ship B data
+
+insert into weapon_systems values (13,'SAM',0.00,0.00,0.00,'AAW',2,'Anti Air war mission');
+insert into weapon_systems values (14,'Main Gun',0.00,0.00,0.00,'AAW',2,'Anti Air war mission');
+insert into weapon_systems values (15,'CRG (Port)',0.00,0.00,0.00,'AAW',2,'Anti Air war mission');
+insert into weapon_systems values (16,'CRG (STDB)',0.00,0.00,0.00,'AAW',2,'Anti Air war mission');
+
+-- ship B data
+insert into weapon_systems values (17,'SSM',0.00,0.00,0.00,'ASuW',2,'Anti Surface war mission');
+insert into weapon_systems values (18,'Main Gun',0.00,0.00,0.00,'ASuW',2,'Anti Surface war mission');
+insert into weapon_systems values (19,'CRG (Port)',0.00,0.00,0.00,'ASuW',2,'Anti Surface war mission');
+insert into weapon_systems values (20,'CRG (STDB)',0.00,0.00,0.00,'ASuW',2,'Anti Surface war mission');
+
+insert into weapon_systems values (21,'Torpedo',0.00,0.00,0.00,'ASW',2,'Anti-submarine warfare mission');
+insert into weapon_systems values (22,'RDC',0.00,0.00,0.00,'ASW',2,'Anti-submarine warfare mission');
+
+insert into weapon_systems values (23,'NRJ',0.00,0.00,0.00,'EW',2,'Electronic warfare mission');
+insert into weapon_systems values (24,'PJ-46',0.00,0.00,0.00,'EW',2,'Electronic warfare mission');
 
 -- Sample Data Insertion 
 
