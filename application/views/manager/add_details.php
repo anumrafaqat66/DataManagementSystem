@@ -290,25 +290,25 @@
      //     //alert(d_o_b);
      // });
 
-        $('#Failure_end_date').on('focusout', function() {
+     $('#Failure_end_date').on('focusout keyup', function() {
 
          var end_date = $('#Failure_end_date').val();
          var e_d = new Date(end_date);
          var start_date = $('#Failure_start_date').val();
          var s_d = new Date(start_date);
-        // alert(start_date);
+         // alert(start_date);
          //alert(end_date);
 
-         if(start_date !=  null  && end_date != null){
-            var diffTime = Math.abs(e_d - s_d);
-            var TTR = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+         if (start_date != null && end_date != null) {
+             var diffTime = Math.abs(e_d - s_d);
+             var TTR = Math.ceil(diffTime / 1000 / 60 / 60 / 24); // / (1000 * 60 * 60 * 24));
              //var TTR = parseFloat((end_date - start_date)/60/60/24);
-        // alert(TTR);
-         document.getElementById("TTR").value = TTR;
-         }else{
+             // alert(TTR);
+             document.getElementById("TTR").value = TTR;
+         } else {
              document.getElementById("TTR").value = 0.0;
          }
-        
+
          //alert(d_o_b);
      });
 
@@ -324,7 +324,7 @@
          var TTR = $('#TTR').val();
          var FSD = $('#Failure_start_date').val();
          var FED = $('#Failure_end_date').val();
-         alert(TPM);
+         //alert(TPM);
 
          if (TBF == '') {
              validate = 1;
@@ -354,14 +354,12 @@
              validate = 1;
              $('#Failure_end_date').addClass('red-border');
          }
-         if(TCM+TPM+ADLT != 30){
-            validate =1;
+         if (parseInt(TCM) + parseInt(TPM) + parseInt(ADLT) != parseInt(TTR)) {
+             validate = 1;
              $('#TCM').addClass('red-border');
-              $('#TPM').addClass('red-border');
-               $('#ADLT').addClass('red-border');
-
+             $('#TPM').addClass('red-border');
+             $('#ADLT').addClass('red-border');
          }
-
 
          if (validate == 0) {
              $('#update_form')[0].submit();

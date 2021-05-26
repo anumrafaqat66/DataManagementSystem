@@ -113,7 +113,7 @@ class CO extends CI_Controller
             if ($status == "co") {
                 $mission_name = $mission_name;
                 $system_time = $time;
-                
+
                 $weapons = $this->db->where('Mission_name', $mission_name)->get('weapon_systems')->result_array();
                 if (count($weapons) != 0) {
                     for ($i = 0; $i < count($weapons); $i++) :
@@ -128,13 +128,13 @@ class CO extends CI_Controller
                 for ($i = 0; $i < count($weapons_reliablity); $i++) {
                     $result = $result * (1 - $weapons_reliablity[$i]['Reliabbility'] / 100);
                 }
-                
+
                 //Update into Database
                 $cond  = ['Mission_name' => $mission_name];
                 $data_update = [
                     'Reliability' => number_format((1 - ($result)) * 100, 2),
                 ];
-        
+
                 $this->db->where($cond);
                 $this->db->update('missions', $data_update);
             }
@@ -240,9 +240,24 @@ class CO extends CI_Controller
         if ($time > 0) {
 
             $view_array = array();
+            $view_array_detail = array();
             $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
+
+            //Get Total No. of Failures 
+            $view_array_detail['data'] =  $this->db->where('Controller_Data_ID', $controller_id)->get('controller_data_detail')->result_array();
+            $Total_failure_count = count($view_array_detail['data']);
+
+            //Total Time 
+            $current_date = date("Y-m-d");
+            $comission_date = $view_array['data']['Comission_date'];
+            $diff = abs(strtotime($comission_date) - strtotime($current_date));
+            $days = floor($diff / 60 / 60 / 24);
+
+            //Total_Equipped
+            $Total_Equiped = $view_array['data']['Total_Equipped'];
+
             if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTBF'] != 0.00) {
-                $power = ($time / $view_array['data']['MTBF']);
+                $power = ($Total_failure_count / ($days * $Total_Equiped)) * $time;
                 $power = -1 * $power;
                 $reliability = number_format(pow(2.718, $power), 4);
             } else {
@@ -259,12 +274,6 @@ class CO extends CI_Controller
         $this->db->where($cond);
         $this->db->update('controller_data', $data_update);
     }
-
-
-
-
-
-
 
     public function get_system_availability()
     {

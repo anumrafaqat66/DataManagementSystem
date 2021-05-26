@@ -61,7 +61,8 @@ class HOD extends CI_Controller
         }
     }
 
-    public function get_reliability_for_all(){
+    public function get_reliability_for_all()
+    {
         $isDefault = $_POST['isDefault'];
         $system_time = 0;
         if ($isDefault == "Yes") {
@@ -95,9 +96,24 @@ class HOD extends CI_Controller
                 $time = $entered_time; //$_POST['time'];
                 if ($time > 0) {
                     $view_array = array();
+                    $view_array_detail = array();
                     $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
+
+                    //Get Total No. of Failures 
+                    $view_array_detail['data'] =  $this->db->where('Controller_Data_ID', $controller_id)->get('controller_data_detail')->result_array();
+                    $Total_failure_count = count($view_array_detail['data']);
+
+                    //Total Time 
+                    $current_date = date("Y-m-d");
+                    $comission_date = $view_array['data']['Comission_date'];
+                    $diff = abs(strtotime($comission_date) - strtotime($current_date));
+                    $days = floor($diff/60/60/24);
+
+                    //Total_Equipped
+                    $Total_Equiped = $view_array['data']['Total_Equipped'];
+
                     if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTBF'] != 0.00) {
-                        $power = ($time / $view_array['data']['MTBF']);
+                        $power = ($Total_failure_count / ($days * $Total_Equiped)) * $time;
                         $power = -1 * $power;
                         $reliability = number_format(pow(2.718, $power), 4);
                         $rel = $reliability * 100;
@@ -105,22 +121,22 @@ class HOD extends CI_Controller
                         //echo "dsfsd";
                     } else {
                         $reliability = 0;
-                        echo ($reliability * 100);
+                        //echo ($reliability * 100);
                     }
                 } else {
                     $reliability = 0;
-                    echo ($reliability * 100);
+                    //echo ($reliability * 100);
                 }
                 $cond  = ['ID' => $controller_id];
                 $data_update = [
                     'Reliability' => $reliability * 100,
                 ];
 
-                if($isDefault == "Yes"){
+                if ($isDefault == "Yes") {
                     $data_update = [
                         'Default_Reliability' => $reliability * 100,
                     ];
-                } else if($isDefault == "No"){
+                } else if ($isDefault == "No") {
                     $data_update = [
                         'Reliability' => $reliability * 100,
                     ];

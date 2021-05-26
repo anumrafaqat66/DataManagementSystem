@@ -54,6 +54,8 @@
                                                  <th scope="col">TPM</th>
                                                  <th scope="col">ADLT</th> -->
                                                  <th scope="col">MTTR</th>
+                                                 <th scope="col">Comission Date</th>
+                                                 <th scope="col">Ship</th>
                                                  <th scope="col" width="15%">Action</th>
                                                  <!-- <th scope="col" width="15%">Action</th> -->
                                                  <th scope="col" width="15%">Action</th>
@@ -76,6 +78,8 @@
                                                      <td scope="row"><?= $data['TPM']; ?></td>
                                                      <td scope="row"><?= $data['ADLT']; ?></td> -->
                                                      <td scope="row"><?= $data['MTTR']; ?></td>
+                                                     <td scope="row"><?= $data['Comission_date']; ?></td>
+                                                     <td scope="row"><?= $data['Ship_ID']; ?></td>
                                                      <td>
                                                          <a class="btn btn-danger btn btn-sm rounded-pill text-sm" href="<?= base_url(); ?>manager/add_details/<?= $data['ID']; ?>">Add Fail Report</a>
                                                      </td>
