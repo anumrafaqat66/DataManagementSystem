@@ -68,6 +68,10 @@
                                             </label>
 
                                             <label class="custom-control radio-inline small">
+                                                <input type="radio" value="cdr" name="optradio"><div style="float:right; margin-left:5px;">CDR</div>
+                                            </label>
+
+                                            <label class="custom-control radio-inline small">
                                                 <input type="radio" value="weo" name="optradio"><div style="float:right; margin-left:5px;">Weo</div>
                                             </label>
 
