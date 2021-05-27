@@ -10,6 +10,7 @@ class User_Login extends CI_Controller
 
 	public function index()
 	{
+		
 		if ($this->session->has_userdata('user_id')) {
 			$id = $this->session->userdata('user_id');
 			$status = $this->session->userdata('status');
