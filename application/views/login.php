@@ -68,7 +68,7 @@
                                             </label>
 
                                             <label class="custom-control radio-inline small">
-                                                <input type="radio" value="cdr" name="optradio"><div style="float:right; margin-left:5px;">CDR</div>
+                                                <input type="radio" value="typecdr" name="optradio"><div style="float:right; margin-left:5px;">CDR</div>
                                             </label>
 
                                             <label class="custom-control radio-inline small">
@@ -140,7 +140,7 @@ $('#login_btn').on('click', function() {
       validate = 1;
       $('#password').addClass('red-border');
     }
-     if (user_type[0].checked != true && user_type[1].checked != true && user_type[2].checked != true && user_type[3].checked != true && user_type[4].checked != true ) {
+     if (user_type[0].checked != true && user_type[1].checked != true && user_type[2].checked != true && user_type[3].checked != true && user_type[4].checked != true && user_type[5].checked != true ) {
                    validate=1;
                    $('#Account_error').show();
                 } 

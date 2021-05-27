@@ -24,7 +24,7 @@ class User_Login extends CI_Controller
 				redirect('WEO?we=Select Weapon');
 			}elseif ($status == "co") {
 				redirect('CO');
-			}elseif ($status == "cdr") {
+			}elseif ($status == "typecdr") {
 				redirect('Cdr');
 			}
 		} else {

@@ -23,8 +23,8 @@
         height: 250px;
     }
 
-    .img-ship2{
-         background: url('<?= base_url() ?>assets/img/ship1.jpg');
+    .img-ship2 {
+        background: url('<?= base_url() ?>assets/img/ship1.jpg');
         background-position: center;
         background-size: cover;
         height: 250px;
@@ -128,22 +128,12 @@
         <div class="form-group row">
             <div class="col-lg-12">
 
-                <!-- <div class="card"> -->
-                    <!-- <div class="card-header bg-custom1">
-                        <h1 class="h4 text-white">Mission</h1>
-                    </div> -->
+                <div class="card">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h4 text-white">Welcome, Type Commander!</h1>
+                    </div>
 
                     <div class="card-body bg-custom3">
-                        <!--  <div class="form-group row">
-                            <a class="col mx-1 my-1 img-ship" href="<?= base_url(); ?>CO/mission">
-                                <div style="height:180px">
-                                    <div style="margin-top:135px">
-                                        <h1 class="h1 text-dark text-center "><strong></strong></h1>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
- -->
                         <div class="form-group row">
                             <a class="col mx-1 my-1 img-ship" href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>" style="height: 180px">
                                 <div style="height:100px">
@@ -161,95 +151,9 @@
                                     </div>
                                 </div>
                             </a>
-                            <!-- <div class="w-100"></div> -->
-                        
-                        </div>
-
-                        <!-- <div class="form-group row justify-content-center my-3">
-                            <div class="col-md-6">
-                                <a class="btn btn-primary rounded-pill btn-user btn-block" id="show_ship_detail"> Show Complete Ship Missions Detail</a>
-                            </div>
-                        </div> -->
-
-                        <div class="card card-body bg-custom3" id='ship_detail'>
-
-                            <!-- <div class="card"> -->
-                            <!-- <div class="card-header bg-custom1">
-                                    <h5 class="h5 text-white">Combat Missions Statistics</h5>
-                                </div> -->
-
-                            <div class="card-body bg-custom3">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 my-3">
-                                        <h6 class="h6 text-grey-900">To check complete combat system reliabiltiy. Please enter time: </h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <form class="user" role="form" id="update_form" method="post" action="">
-                                            <input type="text" class="form-control form-control-user" name="time" id="system_time" value="<?php echo $time_entered ?>" placeholder="Enter Time">
-                                        </form>
-                                    </div>
-                                </div>
-                                <!-- <hr> -->
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <h4 class="h4 text-grey-900">Availability</h4>
-                                        <div class="progress" style="height:20px">
-                                            <div class="progress-bar" id="availability_bar" role="progressbar" style="width: <?= $availability ?>%;" aria-valuenow="<?= $availability ?>" aria-valuemin="0" aria-valuemax="100"><?= $availability . "%" ?></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <h4 class="h4 text-grey-900">Reliability</h4>
-
-                                        <div class="progress" style="height:20px">
-                                            <div class="progress-bar" id="reliability_bar" role="progressbar" style="width: <?= $reliability ?>%;" aria-valuenow="<?= $reliability ?>" aria-valuemin="0" aria-valuemax="100"><?= $reliability . "%" ?></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-
-                                    <div class="card-body bg-custom3">
-                                        <div class="form-group row">
-                                            <div class="col-md-6">
-                                                <!-- <h3 class="text-grey-900">Availability</h3> -->
-                                                <div>
-                                                    <div id="chartContainer" style="height: 250px; width:100%;"></div>
-                                                </div>
-                                                <?php
-                                                $dataPoints = array(
-                                                    array("y" => $mission1, "label" => "AAW"),
-                                                    array("y" => $mission2, "label" => "ASuW"),
-                                                    array("y" => $mission3, "label" => "ASW"),
-                                                    array("y" => $mission4, "label" => "EW"),
-
-                                                );
-                                                ?>
-                                            </div>
-                                            <div class="col-md-6" id="reliability_chart">
-                                                <!-- <h3 class="text-grey-900">Relaibility</h3> -->
-                                                <div>
-                                                    <div id="chartContainer1" style="height: 250px;width:100%;"></div>
-                                                </div>
-                                                <?php
-                                                $dataPoints1 = array(
-                                                    array("y" => $MissionReliability1, "label" => "AAW"),
-                                                    array("y" => $MissionReliability2, "label" => "ASuW"),
-                                                    array("y" => $MissionReliability3, "label" => "ASW"),
-                                                    array("y" => $MissionReliability4, "label" => "EW"),
-                                                );
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Graphs -->
-
-                            </div>
-                            <!-- </div> -->
                         </div>
                     </div>
-                <!-- </div> -->
+                </div>
             </div>
         </div>
     </div>

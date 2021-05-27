@@ -152,7 +152,7 @@ CREATE TABLE `security_info` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reg_data` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('technician','manager','hod','weo','co','admin') NOT NULL
+  `status` enum('technician','manager','hod','weo','co','admin','typecdr') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `status`) VALUES

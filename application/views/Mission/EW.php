@@ -261,7 +261,7 @@
 
     <div class="modal fade" id="RDC">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -294,7 +294,7 @@
 
     <div class="modal fade" id="PJ-46">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->

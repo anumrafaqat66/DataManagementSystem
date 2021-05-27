@@ -39,7 +39,7 @@
                                              <option class="form-control form-control-user" value="co">CO</option>
                                              <option class="form-control form-control-user" value="hod">HOD</option>
                                              <option class="form-control form-control-user" value="manager">Manager</option>
-                                             <option class="form-control form-control-user" value="cdr">CDR</option>
+                                             <option class="form-control form-control-user" value="typecdr">Type Commander</option>
                                               <option class="form-control form-control-user" value="weo">WEO</option>
                                                <option class="form-control form-control-user" value="technician">Technician</option>
                                          </select>
