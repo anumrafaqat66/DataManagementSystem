@@ -33,7 +33,7 @@
                                  </div>
 
                                  <div class="form-group row">
-                                   <div class="col-sm-12 mb-1">
+                                   <div class="col-sm-6 mb-1">
                                          <select class="form-control rounded-pill" name="status" id="status" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                              <option class="form-control form-control-user" value="">Select Status</option>
                                              <option class="form-control form-control-user" value="co">CO</option>
@@ -42,6 +42,15 @@
                                              <option class="form-control form-control-user" value="typecdr">Type Commander</option>
                                               <option class="form-control form-control-user" value="weo">WEO</option>
                                                <option class="form-control form-control-user" value="technician">Technician</option>
+                                         </select>
+                                     </div>
+
+                                     <div class="col-sm-6 mb-1">
+                                         <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                            <option class="form-control form-control-user" value="">Select Ship</option>
+                                        <?php foreach($ships_data as $ship) {?>
+                                             <option class="form-control form-control-user" value="<?= $ship['ID'] ?>"><?= $ship['Ship_name'] ?></option>
+                                         <?php } ?>
                                          </select>
                                      </div>
 

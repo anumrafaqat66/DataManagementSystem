@@ -60,7 +60,7 @@
                                      </div>
                                      <div class="col-sm-4 mb-1">
                                          <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                            <option class="form-control form-control-user" value="">Select Controller</option>
+                                            <option class="form-control form-control-user" value="">Select Ship</option>
                                         <?php foreach($ships_data as $ship) {?>
                                              <option class="form-control form-control-user" value="<?= $ship['ID'] ?>"><?= $ship['Ship_name'] ?></option>
                                          <?php } ?>

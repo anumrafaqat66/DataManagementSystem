@@ -51,6 +51,7 @@ class User_Login extends CI_Controller
 					$this->session->set_userdata('user_id', $query['id']);
 					$this->session->set_userdata('status', $query['status']);
 					$this->session->set_userdata('username', $query['username']);
+					$this->session->set_userdata('ship_id', $query['ship_ID']);
 					$this->session->set_flashdata('success', 'Login successfully');
 					redirect('User_Login');
 				 }else{

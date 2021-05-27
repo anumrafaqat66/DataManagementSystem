@@ -9,7 +9,9 @@ class CO extends CI_Controller
 
     public function index()
     {
-        $missions = $this->db->get('missions')->result_array();
+        $data['ship_id'] = $this->session->userdata('ship_id');
+        $missions = $this->db->where('Ship_ID',$data['ship_id'])->get('missions')->result_array();
+
         $result = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result = $result * (1 - $missions[$i]['Availability'] / 100);
@@ -23,7 +25,8 @@ class CO extends CI_Controller
     public function mission()
     {
         //$data['controller_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
-        $missions = $this->db->get('missions')->result_array();
+        $data['ship_id'] = $this->session->userdata('ship_id');
+        $missions = $this->db->where('Ship_ID',$data['ship_id'])->get('missions')->result_array();
         $result = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result = $result * (1 - $missions[$i]['Availability'] / 100);
@@ -58,11 +61,10 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
+            $ship_id = $this->session->userdata('ship_id');
             if ($status == "co") {
                 //$mission_name = $_POST['mission_name'];
-
-                $mission_reliablity = $this->db->get('missions')->result_array();
-
+                $mission_reliablity = $this->db->where('Ship_ID',$ship_id)->get('missions')->result_array();
                 $result = 1;
                 for ($i = 0; $i < count($mission_reliablity); $i++) {
 
@@ -80,20 +82,21 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
+            $ship_id = $this->session->userdata('ship_id');
+
             if ($status == "co") {
                 //$mission_name = $_POST['mission_name'];
                 $system_time = $_POST['time'];
 
-                $missions = $this->db->get('missions')->result_array();
+                $missions = $this->db->where('Ship_ID',$ship_id)->get('missions')->result_array();
                 //print_r($missions);exit;
                 if (count($missions) != 0) {
                     for ($i = 0; $i < count($missions); $i++) :
-                        $this->get_mission_reliability($missions[$i]['Mission_name'], $system_time);
-
+                        $this->get_mission_reliability($missions[$i]['Mission_name'], $system_time, $ship_id);
                     endfor;
                 }
 
-                $mission_reliablity = $this->db->get('missions')->result_array();
+                $mission_reliablity = $this->db->where('Ship_ID',$ship_id)->get('missions')->result_array();
 
                 $result = 1;
                 for ($i = 0; $i < count($mission_reliablity); $i++) {
@@ -105,7 +108,7 @@ class CO extends CI_Controller
         }
     }
 
-    public function get_mission_reliability($mission_name = NULL, $time = NULL)
+    public function get_mission_reliability($mission_name = NULL, $time = NULL, $ship_id = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
@@ -114,15 +117,14 @@ class CO extends CI_Controller
                 $mission_name = $mission_name;
                 $system_time = $time;
 
-                $weapons = $this->db->where('Mission_name', $mission_name)->get('weapon_systems')->result_array();
+                $weapons = $this->db->where('Mission_name', $mission_name)->where('Ship_ID',$ship_id)->get('weapon_systems')->result_array();
                 if (count($weapons) != 0) {
                     for ($i = 0; $i < count($weapons); $i++) :
-                        $this->calculate_weapon_reliability($weapons[$i]['weapon_name'], $system_time);
-
+                        $this->calculate_weapon_reliability($weapons[$i]['weapon_name'], $system_time, $ship_id);
                     endfor;
                 }
 
-                $weapons_reliablity = $this->db->where('Mission_name', $mission_name)->get('weapon_systems')->result_array();
+                $weapons_reliablity = $this->db->where('Mission_name', $mission_name)->where('Ship_ID',$ship_id)->get('weapon_systems')->result_array();
 
                 $result = 1;
                 for ($i = 0; $i < count($weapons_reliablity); $i++) {
@@ -130,7 +132,7 @@ class CO extends CI_Controller
                 }
 
                 //Update into Database
-                $cond  = ['Mission_name' => $mission_name];
+                $cond  = ['Mission_name' => $mission_name, 'Ship_ID' => $ship_id];
                 $data_update = [
                     'Reliability' => number_format((1 - ($result)) * 100, 2),
                 ];
@@ -141,7 +143,7 @@ class CO extends CI_Controller
         }
     }
 
-    public function calculate_weapon_reliability($weapon_name = NULL, $system_time = NULL)
+    public function calculate_weapon_reliability($weapon_name = NULL, $system_time = NULL, $ship_id = NULL)
     {
         $view_array = array();
         $view_rows = array();
@@ -153,11 +155,13 @@ class CO extends CI_Controller
         $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
         $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
         $this->db->where('ws.weapon_name', $weapon_name);
+        $this->db->where('ws.Ship_ID', $ship_id);
+
         $view_sensors['data'] =  $this->db->get()->result_array();
 
         if (count($view_sensors['data']) != 0) {
             for ($i = 0; $i < count($view_sensors['data']); $i++) :
-                $this->calculate_sensor_reliability($view_sensors['data'][$i]['sensor_id'], $system_time);
+                $this->calculate_sensor_reliability($view_sensors['data'][$i]['sensor_id'], $system_time, $ship_id);
 
             endfor;
         }
@@ -169,6 +173,7 @@ class CO extends CI_Controller
         $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
         $this->db->where('ws.weapon_name', $weapon_name);
         $this->db->where('wsc.connection_type', 'P'); //For parallel
+        $this->db->where('ws.Ship_ID', $ship_id);
 
         $view_rows['data'] =  $this->db->get()->result_array();
         $sub_final_result = 1;
@@ -182,6 +187,7 @@ class CO extends CI_Controller
                 $this->db->where('ws.weapon_name', $weapon_name);
                 $this->db->where('wsc.connection_type', 'P'); //For parallel
                 $this->db->where('wsc.connection_group', $i); //For group
+                $this->db->where('ws.Ship_ID', $ship_id);
 
                 $view_array['data'] =  $this->db->get()->result_array();
                 $resultant_parallel = 1;
@@ -208,6 +214,7 @@ class CO extends CI_Controller
         $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
         $this->db->where('ws.weapon_name', $weapon_name);
         $this->db->where('wsc.connection_type', 'S'); //For series
+        $this->db->where('ws.Ship_ID', $ship_id);
 
         $view_array['data'] =  $this->db->get()->result_array();
         $resultant_series = 1;
@@ -225,7 +232,7 @@ class CO extends CI_Controller
         $final_result = $sub_final_result * $resultant_series;
 
         //Updation 
-        $cond  = ['weapon_name' => $weapon_name];
+        $cond  = ['weapon_name' => $weapon_name, 'Ship_ID' => $ship_id];
         $data_update = [
             'Reliabbility' => number_format(($final_result * 100), 2),
         ];
@@ -234,14 +241,14 @@ class CO extends CI_Controller
         $this->db->update('weapon_systems', $data_update);
     }
 
-    public function calculate_sensor_reliability($controller_id = NULL, $time = NULL)
+    public function calculate_sensor_reliability($controller_id = NULL, $time = NULL, $ship_id = NULL)
     {
 
         if ($time > 0) {
 
             $view_array = array();
             $view_array_detail = array();
-            $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
+            $view_array['data'] =  $this->db->where('ID', $controller_id)->where('Ship_ID', $ship_id)->get('controller_data')->row_array();
 
             //Get Total No. of Failures 
             $view_array_detail['data'] =  $this->db->where('Controller_Data_ID', $controller_id)->get('controller_data_detail')->result_array();
@@ -266,7 +273,7 @@ class CO extends CI_Controller
         } else {
             $reliability = 0;
         }
-        $cond  = ['ID' => $controller_id];
+        $cond  = ['ID' => $controller_id, 'Ship_ID'=> $ship_id];
         $data_update = [
             'Reliability' => $reliability * 100,
         ];
@@ -280,6 +287,7 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
+            $ship_id = $this->session->userdata('ship_id');
             if ($status == "co") {
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
@@ -291,8 +299,9 @@ class CO extends CI_Controller
                 $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
                 $this->db->where('ws.weapon_name', $weapon_name);
                 $this->db->where('wsc.connection_type', 'P'); //For parallel
-
+                $this->db->where('ws.Ship_ID', $ship_id); //For ship
                 $view_rows['data'] =  $this->db->get()->result_array();
+
                 $sub_final_result = 1;
                 if (count($view_rows['data']) != 0) {
                     for ($i = 1; $i <= count($view_rows['data']); $i++) :
@@ -303,8 +312,9 @@ class CO extends CI_Controller
                         $this->db->where('ws.weapon_name', $weapon_name);
                         $this->db->where('wsc.connection_type', 'P'); //For parallel
                         $this->db->where('wsc.connection_group', $i); //For group
-
+                        $this->db->where('ws.Ship_ID', $ship_id); //For ship
                         $view_array['data'] =  $this->db->get()->result_array();
+
                         $resultant_parallel = 1;
                         $data_index = 0;
                         if (count($view_array['data']) != 0) {
@@ -329,6 +339,7 @@ class CO extends CI_Controller
                 $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
                 $this->db->where('ws.weapon_name', $weapon_name);
                 $this->db->where('wsc.connection_type', 'S'); //For series
+                $this->db->where('ws.Ship_ID', $ship_id); //For ship
 
                 $view_array['data'] =  $this->db->get()->result_array();
                 $resultant_series = 1;
@@ -347,8 +358,7 @@ class CO extends CI_Controller
                 echo number_format(($final_result * 100), 2);
 
                 //Updation 
-
-                $cond  = ['weapon_name' => $weapon_name];
+                $cond  = ['weapon_name' => $weapon_name, 'Ship_ID' => $ship_id];
                 $data_update = [
                     'Availability' => number_format(($final_result * 100), 2),
                 ];
@@ -368,6 +378,7 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
+            $ship_id = $this->session->userdata('Ship_ID');
             if ($status == "co") {
                 $weapon_name = $_POST['weapon_name'];
                 //echo $weapon_name;exit;
@@ -381,6 +392,7 @@ class CO extends CI_Controller
                 $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
                 $this->db->where('ws.weapon_name', $weapon_name);
                 $this->db->where('wsc.connection_type', 'P'); //For parallel
+                $this->db->where('ws.Ship_ID', $ship_id); //For ship
 
                 $view_rows['data'] =  $this->db->get()->result_array();
                 $sub_final_result = 1;
@@ -394,6 +406,7 @@ class CO extends CI_Controller
                         $this->db->where('ws.weapon_name', $weapon_name);
                         $this->db->where('wsc.connection_type', 'P'); //For parallel
                         $this->db->where('wsc.connection_group', $i); //For group
+                        $this->db->where('ws.Ship_ID', $ship_id); //For ship
 
                         $view_array['data'] =  $this->db->get()->result_array();
                         $resultant_parallel = 1;
@@ -420,6 +433,7 @@ class CO extends CI_Controller
                 $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
                 $this->db->where('ws.weapon_name', $weapon_name);
                 $this->db->where('wsc.connection_type', 'S'); //For series
+                $this->db->where('ws.Ship_ID', $ship_id); //For ship
 
                 $view_array['data'] =  $this->db->get()->result_array();
                 $resultant_series = 1;
@@ -439,7 +453,7 @@ class CO extends CI_Controller
 
                 //Updation 
 
-                $cond  = ['weapon_name' => $weapon_name];
+                $cond  = ['weapon_name' => $weapon_name, 'Ship_ID' => $ship_id];
                 $data_update = [
                     'Reliabbility' => number_format(($final_result * 100), 2),
                 ];
@@ -460,6 +474,7 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
+            $ship_id = $this->session->userdata('Ship_ID');
             if ($status == "weo") {
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
@@ -469,6 +484,7 @@ class CO extends CI_Controller
                 $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
                 $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
                 $this->db->where('ws.weapon_name', $weapon_name);
+                $this->db->where('ws.Ship_ID', $ship_id);
 
                 $view_array['data'] =  $this->db->get()->result_array();
                 echo json_encode($view_array['data']);

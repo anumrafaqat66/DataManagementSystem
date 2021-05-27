@@ -10,7 +10,8 @@ class Admin extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-            $this->load->view('Admin/create_user');
+            $data['ships_data'] = $this->db->get('ship_data')->result_array();
+            $this->load->view('Admin/create_user',$data);
         } else {
             $this->load->view('Admin/login');
         }
@@ -63,18 +64,18 @@ class Admin extends CI_Controller
             $password = password_hash($postData['password'], PASSWORD_DEFAULT);
             //$reg_data = date('Y-M-D');
             $status = $postData['status'];
+            $ship_id = $postData['Ship_ID'];
 
             $insert_array = array(
                 'username' => $username,
                 'password' => $password,
                 //'reg_data' => $reg_data,
                 'status' => $status,
+                'Ship_ID' => $ship_id
             );
-            //print_r($insert_array);exit;
+            
             $insert = $this->db->insert('security_info', $insert_array);
-            //$data['last_id'] = $this->db->insert_id();
-            //  echo $data['last_id'];exit;
-            //  print_r($insert);exit;
+            
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Data Submitted successfully');

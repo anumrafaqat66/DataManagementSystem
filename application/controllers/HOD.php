@@ -1,4 +1,3 @@
- 
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 class HOD extends CI_Controller
 {
@@ -9,26 +8,27 @@ class HOD extends CI_Controller
 
     public function index()
     {
-        $data['sensor_data'] = $this->db->where('Controller_type', 'Sensor')->get('controller_data')->result_array();
-        $data['fire_controller_data'] = $this->db->where('Controller_type', 'Fire Controller')->get('controller_data')->result_array();
-        $data['weapon_data'] = $this->db->where('Controller_type', 'Weapon')->get('controller_data')->result_array();
+        $data['ship_id'] = $this->session->userdata('ship_id');
+        $data['sensor_data'] = $this->db->where('Controller_type', 'Sensor')->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
+        $data['fire_controller_data'] = $this->db->where('Controller_type', 'Fire Controller')->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
+        $data['weapon_data'] = $this->db->where('Controller_type', 'Weapon')->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
         $this->load->view('hod/hod', $data);
     }
-
 
     public function get_availability_for_all()
     {
         $view_array = array();
         $view_array['data'] =  $this->db->get('controller_data')->result_array();
+        $ship_id = $this->session->userdata('ship_id');
         if (count($view_array['data']) != 0) {
             for ($i = 0; $i < count($view_array['data']); $i++) :
-                $this->get_availability($view_array['data'][$i]['ID']);
+                $this->get_availability($view_array['data'][$i]['ID'], $ship_id);
             endfor;
         }
 
     }
 
-    public function get_availability($sensor_id = NULL)
+    public function get_availability($sensor_id = NULL, $ship_id)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
@@ -37,7 +37,7 @@ class HOD extends CI_Controller
             if ($status == "hod" || $status == "weo" || $status == "co") {
                 $controller_id = $sensor_id; //$_POST['controller_id'];
                 $view_array = array();
-                $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
+                $view_array['data'] =  $this->db->where('ID', $controller_id)->where('Ship_ID', $ship_id)->get('controller_data')->row_array();
                 if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '' && $view_array['data']['MTBF'] != 0.00 && $view_array['data']['MTTR'] != 0.00) {
                     $availability = number_format($view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']), 4);
                     //$aval =$availability * 100;
@@ -47,9 +47,9 @@ class HOD extends CI_Controller
                     $availability = 0;
                     echo ($availability * 100);
                 }
-                $cond  = ['ID' => $controller_id];
+                $cond  = ['ID' => $controller_id, 'Ship_ID' => $ship_id];
                 $data_update = [
-                    'Availability' => $availability * 100,
+                    'Availability' => $availability * 100                    
                 ];
                 $this->db->where($cond);
                 $this->db->update('controller_data', $data_update);
@@ -63,6 +63,7 @@ class HOD extends CI_Controller
 
     public function get_reliability_for_all()
     {
+        $ship_id = $this->session->userdata('ship_id');
         $isDefault = $_POST['isDefault'];
         $system_time = 0;
         if ($isDefault == "Yes") {
@@ -71,21 +72,20 @@ class HOD extends CI_Controller
             $system_time = $_POST['time'];
         }
 
-        $view_array['data'] =  $this->db->get('controller_data')->result_array();
+        $view_array['data'] =  $this->db->where('Ship_ID',$ship_id)->get('controller_data')->result_array();
         if (count($view_array['data']) != 0) {
             for ($i = 0; $i < count($view_array['data']); $i++) :
-                $this->get_reliability($view_array['data'][$i]['ID'], $system_time, $isDefault);
+                $this->get_reliability($view_array['data'][$i]['ID'], $system_time, $isDefault, $ship_id);
             endfor;
         }
 
         $sensor_rel = array();
-        $sensor_rel['data'] = $this->db->select('Controller_Name, Controller_type, Default_Reliability, Reliability, Availability')->distinct()->get('controller_data')->result_array();
+        $sensor_rel['data'] = $this->db->select('Controller_Name, Controller_type, Default_Reliability, Reliability, Availability')->distinct()->where('Ship_ID',$ship_id)->get('controller_data')->result_array();
 
         echo json_encode($sensor_rel['data']);
-
     }
 
-    public function get_reliability($sensor_id = NULL, $entered_time = NULL, $isDefault = NULL)
+    public function get_reliability($sensor_id = NULL, $entered_time = NULL, $isDefault = NULL, $ship_id = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
@@ -97,7 +97,7 @@ class HOD extends CI_Controller
                 if ($time > 0) {
                     $view_array = array();
                     $view_array_detail = array();
-                    $view_array['data'] =  $this->db->where('ID', $controller_id)->get('controller_data')->row_array();
+                    $view_array['data'] =  $this->db->where('ID', $controller_id)->where('Ship_ID', $ship_id)->get('controller_data')->row_array();
 
                     //Get Total No. of Failures 
                     $view_array_detail['data'] =  $this->db->where('Controller_Data_ID', $controller_id)->get('controller_data_detail')->result_array();
@@ -127,18 +127,18 @@ class HOD extends CI_Controller
                     $reliability = 0;
                     //echo ($reliability * 100);
                 }
-                $cond  = ['ID' => $controller_id];
+                $cond  = ['ID' => $controller_id, 'Ship_ID' => $ship_id];
                 $data_update = [
                     'Reliability' => $reliability * 100,
                 ];
 
                 if ($isDefault == "Yes") {
                     $data_update = [
-                        'Default_Reliability' => $reliability * 100,
+                        'Default_Reliability' => $reliability * 100
                     ];
                 } else if ($isDefault == "No") {
                     $data_update = [
-                        'Reliability' => $reliability * 100,
+                        'Reliability' => $reliability * 100
                     ];
                 }
 
@@ -151,8 +151,6 @@ class HOD extends CI_Controller
             $this->load->view('login');
         }
     }
-
-
 
     //  public function Update_data($id = NULL)
     //     {

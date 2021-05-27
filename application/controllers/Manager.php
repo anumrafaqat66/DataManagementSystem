@@ -12,11 +12,14 @@ class Manager extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
+            $data['ship_id'] = $this->session->userdata('ship_id');
+
             if ($status == "manager" || $status == "co" || $status == "hod" || $status == "weo") {
 
                 $this->db->select('cd.*,sd.Ship_name');
                 $this->db->from('controller_data cd');
                 $this->db->join('ship_data sd', 'sd.ID = cd.ship_ID');
+                $this->db->where('Ship_ID',$data['ship_id']);
                 $data['manager_controller_data'] = $this->db->get()->result_array();
                  
                 $this->load->view('manager/manager', $data);
@@ -33,8 +36,9 @@ class Manager extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
+            $data['ship_id'] = $this->session->userdata('ship_id');
             if ($status == "manager") {
-                $data['manager_controller_data'] = $this->db->get('controller_data')->result_array();
+                $data['manager_controller_data'] = $this->db->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
                 $this->load->view('manager/manager', $data);
             } else {
                 $this->load->view('login');

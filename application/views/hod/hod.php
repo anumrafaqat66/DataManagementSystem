@@ -74,13 +74,10 @@
                                         </span>
                                     </div>
                                 </div> -->
-
-
                             </div>
                             <div id="table_div">
                                 <?php if (isset($sensor_data)) {
                                     if (count($sensor_data) > 0) { ?>
-
                                         <table id="datatable" class="table table-sm table-striped bg-custom3">
                                             <thead>
                                                 <tr>
@@ -113,7 +110,7 @@
                                             <h1 class="h4 text-gray-900">No records Available</h1>
                                         </div>
                                     <?php }
-                                    unset($sensor_data);
+                                    //unset($sensor_data);
                                     // unset($data['controller_detail_records']);
                                 } else { ?>
                                     <a> No Record Available. </a>

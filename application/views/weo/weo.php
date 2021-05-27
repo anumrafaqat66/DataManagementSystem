@@ -108,7 +108,7 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1 ">
-                        <h1 class="h4 text-white">Weapon System</h1>
+                        <h1 class="h4 text-white">Weapon System </h1>
                     </div>
 
                     <div class="card-body bg-custom3">
@@ -252,7 +252,7 @@
 
     <div class="modal fade" id="SAM">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -305,7 +305,7 @@
 
     <div class="modal fade" id="MG">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -355,7 +355,7 @@
 
     <div class="modal fade" id="CP">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -405,7 +405,7 @@
 
     <div class="modal fade" id="CS">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -454,7 +454,7 @@
 
     <div class="modal fade" id="SSM">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -498,7 +498,7 @@
 
     <div class="modal fade" id="TOR">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -534,7 +534,7 @@
 
     <div class="modal fade" id="RDC">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;"  role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -567,7 +567,7 @@
 
     <div class="modal fade" id="PJ-46">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;"  role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -611,7 +611,7 @@
 
     <div class="modal fade" id="NRJ">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered" style= "margin-left: 370px;"  role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 370px;" role="document">
             <div class="modal-content" style="width:1000px;">
                 <div class="modal-header" style="width:1000px;">
                     <!-- <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5> -->
@@ -773,8 +773,11 @@
         //var name = $(this).val();
         //if (weapon != '') {
         $.ajax({
-            url: '<?= base_url(); ?>WEO/get_all_weapons_availability',
-            method: 'POST',
+                url: '<?= base_url(); ?>WEO/get_all_weapons_availability',
+                method: 'POST',
+                data: {
+                'ship_id': <?php echo $ship_id ?>
+            },
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var loop = 1;
@@ -802,7 +805,7 @@
                 //     document.getElementById("system_availability").style.backgroundColor = "green";
                 // }
             },
-            async: false
+            async :false
             // ,
             // error: function(data) {
             //     //alert(data);
@@ -810,70 +813,71 @@
             // }
         });
 
-        $.ajax({
-            url: '<?= base_url(); ?>WEO/get_all_weapons_reliability',
-            method: 'POST',
-            data: {
-                //'weapon_name': name,
-                'isDefault': 'Yes'
-            },
-            success: function(data) {
-                var result = jQuery.parseJSON(data);
-                var loop = 1;
-                for (var i in result) {
-                    var wn = document.getElementById("weapon_name" + loop);
-                    if (wn.innerHTML == result[i].weapon_name) {
-                        var rel = document.getElementById("reldefault" + loop);
-                        rel.innerHTML = "<b>" + result[i].default_reliability + "</b>";
+    $.ajax({
+        url: '<?= base_url(); ?>WEO/get_all_weapons_reliability',
+        method: 'POST',
+        data: {
+            //'weapon_name': name,
+            'isDefault': 'Yes',
+            'ship_id': <?php echo $ship_id ?>
+        },
+        success: function(data) {
+            var result = jQuery.parseJSON(data);
+            var loop = 1;
+            for (var i in result) {
+                var wn = document.getElementById("weapon_name" + loop);
+                if (wn.innerHTML == result[i].weapon_name) {
+                    var rel = document.getElementById("reldefault" + loop);
+                    rel.innerHTML = "<b>" + result[i].default_reliability + "</b>";
 
-                        if (result[i].default_reliability >= 75) {
-                            rel.style.color = "#008000";
-                        } else if (result[i].default_reliability >= 50 && result[i].default_reliability < 75) {
-                            rel.style.color = "#ffa500";
-                        } else if (result[i].default_reliability < 50) {
-                            rel.style.color = "#ff0000";
-                        }
+                    if (result[i].default_reliability >= 75) {
+                        rel.style.color = "#008000";
+                    } else if (result[i].default_reliability >= 50 && result[i].default_reliability < 75) {
+                        rel.style.color = "#ffa500";
+                    } else if (result[i].default_reliability < 50) {
+                        rel.style.color = "#ff0000";
                     }
-                    loop++;
                 }
-            },
-            async: true,
-            error: function(data) {
-                //alert(data);
-                alert('failure');
+                loop++;
             }
-        });
-        //}
+        },
+        async: true,
+        error: function(data) {
+            //alert(data);
+            alert('failure');
+        }
+    });
+    //}
 
-        // if (weapon != '') {
-        //     $.ajax({
-        //         url: '<?= base_url(); ?>WEO/get_sensors_data',
-        //         method: 'POST',
-        //         data: {
-        //             'weapon_name': weapon
-        //         },
-        //         success: function(data) {
-        //             result = JSON.parse(data);
-        //             $str = '';
-        //             for (var i in result) {
-        //                 $str = result[i].Controller_Name.replace(" ", "_");
-        //                 $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
-        //                 $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
-        //             }
-        //         },
-        //         error: function(data) {
-        //             //alert(data);
-        //             alert('failure');
-        //         }
-        //     });
+    // if (weapon != '') {
+    //     $.ajax({
+    //         url: '<?= base_url(); ?>WEO/get_sensors_data',
+    //         method: 'POST',
+    //         data: {
+    //             'weapon_name': weapon
+    //         },
+    //         success: function(data) {
+    //             result = JSON.parse(data);
+    //             $str = '';
+    //             for (var i in result) {
+    //                 $str = result[i].Controller_Name.replace(" ", "_");
+    //                 $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+    //                 $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
+    //             }
+    //         },
+    //         error: function(data) {
+    //             //alert(data);
+    //             alert('failure');
+    //         }
+    //     });
 
-        // }
-        // e.preventDefault();
-        // window.onunload = function() {
-        //     dubugger;
-        // }
+    // }
+    // e.preventDefault();
+    // window.onunload = function() {
+    //     dubugger;
+    // }
 
-        // }
+    // }
     }
 
     // $('#show_graphs').on('click', function() {
@@ -1025,7 +1029,8 @@
             data: {
                 //'weapon_name': name,
                 'time': time,
-                'isDefault': 'No'
+                'isDefault': 'No',
+                'ship_id': <?php echo $ship_id ?>
             },
             success: function(data) {
                 var result = jQuery.parseJSON(data);
