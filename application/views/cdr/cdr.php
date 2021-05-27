@@ -139,7 +139,7 @@
                                 <div style="height:100px">
                                     <div style="margin-top:50px">
                                         <h1 class="h1 text-dark text-center "><strong>Ship 1</strong></h1>
-                                        <h2 class="h2 text-dark text-center "><strong><?php echo $mission1 ?></strong></h2>
+                                        <!-- <h2 class="h2 text-dark text-center "><strong><?php echo $mission1 ?></strong></h2> -->
                                     </div>
                                 </div>
                             </a>
@@ -147,7 +147,7 @@
                                 <div style="height:100px">
                                     <div style="margin-top:50px">
                                         <h1 class="h1 text-dark text-center "><strong>Ship 2</strong></h1>
-                                        <h2 class="h2 text-dark text-center "><strong><?php echo $mission2 ?></strong></h2>
+                                        <!-- <h2 class="h2 text-dark text-center "><strong><?php echo $mission2 ?></strong></h2> -->
                                     </div>
                                 </div>
                             </a>

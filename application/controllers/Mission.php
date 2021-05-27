@@ -13,8 +13,8 @@ class Mission extends CI_Controller
 	public function mission($name = NULL)
 	{
 		$ship_id = $this->session->userdata('ship_id');
-		$weapons = $this->db->where('Mission_name', $name)->where('Ship_ID', $ship_id)->get('weapon_systems')->result_array();
-		//print_r($weapons);exit;
+		$weapons = $this->db->where('mission_name', $name)->where('Ship_ID', $ship_id)->get('weapon_systems')->result_array();
+		// print_r($weapons);exit;
 
 		$result = 1;
 
@@ -87,9 +87,9 @@ class Mission extends CI_Controller
 			$id = $this->session->userdata('user_id');
 			$status = $this->session->userdata('status');
 			$ship_id = $this->session->userdata('ship_id');
-			if ($status == "co") {
-				$mission_name = $_POST['mission_name'];
 
+			if ($status == "co" || $status == "typecdr") {
+				$mission_name = $_POST['mission_name'];
 				$weapons_reliablity = $this->db->where('Mission_name', $mission_name)->where('Ship_ID', $ship_id)->get('weapon_systems')->result_array();
 
 				$result = 1;
@@ -109,7 +109,7 @@ class Mission extends CI_Controller
 			$status = $this->session->userdata('status');
 			$ship_id = $this->session->userdata('ship_id');
 
-			if ($status == "co") {
+			if ($status == "co" || $status == "typecdr") {
 				$mission_name = $_POST['mission_name'];
 				$system_time = $_POST['time'];
 

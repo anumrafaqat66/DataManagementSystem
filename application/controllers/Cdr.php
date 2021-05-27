@@ -8,7 +8,7 @@ class Cdr extends CI_Controller
 
     public function index()
     {
-     $missions = $this->db->get('missions')->result_array();
+        $missions = $this->db->get('missions')->result_array();
         $result = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result = $result * (1 - $missions[$i]['Availability'] / 100);
@@ -16,10 +16,17 @@ class Cdr extends CI_Controller
             $data["mission$datarow"] = $missions[$i]['Availability'];
         }
         $data['availability'] = number_format((1 - ($result)) * 100, 2);
-        $this->load->view('cdr/cdr',$data);
+        $this->load->view('cdr/cdr', $data);
     }
-    public function co($ship=null){
-         $missions = $this->db->get('missions')->result_array();
+    public function co($ship = null)
+    {
+        if($ship == "Ship1"){
+            $this->session->set_userdata('ship_id', 1);
+        } else if($ship == "Ship2"){
+            $this->session->set_userdata('ship_id', 2);
+        }
+
+        $missions = $this->db->get('missions')->result_array();
         $result = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result = $result * (1 - $missions[$i]['Availability'] / 100);
@@ -30,22 +37,18 @@ class Cdr extends CI_Controller
         $this->load->view('ship/ship', $data);
     }
 
-        public function redirect($page=null){
-       if($page=='co'){
-        redirect('CO');
-       }
-       elseif($page=='weo'){
-         redirect('WEO');
-       }
-        elseif($page=='hod'){
-         redirect('HOD');
-       }
-        elseif($page=='manager'){
-         redirect('Manager');
-       }
-       elseif($page=='technician'){
- redirect('Technician');
-       }
+    public function redirect($page = null)
+    {
+        if ($page == 'co') {
+            redirect('CO');
+        } elseif ($page == 'weo') {
+            redirect('WEO');
+        } elseif ($page == 'hod') {
+            redirect('HOD');
+        } elseif ($page == 'manager') {
+            redirect('Manager');
+        } elseif ($page == 'technician') {
+            redirect('Technician');
+        }
     }
 }
-  
