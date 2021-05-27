@@ -41,7 +41,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>CO">
+                <a class="nav-link" href="<?= base_url(); ?>Cdr">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -63,11 +63,11 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pages</h6>
-                        <a class="collapse-item" href="<?= base_url(); ?>Cdr/redirect/co">Commanding Officer</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>Cdr/redirect/weo">Weapon Engineer</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>Cdr/redirect/hod">Head Department</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>Cdr/redirect/manager">Manager</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>Cdr/redirect/technician">Technician</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CO">Commanding Officer</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>WEO">Weapon Engineer</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>HOD">Head Department</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>Manager">Manager</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>Technician">Technician</a>
                     </div>
                 </div>
             </li>
@@ -177,7 +177,7 @@
                                 <option class="form-control form-control-user small" value="">Search Ship</option>
                                 <?php $ship_data= $this->db->get('ship_data')->result_array(); ?>
                                 <?php foreach($ship_data as $data){ ?>
-                                <option class="form-control form-control-user" value="<?=  $data['Ship_name']?>"><?= $data['Ship_name']; ?></option>
+                                <option class="form-control form-control-user small" value="<?=  $data['Ship_name']?>"><?= $data['Ship_name']; ?></option>
                                 <?php } ?>
                                
                             </select>

@@ -43,7 +43,7 @@ class WEO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "weo" || $status = "co") {
+            if ($status == "weo" || $status = "co" || $status =="typecdr") {
                 $weapon_name = $weapon;
                 $view_array = array();
                 $view_rows = array();
@@ -162,7 +162,7 @@ class WEO extends CI_Controller
             
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "weo" || $status = "co") {
+            if ($status == "weo" || $status = "co" || $status =="typecdr") {
                 
                 //$weapon_name = $_POST['weapon_name'];
                 $system_time = $time;
@@ -290,7 +290,7 @@ class WEO extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             $ship_id = $this->session->userdata('ship_id');
-            if ($status == "weo" || $status = "co") {
+            if ($status == "weo" || $status = "co" || $status =="typecdr") {
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
 
@@ -310,7 +310,6 @@ class WEO extends CI_Controller
             $this->load->view('login');
         }
     }
-
 
     public function calculate_sensor_reliability($controller_id = NULL, $time = NULL, $isDefault = NULL, $ship_id = NULL)
     {

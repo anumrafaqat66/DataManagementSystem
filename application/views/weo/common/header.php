@@ -43,6 +43,8 @@
             <li class="nav-item active">
                 <a class="nav-link" href="<?php if ($this->session->userdata('status') == 'co') {
                                                 echo "CO";
+                                            } else if ($this->session->userdata('status') == 'typecdr') {
+                                                echo "Cdr";
                                             } else {
                                                 echo "WEO";
                                             } ?>">

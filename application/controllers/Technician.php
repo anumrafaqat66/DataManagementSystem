@@ -96,9 +96,6 @@ class Technician extends CI_Controller
             );
             // 	// print_r($insert_array);exit;
             $insert = $this->db->insert('controller_data', $insert_array);
-            //$data['last_id'] = $this->db->insert_id();
-            //	echo $data['last_id'];exit;
-            // 	print_r($insert);exit;
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Data Submitted successfully');

@@ -45,6 +45,8 @@
                                                 echo "WEO";
                                             } else if ($this->session->userdata('status') == 'co') {
                                                 echo "CO";
+                                            } else if ($this->session->userdata('status') == 'typecdr') {
+                                                echo "Cdr";
                                             } else {
                                                 echo "HOD";
                                             } ?>">

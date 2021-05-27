@@ -47,6 +47,8 @@
                                                                     echo "CO";
                                                                 } else if ($this->session->userdata('status') == 'hod') {
                                                                     echo "HOD";
+                                                                } else if ($this->session->userdata('status') == 'typecdr') {
+                                                                    echo "Cdr";                     
                                                                 } else {
                                                                     echo "Manager";
                                                                 } ?>">

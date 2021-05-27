@@ -49,7 +49,9 @@
                                                 echo "HOD";
                                             } else if ($this->session->userdata('status') == 'manager') {
                                                 echo "Manager";
-                                            }else {
+                                            } else if ($this->session->userdata('status') == 'typecdr') {
+                                                echo "Cdr";
+                                            } else {
                                                 echo "Technician";
                                             } ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>

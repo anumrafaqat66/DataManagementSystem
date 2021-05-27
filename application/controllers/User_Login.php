@@ -14,7 +14,7 @@ class User_Login extends CI_Controller
 		if ($this->session->has_userdata('user_id')) {
 			$id = $this->session->userdata('user_id');
 			$status = $this->session->userdata('status');
-			
+					
 			if ($status == "technician") {
 				redirect('Technician');
 			} elseif ($status == "manager") {
@@ -27,7 +27,10 @@ class User_Login extends CI_Controller
 				redirect('CO');
 			}elseif ($status == "typecdr") {
 				redirect('Cdr');
+			}elseif ($status == "admin") {
+				redirect('Admin');
 			}
+			
 		} else {
 			$this->load->view('login');
 		}

@@ -62,7 +62,7 @@ class CO extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             $ship_id = $this->session->userdata('ship_id');
-            if ($status == "co") {
+            if ($status == "co" || $status =="typecdr") {
                 //$mission_name = $_POST['mission_name'];
                 $mission_reliablity = $this->db->where('Ship_ID',$ship_id)->get('missions')->result_array();
                 $result = 1;
@@ -84,7 +84,7 @@ class CO extends CI_Controller
             $status = $this->session->userdata('status');
             $ship_id = $this->session->userdata('ship_id');
 
-            if ($status == "co") {
+            if ($status == "co" || $status =="typecdr") {
                 //$mission_name = $_POST['mission_name'];
                 $system_time = $_POST['time'];
 
@@ -113,7 +113,7 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            if ($status == "co") {
+            if ($status == "co" || $status =="typecdr") {
                 $mission_name = $mission_name;
                 $system_time = $time;
 
@@ -206,7 +206,6 @@ class CO extends CI_Controller
 
             endfor;
         }
-
 
         $this->db->select('ws.weapon_name,cd.Controller_Name,cd.Reliability');
         $this->db->from('weapon_systems ws');
@@ -379,7 +378,7 @@ class CO extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             $ship_id = $this->session->userdata('Ship_ID');
-            if ($status == "co") {
+            if ($status == "co" || $status =="typecdr") {
                 $weapon_name = $_POST['weapon_name'];
                 //echo $weapon_name;exit;
                 $view_array = array();
@@ -475,7 +474,7 @@ class CO extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
             $ship_id = $this->session->userdata('Ship_ID');
-            if ($status == "weo") {
+            if ($status == "weo" || $status =="co" || $status =="typecdr") {
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
 
@@ -495,7 +494,6 @@ class CO extends CI_Controller
             $this->load->view('login');
         }
     }
-
 
     //  public function Update_data($id = NULL)
     //     {

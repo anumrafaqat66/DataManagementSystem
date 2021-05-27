@@ -34,7 +34,7 @@ class HOD extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 
-            if ($status == "hod" || $status == "weo" || $status == "co") {
+            if ($status == "hod" || $status == "weo" || $status == "co" || $status =="typecdr") {
                 $controller_id = $sensor_id; //$_POST['controller_id'];
                 $view_array = array();
                 $view_array['data'] =  $this->db->where('ID', $controller_id)->where('Ship_ID', $ship_id)->get('controller_data')->row_array();
@@ -91,7 +91,7 @@ class HOD extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 
-            if ($status == "hod" || $status == "weo" || $status == "co") {
+            if ($status == "hod" || $status == "weo" || $status == "co" || $status =="typecdr") {
                 $controller_id = $sensor_id; //$_POST['controller_id'];
                 $time = $entered_time; //$_POST['time'];
                 if ($time > 0) {

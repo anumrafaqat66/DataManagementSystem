@@ -283,7 +283,7 @@ class Mission extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 			$ship_id = $this->session->userdata('ship_id');
-            if ($status == "weo" || $status = "co") {
+            if ($status == "weo" || $status = "co" || $status =="typecdr") {
                 $weapon_name = $_POST['weapon_name'];
                 $view_array = array();
 

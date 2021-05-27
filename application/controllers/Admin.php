@@ -15,12 +15,10 @@ class Admin extends CI_Controller
         } else {
             $this->load->view('Admin/login');
         }
-        
     }
 
     public function login_process()
     {
-        
         if ($this->input->post()) {
             $postedData = $this->security->xss_clean($this->input->post());
             //To create encrypted password use

@@ -41,7 +41,11 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>CO">
+                <a class="nav-link" href="<?= base_url(); ?><?php  if ($this->session->userdata('status') == 'typecdr') {
+                                                echo "Cdr";
+                                            } else {
+                                                echo "CO";
+                                            } ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -174,10 +178,10 @@
                         <div class="input-group">
                             <select class="form-control rounded-pill small" name="mission" id="mission" data-placeholder="Select mission" style="font-size: 0.8rem; height:35px;">\
                                 <option class="form-control form-control-user small" value="">Search Mission</option>
-                                <option class="form-control form-control-user" value="AAW">AAW</option>
-                                <option class="form-control form-control-user" value="ASuW">ASuW</option>
-                                <option class="form-control form-control-user" value="ASW">ASW</option>
-                                <option class="form-control form-control-user" value="EW">EW</option>
+                                <option class="form-control form-control-user small" value="AAW">AAW</option>
+                                <option class="form-control form-control-user small" value="ASuW">ASuW</option>
+                                <option class="form-control form-control-user small" value="ASW">ASW</option>
+                                <option class="form-control form-control-user small" value="EW">EW</option>
                             </select>
                         </div>
                     </form>
