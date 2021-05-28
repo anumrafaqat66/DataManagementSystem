@@ -11,11 +11,11 @@ class Technician extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
-            // $data['ship_id'] = $this->session->userdata('ship_id');
+            $data['ship_id'] = $this->session->userdata('ship_id');
 
             if ($status == "technician" || $status == "co" || $status == "hod" || $status == "weo" || $status == "manager" ||  $status == "typecdr" ) {
-                $data['technician_controller_data'] = $this->db->get('controller_data')->result_array();
-                $data['ships_data'] = $this->db->get('ship_data')->result_array();
+                $data['technician_controller_data'] = $this->db->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
+                $data['ships_data'] = $this->db->where('ID',$data['ship_id'])->get('ship_data')->result_array();
                 $this->load->view('technician/technician', $data);
             } else {
                 $this->load->view('login');

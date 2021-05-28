@@ -60,8 +60,14 @@ class Manager extends CI_Controller
             $TCM_Desc = $postData['TCM_Desc'];
             $TPM_Desc = $postData['TPM_Desc'];
             $ADLT_Desc = $postData['ADLT_Desc'];
-            $FSD = strtotime($postData['Failure_start_date']);
-            $FED = strtotime($postData['Failure_end_date']);
+            $FSD = $postData['failure_start_date'];
+            $FED = $postData['failure_end_date'];
+
+            if ($FED == '' || $FED == null) {
+                $status = 'In Progress';
+            } else {
+                $status = 'Completed';
+            }
 
             $cond  = ['id' => $id];
             $data_update = [
@@ -73,8 +79,9 @@ class Manager extends CI_Controller
                 'TCM_Desc' => $TCM_Desc,
                 'TPM_Desc' => $TPM_Desc,
                 'ADLT_Desc' => $ADLT_Desc,
-                'Failure_start_date' => date($FSD, 'yyyy-mm-dd'),
-                'Failure_end_date' => date($FED, 'yyyy-mm-dd')
+                'Failure_start_date' => $FSD,
+                'Failure_end_date' => $FED,
+                'Status' => $status
 
             ];
             $this->db->where($cond);
@@ -133,6 +140,12 @@ class Manager extends CI_Controller
             $FSD = $postData['failure_start_date'];
             $FED = $postData['failure_end_date'];
 
+            if ($FED == '' || $FED == null) {
+                $status = 'In Progress';
+            } else {
+                $status = 'Completed';
+            }
+
             $insert_array = array(
                 'Controller_Data_ID' => $id,
                 'TBF' => $TBF,
@@ -144,7 +157,8 @@ class Manager extends CI_Controller
                 'TPM_Desc' => $TPM_Desc,
                 'ADLT_Desc' => $ADLT_Desc,
                 'Failure_start_date' => $FSD,
-                'Failure_end_date' => $FED 
+                'Failure_end_date' => $FED,
+                'Status' => $status
             );
 
             $insert = $this->db->insert('controller_data_detail', $insert_array);
@@ -181,6 +195,18 @@ class Manager extends CI_Controller
     public function add_details($id = NULL)
     {
         $data['selected_controller_data'] = $this->db->where('id', $id)->get('controller_data')->row_array();
+        $data['update'] = 'No';
+        $this->load->view('manager/add_details', $data);
+    }
+
+    public function update_details($id = NULL)
+    {
+        $this->db->select('cdd.id as ID, cd.Controller_Name, cd.ESWB, cd.Controller_type, cdd.Failure_start_date, cdd.Failure_end_date, cdd.TBF, cdd.TCM, cdd.TPM, cdd.ADLT, cdd.TTR, cdd.TCM_Desc, cdd.TPM_Desc, cdd.ADLT_Desc, cdd.TTR');
+        $this->db->from('controller_data cd');
+        $this->db->join('controller_data_detail cdd', 'cd.id = cdd.Controller_Data_ID');
+        $this->db->where('cdd.id', $id);
+        $data['selected_controller_data'] = $this->db->get()->row_array();
+        $data['update'] = 'Yes';
         $this->load->view('manager/add_details', $data);
     }
 

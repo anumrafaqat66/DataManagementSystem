@@ -136,7 +136,8 @@ CREATE TABLE `controller_data_detail` (
   `ADLT` decimal(8,2) DEFAULT NULL,
   `ADLT_Desc` varchar(1000) DEFAULT NULL,
   `TTR` decimal(8,2) DEFAULT NULL,
-  `RegDate` date DEFAULT current_timestamp()
+  `RegDate` date DEFAULT current_timestamp(),
+  `Status` varchar(15)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -492,144 +493,144 @@ insert into weapon_systems values (24,'PJ-46',0.00,0.00,0.00,'EW',2,'Electronic 
 
 -- Sample Data Insertion 
 
-insert into controller_data_detail values (1,1,'2020-03-01','2020-04-01',280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (2,1,'2020-06-01','2020-07-15',250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (3,1,'2021-02-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (1,1,'2020-03-01','2020-04-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (2,1,'2020-06-01','2020-07-15',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (3,1,'2021-02-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (4,2,'2020-04-01','2020-05-01',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (5,2,'2020-07-01','2020-08-01',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (6,2,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (4,2,'2020-04-01','2020-05-01',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (5,2,'2020-07-01','2020-08-01',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (6,2,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (7,3,'2020-07-01','2020-09-01',290,20,'',25,'',30,'',0.00, CURDATE());
-insert into controller_data_detail values (8,3,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (9,3,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (7,3,'2020-07-01','2020-09-01',290,20,'',25,'',30,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (8,3,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (9,3,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (10,4,'2020-04-01','2020-04-25',280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (11,4,'2020-08-01','2020-09-15',290,20,'',35,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (12,4,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (10,4,'2020-04-01','2020-04-25',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (11,4,'2020-08-01','2020-09-15',290,20,'',35,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (12,4,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (13,5,'2020-02-01','2020-02-20',280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (14,5,'2020-04-01','2020-05-01',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (15,5,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (13,5,'2020-02-01','2020-02-20',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (14,5,'2020-04-01','2020-05-01',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (15,5,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (16,6,'2020-03-01','2020-03-15',250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (17,6,'2020-12-01','2020-12-25',340,10,'',5,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (18,6,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (16,6,'2020-03-01','2020-03-15',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (17,6,'2020-12-01','2020-12-25',340,10,'',5,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (18,6,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (19,7,'2020-03-01','2020-03-15',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (20,7,'2020-10-01','2020-11-01',290,30,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (21,7,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (19,7,'2020-03-01','2020-03-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (20,7,'2020-10-01','2020-11-01',290,30,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (21,7,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (22,8,'2020-04-01','2020-04-15',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (23,8,'2020-06-01','2020-06-25',330,10,'',15,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (24,8,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (22,8,'2020-04-01','2020-04-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (23,8,'2020-06-01','2020-06-25',330,10,'',15,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (24,8,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (25,9,'2020-03-01','2020-03-10',280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (26,9,'2020-05-01','2020-05-25',250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (27,9,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (25,9,'2020-03-01','2020-03-10',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (26,9,'2020-05-01','2020-05-25',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (27,9,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (28,10,'2020-07-01','2020-07-25',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (29,10,'2020-09-01','2020-10-15',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (30,10,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (28,10,'2020-07-01','2020-07-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (29,10,'2020-09-01','2020-10-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (30,10,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (31,11,'2020-03-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (32,11,'2020-05-01','2020-06-30',340,5,'',10,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (33,11,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (31,11,'2020-03-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (32,11,'2020-05-01','2020-06-30',340,5,'',10,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (33,11,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (34,12,'2020-04-01','2020-05-05',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (35,12,'2020-06-01','2020-07-10',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (36,12,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (34,12,'2020-04-01','2020-05-05',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (35,12,'2020-06-01','2020-07-10',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (36,12,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (37,13,'2020-07-01','2020-08-15',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (38,13,'2020-09-01','2020-10-20',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (39,13,'2021-01-01','2021-03-01',320,10,'',20,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (37,13,'2020-07-01','2020-08-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (38,13,'2020-09-01','2020-10-20',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (39,13,'2021-01-01','2021-03-01',320,10,'',20,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (40,14,'2020-10-01','2020-11-15',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (41,14,'2020-12-01','2020-12-30',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (42,14,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (40,14,'2020-10-01','2020-11-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (41,14,'2020-12-01','2020-12-30',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (42,14,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (43,15,'2020-09-01','2020-09-30',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (44,15,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (45,15,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (43,15,'2020-09-01','2020-09-30',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (44,15,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (45,15,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (46,16,'2020-04-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (47,16,'2020-05-01','2020-05-20',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (48,16,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (46,16,'2020-04-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (47,16,'2020-05-01','2020-05-20',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (48,16,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (49,17,'2020-06-01','2020-07-01',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (50,17,'2020-08-01','2020-09-01',250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (51,17,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (49,17,'2020-06-01','2020-07-01',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (50,17,'2020-08-01','2020-09-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (51,17,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
 
 -- Data for ship B sensors
 
-insert into controller_data_detail values (52,18,'2020-03-01','2020-04-01',280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (53,18,'2020-06-01','2020-07-15',250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (54,18,'2021-02-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (52,18,'2020-03-01','2020-04-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (53,18,'2020-06-01','2020-07-15',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (54,18,'2021-02-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (55,19,'2020-04-01','2020-05-01',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (56,19,'2020-07-01','2020-08-01',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (57,19,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (55,19,'2020-04-01','2020-05-01',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (56,19,'2020-07-01','2020-08-01',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (57,19,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (58,20,'2020-07-01','2020-09-01',290,20,'',25,'',30,'',0.00, CURDATE());
-insert into controller_data_detail values (59,20,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (60,20,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (58,20,'2020-07-01','2020-09-01',290,20,'',25,'',30,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (59,20,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (60,20,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (61,21,'2020-04-01','2020-04-25',280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (62,21,'2020-08-01','2020-09-15',290,20,'',35,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (63,21,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (61,21,'2020-04-01','2020-04-25',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (62,21,'2020-08-01','2020-09-15',290,20,'',35,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (63,21,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (64,22,'2020-02-01','2020-02-20',280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (65,22,'2020-04-01','2020-05-01',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (66,22,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (64,22,'2020-02-01','2020-02-20',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (65,22,'2020-04-01','2020-05-01',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (66,22,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (67,23,'2020-03-01','2020-03-15',250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (68,23,'2020-12-01','2020-12-25',340,10,'',5,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (69,23,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (67,23,'2020-03-01','2020-03-15',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (68,23,'2020-12-01','2020-12-25',340,10,'',5,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (69,23,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (70,24,'2020-03-01','2020-03-15',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (71,24,'2020-10-01','2020-11-01',290,30,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (72,24,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (70,24,'2020-03-01','2020-03-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (71,24,'2020-10-01','2020-11-01',290,30,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (72,24,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (73,25,'2020-04-01','2020-04-15',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (74,25,'2020-06-01','2020-06-25',330,10,'',15,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (75,25,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (73,25,'2020-04-01','2020-04-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (74,25,'2020-06-01','2020-06-25',330,10,'',15,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (75,25,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (76,26,'2020-03-01','2020-03-10',280,20,'',40,'',25,'',0.00, CURDATE());
-insert into controller_data_detail values (77,26,'2020-05-01','2020-05-25',250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (78,26,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (76,26,'2020-03-01','2020-03-10',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (77,26,'2020-05-01','2020-05-25',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (78,26,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (79,27,'2020-07-01','2020-07-25',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (80,27,'2020-09-01','2020-10-15',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (81,27,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (79,27,'2020-07-01','2020-07-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (80,27,'2020-09-01','2020-10-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (81,27,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (82,28,'2020-03-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (83,28,'2020-05-01','2020-06-30',340,5,'',10,'',10,'',0.00, CURDATE());
-insert into controller_data_detail values (84,28,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (82,28,'2020-03-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (83,28,'2020-05-01','2020-06-30',340,5,'',10,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (84,28,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (85,29,'2020-04-01','2020-05-05',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (86,29,'2020-06-01','2020-07-10',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (87,29,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (85,29,'2020-04-01','2020-05-05',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (86,29,'2020-06-01','2020-07-10',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (87,29,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (88,30,'2020-07-01','2020-08-15',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (89,30,'2020-09-01','2020-10-20',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (90,30,'2021-01-01','2021-03-01',320,10,'',20,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (88,30,'2020-07-01','2020-08-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (89,30,'2020-09-01','2020-10-20',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (90,30,'2021-01-01','2021-03-01',320,10,'',20,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (91,31,'2020-10-01','2020-11-15',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (92,31,'2020-12-01','2020-12-30',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (93,31,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE());
+insert into controller_data_detail values (91,31,'2020-10-01','2020-11-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (92,31,'2020-12-01','2020-12-30',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (93,31,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (94,32,'2020-09-01','2020-09-30',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (95,32,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (96,32,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE());
+insert into controller_data_detail values (94,32,'2020-09-01','2020-09-30',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (95,32,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (96,32,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (97,33,'2020-04-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (98,33,'2020-05-01','2020-05-20',310,10,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (99,33,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (97,33,'2020-04-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (98,33,'2020-05-01','2020-05-20',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (99,33,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
-insert into controller_data_detail values (100,34,'2020-06-01','2020-07-01',300,20,'',25,'',20,'',0.00, CURDATE());
-insert into controller_data_detail values (101,34,'2020-08-01','2020-09-01',250,30,'',50,'',35,'',0.00, CURDATE());
-insert into controller_data_detail values (102,34,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE());
+insert into controller_data_detail values (100,34,'2020-06-01','2020-07-01',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (101,34,'2020-08-01','2020-09-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (102,34,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
 
 

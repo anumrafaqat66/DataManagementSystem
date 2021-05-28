@@ -135,27 +135,77 @@
 
                     <div class="card-body bg-custom3">
                         <div class="form-group row">
-                            <a class="col mx-1 my-1 img-ship" href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>" style="height: 180px">
-                                <div style="height:100px">
-                                    <div style="margin-top:50px">
-                                        <h1 class="h1 text-dark text-center "><strong>Ship 1</strong></h1>
-                                        <!-- <h2 class="h2 text-dark text-center "><strong><?php echo $mission1 ?></strong></h2> -->
-                                    </div>
+                            <div class="col-sm-4">
+                                <div class="col mx-1 my-1 img-ship" style="display:flex;">
+                                    <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>" style="height: 180px">
+                                        <h1 class="h1 text-center " style="margin-top: 95px;margin-left: 95px; color:black;"><strong>ShipA</strong></h1>
+                                        <h2 class="h2 text-center " style="margin-left: 95px; color:black;"><strong><?php echo $availability_missionA ?></strong></h2>
+                                    </a>
                                 </div>
-                            </a>
-                            <a class="col mx-1 my-1 img-ship2" href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>" style="height: 180px">
-                                <div style="height:100px">
-                                    <div style="margin-top:50px">
-                                        <h1 class="h1 text-dark text-center "><strong>Ship 2</strong></h1>
-                                        <!-- <h2 class="h2 text-dark text-center "><strong><?php echo $mission2 ?></strong></h2> -->
-                                    </div>
+
+                                <div class="col mx-1 my-1 img-ship2" style="display:flex;">
+                                    <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>" style="height: 180px">
+                                        <h1 class="h1 text-center" style="margin-top: 65px;margin-left: 95px; color:black;"><strong>ShipB</strong></h1>
+                                        <h2 class="h2 text-center " style="margin-left: 95px; color:black;"><strong><?php echo $availability_missionB ?></strong></h2>
+                                    </a>
                                 </div>
-                            </a>
+
+                            </div>
+                            <div class="col-sm-8">
+                                <div id="table_div">
+                                    <table id="datatable" class="table table-sm table-striped bg-custom3 text-center">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Ship A</th>
+                                                <th scope="col">Ship B</th>
+                                                <th scope="col">Ship C</th>
+                                                <th scope="col">Ship D</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_rows">
+                                            
+                                            <tr id="table_rows_AAW">
+                                                <th style="background-color:#5a5c69; color:white;">AAW</th>
+                                                <td id="AAW1"><?php echo $shipA_mission1 ?></td>
+                                                <td id="AAW2"><?php echo $shipB_mission1 ?></td>
+                                                <td id="AAW3">0.00</td>
+                                                <td id="AAW4">0.00</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="background-color:#5a5c69; color:white;">ASuW</th>
+                                                <td id="ASuW1"><?php echo $shipA_mission2 ?></td>
+                                                <td id="ASuW2"><?php echo $shipB_mission2 ?></td>
+                                                <td id="ASuW3">0.00</td>
+                                                <td id="ASuW4">0.00</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="background-color:#5a5c69; color:white;">ASW</th>
+                                                <td id="ASW1"><?php echo $shipA_mission3 ?></td>
+                                                <td id="ASW2"><?php echo $shipB_mission3 ?></td>
+                                                <td id="ASW3">0.00</td>
+                                                <td id="ASW4">0.00</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="background-color:#5a5c69; color:white;">EW</th>
+                                                <td id="EW1"><?php echo $shipA_mission4 ?></td>
+                                                <td id="EW2"><?php echo $shipB_mission4 ?></td>
+                                                <td id="EW3">0.00</td>
+                                                <td id="EW4">0.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
@@ -169,6 +219,80 @@
     });
 
     window.onload = function() {
+
+        $count = 1;
+        $('#table_rows > tr').each(function(index, td) {
+            var a1 = document.getElementById("AAW" + $count);
+            var a2 = document.getElementById("ASuW" + $count);
+            var a3 = document.getElementById("ASW" + $count);
+            var a4 = document.getElementById("EW" + $count);
+            
+            if (a1 != null) {
+                if (parseFloat(a1.innerHTML) >= 75 && a1 != null) {
+                    a1.style.color = "#008000";
+                    a1.style.fontSize = "18px";
+                    a1.innerHTML="<b>"+a1.innerHTML+"</b>";
+                } else if (parseFloat(a1.innerHTML) >= 50 && parseFloat(a1.innerHTML) < 75) {
+                    a1.style.color = "#ffa500";
+                    a1.style.fontSize = "18px";
+                    a1.innerHTML="<b>"+a1.innerHTML+"</b>";
+                } else if (parseFloat(a1.innerHTML) < 50) {
+                    a1.style.color = "#ff0000";
+                    a1.style.fontSize = "18px";
+                    a1.innerHTML="<b>"+a1.innerHTML+"</b>";
+                }
+            }
+
+            if (a2 != null) {
+                if (parseFloat(a2.innerHTML) >= 75) {
+                    a2.style.color = "#008000";
+                    a2.style.fontSize = "18px";
+                    a2.innerHTML="<b>"+a2.innerHTML+"</b>";
+                } else if (parseFloat(a2.innerHTML) >= 50 && parseFloat(a2.innerHTML) < 75) {
+                    a2.style.color = "#ffa500";
+                    a2.style.fontSize = "18px";
+                    a2.innerHTML="<b>"+a2.innerHTML+"</b>";
+                } else if (parseFloat(a2.innerHTML) < 50) {
+                    a2.style.color = "#ff0000";
+                    a2.style.fontSize = "18px";
+                    a2.innerHTML="<b>"+a2.innerHTML+"</b>";
+                }
+            }
+
+            if (a3 != null) {
+                if (parseFloat(a3.innerHTML) >= 75) {
+                    a3.style.color = "#008000";
+                    a3.style.fontSize = "18px";
+                    a3.innerHTML="<b>"+a3.innerHTML+"</b>";
+                } else if (parseFloat(a3.innerHTML) >= 50 && parseFloat(a3.innerHTML) < 75) {
+                    a3.style.color = "#ffa500";
+                    a3.style.fontSize = "18px";
+                    a3.innerHTML="<b>"+a3.innerHTML+"</b>";
+                } else if (parseFloat(a3.innerHTML) < 50) {
+                    a3.style.color = "#ff0000";
+                    a3.style.fontSize = "18px";
+                    a3.innerHTML="<b>"+a3.innerHTML+"</b>";
+                }
+            }
+
+            if (a4 != null) {
+                if (parseFloat(a4.innerHTML) >= 75) {
+                    a4.style.color = "#008000";
+                    a4.style.fontSize = "18px";
+                    a4.innerHTML="<b>"+a4.innerHTML+"</b>";
+                } else if (parseFloat(a4.innerHTML) >= 50 && parseFloat(a4.innerHTML) < 75) {
+                    a4.style.color = "#ffa500";
+                    a4.style.fontSize = "18px";
+                    a4.innerHTML="<b>"+a4.innerHTML+"</b>";
+                } else if (parseFloat(a4.innerHTML) < 50) {
+                    a4.style.color = "#ff0000";
+                    a4.style.fontSize = "18px";
+                    a4.innerHTML="<b>"+a4.innerHTML+"</b>";
+                }
+            }
+            $count++;
+        });
+
 
         $t = $("#system_time").val();
         if ($t > 0) {
@@ -269,42 +393,47 @@
             async: false
         });
 
-        $.ajax({
-            url: '<?= base_url(); ?>CO/PageReload',
-            method: 'POST',
-            data: {
-                'wr1': dps[0],
-                'wr2': dps[1],
-                'wr3': dps[2],
-                'wr4': dps[3],
-                'wp1': <?php echo json_encode($mission1, JSON_NUMERIC_CHECK); ?>,
-                'wp2': <?php echo json_encode($mission2, JSON_NUMERIC_CHECK); ?>,
-                'wp3': <?php echo json_encode($mission3, JSON_NUMERIC_CHECK); ?>,
-                'wp4': <?php echo json_encode($mission4, JSON_NUMERIC_CHECK); ?>,
-                'avail': <?php echo json_encode($availability, JSON_NUMERIC_CHECK); ?>,
-                'rel': reliability,
-                'time': enteredTime,
-            },
-            success: function(data) {
-                var newDoc = document.open("text/html", "replace");
-                newDoc.write(data);
-                newDoc.close();
-            },
-            async: false,
-            error: function(data) {
-                alert('failure');
-            }
-        });
+        // $.ajax({
+        //     url: '<?= base_url(); ?>CO/PageReload',
+        //     method: 'POST',
+        //     data: {
+        //         'wr1': dps[0],
+        //         'wr2': dps[1],
+        //         'wr3': dps[2],
+        //         'wr4': dps[3],
+        //         'wp1': <?php //echo json_encode($mission1, JSON_NUMERIC_CHECK); 
+                            ?>,
+        //         'wp2': <?php //echo json_encode($mission2, JSON_NUMERIC_CHECK); 
+                            ?>,
+        //         'wp3': <?php //echo json_encode($mission3, JSON_NUMERIC_CHECK); 
+                            ?>,
+        //         'wp4': <?php //echo json_encode($mission4, JSON_NUMERIC_CHECK); 
+                            ?>,
+        //         'avail': <?php //echo json_encode($availability, JSON_NUMERIC_CHECK); 
+                            ?>,
+        //         'rel': reliability,
+        //         'time': enteredTime,
+        //     },
+        //     success: function(data) {
+        //         var newDoc = document.open("text/html", "replace");
+        //         newDoc.write(data);
+        //         newDoc.close();
+        //     },
+        //     async: false,
+        //     error: function(data) {
+        //         alert('failure');
+        //     }
+        // });
 
     });
 
     $('#Ship_name').on('change', function() {
-       // alert('sds');
+        // alert('sds');
         var a = $(this).val();
         if ($(this).val() == 'ShipA') {
             window.location.href = "<?= base_url(); ?>Cdr/co/ShipA";
         } else if ($(this).val() == 'ShipB') {
             window.location.href = "<?= base_url(); ?>Cdr/co/ShipB";
-        } 
+        }
     });
 </script>

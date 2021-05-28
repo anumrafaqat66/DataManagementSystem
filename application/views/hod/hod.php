@@ -94,7 +94,7 @@
                                                 foreach ($sensor_data as $data) { ?>
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
-                                                        <td scope="row" id="sensor_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
+                                                        <td type="button" scope="row" id="sensor_name<?= $count; ?>"  value="<?= $data['ID']; ?>"><?= $data['Controller_Name']; ?></td>
                                                         <td scope="row" id="avail_sensor<?= $count; ?>"><?= $data['Availability']; ?></td>
                                                         <td scope="row" id="rel_sensor_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
                                                         <td scope="row" id="rel_sensor<?= $count; ?>"><?= $data['Reliability']; ?></td>
@@ -176,7 +176,6 @@
                             <div id="table_div">
                                 <?php if (isset($fire_controller_data)) {
                                     if (count($fire_controller_data) > 0) { ?>
-
                                         <table id="datatable" class="table table-sm table-striped bg-custom3">
                                             <thead>
                                                 <tr>
@@ -185,7 +184,6 @@
                                                     <th scope="col">Availability</th>
                                                     <th scope="col">Default Reliability (30 Days)</th>
                                                     <th scope="col">Reliability</th>
-
                                                 </tr>
                                             </thead>
                                             <tbody id="table_rows_fire">
@@ -193,7 +191,7 @@
                                                 foreach ($fire_controller_data as $data) { ?>
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
-                                                        <td scope="row" id="fire_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
+                                                        <td scope="row" id="fire_name<?= $count; ?>" value="<?= $data['ID']; ?>" type="button"><?= $data['Controller_Name']; ?></td>
                                                         <td scope="row" id="avail_fire<?= $count; ?>"><?= $data['Availability']; ?></td>
                                                         <td scope="row" id="rel_fire_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
                                                         <td scope="row" id="rel_fire<?= $count; ?>"><?= $data['Reliability']; ?></td>
@@ -294,7 +292,7 @@
                                                 foreach ($weapon_data as $data) { ?>
                                                     <tr>
                                                         <td scope="row"><?= ++$count; ?></td>
-                                                        <td scope="row" id="weapon_name<?= $count; ?>"><?= $data['Controller_Name']; ?></td>
+                                                        <td scope="row" id="weapon_name<?= $count; ?>" value="<?= $data['ID']; ?>" type="button"><?= $data['Controller_Name']; ?></td>
                                                         <td scope="row" id="avail_weapon<?= $count; ?>"><?= $data['Availability']; ?></td>
                                                         <td scope="row" id="rel_weapon_def<?= $count; ?>"><?= $data['Default_Reliability']; ?></td>
                                                         <td scope="row" id="rel_weapon<?= $count; ?>"><?= $data['Reliability']; ?></td>
@@ -329,6 +327,21 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
+    $('#table_rows_sensor').find('td').click(function(e) {
+        $sensor_id = $(this).attr('value');
+        window.location = "<?= base_url(); ?>Manager/show_records/"+$sensor_id;
+    });
+
+    $('#table_rows_fire').find('td').click(function(e) {
+        $sensor_id = $(this).attr('value');
+        window.location = "<?= base_url(); ?>Manager/show_records/"+$sensor_id;
+    });
+
+    $('#table_rows_weapon').find('td').click(function(e) {
+        $sensor_id = $(this).attr('value');
+        window.location = "<?= base_url(); ?>Manager/show_records/"+$sensor_id;
+    });
+
     window.onload = function() {
 
         $count_sensor = 1;
@@ -386,8 +399,8 @@
                         if (sn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_sensor_def" + loop_sensor);
                             var ava = document.getElementById("avail_sensor" + loop_sensor);
-                            rel.innerHTML = "<b>"+result[i].Default_Reliability+"</b>";
-                            ava.innerHTML = "<b>"+result[i].Availability+"</b>";
+                            rel.innerHTML = "<b>" + result[i].Default_Reliability + "</b>";
+                            ava.innerHTML = "<b>" + result[i].Availability + "</b>";
 
                             if (result[i].Default_Reliability >= 75) {
                                 rel.style.color = "#008000";
@@ -415,8 +428,8 @@
                         if (fn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_fire_def" + loop_fire);
                             var ava = document.getElementById("avail_fire" + loop_fire);
-                            rel.innerHTML = "<b>"+result[i].Default_Reliability+"</b>";
-                            ava.innerHTML = "<b>"+result[i].Availability+"</b>";
+                            rel.innerHTML = "<b>" + result[i].Default_Reliability + "</b>";
+                            ava.innerHTML = "<b>" + result[i].Availability + "</b>";
 
                             if (result[i].Default_Reliability >= 75) {
                                 rel.style.color = "#008000";
@@ -442,8 +455,8 @@
                         if (wn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_weapon_def" + loop_weapon);
                             var ava = document.getElementById("avail_weapon" + loop_weapon);
-                            rel.innerHTML = "<b>"+result[i].Default_Reliability+"</b>";
-                            ava.innerHTML = "<b>"+result[i].Availability+"</b>";
+                            rel.innerHTML = "<b>" + result[i].Default_Reliability + "</b>";
+                            ava.innerHTML = "<b>" + result[i].Availability + "</b>";
 
                             if (result[i].Default_Reliability >= 75) {
                                 rel.style.color = "#008000";
@@ -597,7 +610,7 @@
                         var sn = document.getElementById("sensor_name" + loop_sensor);
                         if (sn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_sensor" + loop_sensor);
-                            rel.innerHTML = "<b>"+result[i].Reliability+"</b>";
+                            rel.innerHTML = "<b>" + result[i].Reliability + "</b>";
 
                             if (result[i].Reliability >= 75) {
                                 rel.style.color = "#008000";
@@ -606,7 +619,7 @@
                             } else if (result[i].Reliability < 50) {
                                 rel.style.color = "#ff0000";
                             }
-                            
+
                         }
                         loop_sensor++;
                     }
@@ -643,8 +656,8 @@
                         var fn = document.getElementById("fire_name" + loop_fire);
                         if (fn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_fire" + loop_fire);
-                            rel.innerHTML = "<b>"+result[i].Reliability+"</b>";
-                            
+                            rel.innerHTML = "<b>" + result[i].Reliability + "</b>";
+
                             if (result[i].Reliability >= 75) {
                                 rel.style.color = "#008000";
                             } else if (result[i].Reliability >= 50 && result[i].Reliability < 75) {
@@ -688,7 +701,7 @@
                         var wn = document.getElementById("weapon_name" + loop_weapon);
                         if (wn.innerHTML == result[i].Controller_Name) {
                             var rel = document.getElementById("rel_weapon" + loop_weapon);
-                            rel.innerHTML = "<b>"+result[i].Reliability+"</b>";
+                            rel.innerHTML = "<b>" + result[i].Reliability + "</b>";
 
                             if (result[i].Reliability >= 75) {
                                 rel.style.color = "#008000";

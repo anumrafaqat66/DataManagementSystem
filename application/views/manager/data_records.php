@@ -11,7 +11,7 @@
                         <div class="card-header bg-custom1">
                             <h1 class="h4 text-white">Records</h1>
                         </div>
-                        <table id="datatable" class="table table-sm table-striped">
+                        <table id="datatable" class="table table-sm table-striped text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -21,14 +21,15 @@
                                     <th scope="col">Fail End Date</th>
                                     <th scope="col">TBF</th>
                                     <th scope="col">TCM</th>
-                                    <th scope="col">TCM Desc</th>
+                                    <th scope="col">Desc</th>
                                     <th scope="col">TPM</th>
-                                    <th scope="col">TPM Desc</th>
+                                    <th scope="col">Desc</th>
                                     <th scope="col">ADLT</th>
-                                    <th scope="col">ADLT Desc</th>
+                                    <th scope="col">Desc</th>
                                     <th scope="col">TTR</th>
+                                    <th scope="col">Status</th>
                                     <!-- <th scope="col">Reg Date</th> -->
-                                    <!-- <th scope="col" width="15%">Action</th> -->
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,8 +39,8 @@
                                         <td scope="row"><?= ++$count; ?></td>
                                         <td scope="row"><?= $data['Controller_Name']; ?></td>
                                         <td scope="row"><?= $data['ESWB']; ?></td>
-                                        <td scope="row" style="width:150px;"><?= $data['Failure_start_date']; ?></td>
-                                        <td scope="row" style="width:150px;"><?= $data['Failure_end_date']; ?></td>
+                                        <td scope="row" style="width:600px;"><?= $data['Failure_start_date']; ?></td>
+                                        <td scope="row" style="width:500px;"><?= $data['Failure_end_date']; ?></td>
                                         <td scope="row"><?= $data['TBF']; ?></td>
                                         <td scope="row"><?= $data['TCM']; ?></td>
                                         <td scope="row" id="tcm_desc" style="width:150px; scroll;"value="<?= $data['TCM_Desc']; ?>"><?= $data['TCM_Desc']; ?></td>
@@ -48,10 +49,11 @@
                                         <td scope="row"><?= $data['ADLT']; ?></td>
                                         <td scope="row" style="width:150px;"><?= $data['ADLT_Desc']; ?></td>
                                         <td scope="row"><?= $data['TTR']; ?></td>
+                                        <td scope="row" style="width:100px;"><?= $data['Status']; ?></td>
                                         <!-- <td scope="row"><?= $data['RegDate']; ?></td> -->
-                                        <!-- <td>
-                                           <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/Update_data/<?= $data['id']; ?>">Update Record</a>
-                                        </td> -->
+                                        <td scope="row" style="width:300px;">
+                                           <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/update_details/<?= $data['id']; ?>">Update</a>
+                                        </td>
 
                                     </tr>
                                 <?php } ?>

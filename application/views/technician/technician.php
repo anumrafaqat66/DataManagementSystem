@@ -22,6 +22,20 @@
                          <div class="card-body bg-custom3">
                              <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Technician/add_data_into_db">
                                  <div class="form-group row">
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Select Controller Type:</h6>
+                                     </div>
+
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Enter ESWB:</h6>
+                                     </div>
+
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Enter Controller Name:</h6>
+                                     </div>
+
+                                 </div>
+                                 <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
                                          <select class="form-control rounded-pill" name="controller_type" id="controller_type" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                              <option class="form-control form-control-user" value="">Select Controller</option>
@@ -41,6 +55,52 @@
                                  </div>
 
                                  <div class="form-group row">
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Enter Comission Date:</h6>
+                                     </div>
+
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Selet Ship:</h6>
+                                     </div>
+
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Enter Total Equipped:</h6>
+                                     </div>
+
+                                 </div>
+                                 <div class="form-group row">
+                                     <div class="col-sm-4 mb-1">
+                                         <input type="date" class="form-control form-control-user" id="comission_date" name="Comission_date" placeholder="comission date*">
+                                     </div>
+                                     <div class="col-sm-4 mb-1">
+                                         <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;" disabled>
+                                             <!-- <option class="form-control form-control-user" value="">Select Ship</option> -->
+                                             <?php foreach ($ships_data as $ship) { ?>
+                                                 <option class="form-control form-control-user" value="<?= $ship['ID'] ?>"><?= $ship['Ship_name'] ?></option>
+                                             <?php } ?>
+                                         </select>
+                                     </div>
+                                     <div class="col-sm-4 mb-1">
+                                         <input type="number" class="form-control form-control-user" id="Total_Equipped" name="Total_Equipped" placeholder="total equipped*">
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group row">
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Included:</h6>
+                                     </div>
+
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Not Included:</h6>
+                                     </div>
+
+                                     <div class="col-sm-4">
+                                         <h6>&nbsp;Assosiated Equipment:</h6>
+                                     </div>
+
+                                 </div>
+
+                                 <div class="form-group row">
                                      <div class="col-sm-4 mb-1">
                                          <input type="text" class="form-control form-control-user" name="included" placeholder="Included">
                                      </div>
@@ -54,22 +114,7 @@
                                      </div>
                                  </div>
 
-                                    <div class="form-group row">
-                                    <div class="col-sm-4 mb-1">
-                                         <input type="date" class="form-control form-control-user" id="comission_date" name="Comission_date" placeholder="comission date*">
-                                     </div>
-                                     <div class="col-sm-4 mb-1">
-                                         <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                            <option class="form-control form-control-user" value="">Select Ship</option>
-                                        <?php foreach($ships_data as $ship) {?>
-                                             <option class="form-control form-control-user" value="<?= $ship['ID'] ?>"><?= $ship['Ship_name'] ?></option>
-                                         <?php } ?>
-                                         </select>
-                                     </div>
-                                     <div class="col-sm-4 mb-1">
-                                         <input type="number" class="form-control form-control-user" id="Total_Equipped" name="Total_Equipped" placeholder="total equipped*">
-                                     </div>
-                                 </div>
+                                 
 
                                  <div class="form-group row justify-content-center">
                                      <div class="col-sm-4">
@@ -129,10 +174,10 @@
                                                      <td scope="row"><?= $data['Includes']; ?></td>
                                                      <td scope="row"><?= $data['Not_Includes']; ?></td>
                                                      <td scope="row"><?= $data['Associated_Equipment']; ?></td>
-                                                      <td scope="row"><?= $data['Comission_date']; ?></td>
-                                                      <?php $ship_name = $this->db->where('ID',$data['Ship_ID'])->get('Ship_data')->row_array(); ?>
-                                                       <td scope="row"><?= $ship_name['Ship_name'];?></td>
-                                                        <td scope="row"><?= $data['Total_Equipped']; ?></td>
+                                                     <td scope="row"><?= $data['Comission_date']; ?></td>
+                                                     <?php $ship_name = $this->db->where('ID', $data['Ship_ID'])->get('Ship_data')->row_array(); ?>
+                                                     <td scope="row"><?= $ship_name['Ship_name']; ?></td>
+                                                     <td scope="row"><?= $data['Total_Equipped']; ?></td>
                                                  </tr>
                                              <?php } ?>
                                          </tbody>
@@ -161,9 +206,9 @@
          var controller_type = $('#controller_type').val();
          var eswb = $('#eswb').val();
          var name = $('#controller_name').val();
-         var comission_date=$('#comission_date').val();
-         var ship_id=$('#Ship_ID').val();
-         var total_equipped=$('#Total_Equipped').val();
+         var comission_date = $('#comission_date').val();
+         var ship_id = $('#Ship_ID').val();
+         var total_equipped = $('#Total_Equipped').val();
 
          if (eswb == '') {
              validate = 1;
@@ -177,7 +222,7 @@
              validate = 1;
              $('#controller_type').addClass('red-border');
          }
-       if (comission_date == '') {
+         if (comission_date == '') {
              validate = 1;
              $('#comission_date').addClass('red-border');
          }
@@ -185,7 +230,7 @@
              validate = 1;
              $('#Ship_ID').addClass('red-border');
          }
-         if ( total_equipped == '') {
+         if (total_equipped == '') {
              validate = 1;
              $('#Total_Equipped').addClass('red-border');
          }
