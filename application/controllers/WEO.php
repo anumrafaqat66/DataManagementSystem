@@ -47,6 +47,22 @@ class WEO extends CI_Controller
                 $weapon_name = $weapon;
                 $view_array = array();
                 $view_rows = array();
+                $view_sensors = array();
+
+                $this->db->select('wsc.sensor_id');
+                $this->db->distinct();
+                $this->db->from('weapon_systems ws');
+                $this->db->join('weapon_system_config wsc', 'ws.id = wsc.weapon_id');
+                $this->db->join('controller_data cd', 'wsc.sensor_id = cd.ID');
+                $this->db->where('ws.weapon_name', $weapon_name);
+                $this->db->where('ws.Ship_ID', $ship_id); //for ship
+                $view_sensors['data'] =  $this->db->get()->result_array();
+
+                if (count($view_sensors['data']) != 0) {
+                    for ($i = 0; $i < count($view_sensors['data']); $i++) :
+                        $this->get_sensor_availability($view_sensors['data'][$i]['sensor_id'], $ship_id);
+                    endfor;
+                }
 
                 $this->db->select('wsc.connection_group');
                 $this->db->distinct();
@@ -111,7 +127,7 @@ class WEO extends CI_Controller
                 }
 
                 $final_result = $sub_final_result * $resultant_series;
-
+                
                 //Updation 
                 $cond  = ['weapon_name' => $weapon_name, 'Ship_ID' => $ship_id];
                 $data_update = [
@@ -127,6 +143,39 @@ class WEO extends CI_Controller
             $this->load->view('login');
         }
     }
+
+    public function get_sensor_availability($sensor_id = NULL, $ship_id=null)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $id = $this->session->userdata('user_id');
+            $status = $this->session->userdata('status');
+
+            if ($status == "hod" || $status == "weo" || $status == "co" || $status =="typecdr") {
+                $controller_id = $sensor_id; //$_POST['controller_id'];
+                $view_array = array();
+                $view_array['data'] =  $this->db->where('ID', $controller_id)->where('Ship_ID', $ship_id)->get('controller_data')->row_array();
+                if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '' && $view_array['data']['MTBF'] != 0.00 && $view_array['data']['MTTR'] != 0.00) {
+                    $availability = number_format($view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']), 4);
+                    //echo ($availability * 100);
+                } else {
+                    $availability = 0;
+                    //echo ($availability * 100);
+                }
+                $cond  = ['ID' => $controller_id, 'Ship_ID' => $ship_id];
+                $data_update = [
+                    'Availability' => $availability * 100                    
+                ];
+                $this->db->where($cond);
+                $this->db->update('controller_data', $data_update);
+            } else {
+                $this->load->view('login');
+            }
+        } else {
+            $this->load->view('login');
+        }
+    }
+
+
 
     public function get_all_weapons_reliability()
     {

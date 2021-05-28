@@ -279,6 +279,18 @@
             $('#ship_detail').show();
         }
 
+        $.ajax({
+            url: '<?= base_url(); ?>CO/get_complete_ship_availability',
+            method: 'POST',
+            success: function(data) {
+                //$('#reliability_bar').html(data + "%");
+                //$('#reliability_bar').width(data * 5);
+                reliability = data;
+                enteredTime = time;
+            },
+            async: true
+        });
+
 
         $data = $("#availability_bar").html();
         $value = $data.substr(0, $data.length - 1);

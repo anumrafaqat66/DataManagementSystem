@@ -35,7 +35,7 @@
                             <tbody>
                                 <?php $count = 0;
                                 foreach ($controller_detail_records as $data) { ?>
-                                    <tr>
+                                    <tr style="<?php if($data['Status'] =="In Progress") {echo 'background-color:#ffcccb;font-weight: bold';}?>">
                                         <td scope="row"><?= ++$count; ?></td>
                                         <td scope="row"><?= $data['Controller_Name']; ?></td>
                                         <td scope="row"><?= $data['ESWB']; ?></td>
@@ -49,7 +49,7 @@
                                         <td scope="row"><?= $data['ADLT']; ?></td>
                                         <td scope="row" style="width:150px;"><?= $data['ADLT_Desc']; ?></td>
                                         <td scope="row"><?= $data['TTR']; ?></td>
-                                        <td scope="row" style="width:100px;"><?= $data['Status']; ?></td>
+                                        <td scope="row" style="width:120px;<?php if($data['Status'] =="In Progress") {echo 'color:red';}?>" ><?= $data['Status']; ?></td>
                                         <!-- <td scope="row"><?= $data['RegDate']; ?></td> -->
                                         <td scope="row" style="width:300px;">
                                            <a class="btn btn-primary rounded-pill text-sm" href="<?= base_url(); ?>manager/update_details/<?= $data['id']; ?>">Update</a>

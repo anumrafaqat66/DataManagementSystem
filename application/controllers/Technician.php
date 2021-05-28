@@ -52,19 +52,19 @@ class Technician extends CI_Controller
 
     public function get_TBF()
     {
-
         $start_data = $_POST['start_data'];
         $sensor_id = $_POST['sensor_id'];
         $end_data = $this->db->select('*')->where('Controller_Data_ID', $sensor_id)->order_by('id', 'desc')->limit(1)->get('controller_data_detail')->row_array();
         $cont_data = $this->db->select('*')->where('ID', $sensor_id)->order_by('id', 'desc')->limit(1)->get('controller_data')->row_array();
         
-        if ($end_data != null) {
+        if ($end_data['Failure_end_date'] != null && $end_data['Failure_end_date'] != 0) {
             $TBF = $end_data['Failure_end_date'];
         } else {
             $TBF = $cont_data['Comission_date'];
         }
-
+        
         $dateDiff = $this->dateDiffInDays($TBF, $start_data);
+        
         echo json_encode($dateDiff);
     }
 

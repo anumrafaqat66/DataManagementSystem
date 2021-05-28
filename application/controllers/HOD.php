@@ -40,8 +40,6 @@ class HOD extends CI_Controller
                 $view_array['data'] =  $this->db->where('ID', $controller_id)->where('Ship_ID', $ship_id)->get('controller_data')->row_array();
                 if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTTR'] != '' && $view_array['data']['MTBF'] != 0.00 && $view_array['data']['MTTR'] != 0.00) {
                     $availability = number_format($view_array['data']['MTBF'] / ($view_array['data']['MTBF'] + $view_array['data']['MTTR']), 4);
-                    //$aval =$availability * 100;
-                    //print_r($aval);
                     echo ($availability * 100);
                 } else {
                     $availability = 0;

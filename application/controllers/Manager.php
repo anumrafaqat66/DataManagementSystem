@@ -15,7 +15,6 @@ class Manager extends CI_Controller
             $data['ship_id'] = $this->session->userdata('ship_id');
 
             if ($status == "manager" || $status == "co" || $status == "hod" || $status == "weo" || $status == "typecdr") {
-
                 $this->db->select('cd.*,sd.Ship_name');
                 $this->db->from('controller_data cd');
                 $this->db->join('ship_data sd', 'sd.ID = cd.ship_ID');
@@ -50,6 +49,7 @@ class Manager extends CI_Controller
 
     public function Update_data($id = NULL)
     {
+        $ship_id = $this->session->userdata('ship_id');
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
             $TBF = $postData['TBF'];
@@ -86,34 +86,45 @@ class Manager extends CI_Controller
             ];
             $this->db->where($cond);
             $this->db->update('controller_data_detail', $data_update);
+            $this->Calculate_Mean($id, $ship_id);
             $this->session->set_flashdata('success', 'Data Updated successfully');
             redirect('Manager');
         }
     }
 
-    public function Calculate_Mean($id = NULL)
+    public function Calculate_Mean($id = NULL, $ship_id = NULL)
     {
-        $this->db->select('count(*) count');
-        $this->db->from('controller_data_detail');
-        $this->db->where('Controller_Data_ID', $id);
+        $cont_data = $this->db->select('*')->where('id', $id)->limit(1)->get('controller_data_detail')->row_array();
+        
+        $this->db->select('count(*) as count');
+        $this->db->from('controller_data cd');
+        $this->db->join('controller_data_detail cdd', 'cd.id = cdd.Controller_Data_ID');  
+        $this->db->where('cdd.Controller_Data_ID', $cont_data['Controller_Data_ID']);
+        $this->db->where('cd.Ship_ID', $ship_id);
+
         $query1 = $this->db->get();
+
         if ($query1->num_rows() > 0) {
             $count = $query1->row()->count;
         }
 
         $this->db->select('sum(TBF) STBF, sum(TTR) STTR');
-        $this->db->from('controller_data_detail');
-        $this->db->where('Controller_Data_ID', $id);
+        $this->db->from('controller_data cd');
+        $this->db->join('controller_data_detail cdd', 'cd.id = cdd.Controller_Data_ID');  
+        $this->db->where('cdd.Controller_Data_ID', $cont_data['Controller_Data_ID']);
+        $this->db->where('cd.Ship_ID', $ship_id);
+
         $query2 = $this->db->get();
+
         if ($query1->num_rows() > 0) {
             $STBF = $query2->row()->STBF;
             $STTR = $query2->row()->STTR;
         }
-
+        echo $count; echo 'count';         
         $MTBF = $STBF / $count;
         $MTTR = $STTR / $count;
 
-        $cond  = ['ID' => $id];
+        $cond  = ['ID' => $cont_data['Controller_Data_ID']];
         $data_update = [
             'MTBF' => $MTBF,
             'MTTR' => $MTTR
@@ -125,6 +136,7 @@ class Manager extends CI_Controller
 
     public function add_data($id = NULL)
     {
+        $ship_id = $this->session->userdata('ship_id');
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
@@ -164,7 +176,7 @@ class Manager extends CI_Controller
             $insert = $this->db->insert('controller_data_detail', $insert_array);
 
             if (!empty($insert)) {
-                $this->Calculate_Mean($id);
+                $this->Calculate_Mean($id, $ship_id);
                 $this->session->set_flashdata('success', 'Data inserted successfully');
                 redirect('Manager');
             } else {
@@ -180,7 +192,6 @@ class Manager extends CI_Controller
 
     public function Get_Values($id = NULL)
     {
-
         $data['manager_controller_data'] = $this->db->get('controller_data')->result_array();
         $data['selected_controller_data'] = $this->db->where('id', $id)->get('controller_data')->row_array();
 
