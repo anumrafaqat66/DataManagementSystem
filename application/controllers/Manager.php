@@ -14,7 +14,7 @@ class Manager extends CI_Controller
             $status = $this->session->userdata('status');
             $data['ship_id'] = $this->session->userdata('ship_id');
 
-            if ($status == "manager" || $status == "co" || $status == "hod" || $status == "weo") {
+            if ($status == "manager" || $status == "co" || $status == "hod" || $status == "weo" || $status == "typecdr") {
 
                 $this->db->select('cd.*,sd.Ship_name');
                 $this->db->from('controller_data cd');

@@ -1,4 +1,4 @@
-<?php $this->load->view('co/common/header'); ?>
+<?php $this->load->view('cdr/common/header'); ?>
 <?php !isset($MissionReliability1) ? $MissionReliability1 = 0 : $MissionReliability1; ?>
 <?php !isset($MissionReliability2) ? $MissionReliability2 = 0 : $MissionReliability2; ?>
 <?php !isset($MissionReliability3) ? $MissionReliability3 = 0 : $MissionReliability3; ?>
@@ -202,60 +202,6 @@
             $('#reliability_chart').show();
         }
 
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            exportEnabled: true,
-            theme: "light1", // "light1", "light2", "dark1", "dark2"
-            title: {
-                text: ""
-            },
-            axisY: {
-                includeZero: true,
-                maximum: 100
-            },
-            data: [{
-                // color:red,
-                type: "column", //change type to bar, line, area, pie, etc
-                indexLabel: "{y}%", //Shows y value on all Data Points
-                indexLabelFontColor: "white",
-                indexLabelFontWeight: "bolder",
-                indexLabelPlacement: "inside",
-                click: onClick,
-                dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-            }]
-        });
-        changeColor(chart);
-        chart.render();
-
-
-        var chart = new CanvasJS.Chart("chartContainer1", {
-            animationEnabled: true,
-            exportEnabled: true,
-            theme: "light1", // "light1", "light2", "dark1", "dark2"
-            title: {
-                text: ""
-            },
-            axisY: {
-                includeZero: true,
-                maximum: 100,
-                minimum: 0,
-            },
-
-            data: [{
-                // color:setColor(chart),
-                type: "bar", //change type to bar, line, area, pie, etc
-                indexLabel: "{y}%", //Shows y value on all Data Points
-                indexLabelFontColor: "white",
-                indexLabelFontWeight: "bolder",
-                indexLabelPlacement: "inside",
-                click: onClick,
-                dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
-            }]
-        });
-        changeColor(chart);
-        chart.render();
-
         function changeColor(chart) {
             for (var i = 0; i < chart.options.data.length; i++) {
                 for (var j = 0; j < chart.options.data[i].dataPoints.length; j++) {
@@ -352,16 +298,13 @@
 
     });
 
-    $('#mission').on('change', function() {
+    $('#Ship_name').on('change', function() {
+       // alert('sds');
         var a = $(this).val();
-        if ($(this).val() == 'AAW') {
-            window.location.href = "<?= base_url(); ?>mission/mission/AAW";
-        } else if ($(this).val() == 'ASuW') {
-            window.location.href = "<?= base_url(); ?>mission/mission/ASuW";
-        } else if ($(this).val() == 'ASW') {
-            window.location.href = "<?= base_url(); ?>mission/mission/ASW";
-        } else if ($(this).val() == 'EW') {
-            window.location.href = "<?= base_url(); ?>mission/mission/EW";
-        }
+        if ($(this).val() == 'ShipA') {
+            window.location.href = "<?= base_url(); ?>Cdr/co/ShipA";
+        } else if ($(this).val() == 'ShipB') {
+            window.location.href = "<?= base_url(); ?>Cdr/co/ShipB";
+        } 
     });
 </script>

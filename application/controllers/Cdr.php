@@ -29,5 +29,23 @@ class Cdr extends CI_Controller
         $data['availability'] = number_format((1 - ($result)) * 100, 2);
         $this->load->view('ship/ship', $data);
     }
+
+        public function redirect($page=null){
+       if($page=='co'){
+        redirect('CO');
+       }
+       elseif($page=='weo'){
+         redirect('WEO');
+       }
+        elseif($page=='hod'){
+         redirect('HOD');
+       }
+        elseif($page=='manager'){
+         redirect('Manager');
+       }
+       elseif($page=='technician'){
+ redirect('Technician');
+       }
+    }
 }
   

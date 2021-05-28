@@ -28,7 +28,7 @@ class HOD extends CI_Controller
 
     }
 
-    public function get_availability($sensor_id = NULL, $ship_id)
+    public function get_availability($sensor_id = NULL, $ship_id=null)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
