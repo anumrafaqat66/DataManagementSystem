@@ -60,7 +60,7 @@
                                      </div>
 
                                      <div class="col-sm-4">
-                                         <h6>&nbsp;Selet Ship:</h6>
+                                         <h6>&nbsp;Select Ship:</h6>
                                      </div>
 
                                      <div class="col-sm-4">
@@ -73,7 +73,7 @@
                                          <input type="date" class="form-control form-control-user" id="comission_date" name="Comission_date" placeholder="comission date*">
                                      </div>
                                      <div class="col-sm-4 mb-1">
-                                         <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;" disabled>
+                                         <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;background:#dddddd;">
                                              <!-- <option class="form-control form-control-user" value="">Select Ship</option> -->
                                              <?php foreach ($ships_data as $ship) { ?>
                                                  <option class="form-control form-control-user" value="<?= $ship['ID'] ?>"><?= $ship['Ship_name'] ?></option>

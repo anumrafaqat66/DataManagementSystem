@@ -82,11 +82,13 @@ class Technician extends CI_Controller
             $ship_id = $postData['Ship_ID'];
             $comission_date = $postData['Comission_date'];
             $Total_Equipped = $postData['Total_Equipped'];
+            $controller_code = str_replace(' ', '', $name);
 
             $insert_array = array(
                 'controller_type' => $controller_type,
                 'ESWB' => $eswb,
                 'controller_name' => $name,
+                'Controller_Code' => $controller_code,
                 'includes' => $included,
                 'Not_Includes' => $notIncluded,
                 'Associated_Equipment' => $AssociatedEquipment,

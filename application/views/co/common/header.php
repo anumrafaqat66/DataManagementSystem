@@ -177,11 +177,11 @@
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <select class="form-control rounded-pill small" name="mission" id="mission" data-placeholder="Select mission" style="font-size: 0.8rem; height:35px;">\
-                                <option class="form-control form-control-user small" value="">Search Mission</option>
-                                <option class="form-control form-control-user small" value="AAW">AAW</option>
-                                <option class="form-control form-control-user small" value="ASuW">ASuW</option>
-                                <option class="form-control form-control-user small" value="ASW">ASW</option>
-                                <option class="form-control form-control-user small" value="EW">EW</option>
+                                <option class="form-control form-control-user small" style="font-size: 0.8rem;" value="">Search Mission</option>
+                                <option class="form-control form-control-user small" style="font-size: 0.8rem;" value="AAW">AAW</option>
+                                <option class="form-control form-control-user small" style="font-size: 0.8rem;" value="ASuW">ASuW</option>
+                                <option class="form-control form-control-user small" style="font-size: 0.8rem;" value="ASW">ASW</option>
+                                <option class="form-control form-control-user small" style="font-size: 0.8rem;" value="EW">EW</option>
                             </select>
                         </div>
                     </form>

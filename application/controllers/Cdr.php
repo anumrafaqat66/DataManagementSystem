@@ -10,7 +10,9 @@ class Cdr extends CI_Controller
     {
         $this->session->set_userdata('ship_id', 1); //Default Set
         $ship_id = $this->session->userdata('ship_id');
+        
         $missions = $this->db->where('Ship_ID',1)->get('missions')->result_array();
+
         $result_shipA = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result_shipA = $result_shipA * (1 - $missions[$i]['Availability'] / 100);
@@ -19,6 +21,7 @@ class Cdr extends CI_Controller
         }
         $data['availability_missionA'] = number_format((1 - ($result_shipA)) * 100, 2);
 
+        
         $missions = $this->db->where('Ship_ID',2)->get('missions')->result_array();
         $result_shipB = 1;
         for ($i = 0; $i < count($missions); $i++) {
@@ -27,6 +30,12 @@ class Cdr extends CI_Controller
             $data["shipB_mission$datarow"] = $missions[$i]['Availability'];
         }
         $data['availability_missionB'] = number_format((1 - ($result_shipB)) * 100, 2);
+
+        $ship_data = $this->db->get('ship_data')->result_array();
+        for ($i = 0; $i < count($ship_data); $i++) {            
+            $datarow = $i  + 1;
+            $data["ship_data$datarow"] = $ship_data[$i]['Ship_name'];
+        }
 
         $this->load->view('cdr/cdr', $data);
     }

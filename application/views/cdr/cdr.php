@@ -134,24 +134,26 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <div class="col mx-1 my-1 img-ship" style="display:flex;">
+                        <div class="form-group row mx-1 my-1">
+                            <!-- <div class="col-sm-12"> -->
+                                <div class="col-sm-6 img-ship" style="display:flex;">
                                     <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>" style="height: 180px">
-                                        <h1 class="h1 text-center " style="margin-top: 95px;margin-left: 95px; color:black;"><strong>ShipA</strong></h1>
+                                        <h1 class="h1 text-center " style="margin-top: 95px;margin-left: 95px; color:black;"><strong><?php echo $ship_data1 ?></strong></h1>
                                         <h2 class="h2 text-center " style="margin-left: 95px; color:black;"><strong><?php echo $availability_missionA ?></strong></h2>
                                     </a>
                                 </div>
 
-                                <div class="col mx-1 my-1 img-ship2" style="display:flex;">
+                                <div class="col-sm-6 img-ship2" style="display:flex;">
                                     <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>" style="height: 180px">
-                                        <h1 class="h1 text-center" style="margin-top: 65px;margin-left: 95px; color:black;"><strong>ShipB</strong></h1>
+                                        <h1 class="h1 text-center" style="margin-top: 65px;margin-left: 95px; color:black;"><strong><?php echo $ship_data2 ?></strong></h1>
                                         <h2 class="h2 text-center " style="margin-left: 95px; color:black;"><strong><?php echo $availability_missionB ?></strong></h2>
                                     </a>
                                 </div>
 
-                            </div>
-                            <div class="col-sm-8">
+                            <!-- </div> -->
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
                                 <div id="table_div">
                                     <table id="datatable" class="table table-sm table-striped bg-custom3 text-center">
                                         <thead class="thead-dark">
@@ -164,7 +166,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="table_rows">
-                                            
+
                                             <tr id="table_rows_AAW">
                                                 <th style="background-color:#5a5c69; color:white;">AAW</th>
                                                 <td id="AAW1"><?php echo $shipA_mission1 ?></td>
@@ -226,20 +228,20 @@
             var a2 = document.getElementById("ASuW" + $count);
             var a3 = document.getElementById("ASW" + $count);
             var a4 = document.getElementById("EW" + $count);
-            
+
             if (a1 != null) {
                 if (parseFloat(a1.innerHTML) >= 75 && a1 != null) {
                     a1.style.color = "#008000";
                     a1.style.fontSize = "18px";
-                    a1.innerHTML="<b>"+a1.innerHTML+"</b>";
+                    a1.innerHTML = "<b>" + a1.innerHTML + "</b>";
                 } else if (parseFloat(a1.innerHTML) >= 50 && parseFloat(a1.innerHTML) < 75) {
                     a1.style.color = "#ffa500";
                     a1.style.fontSize = "18px";
-                    a1.innerHTML="<b>"+a1.innerHTML+"</b>";
+                    a1.innerHTML = "<b>" + a1.innerHTML + "</b>";
                 } else if (parseFloat(a1.innerHTML) < 50) {
                     a1.style.color = "#ff0000";
                     a1.style.fontSize = "18px";
-                    a1.innerHTML="<b>"+a1.innerHTML+"</b>";
+                    a1.innerHTML = "<b>" + a1.innerHTML + "</b>";
                 }
             }
 
@@ -247,15 +249,15 @@
                 if (parseFloat(a2.innerHTML) >= 75) {
                     a2.style.color = "#008000";
                     a2.style.fontSize = "18px";
-                    a2.innerHTML="<b>"+a2.innerHTML+"</b>";
+                    a2.innerHTML = "<b>" + a2.innerHTML + "</b>";
                 } else if (parseFloat(a2.innerHTML) >= 50 && parseFloat(a2.innerHTML) < 75) {
                     a2.style.color = "#ffa500";
                     a2.style.fontSize = "18px";
-                    a2.innerHTML="<b>"+a2.innerHTML+"</b>";
+                    a2.innerHTML = "<b>" + a2.innerHTML + "</b>";
                 } else if (parseFloat(a2.innerHTML) < 50) {
                     a2.style.color = "#ff0000";
                     a2.style.fontSize = "18px";
-                    a2.innerHTML="<b>"+a2.innerHTML+"</b>";
+                    a2.innerHTML = "<b>" + a2.innerHTML + "</b>";
                 }
             }
 
@@ -263,15 +265,15 @@
                 if (parseFloat(a3.innerHTML) >= 75) {
                     a3.style.color = "#008000";
                     a3.style.fontSize = "18px";
-                    a3.innerHTML="<b>"+a3.innerHTML+"</b>";
+                    a3.innerHTML = "<b>" + a3.innerHTML + "</b>";
                 } else if (parseFloat(a3.innerHTML) >= 50 && parseFloat(a3.innerHTML) < 75) {
                     a3.style.color = "#ffa500";
                     a3.style.fontSize = "18px";
-                    a3.innerHTML="<b>"+a3.innerHTML+"</b>";
+                    a3.innerHTML = "<b>" + a3.innerHTML + "</b>";
                 } else if (parseFloat(a3.innerHTML) < 50) {
                     a3.style.color = "#ff0000";
                     a3.style.fontSize = "18px";
-                    a3.innerHTML="<b>"+a3.innerHTML+"</b>";
+                    a3.innerHTML = "<b>" + a3.innerHTML + "</b>";
                 }
             }
 
@@ -279,15 +281,15 @@
                 if (parseFloat(a4.innerHTML) >= 75) {
                     a4.style.color = "#008000";
                     a4.style.fontSize = "18px";
-                    a4.innerHTML="<b>"+a4.innerHTML+"</b>";
+                    a4.innerHTML = "<b>" + a4.innerHTML + "</b>";
                 } else if (parseFloat(a4.innerHTML) >= 50 && parseFloat(a4.innerHTML) < 75) {
                     a4.style.color = "#ffa500";
                     a4.style.fontSize = "18px";
-                    a4.innerHTML="<b>"+a4.innerHTML+"</b>";
+                    a4.innerHTML = "<b>" + a4.innerHTML + "</b>";
                 } else if (parseFloat(a4.innerHTML) < 50) {
                     a4.style.color = "#ff0000";
                     a4.style.fontSize = "18px";
-                    a4.innerHTML="<b>"+a4.innerHTML+"</b>";
+                    a4.innerHTML = "<b>" + a4.innerHTML + "</b>";
                 }
             }
             $count++;

@@ -174,10 +174,10 @@
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <select class="form-control rounded-pill small" name="Ship_name" id="Ship_name" data-placeholder="Select Ship" style="font-size: 0.8rem; height:35px;">\
-                                <option class="form-control form-control-user small" value="">Search Ship</option>
+                                <option class="form-control form-control-user small" style="font-size: 0.8rem;"  value="">Search Ship</option>
                                 <?php $ship_data= $this->db->get('ship_data')->result_array(); ?>
                                 <?php foreach($ship_data as $data){ ?>
-                                <option class="form-control form-control-user small" value="<?=  $data['Ship_name']?>"><?= $data['Ship_name']; ?></option>
+                                <option class="form-control form-control-user small" style="font-size: 0.8rem;"  value="<?=  $data['Ship_name']?>"><?= $data['Ship_name']; ?></option>
                                 <?php } ?>
                                
                             </select>
