@@ -31,6 +31,25 @@ class Cdr extends CI_Controller
         }
         $data['availability_missionB'] = number_format((1 - ($result_shipB)) * 100, 2);
 
+        $missions = $this->db->where('Ship_ID',3)->get('missions')->result_array();
+        $result_shipC = 1;
+        for ($i = 0; $i < count($missions); $i++) {
+            $result_shipC = $result_shipC * (1 - $missions[$i]['Availability'] / 100);
+            $datarow = $i  + 1;
+            $data["shipC_mission$datarow"] = $missions[$i]['Availability'];
+        }
+        $data['availability_missionC'] = number_format((1 - ($result_shipC)) * 100, 2);
+
+        $missions = $this->db->where('Ship_ID',4)->get('missions')->result_array();
+        $result_shipD = 1;
+        for ($i = 0; $i < count($missions); $i++) {
+            $result_shipD = $result_shipD * (1 - $missions[$i]['Availability'] / 100);
+            $datarow = $i  + 1;
+            $data["shipD_mission$datarow"] = $missions[$i]['Availability'];
+        }
+        $data['availability_missionD'] = number_format((1 - ($result_shipD)) * 100, 2);
+
+
         $ship_data = $this->db->get('ship_data')->result_array();
         for ($i = 0; $i < count($ship_data); $i++) {            
             $datarow = $i  + 1;
@@ -46,6 +65,10 @@ class Cdr extends CI_Controller
             $this->session->set_userdata('ship_id', 1);
         } else if($ship == "Ship2"){
             $this->session->set_userdata('ship_id', 2);
+        } else if($ship == "Ship3"){
+            $this->session->set_userdata('ship_id', 3);
+        } else if($ship == "Ship4"){
+            $this->session->set_userdata('ship_id', 4);
         }
 
         $ship_id = $this->session->userdata('ship_id');

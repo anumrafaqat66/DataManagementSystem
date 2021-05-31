@@ -91,7 +91,6 @@ class Mission extends CI_Controller
 			if ($status == "co" || $status == "typecdr") {
 				$mission_name = $_POST['mission_name'];
 				$weapons_reliablity = $this->db->where('Mission_name', $mission_name)->where('Ship_ID', $ship_id)->get('weapon_systems')->result_array();
-
 				$result = 1;
 				for ($i = 0; $i < count($weapons_reliablity); $i++) {
 					$datarow = $i  + 1;
@@ -114,10 +113,10 @@ class Mission extends CI_Controller
 				$system_time = $_POST['time'];
 
 				$weapons = $this->db->where('Mission_name', $mission_name)->where('Ship_ID', $ship_id)->get('weapon_systems')->result_array();
+				 
 				if (count($weapons) != 0) {
 					for ($i = 0; $i < count($weapons); $i++) :
 						$this->calculate_weapon_reliability($weapons[$i]['weapon_name'], $system_time, $ship_id);
-
 					endfor;
 				}
 

@@ -549,7 +549,7 @@
 
     $('#system_time').on('focusout', function() {
         var time = $(this).val();
-
+        
         $.ajax({
             url: '<?= base_url(); ?>Mission/get_mission_reliability',
             method: 'POST',
@@ -558,7 +558,7 @@
                 'time': time
             },
             success: function(data) {
-
+                
                 $('#reliability_bar').html(data + "%");
                 $('#reliability_bar').width(data * 5);
                 reliability = data;

@@ -20,14 +20,32 @@
         background: url('<?= base_url() ?>assets/img/ship3.jpg');
         background-position: center;
         background-size: cover;
-        height: 250px;
+        height: 170px;
+        border-radius: 20px;
     }
 
     .img-ship2 {
         background: url('<?= base_url() ?>assets/img/ship1.jpg');
         background-position: center;
         background-size: cover;
-        height: 250px;
+        height: 170px;
+        border-radius: 20px;
+    }
+
+    .img-ship3 {
+        background: url('<?= base_url() ?>assets/img/ship3.jpg');
+        background-position: center;
+        background-size: cover;
+        height: 170px;
+        border-radius: 20px;
+    }
+
+    .img-ship4 {
+        background: url('<?= base_url() ?>assets/img/ship1.jpg');
+        background-position: center;
+        background-size: cover;
+        height: 170px;
+        border-radius: 20px;
     }
 
     .dot {
@@ -133,67 +151,88 @@
                         <h1 class="h4 text-white">Welcome, Type Commander!</h1>
                     </div>
 
-                    <div class="card-body bg-custom3">
-                        <div class="form-group row mx-1 my-1">
+                    <div class="card-body bg-custom3" style = "background-color: 315deg;background-image: linear-gradient(315deg, #d4418e 15%, #4B0082 85%);">
+                        <div class="row" style="padding:1px;">
+                            
                             <!-- <div class="col-sm-12"> -->
-                                <div class="col-sm-6 img-ship" style="display:flex;">
-                                    <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>" style="height: 180px">
-                                        <h1 class="h1 text-center " style="margin-top: 95px;margin-left: 95px; color:black;"><strong><?php echo $ship_data1 ?></strong></h1>
-                                        <h2 class="h2 text-center " style="margin-left: 95px; color:black;"><strong><?php echo $availability_missionA ?></strong></h2>
+                                <div class="col-sm-5 mx-1 my-1 img-ship" style ="margin-left:75px !important;" >
+                                    <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>">
+                                        <h1 class="h1 text-center " style="margin-top: 40px; color:black;"><strong><?php echo $ship_data1 ?></strong></h1>
+                                        <h2 class="h4 text-center " style="color:black;"><strong><?php echo $availability_missionA ?></strong></h2>
                                     </a>
                                 </div>
 
-                                <div class="col-sm-6 img-ship2" style="display:flex;">
-                                    <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>" style="height: 180px">
-                                        <h1 class="h1 text-center" style="margin-top: 65px;margin-left: 95px; color:black;"><strong><?php echo $ship_data2 ?></strong></h1>
-                                        <h2 class="h2 text-center " style="margin-left: 95px; color:black;"><strong><?php echo $availability_missionB ?></strong></h2>
+                                <div class="col-sm-5 mx-1 my-1 img-ship2" style="padding:5px;">
+                                    <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>">
+                                        <h1 class="h1 text-center" style="margin-top: 40px; color:#DCDCDC;"><strong><?php echo $ship_data2 ?></strong></h1>
+                                        <h2 class="h4 text-center " style= "color:#DCDCDC;"><strong><?php echo $availability_missionB ?></strong></h2>
                                     </a>
                                 </div>
 
                             <!-- </div> -->
                         </div>
+                        <div class="row " style="padding:1px;">
+                            
+                            <!-- <div class="col-sm-12"> -->
+                                <div class="col-sm-5 mx-1 my-1 img-ship3" style ="margin-left:75px !important;" >
+                                    <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship3' ?>">
+                                        <h1 class="h1 text-center " style="margin-top: 40px; color:black;"><strong><?php echo $ship_data3 ?></strong></h1>
+                                        <h2 class="h4 text-center " style="color:black;"><strong><?php echo $availability_missionC ?></strong></h2>
+                                    </a>
+                                </div>
+
+                                <div class="col-sm-5 mx-1 my-1 img-ship4" style="padding:5px;">
+                                    <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship4' ?>">
+                                        <h1 class="h1 text-center" style="margin-top: 40px; color:#DCDCDC;"><strong><?php echo $ship_data4 ?></strong></h1>
+                                        <h2 class="h4 text-center " style= "color:#DCDCDC;"><strong><?php echo $availability_missionD ?></strong></h2>
+                                    </a>
+                                </div>
+
+                            <!-- </div> -->
+                        </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 <div id="table_div">
-                                    <table id="datatable" class="table table-sm table-striped bg-custom3 text-center">
+                                    <table id="datatable" class="table table-sm table-striped bg-custom3 text-center" style="border-radius:20px;">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th scope="col"></th>
-                                                <th scope="col">Ship A</th>
-                                                <th scope="col">Ship B</th>
-                                                <th scope="col">Ship C</th>
-                                                <th scope="col">Ship D</th>
+                                                <th scope="col"><?php echo $ship_data1 ?></th>
+                                                <th scope="col"><?php echo $ship_data2 ?></th>
+                                                <th scope="col"><?php echo $ship_data3 ?></th>
+                                                <th scope="col"><?php echo $ship_data4 ?></th>
                                             </tr>
                                         </thead>
                                         <tbody id="table_rows">
 
                                             <tr id="table_rows_AAW">
-                                                <th style="background-color:#5a5c69; color:white;">AAW</th>
-                                                <td id="AAW1"><?php echo $shipA_mission1 ?></td>
-                                                <td id="AAW2"><?php echo $shipB_mission1 ?></td>
-                                                <td id="AAW3">0.00</td>
-                                                <td id="AAW4">0.00</td>
+                                                <th style="background-color:#5a5c69; color:white; border-radius:20px;">AAW</th>
+                                                <td id="AAW1"><?php echo $shipA_mission1 ?>%</td>
+                                                <td id="AAW2"><?php echo $shipB_mission1 ?>%</td>
+                                                <td id="AAW3"><?php echo $shipC_mission1 ?>%</td>
+                                                <td id="AAW4"><?php echo $shipD_mission1 ?>%</td>
                                             </tr>
                                             <tr>
-                                                <th style="background-color:#5a5c69; color:white;">ASuW</th>
-                                                <td id="ASuW1"><?php echo $shipA_mission2 ?></td>
-                                                <td id="ASuW2"><?php echo $shipB_mission2 ?></td>
-                                                <td id="ASuW3">0.00</td>
-                                                <td id="ASuW4">0.00</td>
+                                                <th style="background-color:#5a5c69; color:white;border-radius:20px;">ASuW</th>
+                                                <td id="ASuW1"><?php echo $shipA_mission2 ?>%</td>
+                                                <td id="ASuW2"><?php echo $shipB_mission2 ?>%</td>
+                                                <td id="ASuW3"><?php echo $shipC_mission2 ?>%</td>
+                                                <td id="ASuW4"><?php echo $shipD_mission2 ?>%</td>
                                             </tr>
                                             <tr>
-                                                <th style="background-color:#5a5c69; color:white;">ASW</th>
-                                                <td id="ASW1"><?php echo $shipA_mission3 ?></td>
-                                                <td id="ASW2"><?php echo $shipB_mission3 ?></td>
-                                                <td id="ASW3">0.00</td>
-                                                <td id="ASW4">0.00</td>
+                                                <th style="background-color:#5a5c69; color:white;border-radius:20px;">ASW</th>
+                                                <td id="ASW1"><?php echo $shipA_mission3 ?>%</td>
+                                                <td id="ASW2"><?php echo $shipB_mission3 ?>%</td>
+                                                <td id="ASW3"><?php echo $shipC_mission3 ?>%</td>
+                                                <td id="ASW4"><?php echo $shipD_mission3 ?>%</td>
                                             </tr>
                                             <tr>
-                                                <th style="background-color:#5a5c69; color:white;">EW</th>
-                                                <td id="EW1"><?php echo $shipA_mission4 ?></td>
-                                                <td id="EW2"><?php echo $shipB_mission4 ?></td>
-                                                <td id="EW3">0.00</td>
-                                                <td id="EW4">0.00</td>
+                                                <th style="background-color:#5a5c69; color:white;border-radius:20px;">EW</th>
+                                                <td id="EW1"><?php echo $shipA_mission4 ?>%</td>
+                                                <td id="EW2"><?php echo $shipB_mission4 ?>%</td>
+                                                <td id="EW3"><?php echo $shipC_mission4 ?>%</td>
+                                                <td id="EW4"><?php echo $shipD_mission4 ?>%</td>
                                             </tr>
                                         </tbody>
                                     </table>
