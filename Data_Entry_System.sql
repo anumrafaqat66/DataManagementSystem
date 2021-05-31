@@ -68,7 +68,8 @@ WHILE i <= loop_count DO
 	update controller_data_detail
 	set TBF = DATEDIFF(Failure_start_date,(select Failure_end_date from controller_data_detail where id = i))
 	where id = (i+1)
-    and id not in (1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,73,76,79,82,85,88,91,94,97,100);
+    and id not in (1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,73,76,79,82,85,88,91,94,97,100,103,106,109,112,115,118,121,124,127,130,133,136,
+					139,142,145,148,151,154,157,160,163,166,169,172,175,178,181,184,187,190,193,196,199,202);
 
     SET i = i + 1;
 END WHILE;
@@ -90,8 +91,10 @@ CREATE TABLE `ship_data` (
 --
 -- Dumping data for table `ship_data`
 --
-insert into ship_data values (1,'ShipA','Working');
-insert into ship_data values (2,'ShipB','Working');
+insert into ship_data values (1,'Zafr','Working');
+insert into ship_data values (2,'Saif','Working');
+insert into ship_data values (3,'S/Sheer','Working');
+insert into ship_data values (4,'ASLT','Working');
 
 --
 -- Table structure for table `controller_data`
@@ -217,6 +220,18 @@ insert into missions values (5,'AAW','Anti Air war mission',0.00,0.00,2);
 insert into missions values (6,'ASuW','Anti Surface war mission',0.00,0.00,2);
 insert into missions values (7,'ASW','Anti Submarine war mission',0.00,0.00,2);
 insert into missions values (8,'EW','Electronic war mission',0.00,0.00,2);
+
+-- Ship C Data
+insert into missions values (9,'AAW','Anti Air war mission',0.00,0.00,3);
+insert into missions values (10,'ASuW','Anti Surface war mission',0.00,0.00,3);
+insert into missions values (11,'ASW','Anti Submarine war mission',0.00,0.00,3);
+insert into missions values (12,'EW','Electronic war mission',0.00,0.00,3);
+
+-- Ship D Data
+insert into missions values (13,'AAW','Anti Air war mission',0.00,0.00,4);
+insert into missions values (14,'ASuW','Anti Surface war mission',0.00,0.00,4);
+insert into missions values (15,'ASW','Anti Submarine war mission',0.00,0.00,4);
+insert into missions values (16,'EW','Electronic war mission',0.00,0.00,4);
 
 --
 -- Indexes for dumped tables
@@ -395,6 +410,64 @@ insert into controller_data values (33,'Weapon','NRJ','NRJ',2,'3008','','','',0.
 insert into controller_data values (34,'Weapon','PJ-46','PJ-46',2,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
 
 -- -------------------------
+-- -- Data for Ship C
+insert into controller_data values (35,'Sensor','S1','S1',3,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',4);
+insert into controller_data values (36,'Sensor','S2','S2',3,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+insert into controller_data values (37,'Sensor','CCS','CCS',3,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+
+insert into controller_data values (38,'Fire Controller','FC1','FC1',3,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',4);
+insert into controller_data values (39,'Fire Controller','FC2','FC2',3,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+insert into controller_data values (40,'Fire Controller','FC3','FC3',3,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+insert into controller_data values (41,'Fire Controller','FC4','FC4',3,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-15',4);
+
+-- AAW Mission
+insert into controller_data values (42,'Weapon','SAM','SAM',3,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',4);
+insert into controller_data values (43,'Weapon','Main Gun','MG',3,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+insert into controller_data values (44,'Weapon','CRG (Port)','CP',3,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+insert into controller_data values (45,'Weapon','CRG (STDB)','CS',3,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
+
+-- ASuW Mission
+insert into controller_data values (46,'Weapon','SSM','SSM',3,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+
+-- ASW Mission
+insert into controller_data values (47,'Weapon','Torpedo','TOR',3,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',4);
+insert into controller_data values (48,'Weapon','RDC','RDC',3,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
+insert into controller_data values (49,'Sensor','SONAR','SONAR',3,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
+
+-- EW Mission
+insert into controller_data values (50,'Weapon','NRJ','NRJ',3,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
+insert into controller_data values (51,'Weapon','PJ-46','PJ-46',3,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
+
+-- -------------------------
+-- -- Data for Ship D
+insert into controller_data values (52,'Sensor','S1','S1',4,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+insert into controller_data values (53,'Sensor','S2','S2',4,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (54,'Sensor','CCS','CCS',4,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+
+insert into controller_data values (55,'Fire Controller','FC1','FC1',4,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
+insert into controller_data values (56,'Fire Controller','FC2','FC2',4,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+insert into controller_data values (57,'Fire Controller','FC3','FC3',4,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2019-01-01',4);
+insert into controller_data values (58,'Fire Controller','FC4','FC4',4,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-15',4);
+
+-- AAW Mission
+insert into controller_data values (59,'Weapon','SAM','SAM',4,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+insert into controller_data values (60,'Weapon','Main Gun','MG',4,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
+insert into controller_data values (61,'Weapon','CRG (Port)','CP',4,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (62,'Weapon','CRG (STDB)','CS',4,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+
+-- ASuW Mission
+insert into controller_data values (63,'Weapon','SSM','SSM',4,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+
+-- ASW Mission
+insert into controller_data values (64,'Weapon','Torpedo','TOR',4,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',4);
+insert into controller_data values (65,'Weapon','RDC','RDC',4,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-03-01',4);
+insert into controller_data values (66,'Sensor','SONAR','SONAR',4,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+
+-- EW Mission
+insert into controller_data values (67,'Weapon','NRJ','NRJ',4,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
+insert into controller_data values (68,'Weapon','PJ-46','PJ-46',4,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-09-01',4);
+
+-- -------------------------------------
 
 insert into weapon_systems values (1,'SAM',0.00,0.00,0.00,'AAW',1,'Anti Air war mission');
 insert into weapon_systems values (2,'Main Gun',0.00,0.00,0.00,'AAW',1,'Anti Air war mission');
@@ -478,18 +551,43 @@ insert into weapon_systems values (13,'SAM',0.00,0.00,0.00,'AAW',2,'Anti Air war
 insert into weapon_systems values (14,'Main Gun',0.00,0.00,0.00,'AAW',2,'Anti Air war mission');
 insert into weapon_systems values (15,'CRG (Port)',0.00,0.00,0.00,'AAW',2,'Anti Air war mission');
 insert into weapon_systems values (16,'CRG (STDB)',0.00,0.00,0.00,'AAW',2,'Anti Air war mission');
-
--- ship B data
 insert into weapon_systems values (17,'SSM',0.00,0.00,0.00,'ASuW',2,'Anti Surface war mission');
 insert into weapon_systems values (18,'Main Gun',0.00,0.00,0.00,'ASuW',2,'Anti Surface war mission');
 insert into weapon_systems values (19,'CRG (Port)',0.00,0.00,0.00,'ASuW',2,'Anti Surface war mission');
 insert into weapon_systems values (20,'CRG (STDB)',0.00,0.00,0.00,'ASuW',2,'Anti Surface war mission');
-
 insert into weapon_systems values (21,'Torpedo',0.00,0.00,0.00,'ASW',2,'Anti-submarine warfare mission');
 insert into weapon_systems values (22,'RDC',0.00,0.00,0.00,'ASW',2,'Anti-submarine warfare mission');
-
 insert into weapon_systems values (23,'NRJ',0.00,0.00,0.00,'EW',2,'Electronic warfare mission');
 insert into weapon_systems values (24,'PJ-46',0.00,0.00,0.00,'EW',2,'Electronic warfare mission');
+
+-- ship C data
+insert into weapon_systems values (25,'SAM',0.00,0.00,0.00,'AAW',3,'Anti Air war mission');
+insert into weapon_systems values (26,'Main Gun',0.00,0.00,0.00,'AAW',3,'Anti Air war mission');
+insert into weapon_systems values (27,'CRG (Port)',0.00,0.00,0.00,'AAW',3,'Anti Air war mission');
+insert into weapon_systems values (28,'CRG (STDB)',0.00,0.00,0.00,'AAW',3,'Anti Air war mission');
+insert into weapon_systems values (29,'SSM',0.00,0.00,0.00,'ASuW',3,'Anti Surface war mission');
+insert into weapon_systems values (30,'Main Gun',0.00,0.00,0.00,'ASuW',3,'Anti Surface war mission');
+insert into weapon_systems values (31,'CRG (Port)',0.00,0.00,0.00,'ASuW',3,'Anti Surface war mission');
+insert into weapon_systems values (32,'CRG (STDB)',0.00,0.00,0.00,'ASuW',3,'Anti Surface war mission');
+insert into weapon_systems values (33,'Torpedo',0.00,0.00,0.00,'ASW',3,'Anti-submarine warfare mission');
+insert into weapon_systems values (34,'RDC',0.00,0.00,0.00,'ASW',3,'Anti-submarine warfare mission');
+insert into weapon_systems values (35,'NRJ',0.00,0.00,0.00,'EW',3,'Electronic warfare mission');
+insert into weapon_systems values (36,'PJ-46',0.00,0.00,0.00,'EW',3,'Electronic warfare mission');
+
+-- ship D data
+insert into weapon_systems values (37,'SAM',0.00,0.00,0.00,'AAW',4,'Anti Air war mission');
+insert into weapon_systems values (38,'Main Gun',0.00,0.00,0.00,'AAW',4,'Anti Air war mission');
+insert into weapon_systems values (39,'CRG (Port)',0.00,0.00,0.00,'AAW',4,'Anti Air war mission');
+insert into weapon_systems values (40,'CRG (STDB)',0.00,0.00,0.00,'AAW',4,'Anti Air war mission');
+insert into weapon_systems values (41,'SSM',0.00,0.00,0.00,'ASuW',4,'Anti Surface war mission');
+insert into weapon_systems values (42,'Main Gun',0.00,0.00,0.00,'ASuW',4,'Anti Surface war mission');
+insert into weapon_systems values (43,'CRG (Port)',0.00,0.00,0.00,'ASuW',4,'Anti Surface war mission');
+insert into weapon_systems values (44,'CRG (STDB)',0.00,0.00,0.00,'ASuW',4,'Anti Surface war mission');
+insert into weapon_systems values (45,'Torpedo',0.00,0.00,0.00,'ASW',4,'Anti-submarine warfare mission');
+insert into weapon_systems values (46,'RDC',0.00,0.00,0.00,'ASW',4,'Anti-submarine warfare mission');
+insert into weapon_systems values (47,'NRJ',0.00,0.00,0.00,'EW',4,'Electronic warfare mission');
+insert into weapon_systems values (48,'PJ-46',0.00,0.00,0.00,'EW',4,'Electronic warfare mission');
+
 
 -- Sample Data Insertion 
 
@@ -633,6 +731,146 @@ insert into controller_data_detail values (101,34,'2020-08-01','2020-09-01',250,
 insert into controller_data_detail values (102,34,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
 
+-- Data for ship C sensors
+
+insert into controller_data_detail values (103,35,'2020-03-01','2020-04-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (104,35,'2020-06-01','2020-07-15',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (105,35,'2021-02-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (106,36,'2020-04-01','2020-05-01',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (107,36,'2020-07-01','2020-08-01',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (108,36,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (109,37,'2020-07-01','2020-09-01',290,20,'',25,'',30,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (110,37,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (111,37,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (112,38,'2020-04-01','2020-04-25',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (113,38,'2020-08-01','2020-09-15',290,20,'',35,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (114,38,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (115,39,'2020-02-01','2020-02-20',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (116,39,'2020-04-01','2020-05-01',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (117,39,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (118,40,'2020-03-01','2020-03-15',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (119,40,'2020-12-01','2020-12-25',340,10,'',5,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (120,40,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (121,41,'2020-03-01','2020-03-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (122,41,'2020-10-01','2020-11-01',290,30,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (123,41,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (124,42,'2020-04-01','2020-04-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (125,42,'2020-06-01','2020-06-25',330,10,'',15,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (126,42,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (127,43,'2020-03-01','2020-03-10',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (128,43,'2020-05-01','2020-05-25',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (129,43,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (130,44,'2020-07-01','2020-07-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (131,44,'2020-09-01','2020-10-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (132,44,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (133,45,'2020-03-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (134,45,'2020-05-01','2020-06-30',340,5,'',10,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (135,45,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (136,46,'2020-04-01','2020-05-05',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (137,46,'2020-06-01','2020-07-10',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (138,46,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (139,47,'2020-07-01','2020-08-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (140,47,'2020-09-01','2020-10-20',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (141,47,'2021-01-01','2021-03-01',320,10,'',20,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (142,48,'2020-10-01','2020-11-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (143,48,'2020-12-01','2020-12-30',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (144,48,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (145,49,'2020-09-01','2020-09-30',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (146,49,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (147,49,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (148,50,'2020-04-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (149,50,'2020-05-01','2020-05-20',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (150,50,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (151,51,'2020-06-01','2020-07-01',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (152,51,'2020-08-01','2020-09-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (153,51,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+
+-- Data for ship D sensors
+
+insert into controller_data_detail values (154,52,'2020-03-01','2020-04-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (155,52,'2020-06-01','2020-07-15',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (156,52,'2021-02-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (157,53,'2020-04-01','2020-05-01',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (158,53,'2020-07-01','2020-08-01',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (159,53,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (160,54,'2020-07-01','2020-09-01',290,20,'',25,'',30,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (161,54,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (162,54,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (163,55,'2020-04-01','2020-04-25',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (164,55,'2020-08-01','2020-09-15',290,20,'',35,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (165,55,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (166,56,'2020-02-01','2020-02-20',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (167,56,'2020-04-01','2020-05-01',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (168,56,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (169,57,'2020-03-01','2020-03-15',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (170,57,'2020-12-01','2020-12-25',340,10,'',5,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (171,57,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (172,58,'2020-03-01','2020-03-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (173,58,'2020-10-01','2020-11-01',290,30,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (174,58,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (175,59,'2020-04-01','2020-04-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (176,59,'2020-06-01','2020-06-25',330,10,'',15,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (177,59,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (178,60,'2020-03-01','2020-03-10',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (179,60,'2020-05-01','2020-05-25',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (180,60,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (181,61,'2020-07-01','2020-07-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (182,61,'2020-09-01','2020-10-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (183,61,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (184,62,'2020-03-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (185,62,'2020-05-01','2020-06-30',340,5,'',10,'',10,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (186,62,'2021-01-01','2021-03-01',320,20,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (187,63,'2020-04-01','2020-05-05',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (188,63,'2020-06-01','2020-07-10',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (189,63,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (190,64,'2020-07-01','2020-08-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (191,64,'2020-09-01','2020-10-20',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (192,64,'2021-01-01','2021-03-01',320,10,'',20,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (193,65,'2020-10-01','2020-11-15',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (194,65,'2020-12-01','2020-12-30',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (195,65,'2021-01-01','2021-03-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (196,66,'2020-09-01','2020-09-30',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (197,66,'2020-11-01','2020-11-15',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (198,66,'2021-01-01','2021-03-01',280,20,'',40,'',25,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (199,67,'2020-04-01','2020-04-25',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (200,67,'2020-05-01','2020-05-20',310,10,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (201,67,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
+
+insert into controller_data_detail values (202,68,'2020-06-01','2020-07-01',300,20,'',25,'',20,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (203,68,'2020-08-01','2020-09-01',250,30,'',50,'',35,'',0.00, CURDATE(), 'Completed');
+insert into controller_data_detail values (204,68,'2021-01-01','2021-03-01',330,10,'',10,'',15,'',0.00, CURDATE(), 'Completed');
 
 -- Configuration Values for Ship B
 
@@ -680,6 +918,97 @@ insert into weapon_system_config values (85,24,20,'P','1');
 insert into weapon_system_config values (86,24,33,'P','1');
 insert into weapon_system_config values (87,24,34,'S','1');
 
+-- Configurations values for Ship C
+insert into weapon_system_config values (88,25,37,'P','1');
+insert into weapon_system_config values (89,25,35,'P','1');
+insert into weapon_system_config values (90,25,38,'S','1');
+insert into weapon_system_config values (91,25,42,'S','1');
+insert into weapon_system_config values (92,30,37,'P','1');
+insert into weapon_system_config values (93,30,35,'P','1');
+insert into weapon_system_config values (94,30,39,'S','1');
+insert into weapon_system_config values (95,30,43,'S','1');
+insert into weapon_system_config values (96,31,37,'P','1');
+insert into weapon_system_config values (97,31,35,'P','1');
+insert into weapon_system_config values (98,31,40,'P','2');
+insert into weapon_system_config values (99,31,41,'P','2');
+insert into weapon_system_config values (100,31,44,'S','1');
+insert into weapon_system_config values (101,32,37,'P','1');
+insert into weapon_system_config values (102,32,35,'P','1');
+insert into weapon_system_config values (103,32,40,'P','2');
+insert into weapon_system_config values (104,32,41,'P','2');
+insert into weapon_system_config values (105,32,45,'S','1');
+insert into weapon_system_config values (106,29,35,'P','1');
+insert into weapon_system_config values (107,29,36,'P','1');
+insert into weapon_system_config values (108,29,46,'S','1');
+insert into weapon_system_config values (109,30,37,'P','1');
+insert into weapon_system_config values (110,30,35,'P','1');
+insert into weapon_system_config values (111,30,39,'S','1');
+insert into weapon_system_config values (112,30,43,'S','1');
+insert into weapon_system_config values (113,31,37,'P','1');
+insert into weapon_system_config values (114,31,35,'P','1');
+insert into weapon_system_config values (115,31,40,'P','2');
+insert into weapon_system_config values (116,31,41,'P','2');
+insert into weapon_system_config values (117,31,44,'S','1');
+insert into weapon_system_config values (118,32,37,'P','1');
+insert into weapon_system_config values (119,32,35,'P','1');
+insert into weapon_system_config values (120,32,40,'P','2');
+insert into weapon_system_config values (121,32,41,'P','2');
+insert into weapon_system_config values (122,32,45,'S','1');
+insert into weapon_system_config values (123,33,49,'S','1');
+insert into weapon_system_config values (124,33,47,'S','1');
+insert into weapon_system_config values (125,34,49,'S','1');
+insert into weapon_system_config values (126,34,48,'S','1');
+insert into weapon_system_config values (127,35,50,'S','1');
+insert into weapon_system_config values (128,36,37,'P','1');
+insert into weapon_system_config values (129,36,50,'P','1');
+insert into weapon_system_config values (130,36,51,'S','1');
+
+-- Configuration data for Ship D
+
+insert into weapon_system_config values (131,37,54,'P','1');
+insert into weapon_system_config values (132,37,52,'P','1');
+insert into weapon_system_config values (133,37,55,'S','1');
+insert into weapon_system_config values (134,37,59,'S','1');
+insert into weapon_system_config values (135,42,54,'P','1');
+insert into weapon_system_config values (136,42,52,'P','1');
+insert into weapon_system_config values (137,42,56,'S','1');
+insert into weapon_system_config values (138,42,60,'S','1');
+insert into weapon_system_config values (139,43,54,'P','1');
+insert into weapon_system_config values (140,43,52,'P','1');
+insert into weapon_system_config values (141,43,57,'P','2');
+insert into weapon_system_config values (142,43,58,'P','2');
+insert into weapon_system_config values (143,43,61,'S','1');
+insert into weapon_system_config values (144,44,54,'P','1');
+insert into weapon_system_config values (145,44,52,'P','1');
+insert into weapon_system_config values (146,44,57,'P','2');
+insert into weapon_system_config values (147,44,58,'P','2');
+insert into weapon_system_config values (148,44,62,'S','1');
+insert into weapon_system_config values (149,41,52,'P','1');
+insert into weapon_system_config values (150,41,53,'P','1');
+insert into weapon_system_config values (151,41,63,'S','1');
+insert into weapon_system_config values (152,42,54,'P','1');
+insert into weapon_system_config values (153,42,52,'P','1');
+insert into weapon_system_config values (154,42,56,'S','1');
+insert into weapon_system_config values (155,42,60,'S','1');
+insert into weapon_system_config values (156,43,54,'P','1');
+insert into weapon_system_config values (157,43,52,'P','1');
+insert into weapon_system_config values (158,43,57,'P','2');
+insert into weapon_system_config values (159,43,58,'P','2');
+insert into weapon_system_config values (160,43,61,'S','1');
+insert into weapon_system_config values (161,44,54,'P','1');
+insert into weapon_system_config values (162,44,52,'P','1');
+insert into weapon_system_config values (163,44,57,'P','2');
+insert into weapon_system_config values (164,44,58,'P','2');
+insert into weapon_system_config values (165,44,62,'S','1');
+insert into weapon_system_config values (166,45,66,'S','1');
+insert into weapon_system_config values (167,45,64,'S','1');
+insert into weapon_system_config values (168,46,66,'S','1');
+insert into weapon_system_config values (169,46,65,'S','1');
+insert into weapon_system_config values (170,47,67,'S','1');
+insert into weapon_system_config values (171,48,54,'P','1');
+insert into weapon_system_config values (172,48,67,'P','1');
+insert into weapon_system_config values (173,48,66,'S','1');
+
 
 update controller_data_detail set TTR = DATEDIFF(Failure_end_date, Failure_start_date);
 
@@ -692,7 +1021,8 @@ where id in (select id from controller_data_detail where TCM + TPM + ADLT <> TTR
 
 UPDATE controller_data_detail cdd JOIN controller_data cd ON cdd.Controller_Data_ID = cd.ID
   SET cdd.TBF = DATEDIFF(cdd.Failure_start_date, cd.Comission_date)
-WHERE cdd.id in (1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,73,76,79,82,85,88,91,94,97,100);
+WHERE cdd.id in (1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,73,76,79,82,85,88,91,94,97,100,103,106,109,112,115,118,121,124,127,130,133,136,
+				139,142,145,148,151,154,157,160,163,166,169,172,175,178,181,184,187,190,193,196,199,202);
 
 call calculate_TBF_for_all;
 
