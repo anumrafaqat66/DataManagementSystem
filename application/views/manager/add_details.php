@@ -27,6 +27,10 @@
 
 
      <div id="form_div" class="card-body bg-custom3 my-2">
+
+         <div id="alert" class="alert alert-danger" role="alert" style="display:none;">
+         Start Failure Date cannot be greater than current date!!
+         </div>
          <!-- Nested Row within Card Body -->
          <div class="row">
              <div class="col-lg-12">
@@ -52,10 +56,10 @@
                                                                                                                             } else {
                                                                                                                                 echo 'Update_data';
                                                                                                                             } ?>/<?php if (isset($selected_controller_data['Controller_type'])) {
-                                                                                                                                                                                                            echo $selected_controller_data['ID'];
-                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                            echo "";
-                                                                                                                                                                                                        }; ?>">
+                                                                                                                                        echo $selected_controller_data['ID'];
+                                                                                                                                    } else {
+                                                                                                                                        echo "";
+                                                                                                                                    }; ?>">
                              <div class="form-group row">
                                  <div class="col-sm-3 mb-1">
                                      <input type="text" class="form-control form-control-user bg-light" name="id" id="id" placeholder="ID" value="<?php if (isset($selected_controller_data['ID'])) {
@@ -333,6 +337,30 @@
      $('#Failure_start_date').on('focusout', function() {
 
          var start_date = $('#Failure_start_date').val();
+
+         var fullDate = new Date()
+
+         var twoDigitMonth = ((fullDate.getMonth() + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
+         var twoDigitDay;
+         console.log(fullDate.getDate());
+
+         if (fullDate.getDate() >= 10) {
+             twoDigitDay = fullDate.getDate();
+         } else {
+             twoDigitDay = "0" + fullDate.getDate();
+         }
+         var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + twoDigitDay;
+
+         if (start_date > currentDate) {
+             $('#alert').show();
+            //  alert("Start Failure Date cannot be greater than current date")
+         }
+         else {
+            $('#alert').hide();
+         }
+         //19/05/2011
+
+
          var sensor_id = $('#id').val();
 
          if (start_date != null) {
