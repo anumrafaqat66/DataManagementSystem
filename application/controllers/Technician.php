@@ -13,9 +13,9 @@ class Technician extends CI_Controller
             $status = $this->session->userdata('status');
             $data['ship_id'] = $this->session->userdata('ship_id');
 
-            if ($status == "technician" || $status == "co" || $status == "hod" || $status == "weo" || $status == "manager" ||  $status == "typecdr" ) {
-                $data['technician_controller_data'] = $this->db->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
-                $data['ships_data'] = $this->db->where('ID',$data['ship_id'])->get('ship_data')->result_array();
+            if ($status == "technician" || $status == "co" || $status == "hod" || $status == "weo" || $status == "manager" ||  $status == "typecdr") {
+                $data['technician_controller_data'] = $this->db->where('Ship_ID', $data['ship_id'])->get('controller_data')->result_array();
+                $data['ships_data'] = $this->db->where('ID', $data['ship_id'])->get('ship_data')->result_array();
                 $this->load->view('technician/technician', $data);
             } else {
                 $this->load->view('login');
@@ -54,17 +54,18 @@ class Technician extends CI_Controller
     {
         $start_data = $_POST['start_data'];
         $sensor_id = $_POST['sensor_id'];
-        $end_data = $this->db->select('*')->where('Controller_Data_ID', $sensor_id)->order_by('id', 'desc')->limit(1)->get('controller_data_detail')->row_array();
-        $cont_data = $this->db->select('*')->where('ID', $sensor_id)->order_by('id', 'desc')->limit(1)->get('controller_data')->row_array();
         
+        $end_data = $this->db->select('*')->where('Controller_Data_ID', $sensor_id)->order_by('id', 'desc')->limit(1)->get('controller_data_detail')->row_array();    
+        $cont_data = $this->db->select('*')->where('ID', $sensor_id)->order_by('id', 'desc')->limit(1)->get('controller_data')->row_array();
+
         if ($end_data['Failure_end_date'] != null && $end_data['Failure_end_date'] != 0) {
             $TBF = $end_data['Failure_end_date'];
         } else {
             $TBF = $cont_data['Comission_date'];
         }
-        
+
         $dateDiff = $this->dateDiffInDays($TBF, $start_data);
-        
+
         echo json_encode($dateDiff);
     }
 

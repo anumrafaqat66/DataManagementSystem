@@ -130,15 +130,15 @@ class Manager extends CI_Controller
             $STBF = $query2->row()->STBF;
             $STTR = $query2->row()->STTR;
         }
-        
+
         $MTBF = $STBF / $count;
         $MTTR = $STTR / $count;
 
-        $cond ='';
+        $cond = '';
         if ($isUpdate == "Yes") {
             $cond  = ['ID' => $cont_data['Controller_Data_ID']];
         } else {
-            $cond  = ['ID' => $id]; 
+            $cond  = ['ID' => $id];
         }
         $data_update = [
             'MTBF' => $MTBF,
@@ -156,6 +156,18 @@ class Manager extends CI_Controller
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
+            $end_data = $this->db->select('Failure_End_Date')->where('Controller_Data_ID', $id)->order_by('id', 'desc')->limit(1)->get('controller_data_detail')->row_array();
+
+            // $inprogress = $this->db->select('count(*)')->where('Controller_Data_ID', $id)->where('Status', 'In Progress')->get('controller_data_detail')->row_array();
+            $this->db->select('id');
+            $this->db->from('controller_data_detail');
+            $this->db->where('Controller_Data_ID', $id);
+            $this->db->where('Status', 'In Progress');
+            $num_results = $this->db->count_all_results();
+            if ($num_results > 0) {
+                $this->session->set_flashdata('failure', 'Sensor failure already in progress');
+                redirect('Manager/add_details/' . $id);
+            }
 
             $TBF = $postData['TBF'];
             $TCM = $postData['TCM'];
@@ -167,6 +179,11 @@ class Manager extends CI_Controller
             $ADLT_Desc = $postData['ADLT_Desc'];
             $FSD = $postData['failure_start_date'];
             $FED = $postData['failure_end_date'];
+
+            if ($FSD < $end_data['Failure_End_Date']) {
+                $this->session->set_flashdata('failure', 'Failure Start Date cannot overlap previous sensor dates!');
+                redirect('Manager/add_details/' . $id);
+            }
 
             if ($FED == '' || $FED == null) {
                 $status = 'In Progress';

@@ -29,15 +29,15 @@
      <div id="form_div" class="card-body bg-custom3 my-2">
 
          <div id="alert" class="alert alert-danger" role="alert" style="display:none;">
-         Start Failure Date cannot be greater than current date!!
+             Failure Start Date cannot be greater than current date!!
          </div>
 
-          <div id="alert1" class="alert alert-danger" role="alert" style="display:none;">
-         End Failure Date cannot be greater than current date!!
+         <div id="alert1" class="alert alert-danger" role="alert" style="display:none;">
+             Failure End Date cannot be greater than current date!!
          </div>
 
-          <div id="alert3" class="alert alert-danger" role="alert" style="display:none;">
-         End date should be greater than start date!!
+         <div id="alert3" class="alert alert-danger" role="alert" style="display:none;">
+             End date should be greater than start date!!
          </div>
          <!-- Nested Row within Card Body -->
          <div class="row">
@@ -68,6 +68,7 @@
                                                                                                                                     } else {
                                                                                                                                         echo "";
                                                                                                                                     }; ?>">
+                             <input id='isUpdate' type="text" value="<?php echo $update; ?>" style="display:none;">
                              <div class="form-group row">
                                  <div class="col-sm-3 mb-1">
                                      <input type="text" class="form-control form-control-user bg-light" name="id" id="id" placeholder="ID" value="<?php if (isset($selected_controller_data['ID'])) {
@@ -115,7 +116,7 @@
                                                                                                                                                                                                 echo $selected_controller_data['Failure_start_date'];
                                                                                                                                                                                             } else {
                                                                                                                                                                                                 echo "";
-                                                                                                                                                                                            }; ?>">
+                                                                                                                                                                                            }; ?>" <?php if ($update == "Yes") { ?> readonly <?php } ?>>
                                  </div>
 
                                  <div class="col-sm-6">
@@ -244,7 +245,11 @@
                                          <!-- <i class="fab fa-google fa-fw"></i>  -->
                                          Submit Data
                                      </button>
+                                     <div id="error" style="color:red; display:none;">
+                                         <span>Please check errors above in red highlighted!</span>
+                                     </div>
                                  </div>
+
                              </div>
                          </form>
                      </div>
@@ -283,68 +288,10 @@
  <?php $this->load->view('common/footer'); ?>
 
  <script>
-    var check_start_date=0;
-    var check_end_date=0;
-     var check_end_date_2=0;
-     $('#TCM').on('focusout', function() {
+     var check_start_date = 0;
+     var check_end_date = 0;
+     var check_end_date_2 = 0;
 
-         // var TPM = $('#TPM').val();
-         // if (TPM === undefined || TPM === null || TPM === '') {
-         //     TPM = 0.00;
-         // }
-         // var TCM = $('#TCM').val();
-         // if (TCM === undefined || TCM === null || TCM === '') {
-         //     TCM = 0.00;
-         // }
-         // var ALDT = $('#ADLT').val();
-         // if (ALDT === undefined || ALDT === null || ALDT === '') {
-         //     ALDT = 0.00;
-         // }
-         // var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
-         // //alert(TTR);
-         // document.getElementById("TTR").value = TTR;
-         //alert(d_o_b);
-     });
-
-     // $('#TPM').on('focusout', function() {
-
-     //     var TPM = $('#TPM').val();
-     //     if (TPM === undefined || TPM === null || TPM === '') {
-     //         TPM = 0.00;
-     //     }
-     //     var TCM = $('#TCM').val();
-     //     if (TCM === undefined || TCM === null || TCM === '') {
-     //         TCM = 0.00;
-     //     }
-     //     var ALDT = $('#ADLT').val();
-     //     if (ALDT === undefined || ALDT === null || ALDT === '') {
-     //         ALDT = 0.00;
-     //     }
-     //     var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
-     //     //alert(TTR);
-     //     document.getElementById("TTR").value = TTR;
-     //     //alert(d_o_b);
-     // });
-
-     // $('#ADLT').on('focusout', function() {
-
-     //     var TPM = $('#TPM').val();
-     //     if (TPM === undefined || TPM === null || TPM === '') {
-     //         TPM = 0.00;
-     //     }
-     //     var TCM = $('#TCM').val();
-     //     if (TCM === undefined || TCM === null || TCM === '') {
-     //         TCM = 0.00;
-     //     }
-     //     var ALDT = $('#ADLT').val();
-     //     if (ALDT === undefined || ALDT === null || ALDT === '') {
-     //         ALDT = 0.00;
-     //     }
-     //     var TTR = parseFloat(TPM) + parseFloat(TCM) + parseFloat(ALDT);
-     //     //alert(TTR);
-     //     document.getElementById("TTR").value = TTR;
-     //     //alert(d_o_b);
-     // });
      $('#Failure_start_date').on('focusout', function() {
 
          var start_date = $('#Failure_start_date').val();
@@ -353,82 +300,73 @@
 
          var twoDigitMonth = ((fullDate.getMonth() + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
          var twoDigitDay;
-         console.log(fullDate.getDate());
 
          if (fullDate.getDate() >= 10) {
              twoDigitDay = fullDate.getDate();
          } else {
              twoDigitDay = "0" + fullDate.getDate();
          }
+
          var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + twoDigitDay;
-
          if (start_date > currentDate) {
-            check_start_date=1;
+             check_start_date = 1;
              $('#alert').show();
-            //  alert("Start Failure Date cannot be greater than current date")
+         } else {
+             check_start_date = 0;
+             $('#alert').hide();
          }
-         else {
-             check_start_date=0;
-            $('#alert').hide();
-         }
-         //19/05/2011
-
 
          var sensor_id = $('#id').val();
-
-         if (start_date != null) {
-             $.ajax({
-                 url: '<?= base_url(); ?>Technician/get_TBF',
-                 method: 'POST',
-                 data: {
-                     'start_data': start_date,
-                     'sensor_id': sensor_id
-                 },
-                 success: function(data) {
-                     $('#TBF').val(data);
-                 },
-                 async: false
-             });
+         var isUpdate = $('#isUpdate').val();
+         if (isUpdate == 'No') {
+             if (start_date != null) {
+                 $.ajax({
+                     url: '<?= base_url(); ?>Technician/get_TBF',
+                     method: 'POST',
+                     data: {
+                         'start_data': start_date,
+                         'sensor_id': sensor_id
+                     },
+                     success: function(data) {
+                         $('#TBF').val(data);
+                     },
+                     async: false
+                 });
+             }
          }
      });
 
      $('#Failure_end_date').on('focusout', function() {
-        //alert('sds');
-        var start_date = $('#Failure_end_date').val();
-        var start_data1= $('#Failure_start_date').val();
+         var end_date = $('#Failure_end_date').val();
+         var start_date = $('#Failure_start_date').val();
 
-         var fullDate = new Date()
+         if (end_date != null && end_date != '') {
+             var fullDate = new Date()
+             var twoDigitMonth = ((fullDate.getMonth() + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
+             var twoDigitDay;
 
-         var twoDigitMonth = ((fullDate.getMonth() + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
-         var twoDigitDay;
-         console.log(fullDate.getDate());
+             if (fullDate.getDate() >= 10) {
+                 twoDigitDay = fullDate.getDate();
+             } else {
+                 twoDigitDay = "0" + fullDate.getDate();
+             }
+             var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + twoDigitDay;
 
-         if (fullDate.getDate() >= 10) {
-             twoDigitDay = fullDate.getDate();
-         } else {
-             twoDigitDay = "0" + fullDate.getDate();
-         }
-         var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + twoDigitDay;
+             if (end_date > currentDate) {
+                 check_end_date = 1;
+                 $('#alert1').show();
+             } else {
+                 check_end_date = 0;
+                 $('#alert1').hide();
+             }
 
-         if (start_date > currentDate) {
-            check_end_date=1;
-             $('#alert1').show();
-            //  alert("Start Failure Date cannot be greater than current date")
-         }
-         else {
-            check_end_date=0;
-            $('#alert1').hide();
-         }
-
-        if (start_date < start_data1) {
-            check_end_date_2=1;
-             $('#alert3').show();
-              // alert("yes");
-         }
-         else {
-          $('#alert3').hide();   
-          check_end_date_2=0;
-           // alert("no");        
+             if (end_date < start_date) {
+                 check_end_date_2 = 1;
+                 $('#alert3').show();
+             } else {
+                 $('#alert3').hide();
+                 check_end_date_2 = 0;
+             }
          }
 
          var end_date = $('#Failure_end_date').val();
@@ -437,7 +375,6 @@
          var s_d = new Date(start_date);
 
          if (start_date != null && end_date != null) {
-            alert('ifff');
              var diffTime = Math.abs(e_d - s_d);
              var TTR = Math.ceil(diffTime / 1000 / 60 / 60 / 24);
              document.getElementById("TTR").value = TTR;
@@ -467,7 +404,12 @@
              $('#TBF').addClass('red-border');
          }
 
-         if (FED != '') {
+         if (check_start_date == 1) {
+             validate = 1;
+             $('#Failure_start_date').addClass('red-border');
+         }
+
+         if (FED != '' && FED != null) {
              if (TCM == '') {
                  validate = 1;
                  $('#TCM').addClass('red-border');
@@ -484,17 +426,14 @@
                  validate = 1;
                  $('#TTR').addClass('red-border');
              }
-             if(check_start_date==1){
-                validate=1;
-                $('#Failure_start_date').addClass('red-border');
+
+             if (check_end_date == 1) {
+                 validate = 1;
+                 $('#Failure_end_date').addClass('red-border');
              }
-            if(check_end_date==1){
-                validate=1;
-                $('#Failure_end_date').addClass('red-border');
-             }
-            if(check_end_date_2==1){
-                validate=1;
-                $('#Failure_end_date').addClass('red-border');
+             if (check_end_date_2 == 1) {
+                 validate = 1;
+                 $('#Failure_end_date').addClass('red-border');
              }
              if (parseInt(TCM) + parseInt(TPM) + parseInt(ADLT) != parseInt(TTR)) {
                  validate = 1;
@@ -509,16 +448,12 @@
              $('#Failure_start_date').addClass('red-border');
          }
 
-         //  if (FED == '') {
-         //      validate = 1;
-         //      $('#Failure_end_date').addClass('red-border');
-         //  }
-
-
-
          if (validate == 0) {
+             $('#error').hide();
              $('#update_form')[0].submit();
          } else {
+
+             $('#error').show();
              $('#update_btn').removeAttr('disabled');
          }
      });
@@ -533,6 +468,4 @@
 
      var element = document.getElementById('page-top');
      element.style.paddingRight = null;
-
-
  </script>
