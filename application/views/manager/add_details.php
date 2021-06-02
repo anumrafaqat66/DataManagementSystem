@@ -31,6 +31,14 @@
          <div id="alert" class="alert alert-danger" role="alert" style="display:none;">
          Start Failure Date cannot be greater than current date!!
          </div>
+
+          <div id="alert1" class="alert alert-danger" role="alert" style="display:none;">
+         End Failure Date cannot be greater than current date!!
+         </div>
+
+          <div id="alert3" class="alert alert-danger" role="alert" style="display:none;">
+         End date should be greater than start date!!
+         </div>
          <!-- Nested Row within Card Body -->
          <div class="row">
              <div class="col-lg-12">
@@ -275,6 +283,9 @@
  <?php $this->load->view('common/footer'); ?>
 
  <script>
+    var check_start_date=0;
+    var check_end_date=0;
+     var check_end_date_2=0;
      $('#TCM').on('focusout', function() {
 
          // var TPM = $('#TPM').val();
@@ -352,10 +363,12 @@
          var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + twoDigitDay;
 
          if (start_date > currentDate) {
+            check_start_date=1;
              $('#alert').show();
             //  alert("Start Failure Date cannot be greater than current date")
          }
          else {
+             check_start_date=0;
             $('#alert').hide();
          }
          //19/05/2011
@@ -380,6 +393,43 @@
      });
 
      $('#Failure_end_date').on('focusout', function() {
+        //alert('sds');
+        var start_date = $('#Failure_end_date').val();
+        var start_data1= $('#Failure_start_date').val();
+
+         var fullDate = new Date()
+
+         var twoDigitMonth = ((fullDate.getMonth() + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
+         var twoDigitDay;
+         console.log(fullDate.getDate());
+
+         if (fullDate.getDate() >= 10) {
+             twoDigitDay = fullDate.getDate();
+         } else {
+             twoDigitDay = "0" + fullDate.getDate();
+         }
+         var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + twoDigitDay;
+
+         if (start_date > currentDate) {
+            check_end_date=1;
+             $('#alert1').show();
+            //  alert("Start Failure Date cannot be greater than current date")
+         }
+         else {
+            check_end_date=0;
+            $('#alert1').hide();
+         }
+
+        if (start_date < start_data1) {
+            check_end_date_2=1;
+             $('#alert3').show();
+              // alert("yes");
+         }
+         else {
+          $('#alert3').hide();   
+          check_end_date_2=0;
+           // alert("no");        
+         }
 
          var end_date = $('#Failure_end_date').val();
          var e_d = new Date(end_date);
@@ -387,6 +437,7 @@
          var s_d = new Date(start_date);
 
          if (start_date != null && end_date != null) {
+            alert('ifff');
              var diffTime = Math.abs(e_d - s_d);
              var TTR = Math.ceil(diffTime / 1000 / 60 / 60 / 24);
              document.getElementById("TTR").value = TTR;
@@ -433,7 +484,18 @@
                  validate = 1;
                  $('#TTR').addClass('red-border');
              }
-
+             if(check_start_date==1){
+                validate=1;
+                $('#Failure_start_date').addClass('red-border');
+             }
+            if(check_end_date==1){
+                validate=1;
+                $('#Failure_end_date').addClass('red-border');
+             }
+            if(check_end_date_2==1){
+                validate=1;
+                $('#Failure_end_date').addClass('red-border');
+             }
              if (parseInt(TCM) + parseInt(TPM) + parseInt(ADLT) != parseInt(TTR)) {
                  validate = 1;
                  $('#TCM').addClass('red-border');
@@ -471,4 +533,6 @@
 
      var element = document.getElementById('page-top');
      element.style.paddingRight = null;
+
+
  </script>
