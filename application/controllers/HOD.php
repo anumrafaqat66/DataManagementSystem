@@ -9,9 +9,9 @@ class HOD extends CI_Controller
     public function index()
     {
         $data['ship_id'] = $this->session->userdata('ship_id');
-        $data['sensor_data'] = $this->db->where('Controller_type', 'Sensor')->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
-        $data['fire_controller_data'] = $this->db->where('Controller_type', 'Fire Controller')->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
-        $data['weapon_data'] = $this->db->where('Controller_type', 'Weapon')->where('Ship_ID',$data['ship_id'])->get('controller_data')->result_array();
+        $data['sensor_data'] = $this->db->where('Controller_type', 'Sensor')->where('Ship_ID', $data['ship_id'])->get('controller_data')->result_array();
+        $data['fire_controller_data'] = $this->db->where('Controller_type', 'Fire Controller')->where('Ship_ID', $data['ship_id'])->get('controller_data')->result_array();
+        $data['weapon_data'] = $this->db->where('Controller_type', 'Weapon')->where('Ship_ID', $data['ship_id'])->get('controller_data')->result_array();
         $this->load->view('hod/hod', $data);
     }
 
@@ -25,16 +25,15 @@ class HOD extends CI_Controller
                 $this->get_availability($view_array['data'][$i]['ID'], $ship_id);
             endfor;
         }
-
     }
 
-    public function get_availability($sensor_id = NULL, $ship_id=null)
+    public function get_availability($sensor_id = NULL, $ship_id = null)
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 
-            if ($status == "hod" || $status == "weo" || $status == "co" || $status =="typecdr") {
+            if ($status == "hod" || $status == "weo" || $status == "co" || $status == "typecdr") {
                 $controller_id = $sensor_id; //$_POST['controller_id'];
                 $view_array = array();
                 $view_array['data'] =  $this->db->where('ID', $controller_id)->where('Ship_ID', $ship_id)->get('controller_data')->row_array();
@@ -47,7 +46,7 @@ class HOD extends CI_Controller
                 }
                 $cond  = ['ID' => $controller_id, 'Ship_ID' => $ship_id];
                 $data_update = [
-                    'Availability' => $availability * 100                    
+                    'Availability' => $availability * 100
                 ];
                 $this->db->where($cond);
                 $this->db->update('controller_data', $data_update);
@@ -70,7 +69,7 @@ class HOD extends CI_Controller
             $system_time = $_POST['time'];
         }
 
-        $view_array['data'] =  $this->db->where('Ship_ID',$ship_id)->get('controller_data')->result_array();
+        $view_array['data'] =  $this->db->where('Ship_ID', $ship_id)->get('controller_data')->result_array();
         if (count($view_array['data']) != 0) {
             for ($i = 0; $i < count($view_array['data']); $i++) :
                 $this->get_reliability($view_array['data'][$i]['ID'], $system_time, $isDefault, $ship_id);
@@ -78,7 +77,7 @@ class HOD extends CI_Controller
         }
 
         $sensor_rel = array();
-        $sensor_rel['data'] = $this->db->select('Controller_Name, Controller_type, Default_Reliability, Reliability, Availability')->distinct()->where('Ship_ID',$ship_id)->get('controller_data')->result_array();
+        $sensor_rel['data'] = $this->db->select('Controller_Name, Controller_type, Default_Reliability, Reliability, Availability')->distinct()->where('Ship_ID', $ship_id)->get('controller_data')->result_array();
 
         echo json_encode($sensor_rel['data']);
     }
@@ -89,7 +88,7 @@ class HOD extends CI_Controller
             $id = $this->session->userdata('user_id');
             $status = $this->session->userdata('status');
 
-            if ($status == "hod" || $status == "weo" || $status == "co" || $status =="typecdr") {
+            if ($status == "hod" || $status == "weo" || $status == "co" || $status == "typecdr") {
                 $controller_id = $sensor_id; //$_POST['controller_id'];
                 $time = $entered_time; //$_POST['time'];
                 if ($time > 0) {
@@ -105,10 +104,13 @@ class HOD extends CI_Controller
                     $current_date = date("Y-m-d");
                     $comission_date = $view_array['data']['Comission_date'];
                     $diff = abs(strtotime($comission_date) - strtotime($current_date));
-                    $days = floor($diff/60/60/24);
+                    $days = floor($diff / 60 / 60 / 24);
 
                     //Total_Equipped
-                    $Total_Equiped = $view_array['data']['Total_Equipped'];
+                    $Controller_name =  $this->db->select('Controller_Name')->where('ID', $controller_id)->limit(1)->get('controller_data')->row_array();
+                    $Total_Equiped_sum =  $this->db->select_sum('Total_Equipped')->where('Controller_Name', $Controller_name['Controller_Name'])->get('controller_data')->row_array();
+                    $Total_Equiped = $Total_Equiped_sum['Total_Equipped'];
+                    // $Total_Equiped = $view_array['data']['Total_Equipped'];
 
                     if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTBF'] != 0.00) {
                         $power = ($Total_failure_count / ($days * $Total_Equiped)) * $time;

@@ -354,118 +354,118 @@ delete from controller_data_detail;
 delete from controller_data;
 delete from weapon_systems;
 
-insert into controller_data values (1,'Sensor','S1','S1',1,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',4);
-insert into controller_data values (2,'Sensor','S2','S2',1,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (3,'Sensor','CCS','CCS',1,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+insert into controller_data values (1,'Sensor','S1','S1',1,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',1);
+insert into controller_data values (2,'Sensor','S2','S2',1,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (3,'Sensor','CCS','CCS',1,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',1);
 
-insert into controller_data values (4,'Fire Controller','FC1','FC1',1,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
-insert into controller_data values (5,'Fire Controller','FC2','FC2',1,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
-insert into controller_data values (6,'Fire Controller','FC3','FC3',1,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
-insert into controller_data values (7,'Fire Controller','FC4','FC4',1,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-15',4);
+insert into controller_data values (4,'Fire Controller','FC1','FC1',1,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',1);
+insert into controller_data values (5,'Fire Controller','FC2','FC2',1,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
+insert into controller_data values (6,'Fire Controller','FC3','FC3',1,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',1);
+insert into controller_data values (7,'Fire Controller','FC4','FC4',1,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-15',1);
 
 -- AAW Mission
-insert into controller_data values (8,'Weapon','SAM','SAM',1,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
-insert into controller_data values (9,'Weapon','Main Gun','MG',1,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
-insert into controller_data values (10,'Weapon','CRG (Port)','CP',1,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (11,'Weapon','CRG (STDB)','CS',1,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
+insert into controller_data values (8,'Weapon','SAM','SAM',1,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
+insert into controller_data values (9,'Weapon','Main Gun','MG',1,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',1);
+insert into controller_data values (10,'Weapon','CRG (Port)','CP',1,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (11,'Weapon','CRG (STDB)','CS',1,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
 
 -- ASuW Mission
-insert into controller_data values (12,'Weapon','SSM','SSM',1,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+insert into controller_data values (12,'Weapon','SSM','SSM',1,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',1);
 
 -- ASW Mission
-insert into controller_data values (13,'Weapon','Torpedo','TOR',1,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
-insert into controller_data values (14,'Weapon','RDC','RDC',1,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (15,'Sensor','SONAR','SONAR',1,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+insert into controller_data values (13,'Weapon','Torpedo','TOR',1,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',1);
+insert into controller_data values (14,'Weapon','RDC','RDC',1,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (15,'Sensor','SONAR','SONAR',1,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',1);
 
 -- EW Mission
-insert into controller_data values (16,'Weapon','NRJ','NRJ',1,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (17,'Weapon','PJ-46','PJ-46',1,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',4);
+insert into controller_data values (16,'Weapon','NRJ','NRJ',1,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (17,'Weapon','PJ-46','PJ-46',1,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2020-01-01',1);
 
 -- -- Data for Ship B
-insert into controller_data values (18,'Sensor','S1','S1',2,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
-insert into controller_data values (19,'Sensor','S2','S2',2,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (20,'Sensor','CCS','CCS',2,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
+insert into controller_data values (18,'Sensor','S1','S1',2,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
+insert into controller_data values (19,'Sensor','S2','S2',2,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (20,'Sensor','CCS','CCS',2,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',1);
 
-insert into controller_data values (21,'Fire Controller','FC1','FC1',2,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (22,'Fire Controller','FC2','FC2',2,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
-insert into controller_data values (23,'Fire Controller','FC3','FC3',2,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
-insert into controller_data values (24,'Fire Controller','FC4','FC4',2,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2019-09-15',4);
+insert into controller_data values (21,'Fire Controller','FC1','FC1',2,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (22,'Fire Controller','FC2','FC2',2,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
+insert into controller_data values (23,'Fire Controller','FC3','FC3',2,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',1);
+insert into controller_data values (24,'Fire Controller','FC4','FC4',2,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2019-09-15',1);
 
 -- AAW Mission
-insert into controller_data values (25,'Weapon','SAM','SAM',2,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
-insert into controller_data values (26,'Weapon','Main Gun','MG',2,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
-insert into controller_data values (27,'Weapon','CRG (Port)','CP',2,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (28,'Weapon','CRG (STDB)','CS',2,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
+insert into controller_data values (25,'Weapon','SAM','SAM',2,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
+insert into controller_data values (26,'Weapon','Main Gun','MG',2,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',1);
+insert into controller_data values (27,'Weapon','CRG (Port)','CP',2,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (28,'Weapon','CRG (STDB)','CS',2,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
 
 -- ASuW Mission
-insert into controller_data values (29,'Weapon','SSM','SSM',2,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (29,'Weapon','SSM','SSM',2,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
 
 -- ASW Mission
-insert into controller_data values (30,'Weapon','Torpedo','TOR',2,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
-insert into controller_data values (31,'Weapon','RDC','RDC',2,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (32,'Sensor','SONAR','SONAR',2,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
+insert into controller_data values (30,'Weapon','Torpedo','TOR',2,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
+insert into controller_data values (31,'Weapon','RDC','RDC',2,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (32,'Sensor','SONAR','SONAR',2,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',1);
 
 -- EW Mission
-insert into controller_data values (33,'Weapon','NRJ','NRJ',2,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
-insert into controller_data values (34,'Weapon','PJ-46','PJ-46',2,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (33,'Weapon','NRJ','NRJ',2,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
+insert into controller_data values (34,'Weapon','PJ-46','PJ-46',2,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
 
 -- -------------------------
 -- -- Data for Ship C
-insert into controller_data values (35,'Sensor','S1','S1',3,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',4);
-insert into controller_data values (36,'Sensor','S2','S2',3,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
-insert into controller_data values (37,'Sensor','CCS','CCS',3,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+insert into controller_data values (35,'Sensor','S1','S1',3,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',1);
+insert into controller_data values (36,'Sensor','S2','S2',3,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',1);
+insert into controller_data values (37,'Sensor','CCS','CCS',3,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
 
-insert into controller_data values (38,'Fire Controller','FC1','FC1',3,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',4);
-insert into controller_data values (39,'Fire Controller','FC2','FC2',3,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
-insert into controller_data values (40,'Fire Controller','FC3','FC3',3,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
-insert into controller_data values (41,'Fire Controller','FC4','FC4',3,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-15',4);
+insert into controller_data values (38,'Fire Controller','FC1','FC1',3,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',1);
+insert into controller_data values (39,'Fire Controller','FC2','FC2',3,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',1);
+insert into controller_data values (40,'Fire Controller','FC3','FC3',3,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
+insert into controller_data values (41,'Fire Controller','FC4','FC4',3,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-15',1);
 
 -- AAW Mission
-insert into controller_data values (42,'Weapon','SAM','SAM',3,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',4);
-insert into controller_data values (43,'Weapon','Main Gun','MG',3,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
-insert into controller_data values (44,'Weapon','CRG (Port)','CP',3,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
-insert into controller_data values (45,'Weapon','CRG (STDB)','CS',3,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
+insert into controller_data values (42,'Weapon','SAM','SAM',3,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',1);
+insert into controller_data values (43,'Weapon','Main Gun','MG',3,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',1);
+insert into controller_data values (44,'Weapon','CRG (Port)','CP',3,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
+insert into controller_data values (45,'Weapon','CRG (STDB)','CS',3,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
 
 -- ASuW Mission
-insert into controller_data values (46,'Weapon','SSM','SSM',3,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+insert into controller_data values (46,'Weapon','SSM','SSM',3,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',1);
 
 -- ASW Mission
-insert into controller_data values (47,'Weapon','Torpedo','TOR',3,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',4);
-insert into controller_data values (48,'Weapon','RDC','RDC',3,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',4);
-insert into controller_data values (49,'Sensor','SONAR','SONAR',3,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
+insert into controller_data values (47,'Weapon','Torpedo','TOR',3,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-07-01',1);
+insert into controller_data values (48,'Weapon','RDC','RDC',3,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-11-01',1);
+insert into controller_data values (49,'Sensor','SONAR','SONAR',3,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',1);
 
 -- EW Mission
-insert into controller_data values (50,'Weapon','NRJ','NRJ',3,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',4);
-insert into controller_data values (51,'Weapon','PJ-46','PJ-46',3,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
+insert into controller_data values (50,'Weapon','NRJ','NRJ',3,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-10-01',1);
+insert into controller_data values (51,'Weapon','PJ-46','PJ-46',3,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',1);
 
 -- -------------------------
 -- -- Data for Ship D
-insert into controller_data values (52,'Sensor','S1','S1',4,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
-insert into controller_data values (53,'Sensor','S2','S2',4,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (54,'Sensor','CCS','CCS',4,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
+insert into controller_data values (52,'Sensor','S1','S1',4,'1001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
+insert into controller_data values (53,'Sensor','S2','S2',4,'1002','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (54,'Sensor','CCS','CCS',4,'1003','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
 
-insert into controller_data values (55,'Fire Controller','FC1','FC1',4,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
-insert into controller_data values (56,'Fire Controller','FC2','FC2',4,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
-insert into controller_data values (57,'Fire Controller','FC3','FC3',4,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2019-01-01',4);
-insert into controller_data values (58,'Fire Controller','FC4','FC4',4,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-15',4);
+insert into controller_data values (55,'Fire Controller','FC1','FC1',4,'2001','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',1);
+insert into controller_data values (56,'Fire Controller','FC2','FC2',4,'2002','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
+insert into controller_data values (57,'Fire Controller','FC3','FC3',4,'2003','','','',0.00,0.00,0.00,0.00,0.00,'2019-01-01',1);
+insert into controller_data values (58,'Fire Controller','FC4','FC4',4,'2004','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-15',1);
 
 -- AAW Mission
-insert into controller_data values (59,'Weapon','SAM','SAM',4,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',4);
-insert into controller_data values (60,'Weapon','Main Gun','MG',4,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
-insert into controller_data values (61,'Weapon','CRG (Port)','CP',4,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
-insert into controller_data values (62,'Weapon','CRG (STDB)','CS',4,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+insert into controller_data values (59,'Weapon','SAM','SAM',4,'3001','','','',0.00,0.00,0.00,0.00,0.00,'2019-06-01',1);
+insert into controller_data values (60,'Weapon','Main Gun','MG',4,'3002','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',1);
+insert into controller_data values (61,'Weapon','CRG (Port)','CP',4,'3003','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
+insert into controller_data values (62,'Weapon','CRG (STDB)','CS',4,'3004','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',1);
 
 -- ASuW Mission
-insert into controller_data values (63,'Weapon','SSM','SSM',4,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',4);
+insert into controller_data values (63,'Weapon','SSM','SSM',4,'3005','','','',0.00,0.00,0.00,0.00,0.00,'2019-12-01',1);
 
 -- ASW Mission
-insert into controller_data values (64,'Weapon','Torpedo','TOR',4,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',4);
-insert into controller_data values (65,'Weapon','RDC','RDC',4,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-03-01',4);
-insert into controller_data values (66,'Sensor','SONAR','SONAR',4,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',4);
+insert into controller_data values (64,'Weapon','Torpedo','TOR',4,'3006','','','',0.00,0.00,0.00,0.00,0.00,'2019-04-01',1);
+insert into controller_data values (65,'Weapon','RDC','RDC',4,'3007','','','',0.00,0.00,0.00,0.00,0.00,'2019-03-01',1);
+insert into controller_data values (66,'Sensor','SONAR','SONAR',4,'1004','','','',0.00,0.00,0.00,0.00,0.00,'2019-05-01',1);
 
 -- EW Mission
-insert into controller_data values (67,'Weapon','NRJ','NRJ',4,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',4);
-insert into controller_data values (68,'Weapon','PJ-46','PJ-46',4,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-09-01',4);
+insert into controller_data values (67,'Weapon','NRJ','NRJ',4,'3008','','','',0.00,0.00,0.00,0.00,0.00,'2019-08-01',1);
+insert into controller_data values (68,'Weapon','PJ-46','PJ-46',4,'3009','','','',0.00,0.00,0.00,0.00,0.00,'2019-09-01',1);
 
 -- -------------------------------------
 

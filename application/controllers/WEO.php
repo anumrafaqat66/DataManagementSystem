@@ -381,7 +381,10 @@ class WEO extends CI_Controller
             $days = floor($diff/60/60/24);
 
             //Total_Equipped
-            $Total_Equiped = $view_array['data']['Total_Equipped'];
+            $Controller_name =  $this->db->select('Controller_Name')->where('ID', $controller_id)->limit(1)->get('controller_data')->row_array();
+            $Total_Equiped_sum =  $this->db->select_sum('Total_Equipped')->where('Controller_Name', $Controller_name['Controller_Name'])->get('controller_data')->row_array();
+            $Total_Equiped = $Total_Equiped_sum['Total_Equipped']; 
+            // $Total_Equiped = $view_array['data']['Total_Equipped'];
 
             if ($view_array['data']['MTBF'] != '' && $view_array['data']['MTBF'] != 0.00) {
                 $power = ($Total_failure_count / ($days * $Total_Equiped)) * $time;

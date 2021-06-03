@@ -14,40 +14,58 @@ class Cdr extends CI_Controller
         $missions = $this->db->where('Ship_ID',1)->get('missions')->result_array();
 
         $result_shipA = 1;
+        $result_shipA_rel = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result_shipA = $result_shipA * (1 - $missions[$i]['Availability'] / 100);
+            $result_shipA_rel = $result_shipA_rel * (1 - $missions[$i]['Reliability'] / 100);
             $datarow = $i  + 1;
             $data["shipA_mission$datarow"] = $missions[$i]['Availability'];
+            $data["shipA_mission_rel$datarow"] = $missions[$i]['Reliability'];
         }
         $data['availability_missionA'] = number_format((1 - ($result_shipA)) * 100, 2);
+        $data['reliability_missionA'] = number_format((1 - ($result_shipA_rel)) * 100, 2);
 
-        
+        //////// SHIP B //////////////////////////////
         $missions = $this->db->where('Ship_ID',2)->get('missions')->result_array();
         $result_shipB = 1;
+        $result_shipB_rel = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result_shipB = $result_shipB * (1 - $missions[$i]['Availability'] / 100);
+            $result_shipB_rel = $result_shipB_rel * (1 - $missions[$i]['Reliability'] / 100);
             $datarow = $i  + 1;
             $data["shipB_mission$datarow"] = $missions[$i]['Availability'];
+            $data["shipB_mission_rel$datarow"] = $missions[$i]['Reliability'];
         }
         $data['availability_missionB'] = number_format((1 - ($result_shipB)) * 100, 2);
+        $data['reliability_missionB'] = number_format((1 - ($result_shipB_rel)) * 100, 2);
 
+        ///////// SHIP C //////////////////////////
         $missions = $this->db->where('Ship_ID',3)->get('missions')->result_array();
         $result_shipC = 1;
+        $result_shipC_rel = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result_shipC = $result_shipC * (1 - $missions[$i]['Availability'] / 100);
+            $result_shipC_rel = $result_shipC_rel * (1 - $missions[$i]['Reliability'] / 100);
             $datarow = $i  + 1;
             $data["shipC_mission$datarow"] = $missions[$i]['Availability'];
+            $data["shipC_mission_rel$datarow"] = $missions[$i]['Reliability'];
         }
         $data['availability_missionC'] = number_format((1 - ($result_shipC)) * 100, 2);
+        $data['reliability_missionC'] = number_format((1 - ($result_shipC_rel)) * 100, 2);
 
+        ////////// SHIP D ////////////////////////
         $missions = $this->db->where('Ship_ID',4)->get('missions')->result_array();
         $result_shipD = 1;
+        $result_shipD_rel = 1;
         for ($i = 0; $i < count($missions); $i++) {
             $result_shipD = $result_shipD * (1 - $missions[$i]['Availability'] / 100);
+            $result_shipD_rel = $result_shipD_rel * (1 - $missions[$i]['Reliability'] / 100);
             $datarow = $i  + 1;
             $data["shipD_mission$datarow"] = $missions[$i]['Availability'];
+            $data["shipD_mission_rel$datarow"] = $missions[$i]['Reliability'];
         }
         $data['availability_missionD'] = number_format((1 - ($result_shipD)) * 100, 2);
+        $data['reliability_missionD'] = number_format((1 - ($result_shipD_rel)) * 100, 2);
 
 
         $ship_data = $this->db->get('ship_data')->result_array();
