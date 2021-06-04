@@ -289,18 +289,18 @@
             async: false
         });
 
-        $.ajax({
-            url: '<?= base_url(); ?>CO/get_complete_ship_reliability',
-            method: 'POST',
-            data: {
-                'time': 30
-            },
-            success: function(data) {
-                reliability = data;
-                enteredTime = time;
-            },
-            async: false
-        });
+        // $.ajax({
+        //     url: '<?= base_url(); ?>CO/get_complete_ship_reliability',
+        //     method: 'POST',
+        //     data: {
+        //         'time': 30
+        //     },
+        //     success: function(data) {
+        //         reliability = data;
+        //         enteredTime = time;
+        //     },
+        //     async: false
+        // });
 
 
         $data = $("#availability_bar").html();
