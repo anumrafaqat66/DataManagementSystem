@@ -122,8 +122,8 @@ class Cdr extends CI_Controller
 
     public function PageReload()
     {
-        $data['time_entered'] = $_POST['time'];
-        $this->index();
+        $time_entered = $_POST['time'];
+        $this->index($time_entered);
         //echo $data = $this->load->view('Cdr/cdr', $data, TRUE);
     }
 

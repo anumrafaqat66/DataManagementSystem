@@ -22,6 +22,9 @@
         background-size: cover;
         height: 170px;
         border-radius: 20px;
+        /* Add the blur effect */
+        filter: blur(2px);
+        /* -webkit-filter: blur(8px); */
     }
 
     .img-ship2 {
@@ -30,6 +33,9 @@
         background-size: cover;
         height: 170px;
         border-radius: 20px;
+        /* Add the blur effect */
+        filter: blur(2px);
+        /* -webkit-filter: blur(8px); */
     }
 
     .img-ship3 {
@@ -38,6 +44,7 @@
         background-size: cover;
         height: 170px;
         border-radius: 20px;
+        filter: blur(2px);
     }
 
     .img-ship4 {
@@ -46,6 +53,59 @@
         background-size: cover;
         height: 170px;
         border-radius: 20px;
+        filter: blur(2px);
+    }
+
+    .bg-text {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 20%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
+    }
+
+    .bg-text2 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 20%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
+    }
+
+    .bg-text3 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 44%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
+    }
+
+    .bg-text4 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 44%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
     }
 
     .dot {
@@ -155,15 +215,17 @@
                         <div class="row" style="padding:1px;">
 
                             <!-- <div class="col-sm-12"> -->
-                            <div class="col-sm-5 mx-1 my-1 img-ship" style="margin-left:75px !important;">
+                            <div class="col-sm-5 mx-1 my-1 img-ship bg" style="margin-left:75px !important;"></div>
+                            <div class="bg-text">
                                 <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>">
-                                    <h1 class="h1 text-center " style="margin-top: 20px; color:black;"><strong><?php echo $ship_data1 ?></strong></h1>
+                                    <h1 class="h1 text-center" style="margin-top: 20px; color:black;"><strong><?php echo $ship_data1 ?></strong></h1>
                                     <h2 class="h4 text-center " style="color:black;"><strong>A: <?php echo $availability_missionA ?></strong></h2>
                                     <h2 class="h4 text-center " style="color:black;"><strong>R: <?php echo $reliability_missionA ?></strong></h2>
                                 </a>
                             </div>
 
-                            <div class="col-sm-5 mx-1 my-1 img-ship2" style="padding:5px;">
+                            <div class="col-sm-5 mx-1 my-1 img-ship2" style="padding:5px;"></div>
+                            <div class="bg-text2">
                                 <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>">
                                     <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong><?php echo $ship_data2 ?></strong></h1>
                                     <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php echo $availability_missionB ?></strong></h2>
@@ -176,7 +238,8 @@
                         <div class="row " style="padding:1px;">
 
                             <!-- <div class="col-sm-12"> -->
-                            <div class="col-sm-5 mx-1 my-1 img-ship3" style="margin-left:75px !important;">
+                            <div class="col-sm-5 mx-1 my-1 img-ship3" style="margin-left:75px !important;"></div>
+                            <div class="bg-text3">
                                 <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship3' ?>">
                                     <h1 class="h1 text-center " style="margin-top: 20px; color:black;"><strong><?php echo $ship_data3 ?></strong></h1>
                                     <h2 class="h4 text-center " style="color:black;"><strong>A: <?php echo $availability_missionC ?></strong></h2>
@@ -184,7 +247,8 @@
                                 </a>
                             </div>
 
-                            <div class="col-sm-5 mx-1 my-1 img-ship4" style="padding:5px;">
+                            <div class="col-sm-5 mx-1 my-1 img-ship4" style="padding:5px;"></div>
+                            <div class="bg-text4">
                                 <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship4' ?>">
                                     <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong><?php echo $ship_data4 ?></strong></h1>
                                     <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php echo $availability_missionD ?></strong></h2>
@@ -197,7 +261,7 @@
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-1 my-3">
-                                
+
                             </div>
                             <div class="col-sm-4 my-3">
                                 <h6 class="h6 text-grey-900" style="color:white">To check all ships reliabiltiy. Please enter time: </h6>
@@ -205,10 +269,10 @@
                             <div class="col-sm-4">
                                 <form class="user" role="form" id="update_form" method="post" action="">
                                     <input type="text" class="form-control form-control-user" name="time" id="system_time" value="<?php if (isset($entered_time)) {
-                                                                                                                                                        echo $entered_time;
-                                                                                                                                                    } else {
-                                                                                                                                                        echo "";
-                                                                                                                                                    }; ?>" placeholder="Enter Time">
+                                                                                                                                        echo $entered_time;
+                                                                                                                                    } else {
+                                                                                                                                        echo "";
+                                                                                                                                    }; ?>" placeholder="Enter Time">
                                 </form>
                             </div>
                             <div class="col-sm-4">
@@ -222,11 +286,11 @@
 
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th scope="col" ></th>
+                                                <th scope="col"></th>
                                                 <th scope="col" colspan="2" style="border-right:5px solid black; "><?php echo $ship_data1 ?></th>
                                                 <th scope="col" colspan="2" style="border-right:5px solid black;"><?php echo $ship_data2 ?></th>
                                                 <th scope="col" colspan="2" style="border-right:5px solid black;"><?php echo $ship_data3 ?></th>
-                                                <th scope="col" colspan="2" ><?php echo $ship_data4 ?></th>
+                                                <th scope="col" colspan="2"><?php echo $ship_data4 ?></th>
                                             </tr>
                                             <tr>
                                                 <th scope="col"></th>
@@ -254,7 +318,7 @@
                                                 <td id="AAW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel1 ?>%</td>
 
                                                 <td id="AAW4" style="border-right:5px solid orange;"><?php echo $shipD_mission1 ?>%</td>
-                                                <td id="AAW_R4" ><?php echo $shipD_mission_rel1 ?>%</td>
+                                                <td id="AAW_R4"><?php echo $shipD_mission_rel1 ?>%</td>
                                             </tr>
                                             <tr>
                                                 <th style="background-color:#5a5c69; color:white;border-radius:20px;">ASuW</th>
@@ -268,7 +332,7 @@
                                                 <td id="ASuW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel2 ?>%</td>
 
                                                 <td id="ASuW4" style="border-right:5px solid orange;"><?php echo $shipD_mission2 ?>%</td>
-                                                <td id="ASuW_R4" ><?php echo $shipD_mission_rel2 ?>%</td>
+                                                <td id="ASuW_R4"><?php echo $shipD_mission_rel2 ?>%</td>
                                             </tr>
                                             <tr>
                                                 <th style="background-color:#5a5c69; color:white;border-radius:20px;">ASW</th>
@@ -282,7 +346,7 @@
                                                 <td id="ASW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel3 ?>%</td>
 
                                                 <td id="ASW4" style="border-right:5px solid orange;"><?php echo $shipD_mission3 ?>%</td>
-                                                <td id="ASW_R4" ><?php echo $shipD_mission_rel3 ?>%</td>
+                                                <td id="ASW_R4"><?php echo $shipD_mission_rel3 ?>%</td>
                                             </tr>
                                             <tr>
                                                 <th style="background-color:#5a5c69; color:white;border-radius:20px;">EW</th>
@@ -555,7 +619,7 @@
         });
 
 
-         $.ajax({
+        $.ajax({
             url: '<?= base_url(); ?>Cdr/PageReload',
             method: 'POST',
             data: {
