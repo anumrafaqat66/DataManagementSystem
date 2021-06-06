@@ -109,8 +109,8 @@
   <div class="row col-md-12" style="padding-right: 0px !important;">
     <div class="col-md-6" style="float:left; background-color: rgb(0, 1, 84);color: white; text-align: justify; text-justify: inter-word;">
       <h4 style="padding:40px">A combat ready multi-dimensional force manned by highy motivated and professionally competent human resource
-        imbued with unwavering faith in Allah SWT and the natinal cause; that contributes effectively to credible detterence,
-        national security and maritime economy; safeguarding Pakistan's maritime interest while radiating influence in the
+        imbued with unwavering faith in Allah SWT and the national cause; that contributes effectively to credible detterence,
+        national security and maritime economy; safeguarding Pakistan's maritime interests while radiating influence in the
         region with global outlook.</h4>
     </div>
 
