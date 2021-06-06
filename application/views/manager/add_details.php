@@ -198,10 +198,10 @@
                              </div>
                              <div class="form-group row">
                                  <div class="col-sm-4 mb-1">
-                                     <h6>&nbsp;ADLT: (Days)</h6>
+                                     <h6>&nbsp;ALDT: (Days)</h6>
                                  </div>
                                  <div class="col-sm-4 mb-1">
-                                     <h6>&nbsp;ADTL Description:</h6>
+                                     <h6>&nbsp;ALDT Description:</h6>
                                  </div>
                              </div>
                              <div class="form-group row">

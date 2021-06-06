@@ -91,8 +91,8 @@ CREATE TABLE `ship_data` (
 --
 -- Dumping data for table `ship_data`
 --
-insert into ship_data values (1,'Zafr','Working');
-insert into ship_data values (2,'Saif','Working');
+insert into ship_data values (1,'ZQFR','Working');
+insert into ship_data values (2,'SAIF','Working');
 insert into ship_data values (3,'S/Sheer','Working');
 insert into ship_data values (4,'ASLT','Working');
 

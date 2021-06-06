@@ -10883,6 +10883,7 @@ a:focus {
   background: url(../img/Pakistan-Navy.jpg);
   background-position: center;
   background-size: cover;
+  object-fit: cover;
 }
 
 .bg-register-image {
