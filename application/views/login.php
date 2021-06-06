@@ -56,7 +56,7 @@
         <div class="col-lg-6" style="padding:1px !important">
           <div class="p-5">
             <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Data Management System</h1>
+              <h1 style="width:320px;" class="h4 text-gray-900 mb-4"><strong>Welcome to Combat System</strong></h1>
             </div>
             <form class="user" role="form" id="login_form" method="post" action="<?php echo base_url(); ?>User_Login/login_process">
               <div class="form-group">
@@ -108,8 +108,8 @@
 
   <div class="row col-md-12" style="padding-right: 0px !important;">
     <div class="col-md-6" style="float:left; background-color: rgb(0, 1, 84);color: white; text-align: justify; text-justify: inter-word;">
-    <h3 style="text-align:center; padding:15px;"><strong> Pakistan Navy Vision</strong></h3>
-      <h4 style="padding:15px">A combat ready multi-dimensional force manned by highy motivated and professionally competent human resource
+    <h3 style="text-align:center; margin-top:40px; text-decoration: underline;"><strong> Pakistan Navy Vision</strong></h3>
+      <h4 style="padding-left:30px;padding-right:30px;padding-bottom:30px;">A combat ready multi-dimensional force manned by highy motivated and professionally competent human resource
         imbued with unwavering faith in Allah SWT and the national cause; that contributes effectively to credible detterence,
         national security and maritime economy; safeguarding Pakistan's maritime interests while radiating influence in the
         region with global outlook.</h4>
