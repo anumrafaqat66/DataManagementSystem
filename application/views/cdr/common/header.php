@@ -41,7 +41,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>Cdr">
+                <a class="nav-link" href="<?php if ($this->session->userdata('username') == "COMDES18") {
+                                                echo base_url(); ?>'Cdr' <?php } elseif ($this->session->userdata('username') == "COMPAK") {
+                                                                                                                                    echo base_url(); ?>Cdr/navigate/<?php echo 'COMPAK';  } ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -63,11 +65,13 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pages</h6>
-                        <a class="collapse-item" href="<?= base_url(); ?>CO">Commanding Officer</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>WEO">Weapon Engineer</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>HOD">Head Department</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>Manager">Manager</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>Technician">Technician</a>
+                        <?php if ($this->session->userdata('username') == "COMDES18") { ?>
+                            <a class="collapse-item" href="<?= base_url(); ?>CO">Commanding Officer</a>
+                            <a class="collapse-item" href="<?= base_url(); ?>WEO">Weapon Engineer</a>
+                            <a class="collapse-item" href="<?= base_url(); ?>HOD">Head Department</a>
+                            <a class="collapse-item" href="<?= base_url(); ?>Manager">Manager</a>
+                            <a class="collapse-item" href="<?= base_url(); ?>Technician">Technician</a>
+                        <?php } ?>
                     </div>
                 </div>
             </li>
@@ -174,12 +178,12 @@
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <select class="form-control rounded-pill small" name="Ship_name" id="Ship_name" data-placeholder="Select Ship" style="font-size: 0.8rem; height:35px;">\
-                                <option class="form-control form-control-user small" style="font-size: 0.8rem;"  value="">Search Ship</option>
-                                <?php $ship_data= $this->db->get('ship_data')->result_array(); ?>
-                                <?php foreach($ship_data as $data){ ?>
-                                <option class="form-control form-control-user small" style="font-size: 0.8rem;"  value="<?=  $data['Ship_name']?>"><?= $data['Ship_name']; ?></option>
+                                <option class="form-control form-control-user small" style="font-size: 0.8rem;" value="">Search Ship</option>
+                                <?php $ship_data = $this->db->get('ship_data')->result_array(); ?>
+                                <?php foreach ($ship_data as $data) { ?>
+                                    <option class="form-control form-control-user small" style="font-size: 0.8rem;" value="<?= $data['Ship_name'] ?>"><?= $data['Ship_name']; ?></option>
                                 <?php } ?>
-                               
+
                             </select>
                         </div>
                     </form>
@@ -224,5 +228,3 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
-    

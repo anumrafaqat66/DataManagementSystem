@@ -64,6 +64,19 @@
         margin-right: 0;
     }
 
+    .line_bottom2 {
+        display: inline-block;
+        border: 1px solid black;
+        border-top: none;
+        border-right: none;
+        border-bottom: none;
+        border-left: none;
+        height: 30px;
+        width: 285px;
+        margin-left: -5px;
+        margin-right: 0;
+    }
+
     .line_top {
         display: inline-block;
         border: 1px solid black;
@@ -71,6 +84,19 @@
         border-right: none;
         height: 35px;
         width: 200px;
+        margin-left: -5px;
+        margin-right: 0;
+    }
+
+    .line_top2 {
+        display: inline-block;
+        border: 1px solid black;
+        border-bottom: none;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        height: 35px;
+        width: 285px;
         margin-left: -5px;
         margin-right: 0;
     }
@@ -97,6 +123,53 @@
         width: 295px;
         margin-top: -6px;
     }
+
+
+    .background {
+        display: inline-flex;
+        float: left;
+    }
+
+    .line1 {
+        width: 173px;
+        height: 18px;
+        border-bottom: 1px solid black;
+        -webkit-transform: translateY(-43px) translateX(60px) rotate(41deg);
+        position: absolute;
+        top: 163px;
+        left: 167px;
+    }
+
+    .line2 {
+        width: 174px;
+        height: 37px;
+        border-bottom: 1px solid black;
+        -webkit-transform: translateY(43px) translateX(79px) rotate(-41deg);
+        position: absolute;
+        top: 63px;
+        left: 130px;
+    }
+
+    .line3 {
+        width: 129px;
+        height: 56px;
+        border-bottom: 1px solid black;
+        /* -webkit-transform: translateY(20px) translateX(5px) rotate(-26deg); */
+        position: absolute;
+        top: 24px;
+        left: 244px;
+    }
+
+    .line4 {
+        width: 129px;
+        height: 172px;
+        border-bottom: 1px solid black;
+        /* -webkit-transform: translateY(20px) translateX(5px) rotate(-26deg); */
+        position: absolute;
+        top: 24px;
+        left: 244px;
+    }
+
 </style>
 <div class="container">
     <!-- <h1 class="h4 text-gray-900">Welcome WEO</h1>
@@ -268,7 +341,7 @@
                             <h1 class="h5 text-white">SAM (Surface to Air Missile)</h1>
                         </div>
 
-                        <div class="card-body mx-5 bg-custom3" >
+                        <div class="card-body mx-5 bg-custom3">
                             <div>
                                 <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3"> CCS </a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
                             </div>
@@ -371,24 +444,31 @@
                         <div class="card-body mx-5">
                             <div>
                                 <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CCS_R">R</a></div>
-                                <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC3_A">A</a><a href="<?= base_url(); ?>Manager/show_records/6">FC3</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
+                                <div class="box" style="background-color:#FA8072;color:white; margin-left:100px;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="FC3_A">A</a><a href="<?= base_url(); ?>Manager/show_records/6">FC3</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC3_R">R</a></div>
+                            </div>
+
+                            <div class="background">
+                                <div class="line3"></div>
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                                <div class="line4"></div>
                             </div>
 
                             <div class="lines">
-                                <div class="line_bottom"></div>
+                                <div class="line_bottom2"></div>
                                 <div class="line_bottom"></div>
                                 <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CRG_(Port)_A">A</a><a href="<?= base_url(); ?>Manager/show_records/10" style="color:whitesmoke;">CRG (Port)</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="CRG_(Port)_R">R</a></div>
                             </div>
 
                             <div class="lines">
-                                <div class="line_top"></div>
+                                <div class="line_top2"></div>
                                 <div class="line_top"></div>
 
                             </div>
 
                             <div>
                                 <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black" id="S1_R">R</a></div>
-                                <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black;" id="FC4_A">A</a><a href="<?= base_url(); ?>Manager/show_records/7">FC4</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
+                                <div class="box" style="background-color:#FA8072;color:white; margin-left:100px;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black;" id="FC4_A">A</a><a href="<?= base_url(); ?>Manager/show_records/7">FC4</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black;" id="FC4_R">R</a></div>
 
                             </div>
                         </div>
@@ -421,24 +501,31 @@
                         <div class="card-body mx-5">
                             <div>
                                 <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3">CCS</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black ;" id="CCS_R">R</a></div>
-                                <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC3_A">A</a><a href="<?= base_url(); ?>Manager/show_records/6">FC3</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
+                                <div class="box" style="background-color:#FA8072;color:white;margin-left:100px;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC3_A">A</a><a href="<?= base_url(); ?>Manager/show_records/6">FC3</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC3_R">R</a></div>
+                            </div>
+
+                            <div class="background">
+                                <div class="line3"></div>
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                                <div class="line4"></div>
                             </div>
 
                             <div class="lines">
+                                <div class="line_bottom2"></div>
                                 <div class="line_bottom"></div>
-                                <div class="line_bottom"></div>
-                                <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a><a href="<?= base_url(); ?>Manager/show_records/11" style="color:whitesmoke;">CRG(STDB)</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
+                                <div class="box_center" style="background-color:#4682B4;color:white; "><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small; color: black;" id="CRG_(STDB)_A">A</a><a href="<?= base_url(); ?>Manager/show_records/11" style="color:whitesmoke;">CRG(STDB)</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="CRG_(STDB)_R">R</a></div>
                             </div>
 
                             <div class="lines">
-                                <div class="line_top"></div>
+                                <div class="line_top2"></div>
                                 <div class="line_top"></div>
 
                             </div>
 
                             <div>
                                 <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="S1_R">R</a></div>
-                                <div class="box" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC4_A">A</a><a href="<?= base_url(); ?>Manager/show_records/7">FC4</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
+                                <div class="box" style="background-color:#FA8072;color:white;margin-left:100px;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color: black; " id="FC4_A">A</a><a href="<?= base_url(); ?>Manager/show_records/7">FC4</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color: black; " id="FC4_R">R</a></div>
                             </div>
                         </div>
                     </div>
@@ -771,9 +858,9 @@
         //var name = $(this).val();
         //if (weapon != '') {
         $.ajax({
-                url: '<?= base_url(); ?>WEO/get_all_weapons_availability',
-                method: 'POST',
-                data: {
+            url: '<?= base_url(); ?>WEO/get_all_weapons_availability',
+            method: 'POST',
+            data: {
                 'ship_id': <?php echo $ship_id ?>
             },
             success: function(data) {
@@ -803,7 +890,7 @@
                 //     document.getElementById("system_availability").style.backgroundColor = "green";
                 // }
             },
-            async :false
+            async: false
             // ,
             // error: function(data) {
             //     //alert(data);
@@ -811,71 +898,71 @@
             // }
         });
 
-    $.ajax({
-        url: '<?= base_url(); ?>WEO/get_all_weapons_reliability',
-        method: 'POST',
-        data: {
-            //'weapon_name': name,
-            'isDefault': 'Yes',
-            'ship_id': <?php echo $ship_id ?>
-        },
-        success: function(data) {
-            var result = jQuery.parseJSON(data);
-            var loop = 1;
-            for (var i in result) {
-                var wn = document.getElementById("weapon_name" + loop);
-                if (wn.innerHTML == result[i].weapon_name) {
-                    var rel = document.getElementById("reldefault" + loop);
-                    rel.innerHTML = "<b>" + result[i].default_reliability + "</b>";
+        $.ajax({
+            url: '<?= base_url(); ?>WEO/get_all_weapons_reliability',
+            method: 'POST',
+            data: {
+                //'weapon_name': name,
+                'isDefault': 'Yes',
+                'ship_id': <?php echo $ship_id ?>
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var loop = 1;
+                for (var i in result) {
+                    var wn = document.getElementById("weapon_name" + loop);
+                    if (wn.innerHTML == result[i].weapon_name) {
+                        var rel = document.getElementById("reldefault" + loop);
+                        rel.innerHTML = "<b>" + result[i].default_reliability + "</b>";
 
-                    if (result[i].default_reliability >= 75) {
-                        rel.style.color = "#008000";
-                    } else if (result[i].default_reliability >= 50 && result[i].default_reliability < 75) {
-                        rel.style.color = "#ffa500";
-                    } else if (result[i].default_reliability < 50) {
-                        rel.style.color = "#ff0000";
+                        if (result[i].default_reliability >= 75) {
+                            rel.style.color = "#008000";
+                        } else if (result[i].default_reliability >= 50 && result[i].default_reliability < 75) {
+                            rel.style.color = "#ffa500";
+                        } else if (result[i].default_reliability < 50) {
+                            rel.style.color = "#ff0000";
+                        }
                     }
+                    loop++;
                 }
-                loop++;
+            },
+            async: true,
+            error: function(data) {
+                //alert(data);
+                alert('failure');
             }
-        },
-        async: true,
-        error: function(data) {
-            //alert(data);
-            alert('failure');
-        }
-    });
-    //}
+        });
+        //}
 
-    // if (weapon != '') {
-    //     $.ajax({
-    //         url: '<?= base_url(); ?>WEO/get_sensors_data',
-    //         method: 'POST',
-    //         data: {
-    //             'weapon_name': weapon
-    //         },
-    //         success: function(data) {
-    //             result = JSON.parse(data);
-    //             $str = '';
-    //             for (var i in result) {
-    //                 $str = result[i].Controller_Name.replace(" ", "_");
-    //                 $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
-    //                 $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
-    //             }
-    //         },
-    //         error: function(data) {
-    //             //alert(data);
-    //             alert('failure');
-    //         }
-    //     });
+        // if (weapon != '') {
+        //     $.ajax({
+        //         url: '<?= base_url(); ?>WEO/get_sensors_data',
+        //         method: 'POST',
+        //         data: {
+        //             'weapon_name': weapon
+        //         },
+        //         success: function(data) {
+        //             result = JSON.parse(data);
+        //             $str = '';
+        //             for (var i in result) {
+        //                 $str = result[i].Controller_Name.replace(" ", "_");
+        //                 $("[id*='" + $str + "_A']").html(String(number_format(result[i].Availability / 100, 2)));
+        //                 $("[id*='" + $str + "_R']").html(String(number_format(0.00 / 100, 2)));
+        //             }
+        //         },
+        //         error: function(data) {
+        //             //alert(data);
+        //             alert('failure');
+        //         }
+        //     });
 
-    // }
-    // e.preventDefault();
-    // window.onunload = function() {
-    //     dubugger;
-    // }
+        // }
+        // e.preventDefault();
+        // window.onunload = function() {
+        //     dubugger;
+        // }
 
-    // }
+        // }
     }
 
     // $('#show_graphs').on('click', function() {

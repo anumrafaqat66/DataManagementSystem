@@ -77,7 +77,6 @@ class Cdr extends CI_Controller
         if ($entered_time != null && $entered_time != '') {
             $data['entered_time'] = $entered_time;
         }
-
         $this->load->view('cdr/cdr', $data);
     }
 
@@ -99,6 +98,8 @@ class Cdr extends CI_Controller
             $this->load->view('cdr\subron');
         } elseif ($page_name == "COMNAV") {
             $this->load->view('cdr\comnav');
+        } elseif ($page_name == "COMPAK") {
+            $this->load->view('cdr\compak');
         }
     }
 

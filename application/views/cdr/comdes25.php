@@ -230,7 +230,7 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4 text-white" style="text-align:center; font-size:xx-large; text-transform:uppercase; font-weight:600;">COMAUX25</h1>
+                        <h1 class="h4 text-white" style="text-align:center; font-size:xx-large; text-transform:uppercase; font-weight:600;">COMDES25</h1>
                     </div>
 
                     <div class="card-body bg-custom3" style="background-color: 315deg;background-image: linear-gradient(315deg, #d4418e 15%, #4B0082 85%);">
