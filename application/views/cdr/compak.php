@@ -94,7 +94,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 27%;
+        top: 22%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -107,7 +107,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 27%;
+        top: 22%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -120,7 +120,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 50%;
+        top: 44%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -133,7 +133,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 50%;
+        top: 44%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -146,7 +146,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 72%;
+        top: 66%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -159,7 +159,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 72%;
+        top: 66%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -172,7 +172,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 94%;
+        top: 89%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -290,14 +290,18 @@
                             <div class="col-sm-5 mx-1 my-1 img-ship bg" style="margin-left:75px !important;"></div>
                             <div class="bg-text">
                                 <a href="<?= base_url(); ?>Cdr">
-                                    <h1 class="h2 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMDES18</strong></h1>
+                                    <h1 class="h3 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMDES18</strong></h1>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>R: 0.00%</strong></h2>
                                 </a>
                             </div>
 
                             <div class="col-sm-5 mx-1 my-1 img-ship2" style="padding:5px;"></div>
                             <div class="bg-text2">
                                 <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMDES25' ?>">
-                                    <h1 class="h2 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMDES25</strong></h1>
+                                    <h1 class="h3 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMDES25</strong></h1>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>R: 0.00%</strong></h2>
                                 </a>
                             </div>
                         </div>
@@ -306,14 +310,18 @@
                             <div class="col-sm-5 mx-1 my-1 img-ship3" style="margin-left:75px !important;"></div>
                             <div class="bg-text3">
                                 <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMPETRON10' ?>">
-                                    <h1 class="h2 text-center " style="margin-top: 20px; color:#DCDCDC; width:245px"><strong>COMPETRON10</strong></h1>
+                                    <h1 class="h3 text-center " style="margin-top: 20px; color:#DCDCDC; width:245px"><strong>COMPETRON10</strong></h1>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>R: 0.00%</strong></h2>
                                 </a>
                             </div>
 
                             <div class="col-sm-5 mx-1 my-1 img-ship4" style="padding:5px;"></div>
                             <div class="bg-text4">
                                 <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMAUX9' ?>">
-                                    <h1 class="h2 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMAUX9</strong></h1>
+                                    <h1 class="h3 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMAUX9</strong></h1>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>R: 0.00%</strong></h2>
                                 </a>
                             </div>
                         </div>
@@ -322,14 +330,18 @@
                             <div class="col-sm-5 mx-1 my-1 img-ship5" style="margin-left:75px !important;"></div>
                             <div class="bg-text5">
                                 <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMAUX21' ?>">
-                                    <h1 class="h2 text-center " style="margin-top: 20px; color:#DCDCDC;"><strong>COMAUX21</strong></h1>
+                                    <h1 class="h3 text-center " style="margin-top: 20px; color:#DCDCDC;"><strong>COMAUX21</strong></h1>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>R: 0.00%</strong></h2>
                                 </a>
                             </div>
 
                             <div class="col-sm-5 mx-1 my-1 img-ship6" style="padding:5px;"></div>
                             <div class="bg-text6">
                                 <a href="<?= base_url(); ?>Cdr/navigate/<?= 'SUBRON' ?>">
-                                    <h1 class="h2 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>SUBRON</strong></h1>
+                                    <h1 class="h3 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>SUBRON</strong></h1>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>R: 0.00%</strong></h2>
                                 </a>
                             </div>                        
                         </div>
@@ -339,7 +351,9 @@
                         <div class="col-sm-10 mx-1 my-1 img-ship7" style="margin-left:75px !important; width:10px !important"></div>
                             <div class="bg-text7">
                                 <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMNAV' ?>">
-                                    <h1 class="h2 text-center " style="margin-top: 20px; color:#DCDCDC;"><strong>COMNAV</strong></h1>
+                                    <h1 class="h3 text-center " style="margin-top: 20px; color:#DCDCDC;"><strong>COMNAV</strong></h1>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h5 text-center " style="color:white;"><strong>R: 0.00%</strong></h2>
                                 </a>
                             </div>
                         </div>

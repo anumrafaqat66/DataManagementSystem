@@ -78,7 +78,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 25%;
+        top: 20%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -91,7 +91,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 25%;
+        top: 20%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -104,7 +104,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 46%;
+        top: 42%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -117,7 +117,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 46%;
+        top: 42%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -263,8 +263,8 @@
                             <div class="bg-text">
                                 <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>"> -->
                                     <h1 class="h1 text-center" style="margin-top: 20px; color:black;"><strong>ShipA</strong></h1>
-                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>A: <?php //echo $availability_missionA ?></strong></h2> -->
-                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>R: <?php //echo $reliability_missionA ?></strong></h2> -->
+                                    <h2 class="h4 text-center " style="color:black;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h4 text-center " style="color:black;"><strong>R: 0.00%</strong></h2>
                                 <!-- </a> -->
                             </div>
 
@@ -272,8 +272,8 @@
                             <div class="bg-text2">
                                 <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>"> -->
                                     <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>ShipB</strong></h1>
-                                    <!-- <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php //echo $availability_missionB ?></strong></h2> -->
-                                    <!-- <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: <?php //echo $reliability_missionB ?></strong></h2> -->
+                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: 0.00%</strong></h2>
                                 <!-- </a> -->
                             </div>
 
@@ -286,8 +286,8 @@
                             <div class="bg-text3">
                                 <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship3' ?>"> -->
                                     <h1 class="h1 text-center " style="margin-top: 20px; color:black;"><strong>ShipC</strong></h1>
-                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>A: <?php //echo $availability_missionC ?></strong></h2> -->
-                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>R: <?php //echo $reliability_missionC ?></strong></h2> -->
+                                    <h2 class="h4 text-center " style="color:black;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h4 text-center " style="color:black;"><strong>R: 0.00%</strong></h2>
                                 <!-- </a> -->
                             </div>
 
@@ -295,8 +295,8 @@
                             <div class="bg-text4">
                                 <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship4' ?>"> -->
                                     <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>ShipD</strong></h1>
-                                    <!-- <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php //echo $availability_missionD ?></strong></h2> -->
-                                    <!-- <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: <?php //echo $reliability_missionD ?></strong></h2> -->
+                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: 0.00%</strong></h2>
+                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: 0.00%</strong></h2>
                                 <!-- </a> -->
                             </div>
 
