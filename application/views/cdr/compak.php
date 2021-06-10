@@ -17,50 +17,84 @@
     }
 
     .img-ship {
-        background: url('<?= base_url() ?>assets/img/ship3.jpg');
+        /* background: url('<?= base_url() ?>assets/img/ship3.jpg'); */
         background-position: center;
         background-size: cover;
-        height: 150px;
+        height: 120px;
         border-radius: 20px;
+        border:3px solid black;
         /* Add the blur effect */
-        filter: blur(2px);
+        /* filter: blur(2px); */
         /* -webkit-filter: blur(8px); */
     }
 
     .img-ship2 {
-        background: url('<?= base_url() ?>assets/img/ship1.jpg');
+        /* background: url('<?= base_url() ?>assets/img/ship1.jpg'); */
         background-position: center;
         background-size: cover;
-        height: 150px;
+        height: 120px;
         border-radius: 20px;
+        border:3px solid black;
         /* Add the blur effect */
-        filter: blur(2px);
+        /* filter: blur(2px); */
         /* -webkit-filter: blur(8px); */
     }
 
     .img-ship3 {
-        background: url('<?= base_url() ?>assets/img/ship3.jpg');
+        /* background: url('<?= base_url() ?>assets/img/ship3.jpg'); */
         background-position: center;
         background-size: cover;
-        height: 150px;
+        height: 120px;
         border-radius: 20px;
-        filter: blur(2px);
+        border:3px solid black;
+        /* filter: blur(2px); */
     }
 
     .img-ship4 {
-        background: url('<?= base_url() ?>assets/img/ship1.jpg');
+        /* background: url('<?= base_url() ?>assets/img/ship1.jpg'); */
         background-position: center;
         background-size: cover;
-        height: 150px;
+        height: 120px;
         border-radius: 20px;
-        filter: blur(2px);
+        border:3px solid black;
+        /* filter: blur(2px); */
+    }
+
+    .img-ship5 {
+        /* background: url('<?= base_url() ?>assets/img/ship1.jpg'); */
+        background-position: center;
+        background-size: cover;
+        height: 120px;
+        border-radius: 20px;
+        border:3px solid black;
+        /* filter: blur(2px); */
+    }
+
+    .img-ship6 {
+        /* background: url('<?= base_url() ?>assets/img/ship1.jpg'); */
+        background-position: center;
+        background-size: cover;
+        height: 120px;
+        border-radius: 20px;
+        border:3px solid black;
+        /* filter: blur(2px); */
+    }
+
+    .img-ship7 {
+        /* background: url('<?= base_url() ?>assets/img/ship1.jpg'); */
+        background-position: center;
+        background-size: cover;
+        height: 120px;
+        border-radius: 20px;
+        border:3px solid black;
+        /* filter: blur(2px); */
     }
 
     .bg-text {
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 20%;
+        top: 27%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -73,7 +107,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 20%;
+        top: 27%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -86,7 +120,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 42%;
+        top: 50%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -99,7 +133,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 42%;
+        top: 50%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -107,6 +141,46 @@
         height: 25%;
         text-align: center;
     }
+
+    .bg-text5 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 72%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
+    }
+
+    .bg-text6 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 72%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
+    }
+
+    .bg-text7 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 94%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
+    }
+
 
     .dot {
         height: 180px;
@@ -208,166 +282,70 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4 text-white" style="text-align:center; font-size:xx-large; text-transform:uppercase; font-weight:600;">COMDES18</h1>
+                        <h1 class="h4 text-white" style="text-align:center; font-size:xx-large; text-transform:uppercase; font-weight:600;"><?php echo $this->session->userdata('username'); ?></h1>
                     </div>
 
                     <div class="card-body bg-custom3" style="background-color: 315deg;background-image: linear-gradient(315deg, #d4418e 15%, #4B0082 85%);">
                         <div class="row" style="padding:1px;">
-
-                            <!-- <div class="col-sm-12"> -->
                             <div class="col-sm-5 mx-1 my-1 img-ship bg" style="margin-left:75px !important;"></div>
                             <div class="bg-text">
-                                <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>">
-                                    <h1 class="h1 text-center" style="margin-top: 20px; color:black;"><strong><?php echo $ship_data1 ?></strong></h1>
-                                    <h2 class="h4 text-center " style="color:black;"><strong>A: <?php echo $availability_missionA ?></strong></h2>
-                                    <h2 class="h4 text-center " style="color:black;"><strong>R: <?php echo $reliability_missionA ?></strong></h2>
+                                <a href="<?= base_url(); ?>Cdr">
+                                    <h1 class="h2 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMDES18</strong></h1>
                                 </a>
                             </div>
 
                             <div class="col-sm-5 mx-1 my-1 img-ship2" style="padding:5px;"></div>
                             <div class="bg-text2">
-                                <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>">
-                                    <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong><?php echo $ship_data2 ?></strong></h1>
-                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php echo $availability_missionB ?></strong></h2>
-                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: <?php echo $reliability_missionB ?></strong></h2>
+                                <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMDES25' ?>">
+                                    <h1 class="h2 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMDES25</strong></h1>
                                 </a>
                             </div>
-
-                            <!-- </div> -->
                         </div>
-                        <div class="row " style="padding:1px;">
 
-                            <!-- <div class="col-sm-12"> -->
+                        <div class="row " style="padding:1px;">
                             <div class="col-sm-5 mx-1 my-1 img-ship3" style="margin-left:75px !important;"></div>
                             <div class="bg-text3">
-                                <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship3' ?>">
-                                    <h1 class="h1 text-center " style="margin-top: 20px; color:black;"><strong><?php echo $ship_data3 ?></strong></h1>
-                                    <h2 class="h4 text-center " style="color:black;"><strong>A: <?php echo $availability_missionC ?></strong></h2>
-                                    <h2 class="h4 text-center " style="color:black;"><strong>R: <?php echo $reliability_missionC ?></strong></h2>
+                                <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMPETRON10' ?>">
+                                    <h1 class="h2 text-center " style="margin-top: 20px; color:#DCDCDC; width:245px"><strong>COMPETRON10</strong></h1>
                                 </a>
                             </div>
 
                             <div class="col-sm-5 mx-1 my-1 img-ship4" style="padding:5px;"></div>
                             <div class="bg-text4">
-                                <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship4' ?>">
-                                    <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong><?php echo $ship_data4 ?></strong></h1>
-                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php echo $availability_missionD ?></strong></h2>
-                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: <?php echo $reliability_missionD ?></strong></h2>
+                                <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMAUX9' ?>">
+                                    <h1 class="h2 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>COMAUX9</strong></h1>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row " style="padding:1px;">
+                            <div class="col-sm-5 mx-1 my-1 img-ship5" style="margin-left:75px !important;"></div>
+                            <div class="bg-text5">
+                                <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMAUX21' ?>">
+                                    <h1 class="h2 text-center " style="margin-top: 20px; color:#DCDCDC;"><strong>COMAUX21</strong></h1>
                                 </a>
                             </div>
 
-                            <!-- </div> -->
+                            <div class="col-sm-5 mx-1 my-1 img-ship6" style="padding:5px;"></div>
+                            <div class="bg-text6">
+                                <a href="<?= base_url(); ?>Cdr/navigate/<?= 'SUBRON' ?>">
+                                    <h1 class="h2 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>SUBRON</strong></h1>
+                                </a>
+                            </div>                        
                         </div>
-                        <hr>
-                        <div class="form-group row">
-                            <div class="col-sm-1 my-3">
 
-                            </div>
-                            <div class="col-sm-4 my-3">
-                                <h6 class="h6 text-grey-900" style="color:white">To check all ships reliabiltiy. Please enter time: </h6>
-                            </div>
-                            <div class="col-sm-4">
-                                <form class="user" role="form" id="update_form" method="post" action="">
-                                    <input type="text" class="form-control form-control-user" name="time" id="system_time" value="<?php if (isset($entered_time)) {
-                                                                                                                                        echo $entered_time;
-                                                                                                                                    } else {
-                                                                                                                                        echo "";
-                                                                                                                                    }; ?>" placeholder="Enter Time">
-                                </form>
-                            </div>
-                            <div class="col-sm-4">
+                        <div class="row " style="padding:1px;">
 
+                        <div class="col-sm-10 mx-1 my-1 img-ship7" style="margin-left:75px !important; width:10px !important"></div>
+                            <div class="bg-text7">
+                                <a href="<?= base_url(); ?>Cdr/navigate/<?= 'COMNAV' ?>">
+                                    <h1 class="h2 text-center " style="margin-top: 20px; color:#DCDCDC;"><strong>COMNAV</strong></h1>
+                                </a>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-sm-12">
-                                <div id="table_div">
-                                    <table id="datatable" class="table table-sm table-striped bg-custom3 text-center" style="border-radius:20px;">
 
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th scope="col"></th>
-                                                <th scope="col" colspan="2" style="border-right:5px solid black; "><?php echo $ship_data1 ?></th>
-                                                <th scope="col" colspan="2" style="border-right:5px solid black;"><?php echo $ship_data2 ?></th>
-                                                <th scope="col" colspan="2" style="border-right:5px solid black;"><?php echo $ship_data3 ?></th>
-                                                <th scope="col" colspan="2"><?php echo $ship_data4 ?></th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"></th>
-                                                <th scope="col">A</th>
-                                                <th scope="col" style="border-right:5px solid black;">R</th>
-                                                <th scope="col">A</th>
-                                                <th scope="col" style="border-right:5px solid black;">R</th>
-                                                <th scope="col">A</th>
-                                                <th scope="col" style="border-right:5px solid black;">R</th>
-                                                <th scope="col">A</th>
-                                                <th scope="col">R</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="table_rows">
-
-                                            <tr id="table_rows_AAW">
-                                                <th style="background-color:#5a5c69; color:white; border-radius:20px;">AAW</th>
-                                                <td id="AAW1" style="border-right:5px solid orange;"><?php echo $shipA_mission1 ?>%</td>
-                                                <td id="AAW_R1" style="border-right:5px solid black;"><?php echo $shipA_mission_rel1 ?>%</td>
-
-                                                <td id="AAW2" style="border-right:5px solid orange;"><?php echo $shipB_mission1 ?>%</td>
-                                                <td id="AAW_R2" style="border-right:5px solid black;"><?php echo $shipB_mission_rel1 ?>%</td>
-
-                                                <td id="AAW3" style="border-right:5px solid orange;"><?php echo $shipC_mission1 ?>%</td>
-                                                <td id="AAW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel1 ?>%</td>
-
-                                                <td id="AAW4" style="border-right:5px solid orange;"><?php echo $shipD_mission1 ?>%</td>
-                                                <td id="AAW_R4"><?php echo $shipD_mission_rel1 ?>%</td>
-                                            </tr>
-                                            <tr>
-                                                <th style="background-color:#5a5c69; color:white;border-radius:20px;">ASuW</th>
-                                                <td id="ASuW1" style="border-right:5px solid orange;"><?php echo $shipA_mission2 ?>%</td>
-                                                <td id="ASuW_R1" style="border-right:5px solid black;"><?php echo $shipA_mission_rel2 ?>%</td>
-
-                                                <td id="ASuW2" style="border-right:5px solid orange;"><?php echo $shipB_mission2 ?>%</td>
-                                                <td id="ASuW_R2" style="border-right:5px solid black;"><?php echo $shipB_mission_rel2 ?>%</td>
-
-                                                <td id="ASuW3" style="border-right:5px solid orange;"><?php echo $shipC_mission2 ?>%</td>
-                                                <td id="ASuW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel2 ?>%</td>
-
-                                                <td id="ASuW4" style="border-right:5px solid orange;"><?php echo $shipD_mission2 ?>%</td>
-                                                <td id="ASuW_R4"><?php echo $shipD_mission_rel2 ?>%</td>
-                                            </tr>
-                                            <tr>
-                                                <th style="background-color:#5a5c69; color:white;border-radius:20px;">ASW</th>
-                                                <td id="ASW1" style="border-right:5px solid orange;"><?php echo $shipA_mission3 ?>%</td>
-                                                <td id="ASW_R1" style="border-right:5px solid black;"><?php echo $shipA_mission_rel3 ?>%</td>
-
-                                                <td id="ASW2" style="border-right:5px solid orange;"><?php echo $shipB_mission3 ?>%</td>
-                                                <td id="ASW_R2" style="border-right:5px solid black;"><?php echo $shipB_mission_rel3 ?>%</td>
-
-                                                <td id="ASW3" style="border-right:5px solid orange;"><?php echo $shipC_mission3 ?>%</td>
-                                                <td id="ASW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel3 ?>%</td>
-
-                                                <td id="ASW4" style="border-right:5px solid orange;"><?php echo $shipD_mission3 ?>%</td>
-                                                <td id="ASW_R4"><?php echo $shipD_mission_rel3 ?>%</td>
-                                            </tr>
-                                            <tr>
-                                                <th style="background-color:#5a5c69; color:white;border-radius:20px;">EW</th>
-                                                <td id="EW1" style="border-right:5px solid orange;"><?php echo $shipA_mission4 ?>%</td>
-                                                <td id="EW_R1" style="border-right:5px solid black;"><?php echo $shipA_mission_rel4 ?>%</td>
-
-                                                <td id="EW2" style="border-right:5px solid orange;"><?php echo $shipB_mission4 ?>%</td>
-                                                <td id="EW_R2" style="border-right:5px solid black;"><?php echo $shipB_mission_rel4 ?>%</td>
-
-                                                <td id="EW3" style="border-right:5px solid orange;"><?php echo $shipC_mission4 ?>%</td>
-                                                <td id="EW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel4 ?>%</td>
-
-                                                <td id="EW4" style="border-right:5px solid orange;"><?php echo $shipD_mission4 ?>%</td>
-                                                <td id="EW_R4"><?php echo $shipD_mission_rel4 ?>%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                        </div>
+                       
+                      
                     </div>
 
                 </div>
@@ -390,7 +368,8 @@
     window.onload = function() {
 
         $count = 1;
-        $('#table_rows > tr').each(function(index, td) {
+        $('#table_rows_head > th').each(function(index, td) {
+            
             var a1 = document.getElementById("AAW" + $count);
             var a_r1 = document.getElementById("AAW_R" + $count);
             var a2 = document.getElementById("ASuW" + $count);
@@ -598,45 +577,45 @@
     var reliability;
     var enteredTime;
 
-    $('#system_time').on('focusout', function() {
+    // $('#system_time').on('focusout', function() {
 
-        var time = $(this).val();
+    //     var time = $(this).val();
 
-        $.ajax({
-            url: '<?= base_url(); ?>Cdr/get_all_ships_reliability',
-            method: 'POST',
-            data: {
-                'time': time
-            },
-            success: function(data) {
+    //     $.ajax({
+    //         url: '<?= base_url(); ?>Cdr/get_all_ships_reliability',
+    //         method: 'POST',
+    //         data: {
+    //             'time': time
+    //         },
+    //         success: function(data) {
 
-                $('#reliability_bar').html(data + "%");
-                $('#reliability_bar').width(data * 5);
-                reliability = data;
-                enteredTime = time;
-            },
-            async: false
-        });
+    //             $('#reliability_bar').html(data + "%");
+    //             $('#reliability_bar').width(data * 5);
+    //             reliability = data;
+    //             enteredTime = time;
+    //         },
+    //         async: false
+    //     });
 
 
-        $.ajax({
-            url: '<?= base_url(); ?>Cdr/PageReload',
-            method: 'POST',
-            data: {
-                'time': enteredTime
-            },
-            success: function(data) {
-                var newDoc = document.open("text/html", "replace");
-                newDoc.write(data);
-                newDoc.close();
-            },
-            async: false,
-            error: function(data) {
-                alert('failure');
-            }
-        });
+    //     $.ajax({
+    //         url: '<?= base_url(); ?>Cdr/PageReload',
+    //         method: 'POST',
+    //         data: {
+    //             'time': enteredTime
+    //         },
+    //         success: function(data) {
+    //             var newDoc = document.open("text/html", "replace");
+    //             newDoc.write(data);
+    //             newDoc.close();
+    //         },
+    //         async: false,
+    //         error: function(data) {
+    //             alert('failure');
+    //         }
+    //     });
 
-    });
+    // });
 
 
     $('#Ship_name').on('change', function() {

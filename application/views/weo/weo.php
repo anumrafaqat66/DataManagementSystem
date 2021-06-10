@@ -50,7 +50,7 @@
 
     .lines {
         margin-left: 100px;
-        height: 29px;
+        height: 35px;
     }
 
     .line_bottom {
@@ -69,7 +69,7 @@
         border: 1px solid black;
         border-bottom: none;
         border-right: none;
-        height: 30px;
+        height: 35px;
         width: 200px;
         margin-left: -5px;
         margin-right: 0;
@@ -268,17 +268,16 @@
                             <h1 class="h5 text-white">SAM (Surface to Air Missile)</h1>
                         </div>
 
-                        <div class="card-body mx-5 bg-custom3">
+                        <div class="card-body mx-5 bg-custom3" >
                             <div>
                                 <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="CCS_A">A</a><a href="<?= base_url(); ?>Manager/show_records/3"> CCS </a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="CCS_R">R</a></div>
-
                             </div>
 
                             <div class="lines">
                                 <div class="line_bottom"></div>
                                 <div class="box_center" style="background-color:#FA8072;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="FC1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/4">FC1</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="FC1_R">R</a></div>
                                 <div class="line_middle"></div>
-                                <div class="box_center" style="background-color:#4682B4;color:white"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="SAM_A">A</a><a href="<?= base_url(); ?>Manager/show_records/8" style="color:whitesmoke;">SAM</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
+                                <div class="box_center" style="background-color:#4682B4;color:white;"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black;" id="SAM_A">A</a><a href="<?= base_url(); ?>Manager/show_records/8" style="color:whitesmoke;">SAM</a><a href="<?= base_url(); ?>HOD" style="float:right; font-size:small;color:black" id="SAM_R">R</a></div>
                             </div>
                             <div class="lines">
                                 <div class="line_top"></div>
@@ -286,7 +285,6 @@
 
                             <div>
                                 <div class="box"><a href="<?= base_url(); ?>HOD" style="float:left; font-size:small;color:black" id="S1_A">A</a><a href="<?= base_url(); ?>Manager/show_records/1">S1</a><a href="<?= base_url(); ?>HOD" style="float:right;color:black; font-size:small;" id="S1_R">R</a></div>
-
                             </div>
                         </div>
                     </div>

@@ -56,11 +56,29 @@
         filter: blur(2px);
     }
 
+    .img-ship5 {
+        background: url('<?= base_url() ?>assets/img/ship1.jpg');
+        background-position: center;
+        background-size: cover;
+        height: 150px;
+        border-radius: 20px;
+        filter: blur(2px);
+    }
+
+    .img-ship6 {
+        background: url('<?= base_url() ?>assets/img/ship1.jpg');
+        background-position: center;
+        background-size: cover;
+        height: 150px;
+        border-radius: 20px;
+        filter: blur(2px);
+    }
+
     .bg-text {
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 20%;
+        top: 22%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -73,7 +91,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 20%;
+        top: 22%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -86,7 +104,7 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 42%;
+        top: 40%;
         left: 28%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -99,7 +117,33 @@
         color: white;
         font-weight: bold;
         position: absolute;
-        top: 42%;
+        top: 40%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
+    }
+
+    .bg-text5 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 58%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 20%;
+        height: 25%;
+        text-align: center;
+    }
+
+    .bg-text6 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 58%;
         left: 70%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -208,7 +252,7 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4 text-white" style="text-align:center; font-size:xx-large; text-transform:uppercase; font-weight:600;">COMDES18</h1>
+                        <h1 class="h4 text-white" style="text-align:center; font-size:xx-large; text-transform:uppercase; font-weight:600;">COMPETRON10</h1>
                     </div>
 
                     <div class="card-body bg-custom3" style="background-color: 315deg;background-image: linear-gradient(315deg, #d4418e 15%, #4B0082 85%);">
@@ -217,20 +261,20 @@
                             <!-- <div class="col-sm-12"> -->
                             <div class="col-sm-5 mx-1 my-1 img-ship bg" style="margin-left:75px !important;"></div>
                             <div class="bg-text">
-                                <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>">
-                                    <h1 class="h1 text-center" style="margin-top: 20px; color:black;"><strong><?php echo $ship_data1 ?></strong></h1>
-                                    <h2 class="h4 text-center " style="color:black;"><strong>A: <?php echo $availability_missionA ?></strong></h2>
-                                    <h2 class="h4 text-center " style="color:black;"><strong>R: <?php echo $reliability_missionA ?></strong></h2>
-                                </a>
+                                <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship1' ?>"> -->
+                                    <h1 class="h1 text-center" style="margin-top: 20px; color:black;"><strong>ShipA</strong></h1>
+                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>A: <?php //echo $availability_missionA ?></strong></h2> -->
+                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>R: <?php //echo $reliability_missionA ?></strong></h2> -->
+                                <!-- </a> -->
                             </div>
 
                             <div class="col-sm-5 mx-1 my-1 img-ship2" style="padding:5px;"></div>
                             <div class="bg-text2">
-                                <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>">
-                                    <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong><?php echo $ship_data2 ?></strong></h1>
-                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php echo $availability_missionB ?></strong></h2>
-                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: <?php echo $reliability_missionB ?></strong></h2>
-                                </a>
+                                <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship2' ?>"> -->
+                                    <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>ShipB</strong></h1>
+                                    <!-- <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php //echo $availability_missionB ?></strong></h2> -->
+                                    <!-- <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: <?php //echo $reliability_missionB ?></strong></h2> -->
+                                <!-- </a> -->
                             </div>
 
                             <!-- </div> -->
@@ -240,23 +284,47 @@
                             <!-- <div class="col-sm-12"> -->
                             <div class="col-sm-5 mx-1 my-1 img-ship3" style="margin-left:75px !important;"></div>
                             <div class="bg-text3">
-                                <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship3' ?>">
-                                    <h1 class="h1 text-center " style="margin-top: 20px; color:black;"><strong><?php echo $ship_data3 ?></strong></h1>
-                                    <h2 class="h4 text-center " style="color:black;"><strong>A: <?php echo $availability_missionC ?></strong></h2>
-                                    <h2 class="h4 text-center " style="color:black;"><strong>R: <?php echo $reliability_missionC ?></strong></h2>
-                                </a>
+                                <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship3' ?>"> -->
+                                    <h1 class="h1 text-center " style="margin-top: 20px; color:black;"><strong>ShipC</strong></h1>
+                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>A: <?php //echo $availability_missionC ?></strong></h2> -->
+                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>R: <?php //echo $reliability_missionC ?></strong></h2> -->
+                                <!-- </a> -->
                             </div>
 
                             <div class="col-sm-5 mx-1 my-1 img-ship4" style="padding:5px;"></div>
                             <div class="bg-text4">
-                                <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship4' ?>">
-                                    <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong><?php echo $ship_data4 ?></strong></h1>
-                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php echo $availability_missionD ?></strong></h2>
-                                    <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: <?php echo $reliability_missionD ?></strong></h2>
-                                </a>
+                                <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship4' ?>"> -->
+                                    <h1 class="h1 text-center" style="margin-top: 20px; color:#DCDCDC;"><strong>ShipD</strong></h1>
+                                    <!-- <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>A: <?php //echo $availability_missionD ?></strong></h2> -->
+                                    <!-- <h2 class="h4 text-center " style="color:#DCDCDC;"><strong>R: <?php //echo $reliability_missionD ?></strong></h2> -->
+                                <!-- </a> -->
                             </div>
 
                             <!-- </div> -->
+                        </div>
+
+                        <div class="row " style="padding:1px;">
+
+                            
+                            <div class="col-sm-5 mx-1 my-1 img-ship5" style="margin-left:75px !important;"></div>
+                            <div class="bg-text5">
+                                <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship3' ?>"> -->
+                                    <h1 class="h1 text-center " style="margin-top: 20px; color:black;"><strong>ShipE</strong></h1>
+                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>A: <?php //echo $availability_missionC ?></strong></h2> -->
+                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>R: <?php //echo $reliability_missionC ?></strong></h2> -->
+                                <!-- </a> -->
+                            </div>
+
+                            <div class="col-sm-5 mx-1 my-1 img-ship6"></div>
+                            <div class="bg-text6">
+                                <!-- <a href="<?= base_url(); ?>Cdr/co/<?= 'Ship3' ?>"> -->
+                                    <h1 class="h1 text-center " style="margin-top: 20px; color:white;"><strong>ShipF</strong></h1>
+                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>A: <?php //echo $availability_missionC ?></strong></h2> -->
+                                    <!-- <h2 class="h4 text-center " style="color:black;"><strong>R: <?php //echo $reliability_missionC ?></strong></h2> -->
+                                <!-- </a> -->
+                            </div>
+
+                            
                         </div>
                         <hr>
                         <div class="form-group row">
@@ -285,15 +353,21 @@
                                     <table id="datatable" class="table table-sm table-striped bg-custom3 text-center" style="border-radius:20px;">
 
                                         <thead class="thead-dark">
-                                            <tr>
+                                            <tr id="table_rows_head">
                                                 <th scope="col"></th>
-                                                <th scope="col" colspan="2" style="border-right:5px solid black; "><?php echo $ship_data1 ?></th>
-                                                <th scope="col" colspan="2" style="border-right:5px solid black;"><?php echo $ship_data2 ?></th>
-                                                <th scope="col" colspan="2" style="border-right:5px solid black;"><?php echo $ship_data3 ?></th>
-                                                <th scope="col" colspan="2"><?php echo $ship_data4 ?></th>
+                                                <th scope="col" colspan="2" style="border-right:5px solid black; ">ShipA</th>
+                                                <th scope="col" colspan="2" style="border-right:5px solid black;">ShipB</th>
+                                                <th scope="col" colspan="2" style="border-right:5px solid black;">ShipC</th>
+                                                <th scope="col" colspan="2" style="border-right:5px solid black;">ShipD</th>
+                                                <th scope="col" colspan="2" style="border-right:5px solid black;">ShipE</th>
+                                                <th scope="col" colspan="2">ShipF</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col"></th>
+                                                <th scope="col">A</th>
+                                                <th scope="col" style="border-right:5px solid black;">R</th>
+                                                <th scope="col">A</th>
+                                                <th scope="col" style="border-right:5px solid black;">R</th>
                                                 <th scope="col">A</th>
                                                 <th scope="col" style="border-right:5px solid black;">R</th>
                                                 <th scope="col">A</th>
@@ -308,59 +382,83 @@
 
                                             <tr id="table_rows_AAW">
                                                 <th style="background-color:#5a5c69; color:white; border-radius:20px;">AAW</th>
-                                                <td id="AAW1" style="border-right:5px solid orange;"><?php echo $shipA_mission1 ?>%</td>
-                                                <td id="AAW_R1" style="border-right:5px solid black;"><?php echo $shipA_mission_rel1 ?>%</td>
+                                                <td id="AAW1" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="AAW_R1" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="AAW2" style="border-right:5px solid orange;"><?php echo $shipB_mission1 ?>%</td>
-                                                <td id="AAW_R2" style="border-right:5px solid black;"><?php echo $shipB_mission_rel1 ?>%</td>
+                                                <td id="AAW2" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="AAW_R2" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="AAW3" style="border-right:5px solid orange;"><?php echo $shipC_mission1 ?>%</td>
-                                                <td id="AAW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel1 ?>%</td>
+                                                <td id="AAW3" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="AAW_R3" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="AAW4" style="border-right:5px solid orange;"><?php echo $shipD_mission1 ?>%</td>
-                                                <td id="AAW_R4"><?php echo $shipD_mission_rel1 ?>%</td>
+                                                <td id="AAW4" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="AAW_R4" style="border-right:5px solid black;">0.00%</td>
+
+                                                <td id="AAW5" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="AAW_R5" style="border-right:5px solid black;">0.00%</td>
+
+                                                <td id="AAW6" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="AAW_R6">0.00%</td>
                                             </tr>
                                             <tr>
                                                 <th style="background-color:#5a5c69; color:white;border-radius:20px;">ASuW</th>
-                                                <td id="ASuW1" style="border-right:5px solid orange;"><?php echo $shipA_mission2 ?>%</td>
-                                                <td id="ASuW_R1" style="border-right:5px solid black;"><?php echo $shipA_mission_rel2 ?>%</td>
+                                                <td id="ASuW1" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASuW_R1" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="ASuW2" style="border-right:5px solid orange;"><?php echo $shipB_mission2 ?>%</td>
-                                                <td id="ASuW_R2" style="border-right:5px solid black;"><?php echo $shipB_mission_rel2 ?>%</td>
+                                                <td id="ASuW2" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASuW_R2" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="ASuW3" style="border-right:5px solid orange;"><?php echo $shipC_mission2 ?>%</td>
-                                                <td id="ASuW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel2 ?>%</td>
+                                                <td id="ASuW3" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASuW_R3" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="ASuW4" style="border-right:5px solid orange;"><?php echo $shipD_mission2 ?>%</td>
-                                                <td id="ASuW_R4"><?php echo $shipD_mission_rel2 ?>%</td>
+                                                <td id="ASuW4" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASuW_R4" style="border-right:5px solid black;">0.00%</td>
+
+                                                <td id="ASuW5" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASuW_R5" style="border-right:5px solid black;">0.00%</td>
+
+                                                <td id="ASuW6" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASuW_R6">0.00%</td>
                                             </tr>
                                             <tr>
                                                 <th style="background-color:#5a5c69; color:white;border-radius:20px;">ASW</th>
-                                                <td id="ASW1" style="border-right:5px solid orange;"><?php echo $shipA_mission3 ?>%</td>
-                                                <td id="ASW_R1" style="border-right:5px solid black;"><?php echo $shipA_mission_rel3 ?>%</td>
+                                                <td id="ASW1" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASW_R1" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="ASW2" style="border-right:5px solid orange;"><?php echo $shipB_mission3 ?>%</td>
-                                                <td id="ASW_R2" style="border-right:5px solid black;"><?php echo $shipB_mission_rel3 ?>%</td>
+                                                <td id="ASW2" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASW_R2" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="ASW3" style="border-right:5px solid orange;"><?php echo $shipC_mission3 ?>%</td>
-                                                <td id="ASW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel3 ?>%</td>
+                                                <td id="ASW3" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASW_R3" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="ASW4" style="border-right:5px solid orange;"><?php echo $shipD_mission3 ?>%</td>
-                                                <td id="ASW_R4"><?php echo $shipD_mission_rel3 ?>%</td>
+                                                <td id="ASW4" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASW_R4" style="border-right:5px solid black;">0.00%</td>
+
+                                                <td id="ASW5" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASW_R5" style="border-right:5px solid black;">0.00%</td>
+
+                                                <td id="ASW6" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="ASW_R6">0.00%</td>
                                             </tr>
                                             <tr>
                                                 <th style="background-color:#5a5c69; color:white;border-radius:20px;">EW</th>
-                                                <td id="EW1" style="border-right:5px solid orange;"><?php echo $shipA_mission4 ?>%</td>
-                                                <td id="EW_R1" style="border-right:5px solid black;"><?php echo $shipA_mission_rel4 ?>%</td>
+                                                <td id="EW1" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="EW_R1" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="EW2" style="border-right:5px solid orange;"><?php echo $shipB_mission4 ?>%</td>
-                                                <td id="EW_R2" style="border-right:5px solid black;"><?php echo $shipB_mission_rel4 ?>%</td>
+                                                <td id="EW2" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="EW_R2" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="EW3" style="border-right:5px solid orange;"><?php echo $shipC_mission4 ?>%</td>
-                                                <td id="EW_R3" style="border-right:5px solid black;"><?php echo $shipC_mission_rel4 ?>%</td>
+                                                <td id="EW3" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="EW_R3" style="border-right:5px solid black;">0.00%</td>
 
-                                                <td id="EW4" style="border-right:5px solid orange;"><?php echo $shipD_mission4 ?>%</td>
-                                                <td id="EW_R4"><?php echo $shipD_mission_rel4 ?>%</td>
+                                                <td id="EW4" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="EW_R4" style="border-right:5px solid black;">0.00%</td>
+
+                                                <td id="EW5" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="EW_R5" style="border-right:5px solid black;">0.00%</td>
+
+                                                <td id="EW6" style="border-right:5px solid orange;">0.00%</td>
+                                                <td id="EW_R6">0.00%</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -390,7 +488,8 @@
     window.onload = function() {
 
         $count = 1;
-        $('#table_rows > tr').each(function(index, td) {
+        $('#table_rows_head > th').each(function(index, td) {
+            
             var a1 = document.getElementById("AAW" + $count);
             var a_r1 = document.getElementById("AAW_R" + $count);
             var a2 = document.getElementById("ASuW" + $count);
@@ -598,45 +697,45 @@
     var reliability;
     var enteredTime;
 
-    $('#system_time').on('focusout', function() {
+    // $('#system_time').on('focusout', function() {
 
-        var time = $(this).val();
+    //     var time = $(this).val();
 
-        $.ajax({
-            url: '<?= base_url(); ?>Cdr/get_all_ships_reliability',
-            method: 'POST',
-            data: {
-                'time': time
-            },
-            success: function(data) {
+    //     $.ajax({
+    //         url: '<?= base_url(); ?>Cdr/get_all_ships_reliability',
+    //         method: 'POST',
+    //         data: {
+    //             'time': time
+    //         },
+    //         success: function(data) {
 
-                $('#reliability_bar').html(data + "%");
-                $('#reliability_bar').width(data * 5);
-                reliability = data;
-                enteredTime = time;
-            },
-            async: false
-        });
+    //             $('#reliability_bar').html(data + "%");
+    //             $('#reliability_bar').width(data * 5);
+    //             reliability = data;
+    //             enteredTime = time;
+    //         },
+    //         async: false
+    //     });
 
 
-        $.ajax({
-            url: '<?= base_url(); ?>Cdr/PageReload',
-            method: 'POST',
-            data: {
-                'time': enteredTime
-            },
-            success: function(data) {
-                var newDoc = document.open("text/html", "replace");
-                newDoc.write(data);
-                newDoc.close();
-            },
-            async: false,
-            error: function(data) {
-                alert('failure');
-            }
-        });
+    //     $.ajax({
+    //         url: '<?= base_url(); ?>Cdr/PageReload',
+    //         method: 'POST',
+    //         data: {
+    //             'time': enteredTime
+    //         },
+    //         success: function(data) {
+    //             var newDoc = document.open("text/html", "replace");
+    //             newDoc.write(data);
+    //             newDoc.close();
+    //         },
+    //         async: false,
+    //         error: function(data) {
+    //             alert('failure');
+    //         }
+    //     });
 
-    });
+    // });
 
 
     $('#Ship_name').on('change', function() {

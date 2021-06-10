@@ -81,6 +81,27 @@ class Cdr extends CI_Controller
         $this->load->view('cdr/cdr', $data);
     }
 
+    public function navigate($page_name = NULL)
+    {
+        if ($page_name == "COMDES18") {
+            $this->load->view('cdr\cdr');
+        } elseif ($page_name == "COMDES21") {
+            $this->load->view('cdr\comdes21');
+        } elseif ($page_name == "COMDES25") {
+            $this->load->view('cdr\comdes25');
+        } elseif ($page_name == "COMPETRON10") {
+            $this->load->view('cdr\competron10');
+        } elseif ($page_name == "COMAUX9") {
+            $this->load->view('cdr\comaux9');
+        } elseif ($page_name == "COMAUX21") {
+            $this->load->view('cdr\comaux21');
+        } elseif ($page_name == "SUBRON") {
+            $this->load->view('cdr\subron');
+        } elseif ($page_name == "COMNAV") {
+            $this->load->view('cdr\comnav');
+        }
+    }
+
     public function co($ship = null)
     {
         if ($ship == "Ship1") {
